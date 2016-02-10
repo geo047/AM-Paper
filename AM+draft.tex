@@ -1,6 +1,8 @@
 \documentclass{article}
 
-
+\addtolength{\oddsidemargin}{-2.5cm}
+%\addtolength{\evensidemargin}{-3cm}
+\addtolength{\textwidth}{2.5cm}
 \begin{document}
 
 \title{Making multiple-locus association mapping on a genome-wide scale routine}
@@ -10,34 +12,101 @@
 
 
 \abstract{
-In this paper, we present our method that makes multiple locus association mapping routine. It is only a little more complicated than 
-performing a linear mixed model analysis. Yet, we are able to fit all marker-trait associations simultaneously while still clearly identifying
- which marker-trait associations are true. There are no thresholds to be set, no multiple testing issues,  
- and no parameters to fine tune. We will show that our method is capable of  finding marker-trait associations more accurately, 
- and in many cases, orders of magnitude faster than competing approaches. Our multiple locus method is implemented 
+In this paper, we present our method that makes multiple locus association mapping routine. 
+It is only a little more complicated than performing a linear mixed model analysis. 
+Yet, we are able to fit all marker-trait associations simultaneously while still clearly identifying
+ which marker-trait associations are true. There are no thresholds to be set, no multiple 
+ testing issues,  and no parameters to fine tune. We will show that our method is capable 
+ of  finding marker-trait associations more accurately,  and in many cases, orders of 
+ magnitude faster than competing approaches. Our multiple locus method is implemented 
  in a freely available, fully documented and maintained R package called am+.
 }
 
 \section{Introduction}
 
-Gwas for many are now the design of choice when interested in elucidating the genetic underpinnings  
-of complex traits.  Over the past decade, gwas have changed considerably in focus and scope. Early gwas 
-were performed predominantly as case control studies. Their focus was on identifying the casual variants 
-underlying common disorders in humans. Despite many promising findings, reproducibility of these findings 
-proved an issue (refs). With the collection of dense whole genome data challenging, early gwas lacked power (refs).  
-Today, gwas are performed not just in humans but animals and plants that may have highly structured pedigrees. 
-They can involve hundreds to thousands of individuals with genotypes collected from thousands to hundreds of
- thousands of snps. Where early gwas were interested in disease traits, modern gwas are also  interested in 
- categorical and quantitative traits.
+Gwas for many are now the design of choice when interested in elucidating the genetic 
+underpinnings  of complex traits.  Over the past decade, gwas have changed 
+considerably in focus and scope. Early gwas 
+were performed predominantly as case control studies. Their focus 
+was on identifying the casual variants underlying common disorders in humans. 
+Despite many promising findings, reproducibility of these findings 
+proved an issue (refs). With the collection of dense whole genome data challenging, 
+early gwas lacked power (refs).  Today, gwas are performed not just in humans but 
+animals and plants that may have highly structured pedigrees. 
+They can involve hundreds to thousands of individuals with genotypes collected 
+from thousands to hundreds of thousands of snps. Where early gwas were interested
+ in disease traits, modern gwas are also  interested in  categorical and quantitative traits.
 
 
-Over the past decade, there have also been impressive advancements in genome wide association mapping methods, the statistical techniques for measuring the strength of association between a marker locus and trait. Traditionally, association data were analysed with simple contingency tests or Cochran-armitage  trend tests. Today, far more statistically sophisticated methods are available. One such method is the  QK approach, a linear mixed model framework for genome wide association mapping (refs).  Several highly efficient 
-computer programs for performing QK-based association mapping are available. Programs such as EMMA, fastLMM, GEMMA, and 
-XXX(ref) make feasible the analysis of data from hundreds of thousands of snps, collected on thousands of subjects. However, not all 
-areas of genome-wide association mapping have advanced. It still remains standard practice to analyse genome-wide association data with a single locus model. That is,  the strength of association between a marker locus and trait is measured 
-for each locus separately. 
+Over the past decade, there have also been impressive advancements in genome wide 
+association mapping methods, the statistical techniques for measuring the strength of 
+association between a marker locus and trait. Traditionally, association data were 
+analysed with simple contingency tests or Cochran-armitage  trend tests. Today, far 
+more statistically sophisticated methods are available. One such method is the  QK 
+approach, a linear mixed model framework for genome wide association 
+mapping (refs).  Several highly efficient computer programs for performing QK-based 
+association mapping are available. Programs such as EMMA, fastLMM, GEMMA, and 
+XXX(ref) make feasible the analysis of data from hundreds of thousands of snps, collected 
+on thousands of subjects. However, not all areas of genome-wide association 
+mapping have advanced. It still remains standard practice to analyse genome-wide 
+association data with a single locus model. That is,  it is common for the strength of 
+association between a marker locus and trait is measured for each locus separately. 
+
+Methods for association mapping with multiple locus models have been developed 
+for some time. Computer implementations of these methods have also been available. 
+Thus, it is not a lack of methodology  or computational tools preventing the uptake of 
+multiple locus association mapping. The reasons for their lack of acceptance are many. 
+Multiple locus association mapping methods are often cased in high level statistical theory, 
+making their true value difficult to appreciate.  Computationally, they can scale poorly with 
+sample size and/or number of genetic markers. Some methods require tuning parameters 
+to be specified. These methods also report their results as coefficients whose significance 
+are unknown. There are multiple locus methods that instead report their results as probabilities 
+but the difficulty here is determining  an appropriate threshold for inferring a statistically 
+significant finding. The computer implementations can also be difficult to run in some cases. 
+All these reasons contribute to making multiple locus association mapping unappealing as 
+an analysis method.
+
+In this paper, we present our new am+ approach for multiple locus association mapping. 
+Our approach is based on linear mixed models and uses the same parameter estimation 
+procedure as EMMA. Through a clever dimension reduction step, our approach scales 
+with number of subjects instead of number of marker loci. We build the multiple locus 
+model iteratively. At each step, only a single linear mixed model is fitted to the data. 
+This model fits all marker loci and their association with the trait simultaneously. There 
+are no parameters to be tuned, no thresholds to be set. Our approach automatically 
+finds the best model. Once our approach is run, the set of statistically significant 
+marker loci in strongest association with the trait is returned as its findings.  
+
+Our am+ approach is implemented in a fully documented and maintained R package. 
+We are able to achieve impressive performance by moving the computationally 
+components of our algorithm to Cpp. Here, we make full use of distributed 
+computing, through multiple cpu and multiple glue processing when available. 
+Our R package is easy to use, even for non  R users. It consists of a single function
+ to read in the data and a single function for analysis. We will demonstrate that 
+ our approach returns more accurate results faster and more efficiently than 
+ competing multiple locus association mapping approaches. Our am+ approach 
+ makes multiple locus association mapping of genome wide data routine.
+
+\section{Results}
+
+\subsection{Computer implementations for Multiple Locus Association Mapping}
+
+We have chosen six computer programs/packages whose performance we  compared  to our R package, am+. These are .., .., .., .., .. We chose these six programs/packages because a. they were purpose-built for multiple-locus association mapping or contained general methods from which multiple-locus association mapping techniques had been developed, b. they could handle analysis on a genome wide scale, c.  they were freely available, and d. they are state-of-the-art.  These programs/packages implement multiple locus association mapping within different model frameworks ( ....) and by fitting these models to data in different ways ( ...). 
+A summary of the key features of the programs/packages whose performance we evaluated in this paper (including our package) are given in table X.
 
 
-Interestingly, it isn't a lack of computational tools that is restricting the adoption of multiple locus association mapping.  Several  computer programs are available. Glmnet, lmmlasso, and lars are R packages that implement shrinkage methods for regression problems.   All marker-trait associations are fitted simultaneously with the coefficients of loci with spurious association to a trait shrunk to zero. Another R package that was purpose built for the multiple locus analysis of data from gwas is the bigRR package.  It implements generalised ridge regression. Similar to shrinkage methods, all marker trait associations are fitted simultaneously. However, coefficients are not shrunk and  determining their significance  can be challenging. PiMASS is a command line driven program that implements Bayesian variable selection for multiple locus association mapping. The strength of the marker-locus association is measured by a posterior probability. Parameter inferences are obtained via Markov Chain Monte Carlo.  MLMM is an R package .. linear mixed model that is implemented extremely well. 
+These programs/packages cast the association mapping problem in different modelling frameworks, different was of fitting the models to the data, and 
+A summary of the key features of the programs/packages whose performance we evaluated in this paper (including our package) are given in table X.  These programs/packages employ different modelling frameworks (linear, linear mixed, Bayesian, Decision trees) and ways of fitting these models to the association data (lasso, generalised ridge regression, am+, bayesian variable selection, forward stepwise, and random forests). The majority of computer implementations were written in R but there was also a package written in python and a stand alone computer program. 
+
+
+Together, these programs/packages represent a good cross section of modelling frameworks (....) and ways of fitting these models (....). 
+
+
+
+
+Various modelling frameworks (linear, linear mixed, Bayesian, Decision trees) are employed. These models are also fit to the association data in different ways (lasso, generalised ridge regression, am+, bayesian variable selection, forward stepwise, and random forests).  
+
+A summary of the key features of the programs/packages whose performance we evaluate in this paper (including our package) is given in table X.  Three of the packages are based on linear models ( ). Three make use of  more sophisticated linear mixed models (. ).  The other two are based on Bayesian models (. ) or decision tree models ( ).   The models were fitted to the data via lasso which is a statistical technique where parameter estimation and variable selection occur simultaneously, generalised ridge regression which is a a regularisation method, 
+
+We compared  the performance of our R package, am+,  to seven other implementations. All seven implementations are based on published methods. These seven implementations allowed us to compare our approach to what currently is the state-of-the-art in multiple locus association mapping methodology. The implementations evaluated are as follows. Glmnet is a general purpose R package. It implements lasso, an estimation technique where parameter estimation and variable selection occur simultaneously, for linear models. It's value for multiple locus association mapping has been demonstrated (ref). LARS in another general purpose R package implementing methods amenable for  multiple locus association mapping (ref). It relies on least angle regression, a form of forward selection, for model selection with linear models. BigRR is purpose built R package for the genome wide analysis of association data. It is based on linear models where parameter estimation is accomplished with ridge regression, a regularisation and shrinkage technique. Lmm-lasso and MLMM are two implementations purpose built for genome wide association mapping. Lmm-lasso uses lasso to identify the set of loci in association with the trait. MLMM instead implements a forward selection strategy with backward elimination. Both are based on linear mixed models. Pimass and randfor implement two very different approaches for multiple locus association mapping. In pimass, association mapping is performed within a Bayesian framework through Bayesian variable selection.  In ranfor, assoc mapping is performed in a machine learning framework through random forests. See table X for the  key features of the implementations evaluated in this paper.
 
 \end{document}
