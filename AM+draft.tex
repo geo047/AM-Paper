@@ -1,5 +1,5 @@
-\documentclass{article}
-
+\documentclass[12pt]{article}
+\linespread{1.5}
 \addtolength{\oddsidemargin}{-2.5cm}
 %\addtolength{\evensidemargin}{-3cm}
 \addtolength{\textwidth}{2.5cm}
@@ -90,23 +90,35 @@ Our R package is easy to use, even for non  R users. It consists of a single fun
 
 \subsection{Computer implementations for Multiple Locus Association Mapping}
 
-We have chosen six computer programs/packages whose performance we  compared  to our R package, am+. These are .., .., .., .., .. We chose these six programs/packages because a. they were purpose-built for multiple-locus association mapping or contained general methods from which multiple-locus association mapping techniques had been developed, b. they could handle analysis on a genome wide scale, c.  they were freely available, and d. they are state-of-the-art.  These programs/packages implement multiple locus association mapping within different model frameworks ( ....) and by fitting these models to data in different ways ( ...). 
-A summary of the key features of the programs/packages whose performance we evaluated in this paper (including our package) are given in table X.
 
 
-These programs/packages cast the association mapping problem in different modelling frameworks, different was of fitting the models to the data, and 
-A summary of the key features of the programs/packages whose performance we evaluated in this paper (including our package) are given in table X.  These programs/packages employ different modelling frameworks (linear, linear mixed, Bayesian, Decision trees) and ways of fitting these models to the association data (lasso, generalised ridge regression, am+, bayesian variable selection, forward stepwise, and random forests). The majority of computer implementations were written in R but there was also a package written in python and a stand alone computer program. 
+We have chosen six computer implementations whose performance we  
+compared  to our R package, am+. These are bigRR, glmnet, , lmm-lasso,
+MLMM,  piMASS, and randfor.  We chose 
+these six implementations because a. they were purpose-built for 
+multiple-locus association mapping or contained general methods from 
+which multiple-locus association mapping techniques had been developed, 
+b. they could handle analysis on a genome wide scale, c.  they were freely 
+available, and d. they are state-of-the-art. 
 
+A summary of the key 
+features of the programs/packages whose 
+performance we evaluated in this paper are given in table X.
+Even from this small set of 
+packages and computer programs, the diversity of implementation is apparent. 
+BigRR and glmnet are based 
+on linear models, lmm-lasso and MLMM on linear mixed models, piMASS on Bayesian models, 
+and randfor on decision tree models. BigRR fit its models to data with ridge regression, a regularisation technique. 
+Glmnet and lmm-lasso instead rely on lasso where parameter estimation and variable selection occur simultaneously. 
+PiMass fits its models with bayesian variable selection, MLMM through stepwise selection, and randfor with random forests. 
+Some of the implementations evaluated here fit all snp simultaneously where others do not. Although the underlying statistical 
+problem was the same, to find the "best" set of predictions (snps) to explain a quantitative response (trait), the implementations differed greatly. 
 
-Together, these programs/packages represent a good cross section of modelling frameworks (....) and ways of fitting these models (....). 
+\subsection{Simulation study to evaluate computational performance}
 
+\subsection{Simulation study to evaluate statistical performance}
 
+\subsection{Application to Arabidopsis data}
 
-
-Various modelling frameworks (linear, linear mixed, Bayesian, Decision trees) are employed. These models are also fit to the association data in different ways (lasso, generalised ridge regression, am+, bayesian variable selection, forward stepwise, and random forests).  
-
-A summary of the key features of the programs/packages whose performance we evaluate in this paper (including our package) is given in table X.  Three of the packages are based on linear models ( ). Three make use of  more sophisticated linear mixed models (. ).  The other two are based on Bayesian models (. ) or decision tree models ( ).   The models were fitted to the data via lasso which is a statistical technique where parameter estimation and variable selection occur simultaneously, generalised ridge regression which is a a regularisation method, 
-
-We compared  the performance of our R package, am+,  to seven other implementations. All seven implementations are based on published methods. These seven implementations allowed us to compare our approach to what currently is the state-of-the-art in multiple locus association mapping methodology. The implementations evaluated are as follows. Glmnet is a general purpose R package. It implements lasso, an estimation technique where parameter estimation and variable selection occur simultaneously, for linear models. It's value for multiple locus association mapping has been demonstrated (ref). LARS in another general purpose R package implementing methods amenable for  multiple locus association mapping (ref). It relies on least angle regression, a form of forward selection, for model selection with linear models. BigRR is purpose built R package for the genome wide analysis of association data. It is based on linear models where parameter estimation is accomplished with ridge regression, a regularisation and shrinkage technique. Lmm-lasso and MLMM are two implementations purpose built for genome wide association mapping. Lmm-lasso uses lasso to identify the set of loci in association with the trait. MLMM instead implements a forward selection strategy with backward elimination. Both are based on linear mixed models. Pimass and randfor implement two very different approaches for multiple locus association mapping. In pimass, association mapping is performed within a Bayesian framework through Bayesian variable selection.  In ranfor, assoc mapping is performed in a machine learning framework through random forests. See table X for the  key features of the implementations evaluated in this paper.
 
 \end{document}
