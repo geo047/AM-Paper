@@ -1,0 +1,8 @@
+Using gitHub for version control of files.
+
+git add fn.name  ## to add a file to the repository on my machine
+git commit       ## to commit any changes to my repository on my machine
+git push         ## pushes file to gitHub repository - username geo047
+                 ## password: eido123
+
+
