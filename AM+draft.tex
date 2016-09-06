@@ -13,42 +13,99 @@
 
 
 \abstract{
-In this paper, we present our method that makes multiple locus association mapping routine. 
-It is only a little more complicated than performing a linear mixed model analysis. 
-Yet, we are able to fit all marker-trait associations simultaneously while still clearly identifying
- which marker-trait associations are true. There are no thresholds to be set, no multiple 
- testing issues,  and no parameters to fine tune. We will show that our method is capable 
- of  finding marker-trait associations more accurately,  and in many cases, orders of 
- magnitude faster than competing approaches. Our multiple locus method is implemented 
- in a freely available, fully documented and maintained R package called am+.
+The methods of choice for genome wide association mapping all share a common shortcoming. 
+They measure the strength of marker-trait associations on a locus by locus basis. 
+More sophisticated multi-locus methods that map multiple marker-trait associations jointly are available. 
+However, these methods are computationally demanding, are not always easy to implement, and can give results that are difficult to interpret. The aim of this paper is to present our method that makes the multi-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. We call our method AMplus. AMplus produces results faster than competing multi locus methods and often with greater statistical power. In terms of speed, AMplus is just a little slower than the fastest single-locus linear mixed model implementations. AMplus is freely available as a fully documented R package which we port as a docker binary for platform independent portability.
 }
 
+
 \section{Introduction}
+
+Over the past decade, gwas have changed 
+considerably in scope and method of analysis. Early gwas were performed as case-control studies and their data analysed with simple
+contingency table tests or logistic regressions.  Differences in marker allele frequency between cases (affecteds) and controls (unaffecteds) was assumed to be due to a disease variant. It was soon realised though that 
+unrecognised population stratification had the capacity to cause spurious associations with non-causal genes. This led to a rise in 
+popularity for family-based designs. Family-based designs are robust to population stratrification. 
+Consequently, there has been a myriad of association studies performed with affected sibling pairs, 
+parent-offspring trios, and nuclear families. All have an accompanying plethora of parametric (refs) and non-parametric (refs) analysis methods. However, as the popularity of GWAS as the study design of choice grew, so did the desire to perform GWAS in general 
+populations which may have complex, possibly unknown, structure. Here, we could no longer rely on study design to control population stratification. There began a push to develop methods which were capable of accounting for the confounding affects of population 
+stratification. Early methods include genomic control and structured association. However, it has been development of a linear mixed 
+modelling framework for GWAS that has the greatest flexibility for controlling for popuation structure and familial relatedness in general population studies. 
+
+
+so to did the desire to implement GWAS in species with structured populations butw where the family structure is unknown
+
+
+
+
+ the statistical significance of differences in marker allele frequency determined with 
+contingency table tests or logistic regression. It was soon realised though that unrecognised population heterogeniety 
+had the potential to confound findings. This led to the rise in popularity of family-based designs based on 
+sibling pairs, trios, and nuclear families.  These designs are robust to deleterious affects of population stratification. 
+
+
+
+ along with a plethora of
+different score and frequency tests being developed. 
+
+and 
+and their data analysed either 
+with simple contingency table tests or logistic regression. The deleterious affects of hidden population heterogeniety though on findings was soon recognised. 
+This led to the preponderance of family-based studies because they are robust to potential population heterogeniety. 
+
+ Whether performed with trios, nuclear families, 
+sibling pairs, or extended families, family-based studies correctly controlled population stratification. 
+
+
+controlling for spurious associations 
+due to latent population heterogeniety soon became a focus. This led to family based designs becoming popular. These designs 
+
+
+ based on 
+trios, 
+
+
+
+involving trios, nuclear families, sibling pairs, or ext
+
+
+were performed predominantly as case control or family based studies. Their focus 
+was on identifying the casual variants underlying common disorders in humans. As the popularity of GWAS grew, 
+they started to be performed in populations of unrelated individuals and even in structured populations with complicated pedigrees. 
+Here, the traits of interest also included quantitative traits. Today, gwas are being performed at the population level, with studies 
+involving thousands of individuals with genotypes collected from hundreds of thousands of snps. 
+
+
 
 Gwas for many are now the design of choice when interested in elucidating the genetic 
 underpinnings  of complex traits.  Over the past decade, gwas have changed 
 considerably in focus and scope. Early gwas 
-were performed predominantly as case control studies. Their focus 
+were performed predominantly as case control or family based studies. Their focus 
 was on identifying the casual variants underlying common disorders in humans. 
 Despite many promising findings, reproducibility of these findings 
-proved an issue (refs). With the collection of dense whole genome data challenging, 
-early gwas lacked power (refs).  Today, gwas are performed not just in humans but 
-animals and plants that may have highly structured pedigrees. 
-They can involve hundreds to thousands of individuals with genotypes collected 
-from thousands to hundreds of thousands of snps. Where early gwas were interested
+proved an issue (refs). Early gwas  lacked statistical power because of the 
+challenges of collecting dense whole genome data across a sufficiently large number of samples (refs).
+Today, gwas are being performed in a wide variety of species. These studies can involve thousands
+ of individuals with genotypes collected from thousands to hundreds of thousands of snps. 
+Where early gwas were interested
  in disease traits, modern gwas are also  interested in  categorical and quantitative traits.
 
 
 Over the past decade, there have also been impressive advancements in genome wide 
 association mapping methods, the statistical techniques for measuring the strength of 
-association between a marker locus and trait. Traditionally, association data were 
+association between a marker locus and trait. (Needs more detail - what are some of the early assoc study methods (give a single sentence review).... TDT, genomic control, structured association, score tests???? 
+Traditionally, association data were 
 analysed with simple contingency tests or Cochran-armitage  trend tests. Today, far 
 more statistically sophisticated methods are available. One such method is the  QK 
 approach, a linear mixed model framework for genome wide association 
-mapping (refs).  Several highly efficient computer programs for performing QK-based 
+mapping (refs).  The QK approach 
+
+
+Several highly efficient computer programs for performing QK-based 
 association mapping are available. Programs such as EMMA, fastLMM, GEMMA, and 
-XXX(ref) make feasible the analysis of data from hundreds of thousands of snps, collected 
-on thousands of subjects. However, not all areas of genome-wide association 
+XXX(ref) make feasible the analysis of data from large GWAS. 
+ However, not all areas of genome-wide association 
 mapping have advanced. It still remains standard practice to analyse genome-wide 
 association data with a single locus model. That is,  it is common for the strength of 
 association between a marker locus and trait is measured for each locus separately. 
@@ -97,9 +154,20 @@ We compared the performance of our R package, am, to six other computer programs
 
 
 \subsection{Computational performance}
-We conducted a simulation study to assess  the computational performance of am+. For comparison, we assessed six other computer programs (table X) that  also implement multiple locus association mapping. The marker data in our simulation study comes from phase 3 of the 1000 genomes project. Here, 2315 individuals were sequenced and their genotype information made available. We generated trait data by randomly selecting snp, assigning allelic  effects to the selected snp, and aggregating these effects along with random error. The number of snp  selected  was sampled from a Poisson distribution with mean 30. The effect sizes were sampled from a beta distribution. The errors were drawn from a normal distribution with zero mean and whose variance yielded a quantitative trait with a heritability of 0.5.We were interested in how study size impacts performance. We generated replicates under five different study sizes. These were 150 individuals and 4000 snp (150 X 4K), 300 individuals and 50000 snp (300 X 50k), ... We based these five study sizes on the size of study being performed in unsequenced crop plants such as wheat, ......, respectively. For those study sizes that exceeded the number of genotyped individuals in the 1000 genomes project,  we simulated additional data by forming genotype mosaics from the real snp data. We generated 250 replicates for each scenario. Performance was measured by recording elapse  time and maximum memory usage. Analyses were performed on a high end desk top which was a dell intra quad core processor with 120G of RAM and a Intel gpu. Programs were run for a maximum of 100 hours.  All programs except piMass  made use of distributed computing, either implicitly via multithreaded blas and lapac linear algebra libraries or as in the case of ranfor, explicitly. For ranfor, we wrote R code to parallelise the random forest analysis across multiple cpu.  All scripts for performing these analyses are available from the Csiro-data acces portal.In figure X we compare the elapse time of  am+ against the other computer programs. On the y axis, we have the ratio of each computer program's elapse time to the elapse time of cpu-based am+. On the X axis, we have the number of genotypes and study size. Both axes are on log scale . A positive (negative) log ratio means am+ had a shorter (longer) elapse time  than the other computer program. The magnitude (value) of the ratio is (the magnitude of)  how many times shorter or longer am+ is to the other computer program.  Since performance varies with replicate, for a given study size, a point in figure X is the log median of 250  ratios of elapse times.From figure X, the superior performance of am+ to the other computer programs is evident. Describe ...
+We conducted a simulation study to assess  the computational performance of am+. For comparison, we assessed six other computer programs (table X) that  also implement multiple locus association mapping. The marker data in our simulation study comes from phase 3 of the 1000 genomes project. Here, 2315 individuals were sequenced and their genotype information made available. We generated trait data by randomly selecting snp, assigning allelic  effects to the selected snp, and aggregating these effects along with random error. The number of snp  selected  was sampled from a Poisson distribution with mean 30. The effect sizes were sampled from a beta distribution. The errors were drawn from a normal distribution with zero mean and whose variance yielded a quantitative trait with a heritability of 0.5.
 
-\subsection{Simulation study to evaluate computational performance}
+
+We were interested in how study size impacts performance. We generated replicates under five different study sizes. These were 150 individuals and 4000 snp (150 X 4K), 300 individuals and 50000 snp (300 X 50k), ... We based these five study sizes on the size of study being performed in unsequenced crop plants such as wheat, ......, respectively. For those study sizes that exceeded the number of genotyped individuals in the 1000 genomes project,  we simulated additional data by forming genotype mosaics from the real snp data. We generated 250 replicates for each scenario. 
+
+Performance was measured by recording elapse  time and maximum memory usage. Analyses were performed on a high end desk top which was a dell intra quad core processor with 120G of RAM and a Intel gpu. Programs were run for a maximum of 100 hours.  All programs except piMass  made use of distributed computing, either implicitly via multithreaded blas and lapac linear algebra libraries or as in the case of ranfor, explicitly. For ranfor, we wrote R code to parallelise the random forest analysis across multiple cpu.  All scripts for performing these analyses are available from the Csiro-data acces portal.
+
+In figure X we compare the elapse time of  am+ against the other computer programs. On the y axis, we have the ratio of each computer program's elapse time to the elapse time of cpu-based am+. On the X axis, we have the number of genotypes and study size. Both axes are on log scale . A positive (negative) log ratio means am+ had a shorter (longer) elapse time  than the other computer program. The magnitude (value) of the ratio is (the magnitude of)  how many times shorter or longer am+ is to the other computer program.  Since performance varies with replicate, for a given study size, a point in figure X is the log median of 250  ratios of elapse times.
+
+
+From figure X, the superior performance of am+ to the other computer programs is evident. Describe ...
+
+
+\subsection{Simulation study to evaluate computational performance}
 
 \subsection{Simulation study to evaluate statistical performance}
 
