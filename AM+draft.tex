@@ -16,80 +16,46 @@
 The methods of choice for genome wide association mapping all share a common shortcoming. 
 They measure the strength of marker-trait associations on a locus by locus basis. 
 More sophisticated multi-locus methods that map multiple marker-trait associations jointly are available. 
-However, these methods are computationally demanding, are not always easy to implement, and can give results that are difficult to interpret. The aim of this paper is to present our method that makes the multi-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. We call our method AMplus. AMplus produces results faster than competing multi locus methods and often with greater statistical power. In terms of speed, AMplus is just a little slower than the fastest single-locus linear mixed model implementations. AMplus is freely available as a fully documented R package which we port as a docker binary for platform independent portability.
+However, these methods are computationally demanding, are not always easy to implement, and can give results that are difficult to interpret. The aim of this paper is to present our method that makes the multi-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. We call our method AMplus. 
+AMplus produces results faster than competing multi locus methods and often with greater statistical power. 
+In terms of speed, AMplus is just a little slower than the fastest single-locus linear mixed model implementations. 
+AMplus is freely available as a fully documented R package which we port as a docker binary for platform independent portability.
 }
 
 
 \section{Introduction}
 
-Over the past decade, gwas have changed 
-considerably in scope and method of analysis. Early gwas were performed as case-control studies and their data analysed with simple
-contingency table tests or logistic regressions.  Differences in marker allele frequency between cases (affecteds) and controls (unaffecteds) was assumed to be due to a disease variant. It was soon realised though that 
-unrecognised population stratification had the capacity to cause spurious associations with non-causal genes. This led to a rise in 
-popularity for family-based designs. Family-based designs are robust to population stratrification. 
-Consequently, there has been a myriad of association studies performed with affected sibling pairs, 
-parent-offspring trios, and nuclear families. All have an accompanying plethora of parametric (refs) and non-parametric (refs) analysis methods. However, as the popularity of GWAS as the study design of choice grew, so did the desire to perform GWAS in general 
-populations which may have complex, possibly unknown, structure. Here, we could no longer rely on study design to control population stratification. There began a push to develop methods which were capable of accounting for the confounding affects of population 
-stratification. Early methods include genomic control and structured association. However, it has been development of a linear mixed 
-modelling framework for GWAS that has the greatest flexibility for controlling for popuation structure and familial relatedness in general population studies. 
-
-
-so to did the desire to implement GWAS in species with structured populations butw where the family structure is unknown
+Over the past decade, g-w association mapping methods have changed considerably. Early mapping methods relied upon 
+simple contingency tables or logistic regression for case-control designs and score tests for family-based designs. 
 
 
 
-
- the statistical significance of differences in marker allele frequency determined with 
-contingency table tests or logistic regression. It was soon realised though that unrecognised population heterogeniety 
-had the potential to confound findings. This led to the rise in popularity of family-based designs based on 
-sibling pairs, trios, and nuclear families.  These designs are robust to deleterious affects of population stratification. 
-
-
-
- along with a plethora of
-different score and frequency tests being developed. 
-
-and 
-and their data analysed either 
-with simple contingency table tests or logistic regression. The deleterious affects of hidden population heterogeniety though on findings was soon recognised. 
-This led to the preponderance of family-based studies because they are robust to potential population heterogeniety. 
-
- Whether performed with trios, nuclear families, 
-sibling pairs, or extended families, family-based studies correctly controlled population stratification. 
-
-
-controlling for spurious associations 
-due to latent population heterogeniety soon became a focus. This led to family based designs becoming popular. These designs 
-
-
- based on 
-trios, 
+Over the past decade, genome-wide association mapping methods, have changed considerably. Early association mapping 
+methods were no more complicated than contingency table tests or logistic regression. This is because early association 
+studies followed case-control designs. A significant difference in the allele frequency at a locus, between the cases (affecteds) and 
+controls (unaffecteds), was interpreted as the locus being in linkage disequilibrium with a casual gene. 
+It became known though that differences in allele frequency could also arise due to unrecognised population stratification. 
+This prompted a shift towards family-based designs. Family-based designs do not suffer from 
+the confounding affects of population stratification. A myriad of new family-based association mapping methods were developed, 
+the most popular based on score tests (ref for TDT S-TDT Spielman and Ewens 1998, AJHG 62:450-458, FBAT Naird, NM; Horvath, S; Xu, X 2000, genetic epi V19, Suppl 1 S36-S42). 
 
 
 
-involving trios, nuclear families, sibling pairs, or ext
-
-
-were performed predominantly as case control or family based studies. Their focus 
-was on identifying the casual variants underlying common disorders in humans. As the popularity of GWAS grew, 
-they started to be performed in populations of unrelated individuals and even in structured populations with complicated pedigrees. 
-Here, the traits of interest also included quantitative traits. Today, gwas are being performed at the population level, with studies 
-involving thousands of individuals with genotypes collected from hundreds of thousands of snps. 
 
 
 
-Gwas for many are now the design of choice when interested in elucidating the genetic 
-underpinnings  of complex traits.  Over the past decade, gwas have changed 
-considerably in focus and scope. Early gwas 
-were performed predominantly as case control or family based studies. Their focus 
-was on identifying the casual variants underlying common disorders in humans. 
-Despite many promising findings, reproducibility of these findings 
-proved an issue (refs). Early gwas  lacked statistical power because of the 
-challenges of collecting dense whole genome data across a sufficiently large number of samples (refs).
-Today, gwas are being performed in a wide variety of species. These studies can involve thousands
- of individuals with genotypes collected from thousands to hundreds of thousands of snps. 
-Where early gwas were interested
- in disease traits, modern gwas are also  interested in  categorical and quantitative traits.
+
+
+
+
+
+
+
+Over the past decade, genome-wide association mapping, the statistical techniques for analysing data from association studies, has advanced considerably. Early genome-wide association studies (GWAS) began as case-control designs. The premise was that casual genes could be detected via differences in allele frequency between cases (affecteds) and controls (unaffecteds). Association mapping methods for these designs were no more sophisticated than contingency table tests or logistic regression. Unfortunately, differences 
+in allele frequency can also arise due to unrecognised population stratification. Consequently, there was a shift towards family-based 
+designs. Findings from these designs are
+not susceptible to the confounding affects of population stratification. With interest growing in genome-wide association studies, 
+a myriad of different association mapping methods for family-based designs were developed. 
 
 
 Over the past decade, there have also been impressive advancements in genome wide 
