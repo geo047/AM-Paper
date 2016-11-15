@@ -12,60 +12,67 @@
 \maketitle
 
 
-\abstract{
-The methods of choice for genome wide association mapping all share a common shortcoming. 
-They measure the strength of marker-trait associations on a locus by locus basis. 
-More sophisticated multi-locus methods that map multiple marker-trait associations jointly are available. 
-However, these methods are computationally demanding, are not always easy to implement, and can give results that are difficult to interpret. The aim of this paper is to present our method that makes the multi-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. We call our method AMplus. 
-AMplus produces results faster than competing multi locus methods and often with greater statistical power. 
-In terms of speed, AMplus is just a little slower than the fastest single-locus linear mixed model implementations. 
-AMplus is freely available as a fully documented R package which we port as a docker binary for platform independent portability.
+\abstract{Since the earliest of genome-wide association studies, a key shortcoming in how their data have been analysed has persisted. The strength of association between a marker locus and trait is measured for each locus separately, on a locus-by-locus basis. Multiple-locus methods that map multiple locus-trait associations simultaneously have been available for some time. However, they have attracted little attention. They can be demanding, computationally, and their results are not always easy to interpret. Yet, it is widely accepted that multiple-locus methods are superior, statistically, to locus-by-locus methods. Here, we present our method that makes the multiple-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. 
+We call our method AMplus.  AMplus produces results faster than competing multiple-locus methods and often with greater statistical power. Also, it is just a little slower than the fastest single-locus linear mixed model implementations. 
+AMplus is freely available as a fully documented R package. 
 }
+
 
 
 \section{Introduction}
 
 
-Over the past decade, Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs), became popular. Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods based on linear mixed models is now almost routine.
+Over the past decade, Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods based on linear mixed models is now almost routine.
 
 What has not changed over the past decade is that it remains common practice to analyse gwas data on a locus by locus basis. This is despite there being several significant problems with analysing the data in this way. First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. The identification of these regions from these analyses is not always straightforward. Gwas results are reported, typically, via Manhattan plots that plot the -log10 of the p value for each locus against the map position of the locus. The location of peaks in this plot signify regions of interest. Inferring the exact number of regions of interest can be difficult If the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a significant result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome- wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple loci in linkage equilibrium with genes that influence the trait. Yet, A locus by locus mapping approach only assesses the evidence for association between a single locus and trait.
 
 It is somewhat surprising then that multiple locus methods haven't attracted more attention. It is possible to measure all locus-trait associations jointly with methods based on the regularisation techniques, ridge regression and lasso. Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, the results are not easy to interpret. The strength of association is not measured by a p-value but by the size of the regression coefficient for a locus in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). An multiple locus method that does show promise is the multi-locus linear mixed model method (ref). The best multiple locus model is built with simple variable selection. Results are immediately interpretable but here, computation can be a challenge for large data.
 
 Here, we present our new multiple locus method for genome wide association mapping, which we are calling AMplus. AMplus combines the strength of regularisation techniques (being able to fit all locus-trait associations jointly), with simple variable selection (having easy to interpret results). Our method does not require a significance threshold to be set nor regularisation parameters to be fine tuned. Through a clever dimension reduction step, we are able to achieve a computational performance similar to the fastest single locus linear mixed model implementations. AMplus is statistically more powerful than single locus association mapping and is as and often more powerful than 
-most multiple locus methods. Our aim is to make multiple locus association mapping on a genome wide scale routine. To this end, we have created an R package ...
+most multiple locus methods. Our aim is to make multiple locus association mapping on a genome wide scale routine. To this end, we have created a fully documented R package, that is easy to use, even for non R users.  Our package accepts marker data of different 
+formats and can handle data larger than a computer's  memory capacity. It includes detailed error checking and makes heavy use of 
+distributed computing for computation when available.  The purpose of this work was to make multiple-locus association mapping on 
+a genome-wide scale, for large data sets,  practical and we have built AMplus accordingly. 
 
-
-Our am+ approach is implemented in a fully documented and maintained R package. 
-We are able to achieve impressive performance by moving the computationally 
-components of our algorithm to Cpp. Here, we make full use of distributed 
-computing, through multiple cpu and multiple glue processing when available. 
-Our R package is easy to use, even for non  R users. It consists of a single function
- to read in the data and a single function for analysis. We will demonstrate that 
- our approach returns more accurate results faster and more efficiently than 
- competing multiple locus association mapping approaches. Our am+ approach 
- makes multiple locus association mapping of genome wide data routine.
 
 \section{Results}
 
+\subsection{Association Mapping Methods}
 
-\subsection{Time and Memory Performance}
-
-
-
-
-\subsection{Computer programs for   multiple locus association mapping}
-
-We compared the performance of our R package, am, to six other computer programs for multiple locus association mapping. These programs are ..., ..., ... We decided on these six because they implement published methods for multiple locus association mapping.  are capable of analysing association data on a genome wide scale, and are freely available. A summary of each of these programs along with am+ is given in table X. In preparing this table, we assumed the purpose of analysing data from a genome wide association study is to identify those snp in true association with a trait.  From table X, the computer programs vary greatly in methodology, implementation, requirements, and utility.  For example, some programs have methodology that fits all marker-trait associations simultaneously where others  fit only a subset of marker-trait associations jointly. Some programs have tuning parameters where others have none. Several cannot handle additional fixed effects such as covariates to account for population structure. Also, the majority of programs considered here yield results that require additional computation before a "best" set of snp is realised. Only am+  fits all marker trait associations simultaneously, handles different input data, accommodates additional fixed effects, has no parameters to be fine tuned, returns the "best" set of snp in joint association with a trait without additional computation, and is easy to use. 
+We compared AMplus, in terms of computational and statistical performance, against seven other association mapping methods. 
+We chose methods that had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to mapping multiple locus-trait associations jointly.
 
 
-\subsection{Run times}
+In table 1, we compare the association mapping software with respect to  seven features that we found to be important. 
+Only AMplus had all seven features. Some of the implementations come with user manuals which detail the format of the input data and how to perform genome-wide analyses. Most could handle additional fixed effects, which is important when seeking to account for hidden population structure. Few of the association mapping implementations could cope with marker data larger than the memory capacity of a computer. Similarly, few returned the best set of marker loci in strongest association with a trait as their result. Almost all the software returned results that required further post processing, either by the setting of significance thresholds or further analysis to determine the significance of the findings. Few of the association mapping software checked for errors in the input data.
+
+From a practical perspective, how the methods were implemented, in terms of usability, varied greatly. In Table 1, we list seven important features for increasing the usability of computer software for association mapping. We also identified which software has what features. 
+Only AMplus had all seven features. 
+Some of the implementations have user manuals which detail the format of the input data and how to perform genome-wide analyses. Most could handle additional fixed effects, which is important when accounting for hidden population structure. Few could cope with marker data larger than the memory capacity of a computer. Similarly, few returned the best set of marker loci in strongest association with a trait as their result. Almost all the software returned results that required further post processing, either by the setting of significance thresholds or further analysis to determine the significance of the findings. Few of the association mapping software checked for errors in the input data.
 
 
-\subsection{Memory}
+
+Computer Programs for  Single-locus and Multiple-locus Association Mapping OR Association Mapping Methods}
+We began by comparing the performance of our package, AMplus,  against eight other freely available implementations for association 
+mapping. Two of the implementations we chose are based on single locus (or locus-by-locus) association mapping and the other 
+six are based on multiple-locus association mapping. 
 
 
-\subsection{Computational performance}
+
+computer programs for association mapping. In choosing these computer programs, we focused on single- and multiple-locus methods that are based on a linear (mixed) model framework. Two of the programs we chose implement single locus (or locus-by-locus) association mapping methods and the other six implement multiple-locus methods. Of the many computer programs available for performing single-locus association mapping, we decided on GEMMA and FaST-LMM because of their popularity and computational speed. For multiple-locus association mapping, we compared AMplus against bigRR, glmnet, LMM-Lasso, MLMM, piMASS, and random forests. These six programs are based on published methods. They 
+implement different ways of performing association mapping. They can handle data on a genome-wide scale. They are also freely 
+available. 
+
+In Table X, we compare,  across the eight computer programs  and AMplus, those features which are important for genome-wide 
+association mapping. In forming this list of features, we assumed that the primary purpose of a genome-wide association study is 
+to identify the set of marker loci in true and strongest association with a trait.  From table X, the computer programs vary greatly in methodology, implementation, requirements, and utility.  For example, some programs have methodology that fits all marker-trait associations simultaneously where others  fit only a subset of marker-trait associations jointly. Some programs have tuning parameters where others have none. Several cannot handle additional fixed effects such as covariates to account for population structure. Also, the majority of programs considered here yield results that require additional computation before a "best" set of snp is realised. Only am+  fits all marker trait associations simultaneously, handles different input data, accommodates additional fixed effects, has no parameters to be fine tuned, returns the "best" set of snp in joint association with a trait without additional computation, and is easy to use. 
+
+
+\subsection{Computational Performance: run times and memory usage}
+
+To asses the computational performance of AMplus against  we conducted a large simulation study. 
+
+
 We conducted a simulation study to assess  the computational performance of am+. For comparison, we assessed six other computer programs (table X) that  also implement multiple locus association mapping. The marker data in our simulation study comes from phase 3 of the 1000 genomes project. Here, 2315 individuals were sequenced and their genotype information made available. We generated trait data by randomly selecting snp, assigning allelic  effects to the selected snp, and aggregating these effects along with random error. The number of snp  selected  was sampled from a Poisson distribution with mean 30. The effect sizes were sampled from a beta distribution. The errors were drawn from a normal distribution with zero mean and whose variance yielded a quantitative trait with a heritability of 0.5.
 
 
