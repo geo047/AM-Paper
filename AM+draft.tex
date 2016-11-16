@@ -43,34 +43,33 @@ We compared AMplus, in terms of computational and statistical performance, again
 We chose methods that had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to mapping multiple locus-trait associations jointly.
 
 
-In table 1, we compare the association mapping software with respect to  seven features that we found to be important. 
-Only AMplus had all seven features. Some of the implementations come with user manuals which detail the format of the input data and how to perform genome-wide analyses. Most could handle additional fixed effects, which is important when seeking to account for hidden population structure. Few of the association mapping implementations could cope with marker data larger than the memory capacity of a computer. Similarly, few returned the best set of marker loci in strongest association with a trait as their result. Almost all the software returned results that required further post processing, either by the setting of significance thresholds or further analysis to determine the significance of the findings. Few of the association mapping software checked for errors in the input data.
-
-From a practical perspective, how the methods were implemented, in terms of usability, varied greatly. In Table 1, we list seven important features for increasing the usability of computer software for association mapping. We also identified which software has what features. 
-Only AMplus had all seven features. 
-Some of the implementations have user manuals which detail the format of the input data and how to perform genome-wide analyses. Most could handle additional fixed effects, which is important when accounting for hidden population structure. Few could cope with marker data larger than the memory capacity of a computer. Similarly, few returned the best set of marker loci in strongest association with a trait as their result. Almost all the software returned results that required further post processing, either by the setting of significance thresholds or further analysis to determine the significance of the findings. Few of the association mapping software checked for errors in the input data.
-
-
-
-Computer Programs for  Single-locus and Multiple-locus Association Mapping OR Association Mapping Methods}
-We began by comparing the performance of our package, AMplus,  against eight other freely available implementations for association 
-mapping. Two of the implementations we chose are based on single locus (or locus-by-locus) association mapping and the other 
-six are based on multiple-locus association mapping. 
-
-
-
-computer programs for association mapping. In choosing these computer programs, we focused on single- and multiple-locus methods that are based on a linear (mixed) model framework. Two of the programs we chose implement single locus (or locus-by-locus) association mapping methods and the other six implement multiple-locus methods. Of the many computer programs available for performing single-locus association mapping, we decided on GEMMA and FaST-LMM because of their popularity and computational speed. For multiple-locus association mapping, we compared AMplus against bigRR, glmnet, LMM-Lasso, MLMM, piMASS, and random forests. These six programs are based on published methods. They 
-implement different ways of performing association mapping. They can handle data on a genome-wide scale. They are also freely 
-available. 
-
-In Table X, we compare,  across the eight computer programs  and AMplus, those features which are important for genome-wide 
-association mapping. In forming this list of features, we assumed that the primary purpose of a genome-wide association study is 
-to identify the set of marker loci in true and strongest association with a trait.  From table X, the computer programs vary greatly in methodology, implementation, requirements, and utility.  For example, some programs have methodology that fits all marker-trait associations simultaneously where others  fit only a subset of marker-trait associations jointly. Some programs have tuning parameters where others have none. Several cannot handle additional fixed effects such as covariates to account for population structure. Also, the majority of programs considered here yield results that require additional computation before a "best" set of snp is realised. Only am+  fits all marker trait associations simultaneously, handles different input data, accommodates additional fixed effects, has no parameters to be fine tuned, returns the "best" set of snp in joint association with a trait without additional computation, and is easy to use. 
+From a practical perspective, how the methods were implemented, in terms of usability, varied greatly. In Table 1, we list seven important features for ensuring the usability of computer software for association mapping. We also identify which software has what features. 
+In forming this list of features, we assumed that the primary purpose of a genome-wide association study is 
+to identify the set of marker loci in true and strongest association with a trait.  The level of documentation varied across the implementations but only 
+a few came with user manuals detailing the format of the input data and how to perform analyses. 
+Most implementations could handle additional fixed effects which is important when accounting for hidden population structure. 
+Few though could cope with marker data larger than the memory capacity of the computer. Similarly, few returned the best set of marker loci in strongest association with a trait as their result. Almost all the software returned results that required further processing, either 
+by identifying the best set of marker loci via the setting of significance thresholds or having to do further analysis to calculate the significance of the results. Almost none of the association mapping software checked for errors in the input data.  Only AMplus has all seven features. 
 
 
 \subsection{Computational Performance: run times and memory usage}
 
-To asses the computational performance of AMplus against  we conducted a large simulation study. 
+
+To asses the computational performance of AMplus against the above discussed software, we conducted a large simulation study. 
+In this study, we were interested in how study size impacts performance. We generated data under five different scenarios. 
+These are a study of size 150 individuals and 5000 snp (150 X 5K), 350 individuals and 400000 snp (350 X 400K),  1500 individuals and 
+50000 snp (1500 x 50K), 2000 individuals and 500000 snp (2000 x 500K), 4000 individuals and 
+1500000 snp (4000 x 1.5M), and 10000 individuals and 1500000 snp (10000 x 1.5M).  These scenarios reflect some of the differences in 
+study size of GWAS being performed in plants, animals, and humans.   
+
+Under each scenario, we generated 100 replicates of data. A replicate consisted of snp and trait data. 
+The snp data comes from the publically available 1000 genomes project (phase 3). The quantitative trait data were generated by randomly selecting a set of snp loci, assigning allelic effects to the selected snp, and aggregating these effects for each individual along with random error. The number of snp selected for a replicate is random, having been drawn from a Poisson distribution with mean 30. The quantitative trait was generated to have a heritability of 50\%.
+
+Analyses were performed on a high end desktop computer with dual 8-core Xeon processors, three Kepler Tesla GPUs, and 128 Giggabytes of RAM. 
+All implementations except, Gemma, made use of distributed computing for their linear algebra operations through multithreaded blas and lapac libraries.
+
+In figure ...
+
 
 
 We conducted a simulation study to assess  the computational performance of am+. For comparison, we assessed six other computer programs (table X) that  also implement multiple locus association mapping. The marker data in our simulation study comes from phase 3 of the 1000 genomes project. Here, 2315 individuals were sequenced and their genotype information made available. We generated trait data by randomly selecting snp, assigning allelic  effects to the selected snp, and aggregating these effects along with random error. The number of snp  selected  was sampled from a Poisson distribution with mean 30. The effect sizes were sampled from a beta distribution. The errors were drawn from a normal distribution with zero mean and whose variance yielded a quantitative trait with a heritability of 0.5.
