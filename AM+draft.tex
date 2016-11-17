@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage{graphicx}
+
 
 \linespread{1.5}
 \addtolength{\oddsidemargin}{-2.5cm}
@@ -66,21 +68,37 @@ We obtained the snp data from the publicly available 1000 genome project (phase 
 snp data by selecting a set of snp loci, assigning allelic effects to these snp, and aggregating these effects for each individual along with 
 random error. The number of snp selected per replicate follows a Poisson distribution with mean 30.
  The quantitative trait was generated to have a heritability of 50\%.
-Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, three Kepler Tesla GPUs, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS and LAPACK libraries. 
+Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, three Kepler Tesla GPUs, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS/LAPACK libraries. 
+
+\begin{figure}
+\label{fig_runtimes}
+\caption{Run times}
+\includegraphics[width=10cm]{time_memory}
+\end{figure}
+
+The run times of AMplus against the other software programs, for the five scenarios, is shown in figure X. 
+The axes in both plots are on the log scale. In the top plot, the y-axis is a ratio of elapse times. In the bottom plot, 
+the y-axis is absolute elapse times. 
+ In the top plot,  the y axis is the ratio of elapse times of a multiple-locus implementation to 
+AMplus. In the bottom plot, the y-axis is the absolute elapse times of the single 
+a multiple-locus implementation to the elapse time of AMplus. 
 
 
-In figure ...
+
+In the bottom plot, on the y axis, we have the absolute elapse times, averaged 
+across the 100 replicates for a scenario. 
 
 
 
-We conducted a simulation study to assess  the computational performance of am+. For comparison, we assessed six other computer programs (table X) that  also implement multiple locus association mapping. The marker data in our simulation study comes from phase 3 of the 1000 genomes project. Here, 2315 individuals were sequenced and their genotype information made available. We generated trait data by randomly selecting snp, assigning allelic  effects to the selected snp, and aggregating these effects along with random error. The number of snp  selected  was sampled from a Poisson distribution with mean 30. The effect sizes were sampled from a beta distribution. The errors were drawn from a normal distribution with zero mean and whose variance yielded a quantitative trait with a heritability of 0.5.
+In figure X we compare the elapse time of  AMplus against the other software programs for association mapping. 
+In the top plot, we plot 
 
 
-We were interested in how study size impacts performance. We generated replicates under five different study sizes. These were 150 individuals and 4000 snp (150 X 4K), 300 individuals and 50000 snp (300 X 50k), ... We based these five study sizes on the size of study being performed in unsequenced crop plants such as wheat, ......, respectively. For those study sizes that exceeded the number of genotyped individuals in the 1000 genomes project,  we simulated additional data by forming genotype mosaics from the real snp data. We generated 250 replicates for each scenario. 
+In the top plot, on the y axis, we have the ratio of elapse times of the multiple-locus implementations to the elapse time of AMplus. 
 
-Performance was measured by recording elapse  time and maximum memory usage. Analyses were performed on a high end desk top which was a dell intra quad core processor with 120G of RAM and a Intel gpu. Programs were run for a maximum of 100 hours.  All programs except piMass  made use of distributed computing, either implicitly via multithreaded blas and lapac linear algebra libraries or as in the case of ranfor, explicitly. For ranfor, we wrote R code to parallelise the random forest analysis across multiple cpu.  All scripts for performing these analyses are available from the Csiro-data acces portal.
 
-In figure X we compare the elapse time of  am+ against the other computer programs. On the y axis, we have the ratio of each computer program's elapse time to the elapse time of cpu-based am+. On the X axis, we have the number of genotypes and study size. Both axes are on log scale . A positive (negative) log ratio means am+ had a shorter (longer) elapse time  than the other computer program. The magnitude (value) of the ratio is (the magnitude of)  how many times shorter or longer am+ is to the other computer program.  Since performance varies with replicate, for a given study size, a point in figure X is the log median of 250  ratios of elapse times.
+On the y axis, we have the ratio of each computer program's elapse time to the elapse time of cpu-based am+. On the X axis, we have the number of genotypes and study size. Both axes are on log scale . A positive (negative) log ratio means am+ had a shorter (longer) elapse time  than the other computer program. The magnitude (value) of the ratio is (the magnitude of)  how many times shorter or longer am+ is to the other computer program.  Since performance varies with replicate, for a given study size, a point in figure X is the log median of 250  ratios of elapse times.
+
 
 
 From figure X, the superior performance of am+ to the other computer programs is evident. Describe ...
