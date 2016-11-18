@@ -73,40 +73,37 @@ Analyses were performed on a high end desktop computer. It had dual 8-core Xeon 
 \begin{figure}
 \label{fig_runtimes}
 \caption{Run times}
-\includegraphics[width=10cm]{time_memory}
+\includegraphics[width=10cm]{time}
 \end{figure}
 
-The run times of AMplus against the other software programs, for the five scenarios, is shown in figure X. 
-The axes in both plots are on the log scale. In the top plot, the y-axis is a ratio of elapse times. In the bottom plot, 
-the y-axis is absolute elapse times. 
- In the top plot,  the y axis is the ratio of elapse times of a multiple-locus implementation to 
-AMplus. In the bottom plot, the y-axis is the absolute elapse times of the single 
-a multiple-locus implementation to the elapse time of AMplus. 
+
+The run times for AMplus against the other software programs, across the five scenarios, is shown in figure \ref{fig_runtimes} To help with interpretibility of the results, in both plots, we have taken the x and y axes to be on a log scale. This means a unit change on the x or y axes is equivalent to a change in the order of magnitude. 
+In the top plot, a point is the median of the ratios of elapse times of the multiple locus method to AMplus for a given scenario. The median is over the 100 replicates. Here, since the median of the ratios are all positive on the log scale, it means that AMplus had a shorter run time than than all the other multiple locus methods. In fact, in some cases, AMplus was over a hundred times, or over two orders of magnitude, faster. Unlike AMplus, the size of data under scenario 10000 X 1.5M was beyond the memory constraints of the other multiple locus implementations. This was also the case for LMM-Lasso, bigRR, and glmnet, for scenario 4000 x 1.5M.
+
+In the bottom plot of figure \ref{fig_runtimes}, we compare the median run time of AMplus against the median run times of the single locus methods, FaST-LMM and GEMMA. 
+FaST-LMM was run in two ways. It was run where the genetic similarity matrix was built with all the marker data (FaST-LMM$^all$) or with data on every 500th snp (FaST-LMM$^few$). 
+AMplus was also run in two ways.  The default behavior for AMplus is to make use of CPUs for computing. However, AMplus also has the capacity to harness multiple GPUs (AMplus$^GPU$). 
+From the bottom plot, all the implementations have short run times when analysing data from scenario 150x5K. However, for the other scenarios, AMplus and AMplus$GPU$ have 
+significantly shorter run times than GEMMA and FaST-LMM$^all$. FaST-LMM$^few$ has a shorter run time than AMplus and AMplus$^GPU$ but only for scenarios 1500x50K and 
+10000x1.5M.  Furthermore, for scenario 10000x1.5M, the median run time for GEMMA is 4071 minutes, for AMplus is 699 minutes, for AMplus$^GPU$ is 447 minutes, and for 
+FaST-LMM$^few$ is 346 minutes. The very fast single-locus method FaST-LMM$^few$ is only 29\% faster than our multiple-locus method AMplus$^GPU$. It is worth noting though that 
+there is a setup cost to accessing GPU computing, making AMplus$^GPU$ most efficient on the larger data. 
+
+The memory usage of the software programs is shown in Figure \ref{fig_memory}. 
+
+\begin{figure}
+\label{fig_memory}
+\caption{Memory usage}
+\includegraphics[width=10cm]{memory}
+\end{figure}
 
 
 
-In the bottom plot, on the y axis, we have the absolute elapse times, averaged 
-across the 100 replicates for a scenario. 
+
+\subsection{Statistical Performance: recall and precision}
 
 
 
-In figure X we compare the elapse time of  AMplus against the other software programs for association mapping. 
-In the top plot, we plot 
-
-
-In the top plot, on the y axis, we have the ratio of elapse times of the multiple-locus implementations to the elapse time of AMplus. 
-
-
-On the y axis, we have the ratio of each computer program's elapse time to the elapse time of cpu-based am+. On the X axis, we have the number of genotypes and study size. Both axes are on log scale . A positive (negative) log ratio means am+ had a shorter (longer) elapse time  than the other computer program. The magnitude (value) of the ratio is (the magnitude of)  how many times shorter or longer am+ is to the other computer program.  Since performance varies with replicate, for a given study size, a point in figure X is the log median of 250  ratios of elapse times.
-
-
-
-From figure X, the superior performance of am+ to the other computer programs is evident. Describe ...
-
-
-\subsection{Simulation study to evaluate computational performance}
-
-\subsection{Simulation study to evaluate statistical performance}
 
 \subsection{Application to Arabidopsis data}
 
