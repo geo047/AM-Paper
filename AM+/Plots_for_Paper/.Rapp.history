@@ -1,0 +1,10 @@
+load("/Users/geo047/AM+/Plots_for_Paper/resA.RData")
+head(res_mat)
+load("/Users/geo047/AM+/Plots_for_Paper/resHL.RData")
+ls()
+res_mat
+q()
+load("/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/resW.RData")
+ls()
+res_mat[1,]
+q()

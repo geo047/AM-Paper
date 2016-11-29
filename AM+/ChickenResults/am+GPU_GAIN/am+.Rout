@@ -1,0 +1,290 @@
+WARNING: unknown option '-trait=GAIN'
+
+
+R version 3.1.3 (2015-03-09) -- "Smooth Sidewalk"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # trait read in from command line 
+> library(MWAM)
+> library(rcppMagmaSYEVD)
+Loading required package: Rcpp
+> 
+> 
+> ## function to accept command line arguments
+> args <- commandArgs()
+> #if (length(args)!=11) {cat("error: not enough input variables") break}
+> for (e in args) {
++   ta = strsplit(e,"=",fixed=TRUE)
++   if(! is.na(ta[[1]][2])) {
++     temp = ta[[1]][2]
++     if(substr(ta[[1]][1],nchar(ta[[1]][1]),nchar(ta[[1]][1])) == "I") {
++       temp = as.integer(temp)
++     }
++     if(substr(ta[[1]][1],nchar(ta[[1]][1]),nchar(ta[[1]][1])) == "N") {
++       temp = as.numeric(temp)
++     }
++     assign(substr(ta[[1]][1],2,nchar(ta[[1]][1])),temp)
++     cat("assigned ",ta[[1]][1]," the value of |",temp,"|\n")
++   } else {
++     assign(substr(ta[[1]][1],2,nchar(ta[[1]][1])),TRUE)
++     cat("assigned ",ta[[1]][1]," the value of TRUE\n")
++   }
++ }
+assigned  /apps/R/3.1.3/lib64/R/bin/exec/R  the value of TRUE
+assigned  -f  the value of TRUE
+assigned  ./am+.R  the value of TRUE
+assigned  --restore  the value of TRUE
+assigned  --save  the value of TRUE
+assigned  --no-readline  the value of TRUE
+assigned  -trait  the value of | GAIN |
+> 
+> 
+> 
+> ## read genotypes
+> DIR <- "./"    ## could use $MEMDIR but need to get this. 
+> geno <- read.genotypes(path=DIR,
++                       bin_path=DIR , AA=0,  AB=1, BB=2,
++                file_genotype="geno.txt",
++                 availmemGb=120)
+
+
+                    SUMMARY OF GENOTYPE FILE  
+ file location(path):         ./
+ file name:                    geno.txt
+ packed binary file location: .//M.bin
+ packed binary file name:     M.bin
+ number of rows:              22896
+ number of columns:           42886
+ file size (Gbytes)           7.9
+ max memory size (Gbytes)     
+   set to :                   1.2e+02
+
+
+
+> ## read map
+> map <- read.map(path = DIR , file_map = "map.txt", csv = FALSE)
+
+
+ Reading Map File 
+
+ Loading file ....... 
+
+                    SUMMARY OF MAP FILE  
+ file location(path):          . 
+ file name:                    map.txt 
+ number of markers:            42886 
+ number of columns:            3 
+ number of chromosomes:        27 
+ first 10 markers of the map file ... 
+              SNP Chr    Pos
+1  Gga_rs14688751   1 192286
+2  Gga_rs13814482   1 415430
+3   GGaluGA002079   1 583766
+4   GGaluGA002069   1 611023
+5  Gga_rs14080240   1 698065
+6   GGaluGA002202   1 717964
+7  Gga_rs14080307   1 756969
+8  Gga_rs14080338   1 784676
+9   GGaluGA001370   1 792853
+10  GGaluGA002256   1 804980
+
+
+> 
+> ## phenotypes 
+> pheno <- read.phenotypes(path = DIR , file_phenotype = "pheno.txt" ,
++                          header = TRUE, csv = FALSE )
+
+
+ Reading Phenotype File 
+
+ Loading file ....... 
+
+               SUMMARY OF PHENOTYPE FILE  
+ file location(path):          . 
+ file name:                    pheno.txt 
+ number of rows:               22896 
+ number of columns:            11 
+
+                    Column classes  
+                  ID           integer 
+                Sire            factor 
+                 Dam            factor 
+                  CG            factor 
+               Ultra           numeric 
+                 WT1           integer 
+                 WT2           integer 
+                  FI           integer 
+                GAIN           integer 
+                 FCR           numeric 
+                 RFI           numeric 
+
+ Warning: if the column classes are incorrect, these will need to be changed by the user.
+
+
+> 
+> # remove any birds with NA's
+> pheno$CG <- as.factor(pheno$CG)
+> pheno[pheno==-9999] <- NA
+> 
+> ## Perform AM+ analysis
+> ## set args for multiple_locus_am function
+> argu <- list(numcores = 16, availmemGb = 120 , colname.trait = trait, 
++           map = map , pheno = pheno, geno = geno,
++             colname.feffects=c("CG"), 
++            gpu=FALSE,
++           alpha = 0.05, error_checking = FALSE , maxit = 20, verbose=TRUE)
+> 
+> ## run AM+
+> am_res <- do.call( multiple_locus_am, argu)
+ Forming currentX 
+Dimension of design matrix, before addition of marker fixed effects is  22896 rows and  728 columns.
+
+
+
+
+            Multiple Locus Association Mapping via WGAM
+                       Version 1.0 
+
+ Performing iteration ...  1 
+ Calculate MMt 
+ Inside calcMMt ... 
+ moving into calculateMMt_rcpp .... 
+ Number of cores being used for calculation is .. 16
+memory needed is 20
+Reading data ... 
+ end of reading data ... 
+-------------------------- GPU C++ ---------------------------------- 
+performing genoMat * genoMat.transpose() which should use GPU 
+--------------------------------------------------------------- 
+ Finished ... 
+ performing emma.REMLE  ... 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ Calculate extBIC ... 
+ emma.eigen.L.wo.Z in 
+ emma.eigen.L.wo.Z out 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ new BIC =  284578.1 
+ New extBIC =  291939.8 
+ Significant marker-trait association found ... 
+ Results after iteration  1 
+            SNP        Chrm           Map Pos     Col Number    Heritability        extBIC 
+     Null Model                                                         0.60       291939.79 
+
+ finding QTL ..,. 
+ Calculating H matrix   
+ Calculating P matrix - NOT GPU. 
+ Calculating  square root of M %*% t(M) and it's inverse. 
+ Calculating BLUPs for dimension reduced model. 
+ Calculating variance of BLUPs for dimension reduced model. 
+ Calculating BLUPs and their variances for full model. 
+Total memory (Gbytes) needed for a calculation is: 31.000000 
+Max memory (Gbytes) available is: 120.000000 
+ Reading Mt ... 
+beginning ans_part1 = inv_MMt_sqrt * a
+beginning Mt  * ans_part1 
+end
+ in   dim_reduced_vara * inv_MMt_sqrt 
+ in inv_MMt_sqrt * var_ans_tmp_part1 
+ end ... 
+ Beginning  Mt *  var_ans_tmp_part1 
+Starting pragma .. 
+Ending pragma 
+ Calculating outlier test statistics. 
+ Performing iteration ...  2 
+ performing emma.REMLE  ... 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ Calculate extBIC ... 
+ emma.eigen.L.wo.Z in 
+ emma.eigen.L.wo.Z out 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ new BIC =  284529.9 
+ New extBIC =  291899.7 
+ Significant marker-trait association found ... 
+ Results after iteration  2 
+            SNP        Chrm           Map Pos     Col Number    Heritability        extBIC 
+     Null Model                                                         0.60       291939.79 
+ Gga_rs14707919          27           3464674          39369            0.59       291899.68 
+
+ finding QTL ..,. 
+ Calculating H matrix   
+ Calculating P matrix - NOT GPU. 
+ Calculating  square root of M %*% t(M) and it's inverse. 
+ Calculating BLUPs for dimension reduced model. 
+ Calculating variance of BLUPs for dimension reduced model. 
+ Calculating BLUPs and their variances for full model. 
+Total memory (Gbytes) needed for a calculation is: 31.000000 
+Max memory (Gbytes) available is: 120.000000 
+ Reading Mt ... 
+beginning ans_part1 = inv_MMt_sqrt * a
+beginning Mt  * ans_part1 
+end
+ in   dim_reduced_vara * inv_MMt_sqrt 
+ in inv_MMt_sqrt * var_ans_tmp_part1 
+ end ... 
+ Beginning  Mt *  var_ans_tmp_part1 
+Starting pragma .. 
+Ending pragma 
+ Calculating outlier test statistics. 
+ Performing iteration ...  3 
+ performing emma.REMLE  ... 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ Calculate extBIC ... 
+ emma.eigen.L.wo.Z in 
+ emma.eigen.L.wo.Z out 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ new BIC =  284513.2 
+ New extBIC =  291891.1 
+ Significant marker-trait association found ... 
+ Results after iteration  3 
+            SNP        Chrm           Map Pos     Col Number    Heritability        extBIC 
+     Null Model                                                         0.60       291939.79 
+ Gga_rs14707919          27           3464674          39369            0.59       291899.68 
+ Gga_rs15021603          15           6970325          32171            0.57       291891.10 
+
+ finding QTL ..,. 
+ Calculating H matrix   
+ Calculating P matrix - NOT GPU. 
+ Calculating  square root of M %*% t(M) and it's inverse. 
+ Calculating BLUPs for dimension reduced model. 
+ Calculating variance of BLUPs for dimension reduced model. 
+ Calculating BLUPs and their variances for full model. 
+Total memory (Gbytes) needed for a calculation is: 31.000000 
+Max memory (Gbytes) available is: 120.000000 
+ Reading Mt ... 
+beginning ans_part1 = inv_MMt_sqrt * a
+beginning Mt  * ans_part1 
+end
+ in   dim_reduced_vara * inv_MMt_sqrt 
+ in inv_MMt_sqrt * var_ans_tmp_part1 
+ end ... 
+ Beginning  Mt *  var_ans_tmp_part1 
+Starting pragma .. 
+Ending pragma 
+ Calculating outlier test statistics. 
+ Performing iteration ...  4 
+ performing emma.REMLE  ... 
+ in emma.eigen.R.wo.Z 
+ emma.eigen.R.wo.Z out 
+ Calculate extBIC ... 
+ emma.eigen.L.wo.Z in 
