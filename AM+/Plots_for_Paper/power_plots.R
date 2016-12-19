@@ -1,4 +1,5 @@
 ## plotting power and FDR for multi-locus mehtods and single-locus methods (fast, fastALL, gemma)
+## Last revised:   29/11/2016  MAjor change. Plotting Power vs FDR 
 ## 
 ## Note: don't know why but this error would come up a lot when printing final plots. 
 ##
@@ -8,8 +9,10 @@
 ##       Solution: just repeat the printing of the plot a couple of times and it will 
 ##                 correct itself. 
 ##
-## input data res?.RData ftp'ed from home directory on bragg in
-## /home/geo047/MWAM/SimStudy/Timing/Results/res$FAM.RData
+## input data resx_y.RData ftp'ed from home directory on bragg in
+## /home/geo047/MWAM/SimStudy/Timing/Results/res$FAM_$indx.RData
+## where $FAM is W S L A HS HL and $indx is the index 1, 2, 3, etc over the thresholds used in
+## results.R on bragg 
 ## contains columns
 ## c("n_am", "nQTL_am",
 ##  "n_amGPU", "nQTL_amGPU",
@@ -23,7 +26,7 @@
 ##   n_fastALL, nQTL_fastALL,
 ##  "nQTL_true")
 ## Note 
-## moved from smoothed power curves to lines based on median. Smoothed curves weird.
+## moved from smoothed power curves to lines based on mean. Smoothed curves weird.
 require(ggplot2)
 library(GGally)
 library(ggthemes)
@@ -33,7 +36,7 @@ library(extrafont)
 DIR <- paste(getwd(),"/", sep="")
 
 sizefn <- 16
-
+thresh_indx <- 1:500
 
 
 ## vector initialisation
@@ -44,109 +47,76 @@ names.of.methods <- c("am", "mlmm","glmnet","lasso","r2VIM","bigRR", "gemma", "f
 ## list initialisation
 FDR <- list()
 recall <- list()  ## == power
-FDRp <- list()  ## FDR points
-recallp <- list()  ## recall points   == power
-h <- list()
+dfres <- list()
 
-
+##----------------------------------------
+## Forming list with FDR and recall(power)
+## results over families and threshold indexes
+##------------------------------------------
+cat(" Forming FDR and power(recall) results ... \n")
+## looping over families
 for(ff in fam){
   FDR[[ff]] <- list()
   recall[[ff]] <- list()
-  FDRp[[ff]] <- list()
-  recallp[[ff]] <- list()
-  
-  ## Load Data RData Objects
-  filename <- paste(DIR,"res",ff,".RData", sep="")
-  load(filename)   ## loads res_mat
+
+  ## looing over threshold indexes
+  for(indx in thresh_indx){
+      FDR[[ff]][[indx]] <- list()
+      recall[[ff]][[indx]] <- list()
+      ## Load Data RData Objects
+      filename <- paste(DIR,"res",ff,"_",indx, ".RData", sep="")
+      load(filename)   #  # loads res_mat
 
   
-  cat("forming FDR and REcall values \n")
-  for(ii in names.of.methods){
-    n_method <- paste("n_",ii, sep="")
-    nQTL_method <- paste("nQTL_",ii, sep="")
-    ## ---- Set Power (recall) and FDR 
-    tmp <-  1 - (res_mat[, eval(nQTL_method)]/
-                  res_mat[, eval(n_method)])
-    tmp[is.nan(tmp)] <- 0
-        FDR[[ff]][[ii]] <- median(tmp, na.rm=TRUE)
-    
-    recall[[ff]][[ii]] <- median(res_mat[,eval(nQTL_method)]   / res_mat[, "nQTL_true"],
-           na.rm=TRUE)
-      
-    FDRp[[ff]][[ii]] <- 1 - 
-      ((res_mat[, eval(nQTL_method)])/
-        res_mat[, eval(n_method)])
-    
-    recallp[[ff]][[ii]] <- res_mat[,eval(nQTL_method)] / res_mat[, "nQTL_true"]
-    
-    ## remove NaNs
-  FDRp[[ff]][[ii]][is.nan(FDRp[[ff]][[ii]])] <- 0
-  recallp[[ff]][[ii]][is.nan(recallp[[ff]][[ii]])] <- 0  
+ 
+    for(ii in names.of.methods){
+      n_method <- paste("n_",ii, sep="")
+      nQTL_method <- paste("nQTL_",ii, sep="")
+      ## ---- Set Power (recall) and FDR 
+      tmp <-  1 - (mat[, eval(nQTL_method)]/
+                    mat[, eval(n_method)])
+      tmp[is.nan(tmp)] <- 0
+          FDR[[ff]][[indx]][[ii]] <- mean(tmp, na.rm=TRUE)
+      # capturing case where there may not be any results 
+     if(is.nan(FDR[[ff]][[indx]][[ii]]))
+       FDR[[ff]][[indx]][[ii]] <- NA
+          
+      recall[[ff]][[indx]][[ii]] <- mean(mat[,eval(nQTL_method)]   / mat[, "nQTL_true"],
+             na.rm=TRUE)
+      if(is.nan(recall[[ff]][[indx]][[ii]]))
+        recall[[ff]][[indx]][[ii]] <- NA
         }  ## end for ii
   
-} ## end for ff
+} ## end for  indx
+} ## end for family
+
 
 
 ## form results structure
 ## method,  fam,  rep,  FDR
 dfres <- data.frame()
-dfresp  <- data.frame()
+
+## looping over families
 for(ff in names(FDR))
 {
-  for(mm in names(FDR[[1]]))
+  cat(" Reading in family", ff, "\n")
+  ## looping over threshold indexes
+  for(indx in thresh_indx)
   {
-    df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]]),
-                     FDR=FDR[[ff]][[mm]],
-                     recall = recall[[ff]][[mm]])
-    dfres <- rbind.data.frame(dfres, df)
+    ## looping over methods
+    for(mm in names(FDR[[1]][[1]])){
+    df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                     FDR=FDR[[ff]][[indx]][[mm]] ,
+                     recall = recall[[ff]][[indx]][[mm]] )
+    dfres <- rbind.data.frame(dfres , df)
     
-    dfp <- data.frame(method=mm, fam=ff, rep=1:length(FDRp[[1]][[1]]),
-                     FDRp=FDRp[[ff]][[mm]],
-                     recallp = recallp[[ff]][[mm]])
-    dfresp <- rbind.data.frame(dfresp, dfp)
-    
+
+  } ## end for thresh_indx  
   }  ## end for mm
 }  ## end for ff
 
 
-levels(dfres$fam) <-  c( "150 x 5K" , "350 x 400K",
-                         "1500 x 50K",
-                         "2000 x 500K",  
-                         "4000 x 1.5M",  "10000 x 1.5M")
 
-levels(dfresp$fam) <-  c( "150 x 5K" , "350 x 400K",
-                         "1500 x 50K",
-                         "2000 x 500K",  
-                         "4000 x 1.5M",  "10000 x 1.5M")
-
-# add number of genotypes
-dfres$Pop <- NA
-dfres$Pop[dfres$fam=="150 x 5K"] <- 150*5000
-dfres$Pop[dfres$fam=="350 x 400K"] <- 350*400000
-dfres$Pop[dfres$fam=="1500 x 50K"] <- 1500*50000
-dfres$Pop[dfres$fam=="2000 x 500K"] <- 2000*500000
-dfres$Pop[dfres$fam=="4000 x 1.5M"] <- 4000*1500000
-dfres$Pop[dfres$fam=="10000 x 1.5M"] <- 10000*1500000
-
-dfresp$Pop <- NA
-dfresp$Pop[dfresp$fam=="150 x 5K"] <- 150*5000
-dfresp$Pop[dfresp$fam=="350 x 400K"] <- 350*400000
-dfresp$Pop[dfresp$fam=="1500 x 50K"] <- 1500*50000
-dfresp$Pop[dfresp$fam=="2000 x 500K"] <- 2000*500000
-dfresp$Pop[dfresp$fam=="4000 x 1.5M"] <- 4000*1500000
-dfresp$Pop[dfresp$fam=="10000 x 1.5M"] <- 10000*1500000
-
-
-
-## gitter am+ so that you can see lines
-#dfres$recall[dfres$method=="am"] <- dfres$recall[dfres$method=="am"]*1.0
-#dfres$FDR[dfres$method=="am"] <- dfres$FDR[dfres$method=="am"]*1.0
-
-
-pps <- sort(unique(dfres$Pop))
-## data frame for line segments
-gsdf <- data.frame(x1=(pps), y1=rep(0,length(pps)), 
-                   x2 = (pps), y2=c(0.95,0.9,0.95,0.9,0.95,0.9))
 
 ##----------------------
 ## FDR gives NaN when
@@ -156,7 +126,14 @@ gsdf <- data.frame(x1=(pps), y1=rep(0,length(pps)),
 dfres$FDR[which(is.nan(dfres$FDR))] <- 0
 dfres$recall[which(is.nan(dfres$recall))] <- 0
 
+## change ordering of factor levels to change order of facet_wrap
+dfres$method <- factor(dfres$method, levels=c("am", "mlmm",   "glmnet", "lasso",  "r2VIM",  "bigRR", "gemma", 
+                                      "fastALL", "fast"))
+levels(dfres$method) <- c("AMplus", "MLMM", "glmnet", "LMM-Lasso", "r2VIM", "bigRR", "GEMMA", "FaST-LMM^all", 
+                      "FaST-LMM^few")
 
+levels(dfres$fam) <- c("150 x 5K", "350 x 500K", "1500 x 50K", "2000 x 500K", 
+                       "4000 x 1.5M", "10000 x 1.5M")
 
 ## change family labels to simulation labels
 #  W  150 x 5 K           750
@@ -166,251 +143,147 @@ dfres$recall[which(is.nan(dfres$recall))] <- 0
 #  A  4000 x 1.5M       600,000,000
 #  HL 10000 x 1.5M      1.5*e10
 
+# "am"      "mlmm"    "glmnet"  "lasso"   "r2VIM"   "bigRR"   "gemma"   "fastALL" "fast"  
+
+##------------------------------------
+## Draw plot for multi-locus methods
+##-------------------------------------
+## dropping MLMM recall values by a little bit because they are lower and so that we can see it in the plot
+dfres[which(dfres$method=="MLMM"), "recall"] <-  dfres[which(dfres$method=="MLMM"), "recall"] * 0.95
+
+
+df1 <- subset(subset(dfres, !(method=="AMplus" | method=="MLMM" | method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" )),
+  !(fam=="4000 x 1.5M" | fam=="10000 x 1.5M"))
+
+df2 <- subset(subset(dfres, method=="AMplus" | method=="MLMM"),  !(fam=="4000 x 1.5M" | fam=="10000 x 1.5M"))
 
 
 
-##-------------------------------
-## Recall = power and FDR plots
-##--------------------------------
-
-## to plot am relative to all the other plots, need to
-##  1. remove am from the dfres data frame
-##  2. create a new data frame with the am results repeated 8 times and each batch of results
-##     indexed by the method
-
-dfam <- subset(dfres, method=="am")
-dfam <- do.call("rbind", replicate(8, dfam, simplify = FALSE))
-
-## remove am from dfres
-dfres <- subset(dfres, method!="am")
-dfres$facet <- dfres$method
+p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
+  geom_point(data=df2, aes(FDR, recall), size=2) +
+  facet_wrap(~fam, ncol=2) + 
+  theme(aspect.ratio = 1) # try with and without
 
 
-## add new method factor to dfam
-dfam$facet <- rep(unique(as.character(dfres$method)), each=6)
-dfam$method <- "AMplus"
 
-## change method of dfres
-dfres$method <- "other method"
-dfres$method <- as.factor(as.character(dfres$method))
+p <- p + scale_color_manual(
+  breaks=c("AMplus","MLMM","bigRR","glmnet","LMM-Lasso","r2VIM"),
+values=brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
+guide = guide_legend(override.aes = list(
+  linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
+  shape=c(16, 16, NA, NA, NA, NA))))
 
-## combine dfres and dfam into a single df
-df <- rbind.data.frame(dfres, dfam)
-df$method <- as.factor(as.character(df$method))
-df$facet <- as.factor(as.character(df$facet))
+p
 
 
-## change ordering of factor levels to change order of facet_wrap
-df$facet <- factor(df$facet, levels=c("mlmm",   "glmnet", "lasso",  "r2VIM",  "bigRR", "gemma", 
-                                      "fastALL", "fast"))
-levels(df$facet) <- c("MLMM", "glmnet", "LMM-Lasso", "r2VIM", "bigRR", "GEMMA", "FaST-LMM^all", 
-                      "FaST-LMM^few")
 
-## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-##        Power plots
-## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-p<- ggplot(df, aes(Pop, recall, color=method)) + geom_line(size=2) + geom_point() +
-       facet_wrap(~facet, ncol=3, labeller=label_parsed) 
 
-p  <- p + geom_segment(aes(x=7.5e5, y=0,xend=7.5e5,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=7.5e7, y=0,xend=7.5e7,yend=0.99), colour="grey", cex=0.5) +     
-  geom_segment(aes(x=1.4e8, y=0,xend=1.4e8,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=1.0e9, y=0,xend=1.0e9,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=6.0e9, y=0,xend=6.0e9,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=0.99), colour="grey", cex=0.5) 
+                  
+## set theme
+p <- p + theme_hc()
 
-## log log scale
-p  <- p + scale_x_continuous(trans="log10", limits=c(500000, 1e11),
-                             breaks = scales::trans_breaks("log10", function(x) 10^x),
-                             labels = scales::trans_format("log10", scales::math_format(10^.x))
-)+  scale_y_continuous( limits=c(0, 1), breaks = seq(0,1,0.20))
-
-##log tick marks
-p <- p +annotation_logticks(scale=TRUE, side="b")
-
-## setting theme
-p <-  p + theme_tufte()
+## increase spacing between facet plots
+p <- p + theme(panel.spacing = unit(3, "lines"))
 
 ## specify xlab and ylab
 p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('\nNumber of genotypes'))
+  xlab(bquote('False discovery rate'))
+
+
+
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=18)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=18))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=14)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=14))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=14,  angle=0)) +
-  theme(axis.text.y=element_text(size=14, hjust=0.5)) +
-  theme(strip.text = element_text(size=16))
-
-## positioning of  legend in vacant plot region
-p <- p + theme(legend.position = c(0.8, 0.2)) 
+  theme(axis.text.x = element_text(size=11,  angle=0)) +
+  theme(axis.text.y=element_text(size=11, hjust=0.5)) +
+  theme(strip.text = element_text(size=14))
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=16))
+p <- p +  theme(legend.text=element_text(size=12))
 p <- p +  theme(legend.title=element_blank())
 p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
-## to add text to plots, need to create a data fram
-## and use geom_text(data=XXXX)
-## example:
-## http://stackoverflow.com/questions/11889625/annotating-text-on-individual-facet-in-ggplot2
-##ann_text <- data.frame(mpg = 15,wt = 5,lab = "Text",
-##                       cyl = factor(8,levels = c("4","6","8")))
-##p + geom_text(data = ann_text,label = "Text")
-##
-dat <- data.frame(Pop=rep(pps[1]*1.50 , 3), 
-                  recall = rep(0.98, 3),
-                  labs = rep("150x5K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, recall, label=labs, group=NULL), color="black", angle=90, hjust=1)
+#p + theme_base()
+#p + theme_economist_white()
+#p + theme_few()
 
-dat <- data.frame(Pop=rep(pps[3] * 1.50, 3), 
-                  recall = rep(0.98, 3),
-                  labs = rep("350x400K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, recall, label=labs, group=NULL), color="black", angle=90, hjust=1)
 
-dat <- data.frame(Pop=rep(pps[5]*0.70, 3), 
-                  recall = rep(0.98, 3),
-                  labs = rep("4000x1.5M",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, recall, label=labs, group=NULL), color="black", angle=90, hjust=1)
 
-dat <- data.frame(Pop=rep(pps[2] * 0.70 , 3), 
-                  recall = rep(0.98, 3),
-                  labs = rep("1500x50K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, recall, label=labs, group=NULL), color="black", angle=90, hjust=1)
-
-dat <- data.frame(Pop=rep(pps[4]*0.70 , 3), 
-                  recall = rep(0.98, 3),
-                  labs = rep("2000x500K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, recall, label=labs, group=NULL), color="black", angle=90, hjust=1)
-
-dat <- data.frame(Pop=rep(pps[6]*1.5, 3), 
-                  recall = rep(0.98, 3),
-                  labs = rep("10000x1.5M",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, recall, label=labs, group=NULL), color="black", angle=90, hjust=1)
-
-postscript("~/Papers/AM-Paper/power.eps", width=10, height=10, fonts=c("serif", fonts()),
+postscript("~/Papers/AM-Paper/powerMultiple.eps", width=10, height=10, fonts=c("sans", fonts()),
            horizontal=FALSE)
 p
 dev.off()
-powerplot <- p
 
-## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-##     FDR plots
-## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## power vs fdr for single-locus models
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-p<- ggplot(df, aes(Pop, FDR, color=method)) + geom_line(size=2) + geom_point() +
-  facet_wrap(~facet, ncol=3, labeller=label_parsed) 
 
-p  <- p + geom_segment(aes(x=7.5e5, y=0,xend=7.5e5,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=7.5e7, y=0,xend=7.5e7,yend=0.99), colour="grey", cex=0.5) +     
-  geom_segment(aes(x=1.4e8, y=0,xend=1.4e8,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=1.0e9, y=0,xend=1.0e9,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=6.0e9, y=0,xend=6.0e9,yend=0.99), colour="grey", cex=0.5) +
-  geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=0.99), colour="grey", cex=0.5) 
 
-## log log scale
-p  <- p + scale_x_continuous(trans="log10", limits=c(500000, 1e11),
-                             breaks = scales::trans_breaks("log10", function(x) 10^x),
-                             labels = scales::trans_format("log10", scales::math_format(10^.x))
-)+  scale_y_continuous( limits=c(0, 1), breaks = seq(0,1,0.20))
+df1 <- subset(dfres, (method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" ))
 
-##log tick marks
-p <- p +annotation_logticks(scale=TRUE, side="b")
+df2 <- subset(dfres, method=="AMplus" | method=="MLMM")
 
-## setting theme
-p <-  p + theme_tufte()
+
+
+p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
+  geom_point(data=df2, aes(FDR, recall), size=2) +
+  facet_wrap(~fam, ncol=3) + 
+  theme(aspect.ratio = 1) # try with and without
+
+
+p <- p + scale_color_manual(
+  breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
+  labels=c("AMplus", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
+  values=brewer.pal(12, "Paired")[c(1,7,6,12,2)], 
+  guide = guide_legend(override.aes = list(
+    linetype = c("blank", "blank", "solid", "solid", "solid"),
+    shape=c(16, 16, NA, NA, NA))))
+
+
+
+## set theme
+p <- p + theme_hc()
+
+## increase spacing between facet plots
+p <- p + theme(panel.spacing = unit(3, "lines"))
 
 ## specify xlab and ylab
-p <- p  + ylab(bquote("False discovery rate")) + 
-  xlab(bquote('\nNumber of genotypes'))
+p <- p  + ylab(bquote("Power")) + 
+  xlab(bquote('False discovery rate'))
+
+
+p
+
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=18)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=18))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=14)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=14))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=14,  angle=0)) +
-  theme(axis.text.y=element_text(size=14, hjust=0.5)) +
-  theme(strip.text = element_text(size=16))
-
-## positioning of  legend in vacant plot region
-p <- p + theme(legend.position = c(0.8, 0.2)) 
+  theme(axis.text.x = element_text(size=11,  angle=0)) +
+  theme(axis.text.y=element_text(size=11, hjust=0.5)) +
+  theme(strip.text = element_text(size=14))
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=16))
+p <- p +  theme(legend.text=element_text(size=12))
 p <- p +  theme(legend.title=element_blank())
 p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
-## to add text to plots, need to create a data fram
-## and use geom_text(data=XXXX)
-## example:
-## http://stackoverflow.com/questions/11889625/annotating-text-on-individual-facet-in-ggplot2
-##ann_text <- data.frame(mpg = 15,wt = 5,lab = "Text",
-##                       cyl = factor(8,levels = c("4","6","8")))
-##p + geom_text(data = ann_text,label = "Text")
-##
-dat <- data.frame(Pop=rep(pps[1]*1.50 , 3), 
-                  FDR = rep(0.98, 3),
-                  labs = rep("150x5K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, FDR, label=labs, group=NULL), color="black", angle=90, hjust=1)
+#p + theme_base()
+#p + theme_economist_white()
+#p + theme_few()
 
-dat <- data.frame(Pop=rep(pps[3] * 1.50, 3), 
-                  FDR = rep(0.98, 3),
-                  labs = rep("350x400K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, FDR, label=labs, group=NULL), color="black", angle=90, hjust=1)
 
-dat <- data.frame(Pop=rep(pps[5]*0.70, 3), 
-                  FDR = rep(0.98, 3),
-                  labs = rep("4000x1.5M",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, FDR, label=labs, group=NULL), color="black", angle=90, hjust=1)
 
-dat <- data.frame(Pop=rep(pps[2] * 0.70 , 3), 
-                  FDR = rep(0.98, 3),
-                  labs = rep("1500x50K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, FDR, label=labs, group=NULL), color="black", angle=90, hjust=1)
-
-dat <- data.frame(Pop=rep(pps[4]*0.70 , 3), 
-                  FDR = rep(0.98, 3),
-                  labs = rep("2000x500K",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, FDR, label=labs, group=NULL), color="black", angle=90, hjust=1)
-
-dat <- data.frame(Pop=rep(pps[6]*1.5, 3), 
-                  FDR = rep(0.98, 3),
-                  labs = rep("10000x1.5M",3),
-                  method=rep("AMplus",3),
-                  facet=c("MLMM","glmnet","LMM-Lasso"))
-p <- p + geom_text(data=dat, aes(Pop, FDR, label=labs, group=NULL), color="black", angle=90, hjust=1)
-
-postscript("~/Papers/AM-Paper/FDR.eps", width=10, height=10, fonts=c("serif", fonts()),
+postscript("~/Papers/AM-Paper/powerSingle.eps", width=10, height=10, fonts=c("sans", fonts()),
            horizontal=FALSE)
 p
 dev.off()
-
 
 
