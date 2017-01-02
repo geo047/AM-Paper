@@ -1,13 +1,5 @@
-## plotting power and FDR for multi-locus mehtods and single-locus methods (fast, fastALL, gemma)
-## Last revised:   29/11/2016  MAjor change. Plotting Power vs FDR 
-## 
-## Note: don't know why but this error would come up a lot when printing final plots. 
-##
-##       Error in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  : 
-##       polygon edge not found
-## 
-##       Solution: just repeat the printing of the plot a couple of times and it will 
-##                 correct itself. 
+## plotting threshold and FDR for multi-locus mehtods and single-locus methods (fast, fastALL, gemma)
+## Last revised: 21/12/2016
 ##
 ## input data resx_y.RData ftp'ed from home directory on bragg in
 ## /home/geo047/MWAM/SimStudy/Timing/Results/res$FAM_$indx.RData
@@ -46,8 +38,16 @@ names.of.methods <- c("am", "mlmm","glmnet","lasso","r2VIM","bigRR", "gemma", "f
 
 ## list initialisation
 FDR <- list()
-recall <- list()  ## == power
 dfres <- list()
+recall <- list()
+
+## threshold information is not actually contained in the files obtained from 
+## bragg. It sits in the results.R file on /home/geo047/MWAM/SimStudy/Timing/RScripts/
+pthresh  <- seq(0.01,0.99, length.out=500)
+pthresh_r2VIM <- seq(0.05, 100, length.out=500)
+alpha <- 10**-seq(-log10(1e-35), -log10(1e-2), length.out=500)
+
+
 
 ##----------------------------------------
 ## Forming list with FDR and recall(power)
@@ -75,7 +75,7 @@ for(ff in fam){
       ## ---- Set Power (recall) and FDR 
       tmp <-  1 - (mat[, eval(nQTL_method)]/
                     mat[, eval(n_method)])
-      tmp[is.nan(tmp)] <- 0
+      #tmp[is.nan(tmp)] <- 0
           FDR[[ff]][[indx]][[ii]] <- mean(tmp, na.rm=TRUE)
       # capturing case where there may not be any results 
      if(is.nan(FDR[[ff]][[indx]][[ii]]))
@@ -105,11 +105,59 @@ for(ff in names(FDR))
   {
     ## looping over methods
     for(mm in names(FDR[[1]][[1]])){
-    df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
-                     FDR=FDR[[ff]][[indx]][[mm]] ,
-                     recall = recall[[ff]][[indx]][[mm]] )
-    dfres <- rbind.data.frame(dfres , df)
-    
+      if(mm=="glmnet"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = pthresh[indx])    
+        
+      }
+
+      if(mm=="LMM-Lasso"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = pthresh[indx])
+      }
+
+      if(mm=="r2VIM"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = pthresh_r2VIM[indx])
+        
+        
+        
+        
+      }
+      
+      if(mm=="bigRR"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = pthresh[indx])
+        
+      }
+      
+      if(mm=="gemma"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = alpha[indx])
+        
+      }
+      
+      if(mm=="fast"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = alpha[indx])
+        
+      }
+        
+      if(mm=="fastALL"){
+        df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
+                         FDR=FDR[[ff]][[indx]][[mm]] ,
+                         threshold = alpha[indx])
+        
+      }
+        
+      dfres <- rbind.data.frame(dfres , df)
+      
 
   } ## end for thresh_indx  
   }  ## end for mm
@@ -118,13 +166,8 @@ for(ff in names(FDR))
 
 
 
-##----------------------
-## FDR gives NaN when
-## no QTL found. Set to 0
-##-------------------------
 
-dfres$FDR[which(is.nan(dfres$FDR))] <- 0
-dfres$recall[which(is.nan(dfres$recall))] <- 0
+
 
 ## change ordering of factor levels to change order of facet_wrap
 dfres$method <- factor(dfres$method, levels=c("am", "mlmm",   "glmnet", "lasso",  "r2VIM",  "bigRR", "gemma", 
@@ -132,6 +175,7 @@ dfres$method <- factor(dfres$method, levels=c("am", "mlmm",   "glmnet", "lasso",
 levels(dfres$method) <- c("AMplus", "MLMM", "glmnet", "LMM-Lasso", "r2VIM", "bigRR", "GEMMA", "FaST-LMM^all", 
                       "FaST-LMM^few")
 
+dfres$fam <- factor(dfres$fam, levels=c("W","L","S","HS","A","HL"))
 levels(dfres$fam) <- c("150 x 5K", "350 x 500K", "1500 x 50K", "2000 x 500K", 
                        "4000 x 1.5M", "10000 x 1.5M")
 
@@ -145,23 +189,8 @@ levels(dfres$fam) <- c("150 x 5K", "350 x 500K", "1500 x 50K", "2000 x 500K",
 
 # "am"      "mlmm"    "glmnet"  "lasso"   "r2VIM"   "bigRR"   "gemma"   "fastALL" "fast"  
 
-##------------------------------------
-## Draw plot for multi-locus methods
-##-------------------------------------
-## dropping MLMM recall values by a little bit because they are lower and so that we can see it in the plot
-dfres[which(dfres$method=="MLMM"), "recall"] <-  dfres[which(dfres$method=="MLMM"), "recall"] * 0.95
-
-
-df1 <- subset(subset(dfres, !(method=="AMplus" | method=="MLMM" | method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" )),
-  !(fam=="4000 x 1.5M" | fam=="10000 x 1.5M"))
-
-df2 <- subset(subset(dfres, method=="AMplus" | method=="MLMM"),  !(fam=="4000 x 1.5M" | fam=="10000 x 1.5M"))
-
-
-
-p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
-  geom_point(data=df2, aes(FDR, recall), size=2) +
-  facet_wrap(~fam, ncol=2) + 
+p <- ggplot(data=dfres, aes(threshold, FDR, color=fam)) + geom_line(size=1)  +
+  facet_wrap(~method, ncol=4,scales="free") + 
   theme(aspect.ratio = 1) # try with and without
 
 
