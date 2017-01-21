@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  22 NOV 2016 07:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  3 JAN 2017 12:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -143,11 +143,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3] [4] [5]
 Package epstopdf Info: Source file: <time.eps>
-(epstopdf)                    date: 2016-11-18 13:38:41
-(epstopdf)                    size: 38258 bytes
+(epstopdf)                    date: 2016-12-07 12:37:16
+(epstopdf)                    size: 39247 bytes
 (epstopdf)             Output file: <time-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-22 07:31:04
-(epstopdf)                    size: 16939 bytes
+(epstopdf)                    date: 2017-01-03 12:08:40
+(epstopdf)                    size: 16913 bytes
 (epstopdf)             Command: <repstopdf --outfile=time-eps-converted-to.pdf 
 time.eps>
 (epstopdf)             \includegraphics on input line 76.
@@ -165,61 +165,100 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 84.
  [6] [7 <./time-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <mem.eps>
+(epstopdf)                    date: 2016-12-07 12:48:29
+(epstopdf)                    size: 28055 bytes
+(epstopdf)             Output file: <mem-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-01-03 12:09:51
+(epstopdf)                    size: 14922 bytes
+(epstopdf)             Command: <repstopdf --outfile=mem-eps-converted-to.pdf m
+em.eps>
+(epstopdf)             \includegraphics on input line 101.
+Package epstopdf Info: Output file is already uptodate.
 
-./AM+draft.tex:97: LaTeX Error: File `memory' not found.
+<mem-eps-converted-to.pdf, id=41, 561.09625pt x 722.7pt>
+File: mem-eps-converted-to.pdf Graphic file (type pdf)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97 \includegraphics[width=10cm]{memory}
-                                         
-? r
-OK, entering \nonstopmode...
-Package epstopdf Info: Source file: <power.eps>
-(epstopdf)                    date: 2016-11-22 07:29:08
-(epstopdf)                    size: 60260 bytes
-(epstopdf)             Output file: <power-eps-converted-to.pdf>
-(epstopdf)             Command: <repstopdf --outfile=power-eps-converted-to.pdf
- power.eps>
-(epstopdf)             \includegraphics on input line 109.
-runsystem(repstopdf --outfile=power-eps-converted-to.pdf power.eps)...executed 
-safely (allowed).
-
-Package epstopdf Info: Result file: <power-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-22 07:34:03
-(epstopdf)                    size: 24584 bytes.
-<power-eps-converted-to.pdf, id=41, 561.09625pt x 722.7pt>
-File: power-eps-converted-to.pdf Graphic file (type pdf)
-
-<use power-eps-converted-to.pdf>
-Package pdftex.def Info: power-eps-converted-to.pdf used on input line 109.
+<use mem-eps-converted-to.pdf>
+Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 101.
 (pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
- [8] [9 <./power-eps-converted-to.pdf>]
-(./AM+draft.aux)
+ [8] [9 <./mem-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <powerMultiple.eps>
+(epstopdf)                    date: 2017-01-03 11:02:33
+(epstopdf)                    size: 424631 bytes
+(epstopdf)             Output file: <powerMultiple-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-01-03 12:09:52
+(epstopdf)                    size: 36831 bytes
+(epstopdf)             Command: <repstopdf --outfile=powerMultiple-eps-converte
+d-to.pdf powerMultiple.eps>
+(epstopdf)             \includegraphics on input line 134.
+Package epstopdf Info: Output file is already uptodate.
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<powerMultiple-eps-converted-to.pdf, id=56, 561.09625pt x 722.7pt>
+File: powerMultiple-eps-converted-to.pdf Graphic file (type pdf)
 
- ) 
+<use powerMultiple-eps-converted-to.pdf>
+Package pdftex.def Info: powerMultiple-eps-converted-to.pdf used on input line 
+134.
+(pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
+Package epstopdf Info: Source file: <powerSingle.eps>
+(epstopdf)                    date: 2016-12-21 08:55:39
+(epstopdf)                    size: 536177 bytes
+(epstopdf)             Output file: <powerSingle-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-01-03 12:09:53
+(epstopdf)                    size: 50160 bytes
+(epstopdf)             Command: <repstopdf --outfile=powerSingle-eps-converted-
+to.pdf powerSingle.eps>
+(epstopdf)             \includegraphics on input line 140.
+Package epstopdf Info: Output file is already uptodate.
+
+<powerSingle-eps-converted-to.pdf, id=57, 561.09625pt x 722.7pt>
+File: powerSingle-eps-converted-to.pdf Graphic file (type pdf)
+
+<use powerSingle-eps-converted-to.pdf>
+Package pdftex.def Info: powerSingle-eps-converted-to.pdf used on input line 14
+0.
+(pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
+Package epstopdf Info: Source file: <threshold.eps>
+(epstopdf)                    date: 2017-01-03 12:07:56
+(epstopdf)                    size: 4224 bytes
+(epstopdf)             Output file: <threshold-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-01-03 12:10:05
+(epstopdf)                    size: 2401 bytes
+(epstopdf)             Command: <repstopdf --outfile=threshold-eps-converted-to
+.pdf threshold.eps>
+(epstopdf)             \includegraphics on input line 147.
+Package epstopdf Info: Output file is already uptodate.
+
+<threshold-eps-converted-to.pdf, id=58, 561.09625pt x 722.7pt>
+File: threshold-eps-converted-to.pdf Graphic file (type pdf)
+
+<use threshold-eps-converted-to.pdf>
+Package pdftex.def Info: threshold-eps-converted-to.pdf used on input line 147.
+
+(pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
+ [10] [11 <./powerMultiple-eps-converted-to.pdf>] [12 <./powerSingle-eps-conver
+ted-to.pdf>] [13 <./threshold-eps-converted-to.pdf>] (./AM+draft.aux) ) 
 Here is how much of TeX's memory you used:
- 1517 strings out of 493089
- 21850 string characters out of 6134842
- 82273 words of memory out of 5000000
- 4998 multiletter control sequences out of 15000+600000
+ 1533 strings out of 493089
+ 22362 string characters out of 6134842
+ 82306 words of memory out of 5000000
+ 5012 multiletter control sequences out of 15000+600000
  9110 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,6n,23p,1424b,241s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on AM+draft.pdf (9 pages, 137820 bytes).
+ 37i,6n,23p,1424b,239s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on AM+draft.pdf (13 pages, 215040 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

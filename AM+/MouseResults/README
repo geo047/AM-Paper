@@ -1,0 +1,37 @@
+Whole mouse directory moved to bragg-i1 on ~/MWAM/RealDataAnalysis/Mouse due to 
+computational issues with running data prep on laptop
+
+ DIARY for read data analysis of publicaly available data on inbred mouse lines
+
+05/01/17
+ * data being downloaded from http://www.informatics.jax.org/   [MGI mouse genomic informatics database]
+   Using browser - Mouse SNP summary page where I set
+                   1. Genome region   Chromosome          1
+                                      Genome Coordinates  0-200
+                                                          Mbp
+                      I then save the results to a tab sep text file on mac. 
+                   2. I run R CMD BATCH ./cleandata.R  in ./RScripts on Mac to prepare the marker data for analysis
+
+ ===> found that there was very little actual observed marker data
+       Moved to inbred mouse data based on EMMA paper
+
+ *  data being downloaded from Broad institute
+http://archive.broadinstitute.org/mouse/hapmap/prev_index.html
+    - Run R CMD BATCH ./makeGWASdata.R
+
+
+06/01/17
+
+Discovered new web site with imputed marker data for mouse RI strains. 
+
+
+http://mouse.cs.ucla.edu/mousehapmap/full.html
+
+Downloading data from “Imputed calls with high-confidence” into RawData directory on MAC and processing to see what GWAS results are like. 
+* issue - the genotype file mousehapmap_perlegen_imputed_full_HC.txt contains lower
+          and upper case alleles. Need to capitalise using sed.
+
+          Command used is : use awk commande
+
+
+

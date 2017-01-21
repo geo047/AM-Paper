@@ -89,25 +89,64 @@ significantly shorter run times than GEMMA and FaST-LMM$^all$. FaST-LMM$^few$ ha
 FaST-LMM$^few$ is 346 minutes. The very fast single-locus method FaST-LMM$^few$ is only 29\% faster than our multiple-locus method AMplus$^GPU$. It is worth noting though that 
 there is a setup cost to accessing GPU computing, making AMplus$^GPU$ most efficient on the larger data. 
 
-The memory usage of the software programs is shown in Figure \ref{fig_memory}. 
+
+We also examined the memory usage of the different software programs (figure \ref{fig_memory} supplementary materials). 
+AMplus is comparable to the most efficient single locus implementation, FaST-LMM$^few$. 
+AMplus is also the only multiple locus program able to analyse data under scenarios ..... and ..... . 
+AMplus can process data larger than the memory capacity of the computer.
 
 \begin{figure}
 \label{fig_memory}
 \caption{Memory usage}
-\includegraphics[width=10cm]{memory}
+\includegraphics[width=10cm]{mem}
 \end{figure}
 
 
 
 
-\subsection{Statistical Performance: power and FDR}
+\subsection{Statistical Performance: power, FDR, and significance thresholds}
+
+As part of assessing the performance of AMplus against the other association mapping methods, 
+we calculated their statistical power and false discovery rates. 
+We want a method to have high statistical power (probability of finding a true positive finding) but 
+low false discovery rate (proportion of findings that are false positives). 
+All the methods, besides AMplus and MLMM, required a threshold to be set in order to identify significant findings. 
+A conservative threshold guards against false discoveries but reduces power. 
+A anti-conservative threshold increases power at the cost of also increasing the false discovery rate. Only AMplus and mlmm avoid thresholds by treating association mapping as a model selection problem where the best model is found by minimising the model selection statistic, extBIC.
+
+Figures \ref{fig_power_multiple}  and \ref{fig_power_single} show the relationship, calculated empirically, between the power and fdr for each method. The multiple-locus (Figure \ref{fig_power_multiple})   and the single-locus (Figure \ref{fig_power_single})  methods are plotted separately for clarity. 
+AMplus features in both plots for comparison. By varying the significance thresholds for the different methods, we were able to calculate the change in power and fdr. Since AMplus and MLMM do not rely on thresholds, their power and fdr appear as single points in the plots. In practice, the true power and fdr is unknown. However, because we generated data where we knew which loci were acting as quantitative trait loci, we were able to calculate the true power and fdr for the methods.
+
+From figures \ref{fig_power_multiple}  and \ref{fig_power_single}, the superior performance of AMplus is apparent. When the fdr is low, AMplus has the highest power with Mlmm also performing well. AMplus is noticeably more powerful than the single locus methods. 
+It is possible to set a significance threshold for these other methods that results in higher power. 
+However, this comes at the cost of an intolerably high fdr.
+
+For the methods evaluated here that require a significance threshold, figure  \ref{fig_threshold}  shows how 
+threshold size impacts fdr. Each plot corresponds to the results from a different method. 
+A curve within a plot is formed from analysing data with the method and using different threshold values to identify locus-trait associations. 
+The true fdr is then calculated from these findings.
+We can see from figure \ref{fig_threshold}  that the threshold impacts the fdr differently across methods. The relationship between threshold value and fdr even differs when data are analysed with the same method but for different scenarios. This demonstrates one of the challenges in using association mapping methods that are reliant upon thresholds. With AMplus, we do not have this challenge. For completeness, for the small sampled size scenarios ... And ....., the fdr for AMplus was 0.07 and 0.09, respectively. With the larger study sizes of ..., ..., and ...., the fdr drops to ..., .., and ..... respectively.
 
 
 \begin{figure}
-\label{fig_power}
-\caption{Power curves}
-\includegraphics[width=10cm]{power}
+\label{fig_power_multiple}
+\caption{Power curves for  multiple locus methods}
+\includegraphics[width=10cm]{powerMultiple}
 \end{figure}
+
+\begin{figure}
+\label{fig_power_single}
+\caption{Power curves for single-locus methods -- Put into sup methods}
+\includegraphics[width=10cm]{powerSingle}
+\end{figure}
+
+
+\begin{figure}
+\label{fig_threshold}
+\caption{The impact of threshold on FDR }
+\includegraphics[width=10cm]{threshold}
+\end{figure}
+
 
 
 

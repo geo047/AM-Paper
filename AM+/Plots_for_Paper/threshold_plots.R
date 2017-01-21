@@ -45,7 +45,8 @@ recall <- list()
 ## bragg. It sits in the results.R file on /home/geo047/MWAM/SimStudy/Timing/RScripts/
 pthresh  <- seq(0.01,0.99, length.out=500)
 pthresh_r2VIM <- seq(0.05, 100, length.out=500)
-alpha <- 10**-seq(-log10(1e-35), -log10(1e-2), length.out=500)
+#alpha <- 10**-seq(-log10(1e-35), -log10(1e-2), length.out=500)
+alpha <- seq(-log10(1e-35), -log10(1e-2), length.out=500)
 
 
 
@@ -75,7 +76,7 @@ for(ff in fam){
       ## ---- Set Power (recall) and FDR 
       tmp <-  1 - (mat[, eval(nQTL_method)]/
                     mat[, eval(n_method)])
-      #tmp[is.nan(tmp)] <- 0
+      tmp[is.nan(tmp)] <- 0
           FDR[[ff]][[indx]][[ii]] <- mean(tmp, na.rm=TRUE)
       # capturing case where there may not be any results 
      if(is.nan(FDR[[ff]][[indx]][[ii]]))
@@ -98,14 +99,17 @@ dfres <- data.frame()
 
 ## looping over families
 for(ff in names(FDR))
-{
+{ 
+   
+  dftmp <- data.frame()
   cat(" Reading in family", ff, "\n")
   ## looping over threshold indexes
   for(indx in thresh_indx)
   {
     ## looping over methods
     for(mm in names(FDR[[1]][[1]])){
-      if(mm=="glmnet"){
+      #for(mm in "gemma"){
+        if(mm=="glmnet"){
         df <- data.frame(method=mm, fam=ff, rep=1:length(FDR[[1]][[1]][[1]]),
                          FDR=FDR[[ff]][[indx]][[mm]] ,
                          threshold = pthresh[indx])    
@@ -156,23 +160,33 @@ for(ff in names(FDR))
         
       }
         
-      dfres <- rbind.data.frame(dfres , df)
+      dftmp <- rbind.data.frame(dftmp , df)
       
 
   } ## end for thresh_indx  
   }  ## end for mm
+  dfres <- rbind.data.frame(dfres, dftmp)
 }  ## end for ff
 
 
 
-
+## checking if all values are 0 for a curve
+for(mm in levels(dfres$method)){
+  for(ff in levels(dfres$fam)){
+    indx <- which(dfres$method==mm & dfres$fam==ff) 
+    if(sum(dfres$FDR[indx], na.rm=T)==0){
+     print("in here")
+       dfres$FDR[indx] <- NA
+    }
+  }
+}
 
 
 
 ## change ordering of factor levels to change order of facet_wrap
-dfres$method <- factor(dfres$method, levels=c("am", "mlmm",   "glmnet", "lasso",  "r2VIM",  "bigRR", "gemma", 
+dfres$method <- factor(dfres$method, levels=c("glmnet", "lasso",  "r2VIM",  "bigRR", "gemma", 
                                       "fastALL", "fast"))
-levels(dfres$method) <- c("AMplus", "MLMM", "glmnet", "LMM-Lasso", "r2VIM", "bigRR", "GEMMA", "FaST-LMM^all", 
+levels(dfres$method) <- c("glmnet", "LMM-Lasso", "r2VIM", "bigRR", "GEMMA", "FaST-LMM^all", 
                       "FaST-LMM^few")
 
 dfres$fam <- factor(dfres$fam, levels=c("W","L","S","HS","A","HL"))
@@ -189,25 +203,13 @@ levels(dfres$fam) <- c("150 x 5K", "350 x 500K", "1500 x 50K", "2000 x 500K",
 
 # "am"      "mlmm"    "glmnet"  "lasso"   "r2VIM"   "bigRR"   "gemma"   "fastALL" "fast"  
 
+
+ 
 p <- ggplot(data=dfres, aes(threshold, FDR, color=fam)) + geom_line(size=1)  +
-  facet_wrap(~method, ncol=4,scales="free") + 
+  facet_wrap(~method, ncol=3,scales="free", labeller=label_parsed) + 
   theme(aspect.ratio = 1) # try with and without
 
 
-
-p <- p + scale_color_manual(
-  breaks=c("AMplus","MLMM","bigRR","glmnet","LMM-Lasso","r2VIM"),
-values=brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
-guide = guide_legend(override.aes = list(
-  linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
-  shape=c(16, 16, NA, NA, NA, NA))))
-
-p
-
-
-
-
-                  
 ## set theme
 p <- p + theme_hc()
 
@@ -215,8 +217,8 @@ p <- p + theme_hc()
 p <- p + theme(panel.spacing = unit(3, "lines"))
 
 ## specify xlab and ylab
-p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('False discovery rate'))
+p <- p  + ylab(bquote("False discovery rate")) + 
+  xlab(bquote('Significance threshold'))
 
 
 
@@ -242,75 +244,7 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
 
 
-postscript("~/Papers/AM-Paper/powerMultiple.eps", width=10, height=10, fonts=c("sans", fonts()),
-           horizontal=FALSE)
-p
-dev.off()
-
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## power vs fdr for single-locus models
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-df1 <- subset(dfres, (method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" ))
-
-df2 <- subset(dfres, method=="AMplus" | method=="MLMM")
-
-
-
-p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
-  geom_point(data=df2, aes(FDR, recall), size=2) +
-  facet_wrap(~fam, ncol=3) + 
-  theme(aspect.ratio = 1) # try with and without
-
-
-p <- p + scale_color_manual(
-  breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
-  labels=c("AMplus", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
-  values=brewer.pal(12, "Paired")[c(1,7,6,12,2)], 
-  guide = guide_legend(override.aes = list(
-    linetype = c("blank", "blank", "solid", "solid", "solid"),
-    shape=c(16, 16, NA, NA, NA))))
-
-
-
-## set theme
-p <- p + theme_hc()
-
-## increase spacing between facet plots
-p <- p + theme(panel.spacing = unit(3, "lines"))
-
-## specify xlab and ylab
-p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('False discovery rate'))
-
-
-p
-
-
-##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=14)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=14))
-
-# alter x and y axis labels 
-p <- p + 
-  theme(axis.text.x = element_text(size=11,  angle=0)) +
-  theme(axis.text.y=element_text(size=11, hjust=0.5)) +
-  theme(strip.text = element_text(size=14))
-
-## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=12))
-p <- p +  theme(legend.title=element_blank())
-p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
-
-#p + theme_base()
-#p + theme_economist_white()
-#p + theme_few()
-
-
-
-postscript("~/Papers/AM-Paper/powerSingle.eps", width=10, height=10, fonts=c("sans", fonts()),
+postscript("~/Papers/AM-Paper/threshold.eps", width=10, height=10, fonts=c("sans", fonts()),
            horizontal=FALSE)
 p
 dev.off()
