@@ -34,7 +34,7 @@ library(gridExtra)
 library(RColorBrewer)
 library(extrafont)
 DIR <- paste(getwd(),"/", sep="")
-
+DIR <- "/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/"
 sizefn <- 16
 thresh_indx <- 1:500
 
