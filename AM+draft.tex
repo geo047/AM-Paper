@@ -1,7 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage{graphicx}
 
-
 \linespread{1.5}
 \addtolength{\oddsidemargin}{-2.5cm}
 %\addtolength{\evensidemargin}{-3cm}
@@ -24,13 +23,15 @@ AMplus is freely available as a fully documented R package.
 \section{Introduction}
 
 
-Over the past decade,  Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods based on linear mixed models is now almost routine.
+Over the past decade,  Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine.
 
-What has not changed over the past decade is that it remains common practice to analyse gwas data on a locus by locus basis. This is despite there being several significant problems with analysing the data in this way. First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. The identification of these regions from these analyses is not always straightforward. Gwas results are reported, typically, via Manhattan plots that plot the -log10 of the p value for each locus against the map position of the locus. The location of peaks in this plot signify regions of interest. Inferring the exact number of regions of interest can be difficult If the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a significant result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome- wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple loci in linkage equilibrium with genes that influence the trait. Yet, A locus by locus mapping approach only assesses the evidence for association between a single locus and trait.
+What has not changed over the past decade is that it remains common practice to analyse gwas data on a locus by locus basis. This is despite there being several significant problems with analysing data in this way. First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. The identification of these regions from these analyses is not always straightforward. Gwas results are reported, typically, via Manhattan plots that plot the -log10 of the p value for each locus against the map position of the locus. The location of peaks in this plot signify regions of interest. Inferring the exact number of regions of interest can be difficult If the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a significant result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome- wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple loci in linkage equilibrium with genes that influence the trait. Yet, A locus by locus mapping approach only assesses the evidence for association between a single marker locus and trait.
 
-It is somewhat surprising then that multiple locus methods haven't attracted more attention. It is possible to measure all locus-trait associations jointly with methods based on the regularisation techniques, ridge regression and lasso. Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, the results are not easy to interpret. The strength of association is not measured by a p-value but by the size of the regression coefficient for a locus in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). An multiple locus method that does show promise is the multi-locus linear mixed model method (ref). The best multiple locus model is built with simple variable selection. Results are immediately interpretable but here, computation can be a challenge for large data.
+It is somewhat surprising then that multiple locus association mapping methods haven't attracted more attention. Methods based on 
+regularisation techniques, such as ridge regression and lasso, measure all locus-trait associations simultaneously. 
+Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, their results can be difficult to interpret. The strength of association is not measured by a p-value but by the size of the regression coefficient for a locus in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). An multiple locus method that does show promise is the multi-locus linear mixed model method (ref). The best multiple locus model is built with simple variable selection. Results are immediately interpretable but here, computation can be a challenge for large data.
 
-Here, we present our new multiple locus method for genome wide association mapping, which we are calling AMplus. AMplus combines the strength of regularisation techniques (being able to fit all locus-trait associations jointly), with simple variable selection (having easy to interpret results). Our method does not require a significance threshold to be set nor regularisation parameters to be fine tuned. Through a clever dimension reduction step, we are able to achieve a computational performance similar to the fastest single locus linear mixed model implementations. AMplus is statistically more powerful than single locus association mapping and is as and often more powerful than 
+In this paper, we present our new multiple locus method for genome wide association mapping, which we are calling Eagle. Eagle combines the strength of regularisation techniques (being able to fit all locus-trait associations jointly), with simple variable selection (having easy to interpret results). Our method does not require a significance threshold to be set nor regularisation parameters to be fine tuned. Through a clever dimension reduction step, we are able to achieve a computational performance similar to the fastest single locus linear mixed model implementations. Eagle is statistically more powerful than single locus association mapping and is as and often more powerful than 
 most multiple locus methods. Our aim is to make multiple locus association mapping on a genome wide scale routine. To this end, we have created a fully documented R package, that is easy to use, even for non R users.  Our package accepts marker data of different 
 formats and can handle data larger than a computer's  memory capacity. It includes detailed error checking and makes heavy use of 
 distributed computing for computation when available.  The purpose of this work was to make multiple-locus association mapping on 
@@ -150,7 +151,53 @@ We can see from figure \ref{fig_threshold}  that the threshold impacts the fdr d
 
 
 
-\subsection{Application to Arabidopsis data}
+\subsection{Mouse Study}
 
+\section{Methods}
+
+\subsection{Outbred Mice Study}
+
+Phenotypic and genotypic data were collected on a large study population of commercially 
+available outbred mice. The aim of the study was to map, through association, the genetic basis
+of complex traits in mice. The construction of the population and collection of data are described in detail in 
+\cite{Nicod:2016aa}.  Briefly, the population consists of 2073 adult outbred mice from Charles River Laboratories. Phenotypic data
+were obtained from 200 traits. These traits fell into the categories of behaviour, tissue, and physiology. Genotype 
+data were collected from 7, 073, 398 SNPs.  A reduced set of 359, 559 SNP across the 19 
+autosomes and sex chromosome was then identified, upon which all genome-wide analyses were based.  These SNP tagged all other SNP with MAF $> 0.1\%$
+and LD $r^2 > 0.98$.  Missing data?
+
+\subsection{Our Multiple-Locus Association Mapping Approach}
+\subsubsection{Overview}
+
+Eagle is an approach that identifies genomic regions of interest for a trait via the building of a (linear mixed) model. The model is built iteratively, without need of significance levels or thresholds. The model has two parts, a fixed effects part and a random effects part. The random effects 
+part models the error and association across the entire genome. It is from the random part that we are able to identify 
+the snp in strongest association with the trait.  We then move this snp out from the random effects part of the model and 
+into the fixed effects part.  This serves two purposes. First, by moving the snp into the fixed effects part of the model, we are accounting
+ for its effect and the effect of its neighbours in the random part of the model. So, when we come an look for the next snp in association 
+ with the trait, we do not find the neighbour of a snp already identified. Second, it allows us to discover snp-trait associations that would 
+ otherwise be masked.  Our iterative process is to fit the model to the data,  identify the snp in strongest association with the trait from the 
+ random effects part, move the snp into the fixed effects part and remove it from the random effects part, fit the new model, calculate if the new 
+ model is a "better" fit to the data.  If so, continue the process.  The snps that have been moved into the fixed effects part are the findings from the 
+ Eagle approach. Each snp identifies a separate region of the genome that houses genes that are influencing the trait. 
+ Below, we present the details of the Eagle algorithm. 
+ 
+
+
+\subsubsection{The specifics}
+
+Our linear mixed model for multiple-locus association mapping, given trait data $y^{(n \times 1)}$ which are collected on $n$ individuals, 
+is of the form 
+\begin{equation}
+y = X \tau + u_g + e
+\end{equation}
+where $X^{(n \times p)}$ is a known design matrix of full rank, $\tau^{(p \times 1)}$ is a vector of fixed effects parameters, $u_g^{(n \times 1)}$ is a vector 
+of genetic effects, and $e^{(n \times 1)}$ is a vector of residuals whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
+
+Suppose $s$ SNP have been already been found. Let $S={ S_1, S_2, \ldots, S_s}$ be the set of column indexes 
+
+
+
+\bibliographystyle{nature}
+\bibliography{bibcitelibrary}
 
 \end{document}
