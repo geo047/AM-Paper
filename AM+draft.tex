@@ -166,22 +166,20 @@ data were collected from 7, 073, 398 SNPs.  A reduced set of 359, 559 SNP across
 autosomes and sex chromosome was then identified, upon which all genome-wide analyses were based.  These SNP tagged all other SNP with MAF $> 0.1\%$
 and LD $r^2 > 0.98$.  Missing data?
 
-\subsection{Our Multiple-Locus Association Mapping Approach}
+\subsection{Eagle Approach for Multiple-locus Association Mapping}
 \subsubsection{Overview}
 
-Eagle is an approach that identifies genomic regions of interest for a trait via the building of a (linear mixed) model. The model is built iteratively, without need of significance levels or thresholds. The model has two parts, a fixed effects part and a random effects part. The random effects 
-part models the error and association across the entire genome. It is from the random part that we are able to identify 
-the snp in strongest association with the trait.  We then move this snp out from the random effects part of the model and 
-into the fixed effects part.  This serves two purposes. First, by moving the snp into the fixed effects part of the model, we are accounting
- for its effect and the effect of its neighbours in the random part of the model. So, when we come an look for the next snp in association 
- with the trait, we do not find the neighbour of a snp already identified. Second, it allows us to discover snp-trait associations that would 
- otherwise be masked.  Our iterative process is to fit the model to the data,  identify the snp in strongest association with the trait from the 
- random effects part, move the snp into the fixed effects part and remove it from the random effects part, fit the new model, calculate if the new 
- model is a "better" fit to the data.  If so, continue the process.  The snps that have been moved into the fixed effects part are the findings from the 
- Eagle approach. Each snp identifies a separate region of the genome that houses genes that are influencing the trait. 
- Below, we present the details of the Eagle algorithm. 
- 
 
+Eagle is an approach that identifies genomic regions of interest for a trait via the building of a (linear mixed) model. The model is built iteratively, without need of significance levels or thresholds. The model has two parts, a fixed effects part and a random effects part. The random effects part contains the error and an effect for the snp-trait association across the entire genome. It is from this effect 
+ that we are able to identify which snp is in strongest association with the trait.  
+ Our model building process is as follows. First we fit the current model to the data. Second, from the random effect for association, we identify which snp is in strongest association  with the trait.  Third, we move this snp from the random effects to the fixed effects.
+We do this to stop the neighbours of the chosen snp from being selected in subsequent iterations and 
+to give opportunity to snp in linkage disequilibrium with genes having lesser impact on the trait to be discovered. 
+ Fourth, we fit the  new model. Fifth, we calculate if the new model fits the data "better" than the current model.  If the new model is a better fit,  then we repeat the process.   Once the model building process is complete, the findings from Eagle are the set of snp that have been moved into the fixed effects part of the model.  These snp map the seperate regions of the genome that house genes that are influencing the trait.  
+ 
+ 
+ 
+ 
 
 \subsubsection{The specifics}
 
@@ -194,6 +192,7 @@ where $X^{(n \times p)}$ is a known design matrix of full rank, $\tau^{(p \times
 of genetic effects, and $e^{(n \times 1)}$ is a vector of residuals whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
 
 Suppose $s$ SNP have been already been found. Let $S={ S_1, S_2, \ldots, S_s}$ be the set of column indexes 
+
 
 
 
