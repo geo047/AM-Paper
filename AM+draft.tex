@@ -175,13 +175,63 @@ Eagle is an approach that identifies genomic regions of interest for a trait via
  Our model building process is as follows. First we fit the current model to the data. Second, from the random effect for association, we identify which snp is in strongest association  with the trait.  Third, we move this snp from the random effects to the fixed effects.
 We do this to stop the neighbours of the chosen snp from being selected in subsequent iterations and 
 to give opportunity to snp in linkage disequilibrium with genes having lesser impact on the trait to be discovered. 
- Fourth, we fit the  new model. Fifth, we calculate if the new model fits the data "better" than the current model.  If the new model is a better fit,  then we repeat the process.   Once the model building process is complete, the findings from Eagle are the set of snp that have been moved into the fixed effects part of the model.  These snp map the seperate regions of the genome that house genes that are influencing the trait.  
+ Fourth, we calculate if the new model is "better" than the current model. 
+If so,  the new model becomes the current model and we repeat the process.   Once the model building process is complete, the findings from Eagle are the set of snp that have been moved into the fixed effects part of the model.  These snp map the seperate regions of the genome that house genes that are influencing the trait.  
  
  
  
  
 
 \subsubsection{The specifics}
+The Eagle approach for multiple-locus association mapping is based on building a linear mixed model, iteratively, via forward 
+selection.  Suppose $s$ iterations of our model building process have already been performed. 
+The next iteration is performed as follows. First, we fit the current model to the data. The model is of the form 
+\begin{equation}
+y = X \tau + u_g + e
+\end{equation}
+where $y^{(n \times 1)}$ is a vector containing the quantitative trait values observed from $n$ individuals, 
+$X^{(n \times p)}$ is a known design matrix of full rank, 
+$\tau^{(p \times 1)}$ is a vector of $p$ fixed effects parameters, 
+$u_g^{(n \times 1)}$ is a vector 
+of genetic effects, and 
+$e^{(n \times 1)}$ is a vector of residuals whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
+
+
+
+
+Suppose phenotypic and genotypic data are collected from a genome-wide association study involving $n$ individuals. 
+Let $Y^{(n \times 1)}$ be a vector containing the quantitative trait data. Also, let $M^{(n \times L)}$ be a matrix of snp genotypes which have been collected from the $n$ individuals across $L$ snp loci. $M$ contains values -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
+
+To identify genomic regions which contain genes that influence the trait 
+
+We map genomic regions containing genes that influence the trait 
+
+
+
+
+Suppose $s$ iterations have been performed of our multiple locus association mapping algorithm. This means $s$ snp-trait 
+associations of significance have been identified. It also means $s$ separate regions containing putative genes 
+that influence the trait have been mapped.  To find perform iteration $s+1$ and the next snp, we perform the following steps.  First, 
+
+
+
+Let $M^{(n \times L} $be a matrix of snp genotypes which have been collected from the n individuals across L snp loci. These L loci are assumed to span the entire genome. M contains values -1, 0, and 1 corresponding to snp genotypes aa, ab, and bb, respectively. 
+
+S={S1,...Ss} be 
+
+
+
+
+
+
+
+
+Our model building process is as follows.  Suppose $s$ SNP have already been found. First we fit the current model to the data.
+
+
+
+
+Suppose our iterative model building procedure has already found $s$ snp. Then
 
 Our linear mixed model for multiple-locus association mapping, given trait data $y^{(n \times 1)}$ which are collected on $n$ individuals, 
 is of the form 
@@ -191,7 +241,14 @@ y = X \tau + u_g + e
 where $X^{(n \times p)}$ is a known design matrix of full rank, $\tau^{(p \times 1)}$ is a vector of fixed effects parameters, $u_g^{(n \times 1)}$ is a vector 
 of genetic effects, and $e^{(n \times 1)}$ is a vector of residuals whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
 
-Suppose $s$ SNP have been already been found. Let $S={ S_1, S_2, \ldots, S_s}$ be the set of column indexes 
+Now, let $M^{(n \times L)}$ be a matrix of genotypes collected from $L$ snp.  The 
+matrix contains the values -1, 0, and 1, corresponding to the snp genotypes AA, AB, and BB, respectively.  It is assumed that 
+missing genotypes have been imputed. 
+
+Suppose $s$ SNP have already been found. 
+
+
+$S={ S_1, S_2, \ldots, S_s}$ be the set of column indexes 
 
 
 
