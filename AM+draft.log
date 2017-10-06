@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  6 OCT 2017 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  6 OCT 2017 13:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -158,23 +158,13 @@ File: time-eps-converted-to.pdf Graphic file (type pdf)
 <use time-eps-converted-to.pdf>
 Package pdftex.def Info: time-eps-converted-to.pdf used on input line 77.
 (pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
-
-
-LaTeX Warning: Reference `fig_runtimes' on page 6 undefined on input line 81.
-
-
-LaTeX Warning: Reference `fig_runtimes' on page 6 undefined on input line 84.
-
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 85.
-[6] [7 <./time-eps-converted-to.pdf>]
-
-LaTeX Warning: Reference `fig_memory' on page 8 undefined on input line 94.
-
+ [6] [7 <./time-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <mem.eps>
 (epstopdf)                    date: 2016-12-07 12:48:29
 (epstopdf)                    size: 28055 bytes
@@ -185,46 +175,14 @@ Package epstopdf Info: Source file: <mem.eps>
 em.eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
+
 <mem-eps-converted-to.pdf, id=41, 561.09625pt x 722.7pt>
 File: mem-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mem-eps-converted-to.pdf>
 Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 102.
 (pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
-
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 118.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-18.
-
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 118.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-18.
-
-[8] [9 <./mem-eps-converted-to.pdf>]
-
-LaTeX Warning: Reference `fig_power_multiple' on page 10 undefined on input lin
-e 121.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 10 undefined on input line 
-121.
-
-
-LaTeX Warning: Reference `fig_threshold' on page 10 undefined on input line 125
-.
-
-
-LaTeX Warning: Reference `fig_threshold' on page 10 undefined on input line 129
-.
-
+ [8] [9 <./mem-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <powerMultiple.eps>
 (epstopdf)                    date: 2017-02-07 09:40:37
 (epstopdf)                    size: 424631 bytes
@@ -235,6 +193,7 @@ Package epstopdf Info: Source file: <powerMultiple.eps>
 d-to.pdf powerMultiple.eps>
 (epstopdf)             \includegraphics on input line 135.
 Package epstopdf Info: Output file is already uptodate.
+
 <powerMultiple-eps-converted-to.pdf, id=56, 561.09625pt x 722.7pt>
 File: powerMultiple-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -278,39 +237,29 @@ File: threshold-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: threshold-eps-converted-to.pdf used on input line 148.
 
 (pdftex.def)             Requested size: 284.52756pt x 366.46587pt.
-
-
-LaTeX Warning: Citation `Nicod:2016aa' on page 10 undefined on input line 163.
-
-[10] [11 <./powerMultiple-eps-converted-to.pdf>] [12 <./powerSingle-eps-convert
-ed-to.pdf>] [13 <./threshold-eps-converted-to.pdf>] [14] [15] [16]
-(./AM+draft.bbl) [17] (./AM+draft.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [10] [11 <./powerMultiple-eps-converted-to.pdf>] [12 <./powerSingle-eps-conver
+ted-to.pdf>] [13 <./threshold-eps-converted-to.pdf>] [14] [15] (./AM+draft.bbl 
+[16]) [17] (./AM+draft.aux) ) 
 Here is how much of TeX's memory you used:
  1542 strings out of 493089
  22461 string characters out of 6134842
- 82253 words of memory out of 5000000
+ 82309 words of memory out of 5000000
  5017 multiletter control sequences out of 15000+600000
  9763 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,6n,23p,1427b,239s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on AM+draft.pdf (17 pages, 291334 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmti10.pfb>
+Output written on AM+draft.pdf (17 pages, 291030 bytes).
 PDF statistics:
  148 PDF objects out of 1000 (max. 8388607)
  101 compressed objects within 2 object streams
