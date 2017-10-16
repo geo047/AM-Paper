@@ -183,27 +183,43 @@ If so,  the new model becomes the current model and we repeat the process.   Onc
  
 
 \subsubsection{The specifics}
+
+%%Suppose data are collected from a genome-wide association study.  The study involves $n$ individuals. 
+%Let $y^{(n \times 1)}$ be the vector containing the quantitative trait data. 
+%Let $M^{(n \times L)} = [m_1 m_2 \ldots m_L]$ be the matrix containing the genotype data. Snp genotypes 
+%are collected from $L$ loci. The vector $m_j^{(n \times 1)}$ contains the snp genotypes for the $j$th snp. The genotypes 
+%are recoded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
+
+
 The Eagle approach for multiple-locus association mapping is based on building a linear mixed model, iteratively, via forward 
-selection.  Suppose $s$ iterations of our model building process have already been performed. 
-The next iteration is performed as follows. First, we fit the current model to the data. The model is of the form 
+selection.  Suppose $s$ iterations of our model building process have already been performed. This means $s$ snp-trait 
+associations which identify $s$ separate genomic regions of interest have been found.  To perform the $s+1$ iteration of 
+our model building procedure, we perform the following. 
+
+First, we fit the current model to the data. 
+Let $y^{(n \times 1)}$ be the vector containing the quantitative trait data. 
+Let $M^{(n \times L)} = [m_1 m_2 \ldots m_L]$ be the matrix containing the genotype data which has been collected 
+from $L$ loci that span the genome. Here, the vector $m_j^{(n \times 1)}$ contains the $j$th snp genotypes for the $n$ individuals. 
+The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively.
+
+The model is of the form 
 \begin{equation}
 y = X \tau + u_g + e
 \end{equation}
-where $y^{(n \times 1)}$ is a vector containing the quantitative trait values observed from $n$ individuals, 
-$X^{(n \times p)}$ is a known design matrix of full rank, 
-$\tau^{(p \times 1)}$ is a vector of $p$ fixed effects parameters, 
-$u_g^{(n \times 1)}$ is a vector 
-of genetic effects, and 
-$e^{(n \times 1)}$ is a vector of residuals whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
+where 
+$X^{(n \times p)}$ is a known design matrix of full rank and may contain data on non-genetic effects such as age and height 
+or principal component values to account for population structure (ref). The vector 
+$\tau^{(p \times 1)}$ has $p$ fixed effects parameters. The vector 
+$u_g^{(n \times 1)}$ contains the 
+genetic effects. The vector of residuals is 
+$e^{(n \times 1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
+
+Up to this point,  this model differs little from standard linear mixed models for association mapping (refs). 
+However, 
+it is how we specify $u_g$ that distinguishes our model from others. The genetic effects $u_g$ are modelled as 
 
 
-Suppose a genome-wide association study is conducted. Phenotypic and genotype data are collected. 
 
-Suppose phenotypic and genotypic data are collected from a genome-wide association study involving $n$ individuals. 
-Let $y^{(n \times 1)}$ be a vector containing the quantitative trait data. 
-Also, let $M^{(n \times L)} = [m_1 m_2 \ldots m_L]$ be a matrix of snp genotypes which have been collected from $L$ snp loci 
-where $m_j^{(n \times 1)}$ is the vector of snp genotypes collected on the $j$ snp. 
-The vector $m_j$  contains values -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
 
 
