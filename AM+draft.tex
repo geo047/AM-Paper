@@ -191,85 +191,85 @@ If so,  the new model becomes the current model and we repeat the process.   Onc
 %are recoded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
 
+
+
 The Eagle approach for multiple-locus association mapping is based on building a linear mixed model, iteratively, via forward 
 selection.  Suppose $s$ iterations of our model building process have already been performed. This means $s$ snp-trait 
-associations which identify $s$ separate genomic regions of interest have been found.  To perform the $s+1$ iteration of 
-our model building procedure, we perform the following. 
+associations have been identified.  It also means that $s$ separate genomic regions of interest have been found.  
 
+To perform the $s+1$th  iteration of 
+our model building procedure, we do the following. 
 First, we fit the current model to the data. 
-Let $y^{(n \times 1)}$ be the vector containing the quantitative trait data. 
-Let $M^{(n \times L)} = [m_1 m_2 \ldots m_L]$ be the matrix containing the genotype data which has been collected 
-from $L$ loci that span the genome. Here, the vector $m_j^{(n \times 1)}$ contains the $j$th snp genotypes for the $n$ individuals. 
-The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively.
+Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of ordinal numbers where $S_k$ is the $S_k$th ordered snp that was 
+selected in the $k$th iteration. For example, if three iterations of our model building procedure 
+have been performed and say the 500023rd, 15th, and 420th, 
+snp were selected, then $S=\{500023, 15, 420\}$. 
+Let $y^{(n \; \times \;1)}$ be a vector containing the quantitative trait data. 
+Let $M^{(n \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
+from $L$ loci that span the genome.  The columns of this matrix are most commonly placed in map ordered but 
+this is not a requirement. 
+The vector $m_j^{(n \; \times \; 1)}$ contains the genotypes, from the $n$ individuals,  for the $j$th snp. 
+The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
-The model is of the form 
+
+gocard123
+
+The (current) model is of the form 
 \begin{equation}
+\label{eq1}
 y = X \tau + u_g + e
 \end{equation}
 where 
-$X^{(n \times p)}$ is a known design matrix of full rank and may contain data on non-genetic effects such as age and height 
-or principal component values to account for population structure (ref). The vector 
-$\tau^{(p \times 1)}$ has $p$ fixed effects parameters. The vector 
-$u_g^{(n \times 1)}$ contains the 
+$X^{(n \; \times \; p)}$ is a known design matrix of full rank and may contain data on non-genetic effects such as age and height 
+and/or principal component values to account for population structure (ref). The vector 
+$\tau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters. The vector 
+$u_g^{(n \; \times \; 1)}$ contains the 
 genetic effects. The vector of residuals is 
-$e^{(n \times 1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
-
-Up to this point,  this model differs little from standard linear mixed models for association mapping (refs). 
+$e^{(n \; \times \;1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \; \times \; n)})$. 
+So far,  this model differs little from standard linear mixed models for association mapping (refs). 
 However, 
-it is how we specify $u_g$ that distinguishes our model from others. The genetic effects $u_g$ are modelled as 
+it is how we specify $u_g$ that distinguishes our model from others. 
 
-
-
-
-
-
-
-
-Suppose $s$ iterations have been performed of our multiple locus association mapping algorithm. This means $s$ snp-trait 
-associations of significance have been identified. It also means $s$ separate regions containing putative genes 
-that influence the trait have been mapped.  To find perform iteration $s+1$ and the next snp, we perform the following steps.  First, 
-
-
-
-Let $M^{(n \times L} $be a matrix of snp genotypes which have been collected from the n individuals across L snp loci. These L loci are assumed to span the entire genome. M contains values -1, 0, and 1 corresponding to snp genotypes aa, ab, and bb, respectively. 
-
-S={S1,...Ss} be 
-
-
-
-
-
-
-
-
-Our model building process is as follows.  Suppose $s$ SNP have already been found. First we fit the current model to the data.
-
-
-
-
-Suppose our iterative model building procedure has already found $s$ snp. Then
-
-Our linear mixed model for multiple-locus association mapping, given trait data $y^{(n \times 1)}$ which are collected on $n$ individuals, 
-is of the form 
+The genetic effects $u_g$ are modelled as 
 \begin{equation}
-y = X \tau + u_g + e
+\label{eq2}
+u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + M_{-S} a_{-S}
 \end{equation}
-where $X^{(n \times p)}$ is a known design matrix of full rank, $\tau^{(p \times 1)}$ is a vector of fixed effects parameters, $u_g^{(n \times 1)}$ is a vector 
-of genetic effects, and $e^{(n \times 1)}$ is a vector of residuals whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \times n)})$. 
+where $m_{S_k}^{(n \; \times \; 1)}$ is the vector of genotypes for the $S_k$th snp locus which is the $k$th selected snp, 
+$a_{S_k}$ is the additive effect of the $S_k$th snp locus, $M_{-S}^{(n \; \times \; L-s)}$ is the matrix of  snp genotypes 
+with the data for the selected snp in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
+$a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
+The sum of terms on the left hand side are fixed effects.  The other term is a random effect.  The sum of terms accounts 
+for the additive effects of genes that are in linkage disequilibrium with the selected snp. The other term models 
+snp-trait associations along the entire genome, except for those snp that have already been selected. This is a very simple genetic model but it 
+is effective for discovering snp-trait associations. It also reduces the computational cost of our model building procedure. 
 
-Now, let $M^{(n \times L)}$ be a matrix of genotypes collected from $L$ snp.  The 
-matrix contains the values -1, 0, and 1, corresponding to the snp genotypes AA, AB, and BB, respectively.  It is assumed that 
-missing genotypes have been imputed. 
+%The simplicity of our genetic model also reduces the cost of computation. 
 
-Suppose $s$ SNP have already been found. 
+Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood estimation. 
+
+Third, we identify the $(s+1)$th snp that is in strongest association with the trait, based on the maximum score statistic
+$t_j^2 = \frac{ \widetilde{a} _j^2}{\textrm{var}(\widetilde{a}_j)}$ where $\widetilde{a}_j$ is the best linear unbiased predictor (BLUP), 
+and $\textrm{var}(\widetilde{a}_j)$ is its variance. This statistic is not only appealing intuitively, where we 
+identify a snp based on its (random) effect size and accuracy, but is theoretically justified.  It follows from outlier detection 
+in linear and linear mixed models (ref). 
+
+Fourth, we determine the importance of the $(s+1)$th selected snp via a model selection strategy. 
+We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected snp.  We then fit this new model to the data
+via maximum likelihood and calculate its extended Bayesian information criteria \cite{chen2008extended}. 
+
+We reform (\ref{eq2}) where 
+$S$ contains $s+1$ selected snp. We then fit (\ref{eq1}) and (\ref{eq2}) to the data via maximum likelihood and calculate $extBIC$.
+We found this model selection criterium to perform better for association mapping problems than standard model selection 
+criteria such as BIC and IAC, as was also found by XXXXX.  If the extBIC value is less than the extBIC for the previous model, 
+then we add the $s+1$th snp  to the model and repeat the process. If  the extBIC value is greater than or equal to the extBIC for the 
+previous model, then our iterative procedure is finished.  The set of snp in strongest association with the trait is the $s$ snp
+previously identified. 
 
 
-$S={ S_1, S_2, \ldots, S_s}$ be the set of column indexes 
 
 
-
-
-\bibliographystyle{nature}
+\bibliographystyle{naturemag}
 \bibliography{bibcitelibrary}
 
 \end{document}
