@@ -1,26 +1,32 @@
-\documentclass[12pt]{article}
-\usepackage{graphicx}
+\documentclass{nature}
+\bibliographystyle{naturemag}
 
-\linespread{1.5}
-\addtolength{\oddsidemargin}{-2.5cm}
+%%\usepackage{graphicx}
+
+%%\linespread{1.5}
+%%\addtolength{\oddsidemargin}{-2.5cm}
 %\addtolength{\evensidemargin}{-3cm}
-\addtolength{\textwidth}{2.5cm}
+%%\addtolength{\textwidth}{2.5cm}
 \begin{document}
 
 \title{Making multiple-locus association mapping on a genome-wide scale routine}
-\author{Andrew W. George and Joshua Bowden}
+\author{Andrew W. George$^1$ and Joshua Bowden$^2$}
 
 \maketitle
 
+\begin{affiliations}
+\item Data61, CSIRO, Brisbane, Australia.
+\item IM \&T, CSIRO, Brisbane, Australia.
+\end{affiliations}
 
-\abstract{Since the earliest of genome-wide association studies, a key shortcoming in how their data have been analysed has persisted. The strength of association between a marker locus and trait is measured for each locus separately, on a locus-by-locus basis. Multiple-locus methods that map multiple locus-trait associations simultaneously have been available for some time. However, they have attracted little attention. They can be demanding, computationally, and their results are not always easy to interpret. Yet, it is widely accepted that multiple-locus methods are superior, statistically, to locus-by-locus methods. Here, we present our method that makes the multiple-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. 
+\begin{abstract}
+Since the earliest of genome-wide association studies, a key shortcoming in how their data have been analysed has persisted. The strength of association between a marker locus and trait is measured for each locus separately, on a locus-by-locus basis. Multiple-locus methods that map multiple locus-trait associations simultaneously have been available for some time. However, they have attracted little attention. They can be demanding, computationally, and their results are not always easy to interpret. Yet, it is widely accepted that multiple-locus methods are superior, statistically, to locus-by-locus methods. Here, we present our method that makes the multiple-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. 
 We call our method AMplus.  AMplus produces results faster than competing multiple-locus methods and often with greater statistical power. Also, it is just a little slower than the fastest single-locus linear mixed model implementations. 
 AMplus is freely available as a fully documented R package. 
-}
+\end{abstract}
 
 
 
-\section{Introduction}
 
 
 Over the past decade,  Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine.
@@ -206,8 +212,7 @@ have been performed and say the 500023rd, 15th, and 420th,
 snp were selected, then $S=\{500023, 15, 420\}$. 
 Let $y^{(n \; \times \;1)}$ be a vector containing the quantitative trait data. 
 Let $M^{(n \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
-from $L$ loci that span the genome.  The columns of this matrix are most commonly placed in map ordered but 
-this is not a requirement. 
+from $L$ loci that span the genome.  It is common for the columns of this matrix to be in map order but this is not a requirement. 
 The vector $m_j^{(n \; \times \; 1)}$ contains the genotypes, from the $n$ individuals,  for the $j$th snp. 
 The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
@@ -239,9 +244,11 @@ where $m_{S_k}^{(n \; \times \; 1)}$ is the vector of genotypes for the $S_k$th 
 $a_{S_k}$ is the additive effect of the $S_k$th snp locus, $M_{-S}^{(n \; \times \; L-s)}$ is the matrix of  snp genotypes 
 with the data for the selected snp in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
 $a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
-The sum of terms on the left hand side are fixed effects.  The other term is a random effect.  The sum of terms accounts 
+The terms in the summation on the left hand side are fixed effects.  The other term is a random effect.  The terms 
+in the summation account 
 for the additive effects of genes that are in linkage disequilibrium with the selected snp. The other term models 
-snp-trait associations along the entire genome, except for those snp that have already been selected. This is a very simple genetic model but it 
+snp-trait associations along the entire genome, except for those snp that have already been selected. 
+This is a simple genetic model but it 
 is effective for discovering snp-trait associations. It also reduces the computational cost of our model building procedure. 
 
 %The simplicity of our genetic model also reduces the cost of computation. 
@@ -256,20 +263,26 @@ in linear and linear mixed models (ref).
 
 Fourth, we determine the importance of the $(s+1)$th selected snp via a model selection strategy. 
 We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected snp.  We then fit this new model to the data
-via maximum likelihood and calculate its extended Bayesian information criteria \cite{chen2008extended}. 
+via maximum likelihood and calculate its extended Bayesian information criteria (ExtBIC) \cite{chen2008extended}.  The ExtBIC is a model selection measure that takes into account the number of unknown parameters and the complexity 
+of the model space.  It is especially well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. If this new model has a larger ExtBIC than the current model, then the $s+1$th selected snp is added to 
+the current model and the above process is repeated. If this new model has a smaller ExtBIC than the current model, then the 
+model building process is complete. The set of snp in strongest association with the trait is the $s$ snp previously identified. 
 
-We reform (\ref{eq2}) where 
-$S$ contains $s+1$ selected snp. We then fit (\ref{eq1}) and (\ref{eq2}) to the data via maximum likelihood and calculate $extBIC$.
-We found this model selection criterium to perform better for association mapping problems than standard model selection 
-criteria such as BIC and IAC, as was also found by XXXXX.  If the extBIC value is less than the extBIC for the previous model, 
-then we add the $s+1$th snp  to the model and repeat the process. If  the extBIC value is greater than or equal to the extBIC for the 
-previous model, then our iterative procedure is finished.  The set of snp in strongest association with the trait is the $s$ snp
-previously identified. 
-
-
-
+The Eagle approach has its foundations in the work of XXXX and XXXXX. Here, the authors developed a more 
+general approach and have used it for mapping QTL in linkage mapping studies in plants (refs).  
 
 \bibliographystyle{naturemag}
-\bibliography{bibcitelibrary}
+\bibliography{biblibrary}
+
+
+\begin{addendum}
+ \item Put acknowledgements here.
+ \item[Competing Interests] The authors declare that they have no
+competing financial interests.
+ \item[Correspondence] Correspondence and requests for materials
+should be addressed to A.B.C.~(email: myaddress@nowhere.edu).
+\end{addendum}
+
+
 
 \end{document}
