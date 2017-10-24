@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+pdflatex AM+draft
+bibitex AM+draft
+pdflatex AM+draft
+pdflatex AM+draft

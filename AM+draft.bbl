@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{nicod2016genome}
+\bibinfo{author}{Nicod, J.} \emph{et~al.}
+\newblock \bibinfo{title}{Genome-wide association of multiple complex traits in
+  outbred mice by ultra-low-coverage sequencing}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}  (\bibinfo{year}{2016}).
+
+\bibitem{verbyla2007analysis}
+\bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Cullis, B.~R.} \&
+  \bibinfo{author}{Thompson, R.}
+\newblock \bibinfo{title}{The analysis of qtl by simultaneous use of the full
+  linkage map}.
+\newblock \emph{\bibinfo{journal}{Theoretical and Applied Genetics}}
+  \textbf{\bibinfo{volume}{116}}, \bibinfo{pages}{95} (\bibinfo{year}{2007}).
+
+\bibitem{chen2008extended}
+\bibinfo{author}{Chen, J.} \& \bibinfo{author}{Chen, Z.}
+\newblock \bibinfo{title}{Extended bayesian information criteria for model
+  selection with large model spaces}.
+\newblock \emph{\bibinfo{journal}{Biometrika}} \textbf{\bibinfo{volume}{95}},
+  \bibinfo{pages}{759--771} (\bibinfo{year}{2008}).
+
+\bibitem{verbyla2012rwgaim}
+\bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Taylor, J.~D.} \&
+  \bibinfo{author}{Verbyla, K.~L.}
+\newblock \bibinfo{title}{Rwgaim: an efficient high-dimensional random whole
+  genome average (qtl) interval mapping approach}.
+\newblock \emph{\bibinfo{journal}{Genetics Research}}
+  \textbf{\bibinfo{volume}{94}}, \bibinfo{pages}{291--306}
+  (\bibinfo{year}{2012}).
+
+\bibitem{verbyla2014whole}
+\bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Cavanagh, C.~R.} \&
+  \bibinfo{author}{Verbyla, K.~L.}
+\newblock \bibinfo{title}{Whole-genome analysis of multienvironment or
+  multitrait qtl in magic}.
+\newblock \emph{\bibinfo{journal}{G3: Genes, Genomes, Genetics}}
+  \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{1569--1584}
+  (\bibinfo{year}{2014}).
+
+\end{thebibliography}
