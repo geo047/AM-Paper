@@ -264,82 +264,40 @@ the current model and the above process is repeated. If this new model has a sma
 model building process is complete. The set of snp in strongest association with the trait is the $s$ snp previously identified. 
 
 \subsubsection{Reducing the dimension of the model}
-
 In practice, estimating the parameters of (\ref{eq2}) can be demanding, computationally. 
 The vector $a_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
 $L$, the number of snp, can be extremely large.  An alternative model is given by 
-Verbyla. They show how to reformulate (\ref{eq2}) as 
-.....
-where ..... and XXX is calculated via s. v. d.  Although it may not be obvious, the two models are equivalent, 
+Verbyla. 
+They show how to reformulate (\ref{eq2}) to be a model with a random effect with only $n$ elements
+\begin{equation}
+\label{eq3}
+u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + (M_{-S} M_{-S}^T)^{1/2} a^*_{-S}
+\end{equation}
+where $a^* \sim N(0, \sigma_a^2 I^{(n \; \times \;  n)})$, and 
+$(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via single value decomposition (ref).  
+Although it may not be obvious, the two models are equivalent, 
 having identical variance structures. Yet, the computational cost of model (\ref{eq3}) compared to 
-model \ref{eq2}, in most modern studies,  is much less because the sample size $n$ is 
-often much smaller than the number of snp $L$. 
+model (\ref{eq2}) is much less due to the random term having only $n$ effects needing estimating. 
 
 Verbyla go on to show how to recover $\widetilde{a}$ from estimates from model (3) with 
 \begin{equation}
 \widetilde{a} = \left [ M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \right ] \widetilde{a}^*
 \end{equation}
-and its variance matrix with 
+where its variance matrix is
 \begin{equation}
 \label{eq4}
 \textrm{var}(\widetilde{a}) = M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \textrm{var}(\widetilde{a}^*) (M_{-S} M_{-S}^T)^{-1/2} M_{-S}
 \end{equation}
-These values are needed to calculate the score statistic $t_j^2$ for identifying the snp in strongest association with the trait. 
+These values are needed in order to calculate the score statistic $t_j^2$ for identifying the snp in strongest association with the trait. 
 Fortunately, when calculating $t_j^2$, only the diagonal elements of the variance matrix are needed which simplifies the  calculation. 
 of (\ref{eq4}). 
 
-Fortunately
-
-
-
-Since 
-$\widetilde{a}$ and $\textrm{var} (\widetilde{a}) $ are needed  to calculate $t_j^2$, as described in 
-Verbyla \cite{verbyla2012rwgaim, verbyla2014whole}, 
-\begin{equation}
-\widetilde{a} = \left [ M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \right ] \widetilde{a}^*
-\end{equation}
-with variance matrix
-\begin{equation}
-\textrm{var}(\widetilde{a}) = M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \textrm{var}(\widetilde{a}^*) (M_{-S} M_{-S}^T)^{-1/2} M_{-S}
-\end{equation}
-Fortunately, only the diagonal elements of the variance matrix are needed which simplifies its calculation. 
 
 
 
 
 
 
-
-
-
-
-
-
-It is not uncommon in genome wide association studies for the number of 
-snp ($L$) to be many orders of magnitude larger than the sample size ($n$). 
-As a result, estimating $a$ in (\ref{eq2}) can be demanding, computationally. 
-We avoid having to estimate $a$ directly by instead reformulating (\ref{eq2}) as
-the dimension reduced model 
-\begin{equation}
-\label{eq3}
-u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + (M_{-S} M_{-S}^T)^{1/2} a^*_{-S}
-\end{equation}
-where $a^*$ is a $n \times 1$ vector of random effects that follows $N(0, \sigma_a^2 I^{(n \; \times \;  n)})$, and 
-$(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via single value decomposition (ref). 
-Models (\ref{eq2})  and (\ref{eq3}) are equivalent models 
-\cite{verbyla2012rwgaim, verbyla2014whole}. They have the same variance structure, 
-despite the random effect in (\ref{eq3}) being only of size $n$.  This allows us to use (\ref{eq3}) in place of 
-(\ref{eq2}) in the above described Eagle approach, affording us considerable computational benefits. Since 
-$\widetilde{a}$ and $\textrm{var} (\widetilde{a}) $ are needed  to calculate $t_j^2$, as described in 
-Verbyla \cite{verbyla2012rwgaim, verbyla2014whole}, 
-\begin{equation}
-\widetilde{a} = \left [ M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \right ] \widetilde{a}^*
-\end{equation}
-with variance matrix
-\begin{equation}
-\textrm{var}(\widetilde{a}) = M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \textrm{var}(\widetilde{a}^*) (M_{-S} M_{-S}^T)^{-1/2} M_{-S}
-\end{equation}
-Fortunately, only the diagonal elements of the variance matrix are needed which simplifies its calculation. 
 
 
 
