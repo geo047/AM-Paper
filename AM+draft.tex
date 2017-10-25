@@ -294,10 +294,42 @@ of (\ref{eq4}).
 
 
 
+\subsection{Comparison Methods}
+Overview - 
+  * Eagle compared to six other association mapping methods.  
+  * 4 of these methods are multiple-locus methods
+  * 2 of these methods are single-locus methods. 
+  * methods were chosen because they were specifically designed for association mapping and have been implemented in computer
+    software. 
+  * Core features summarized in Table X. 
+  * For each method, a summary of its underlying statistical theory is presented below. 
 
 
 
+Multiple locus methods
 
+\subsubsection{BigRR}
+BigRR is an R package that implements generalised ridge regression for
+the analysis of genetic data (ref). Generalised ridge regression is an
+extension of
+ridge regression. It is based on linear models and is a regularisation
+method.  When applied to the analysis of snp data, unlike ridge
+regression
+that shrinks snp effects by a constant amount, generalised ridge
+regression allows the amount of shrinkage to vary across snp.
+The challenge though is how to turn the size estimates of the snp
+Effects into measures of significance. Xxx suggest permutation but we
+instead
+rely on stability selection (described below).
+
+
+
+  *  \cite{shen2013novel}
+  
+  
+
+
+Single locus methods
 
 
 
