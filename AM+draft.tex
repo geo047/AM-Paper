@@ -267,7 +267,7 @@ model building process is complete. The set of snp in strongest association with
 In practice, estimating the parameters of (\ref{eq2}) can be demanding, computationally. 
 The vector $a_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
 $L$, the number of snp, can be extremely large.  An alternative model is given by 
-Verbyla. 
+Verbyla \cite{verbyla2012rwgaim,verbyla2014whole}. 
 They show how to reformulate (\ref{eq2}) to be a model with a random effect with only $n$ elements
 \begin{equation}
 \label{eq3}
@@ -279,7 +279,7 @@ Although it may not be obvious, the two models are equivalent,
 having identical variance structures. Yet, the computational cost of model (\ref{eq3}) compared to 
 model (\ref{eq2}) is much less due to the random term having only $n$ effects needing estimating. 
 
-Verbyla go on to show how to recover $\widetilde{a}$ from estimates from model (3) with 
+Verbyla \cite{verbyla2012rwgaim,verbyla2014whole} go on to show how to recover $\widetilde{a}$ from estimates from model (3) with 
 \begin{equation}
 \widetilde{a} = \left [ M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \right ] \widetilde{a}^*
 \end{equation}
@@ -294,44 +294,53 @@ of (\ref{eq4}).
 
 
 
-\subsection{Comparison Methods}
-Overview - 
-  * Eagle compared to six other association mapping methods.  
-  * 4 of these methods are multiple-locus methods
-  * 2 of these methods are single-locus methods. 
-  * methods were chosen because they were specifically designed for association mapping and have been implemented in computer
-    software. 
-  * Core features summarized in Table X. 
-  * For each method, a summary of its underlying statistical theory is presented below. 
+\subsection{Comparison Packages and Methods}
+
+The performance of the Eagle package is compared against seven other genome-wide association packages.
+Five of these packages, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the multiple locus analysis of data from genome-wide association studies. 
+The other two packages, GEMMA, and FaST-LMM implement single-locus association mapping methods. 
+The packages 
+differ in their features (summarized in Table X).  The packages also differ in their underlying methods (summarized below). 
+
+\subsubsection{Multiple locus methods}
+
+\textbf{BigRR:} The BigRR package implements generalised ridge regression  for
+the analysis of genetic data \cite{shen2013novel}.  It is a regularisation method in that it produces regression solutions 
+that have higher bias than ordinary least squares but reduced variance for improved prediction accuracy. The underlying 
+model can be formulated as  $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of genetic effects, and each genetic 
+effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$.  Here, the 
+amount of shrinkage is allowed to vary across the genetic (snp) effects which differs to 
+standard ridge regression where the shrinkage is constant. 
+Generalised ridge regression is apt at estimating the effect sizes of snp on a genome-wide scale but  obtaining their 
+statistical significance is not straightforward. This makes using the BigRR package for association mapping a challenge. 
+Shen \cite{shen2013novel} suggest permutation as a way of identifying the genomic regions of interest 
+but we instead employ stability selection (described below).
 
 
+\textbf{glmnet:}  The glmnet package is a general purpose statistical package that implements elastic net, a regularisation 
+method for generalised linear models  \cite{zou2005regularization}.  The model used for association mapping is 
+$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the regression coefficient for the $l$th snp. 
+It's penalty function for regularisation is a mixture of $\ell_1$ (lasso) and $\ell_2$ (ridge regression).  This allows elastic net to avoid some of the
+limitations of lasso (ref) while still being able to perform shrinkage and variable selection, simultaneously.  The glmnet package 
+implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. However, when 
+applied to the analysis of data from genome-wide association studies we found this yielded findings containing a high proportion of 
+false positives.  We instead fixed the shrinkage parameter to a suitable value 
+and employed stability selection to estimate the significance of the snp regression coefficients, empirically (see below).  
 
-Multiple locus methods
-
-\subsubsection{BigRR}
-BigRR is an R package that implements generalised ridge regression for
-the analysis of genetic data (ref). Generalised ridge regression is an
-extension of
-ridge regression. It is based on linear models and is a regularisation
-method.  When applied to the analysis of snp data, unlike ridge
-regression
-that shrinks snp effects by a constant amount, generalised ridge
-regression allows the amount of shrinkage to vary across snp.
-The challenge though is how to turn the size estimates of the snp
-Effects into measures of significance. Xxx suggest permutation but we
-instead
-rely on stability selection (described below).
-
-
-
-  *  \cite{shen2013novel}
   
+  MMLM
+  
+  r2VIM
+  
+  LMM-lasso
   
 
 
 Single locus methods
 
+gemma
 
+Fast-LMM
 
 
 %%\bibliographystyle{naturemag}

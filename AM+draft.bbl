@@ -44,4 +44,29 @@
   \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{1569--1584}
   (\bibinfo{year}{2014}).
 
+\bibitem{shen2013novel}
+\bibinfo{author}{Shen, X.}, \bibinfo{author}{Alam, M.}, \bibinfo{author}{Fikse,
+  F.} \& \bibinfo{author}{R{\"o}nneg{\aa}rd, L.}
+\newblock \bibinfo{title}{A novel generalized ridge regression method for
+  quantitative genetics}.
+\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{193}},
+  \bibinfo{pages}{1255--1268} (\bibinfo{year}{2013}).
+
+\bibitem{zou2005regularization}
+\bibinfo{author}{Zou, H.} \& \bibinfo{author}{Hastie, T.}
+\newblock \bibinfo{title}{Regularization and variable selection via the elastic
+  net}.
+\newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
+  Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{67}},
+  \bibinfo{pages}{301--320} (\bibinfo{year}{2005}).
+
+\bibitem{efron2004least}
+\bibinfo{author}{Efron, B.}, \bibinfo{author}{Hastie, T.},
+  \bibinfo{author}{Johnstone, I.}, \bibinfo{author}{Tibshirani, R.}
+  \emph{et~al.}
+\newblock \bibinfo{title}{Least angle regression}.
+\newblock \emph{\bibinfo{journal}{The Annals of statistics}}
+  \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{407--499}
+  (\bibinfo{year}{2004}).
+
 \end{thebibliography}
