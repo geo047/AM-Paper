@@ -294,37 +294,52 @@ of (\ref{eq4}).
 
 
 
-\subsection{Comparison Packages and Methods}
+\subsection{Comparison Methods}
 
-The performance of the Eagle package is compared against seven other genome-wide association packages.
-Five of these packages, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the multiple locus analysis of data from genome-wide association studies. 
-The other two packages, GEMMA, and FaST-LMM implement single-locus association mapping methods. 
+We compared the performance of Eagle against seven other association mapping applications. 
+Five of these applications, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the multiple locus analysis of data from genome-wide association studies. 
+The other two applications, GEMMA, and FaST-LMM implement single-locus association mapping methods. 
 The packages 
 differ in their features (summarized in Table X).  The packages also differ in their underlying methods (summarized below). 
 
 \subsubsection{Multiple locus methods}
 
-\textbf{BigRR:} The BigRR package implements generalised ridge regression  for
-the analysis of genetic data \cite{shen2013novel}.  It is a regularisation method in that it produces regression solutions 
+\textbf{BigRR:}  In the BigRR package,  generalised ridge regression is implemented  for
+the analysis of genetic data \cite{shen2013novel}.  Generalised ridge regression 
+ is a regularisation method in that it produces regression solutions 
 that have higher bias than ordinary least squares but reduced variance for improved prediction accuracy. The underlying 
-model can be formulated as  $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of genetic effects, and each genetic 
-effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$.  Here, the 
-amount of shrinkage is allowed to vary across the genetic (snp) effects which differs to 
+model is  $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of genetic effects, and each genetic 
+effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$.  The 
+amount of shrinkage is allowed to vary across the genetic (snp) effects. This differs to 
 standard ridge regression where the shrinkage is constant. 
 Generalised ridge regression is apt at estimating the effect sizes of snp on a genome-wide scale but  obtaining their 
-statistical significance is not straightforward. This makes using the BigRR package for association mapping a challenge. 
-Shen \cite{shen2013novel} suggest permutation as a way of identifying the genomic regions of interest 
-but we instead employ stability selection (described below).
+statistical significance analytically is difficult. Shen \cite{shen2013novel} suggested permutation as a way of calculating significance 
+empirically. We instead opted for stability selection (see below of details). 
 
 
-\textbf{glmnet:}  The glmnet package is a general purpose statistical package that implements elastic net, a regularisation 
-method for generalised linear models  \cite{zou2005regularization}.  The model used for association mapping is 
+\textbf{glmnet:}  Glmnet is an R package where elastic net regression is implemented. Elastic net is a regularisation method that 
+has been applied to generalised linear models \cite{zou2005regularization}.  
+
+
+Glmnet is a general purpose R package for statistical analysis. It implements elastic net regression, 
+a regularisation method that has been applied to generalised linear models \cite{zou2005regularization}.   
+Glmnet was not specifically built for association mapping. However, we included it amongst the applications to benchmark 
+Eagle against because of the interest surrounding its use for analysing data from genetic
+studies \cite{cho2010joint,huang2015empirical}.  The regression model we used for analysis is 
+$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
+Elastic net allows us to obtain parameter estimates from this model via a penalty function that is a mixture of 
+$\ell_1$ (lasso) and $\ell_2$ (ridge regression). 
+
+Although glmnet has not been specifically built for association mapping, interest surrounds its use for the analysis of data from 
+an association study.  \cite{cho2010joint,huang2015empirical}. 
+The analysis model for association mapping 
 $y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the regression coefficient for the $l$th snp. 
-It's penalty function for regularisation is a mixture of $\ell_1$ (lasso) and $\ell_2$ (ridge regression).  This allows elastic net to avoid some of the
+It's penalty function for regularisation is a mixture of $\ell_1$ (lasso) and $\ell_2$ (ridge regression).  
+This allows elastic net to avoid some of the
 limitations of lasso (ref) while still being able to perform shrinkage and variable selection, simultaneously.  The glmnet package 
-implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. However, when 
-applied to the analysis of data from genome-wide association studies we found this yielded findings containing a high proportion of 
-false positives.  We instead fixed the shrinkage parameter to a suitable value 
+implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. However, 
+from exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
+We instead fixed the shrinkage parameter to a suitable value 
 and employed stability selection to estimate the significance of the snp regression coefficients, empirically (see below).  
 
   

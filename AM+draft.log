@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  27 OCT 2017 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 OCT 2017 20:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -83,171 +83,42 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4] [5]
-
-LaTeX Warning: Reference `fig_runtimes' on page 6 undefined on input line 81.
-
-
-LaTeX Warning: Reference `fig_runtimes' on page 6 undefined on input line 84.
-
-[6]
-
-LaTeX Warning: Reference `fig_memory' on page 7 undefined on input line 94.
-
-[7]
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 118.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-18.
-
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 118.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-18.
-
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 121.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-21.
-
-
-LaTeX Warning: Reference `fig_threshold' on page 8 undefined on input line 125.
-
-
-
-LaTeX Warning: Reference `fig_threshold' on page 8 undefined on input line 129.
-
-
-[8]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 163.
-
-
-LaTeX Warning: Citation `nicod2016genome' on page 9 undefined on input line 163
-.
-
-[9]
-
-LaTeX Warning: Citation `verbyla2007analysis' on page 10 undefined on input lin
-e 197.
-
-[10] [11]
-
-LaTeX Warning: Reference `eq1' on page 12 undefined on input line 251.
-
-
-LaTeX Warning: Reference `eq2' on page 12 undefined on input line 251.
-
-[12]
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 260.
-
-
-LaTeX Warning: Citation `chen2008extended' on page 13 undefined on input line 2
-61.
-
-
-LaTeX Warning: Citation `chen2008extended' on page 13 undefined on input line 2
-62.
-
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 267.
-
-
-LaTeX Warning: Citation `verbyla2012rwgaim' on page 13 undefined on input line 
-270.
-
-
-LaTeX Warning: Citation `verbyla2014whole' on page 13 undefined on input line 2
-70.
-
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 271.
-
-
-LaTeX Warning: Reference `eq3' on page 13 undefined on input line 279.
-
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 280.
-
-[13]
-
-LaTeX Warning: Citation `verbyla2012rwgaim' on page 14 undefined on input line 
-282.
-
-
-LaTeX Warning: Citation `verbyla2014whole' on page 14 undefined on input line 2
-82.
-
-
-LaTeX Warning: Reference `eq4' on page 14 undefined on input line 293.
-
-
-LaTeX Warning: Citation `shen2013novel' on page 14 undefined on input line 308.
-
-
-
-LaTeX Warning: Citation `shen2013novel' on page 14 undefined on input line 316.
-
-
-[14]
-
-LaTeX Warning: Citation `zou2005regularization' on page 15 undefined on input l
-ine 321.
-
-
-LaTeX Warning: Citation `efron2004least' on page 15 undefined on input line 325
-.
-
-[15] (./AM+draft.bbl [16])
+[6] [7] [8] [9] [10] [11] [12] [13] [14] [15] (./AM+draft.bbl [16])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 351.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 355.
  [17]
+[18]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 360.
- [18] (./AM+draft.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 364.
+ [19] (./AM+draft.aux) ) 
 Here is how much of TeX's memory you used:
- 554 strings out of 493089
- 6851 string characters out of 6134842
+ 553 strings out of 493089
+ 6852 string characters out of 6134842
  58031 words of memory out of 5000000
  4074 multiletter control sequences out of 15000+600000
- 26192 words of font info for 49 fonts, out of 8000000 for 9000
+ 24566 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,4n,21p,1427b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a
-.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AM+draft.pdf (18 pages, 185284 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/bas
+e/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on AM+draft.pdf (19 pages, 185349 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
