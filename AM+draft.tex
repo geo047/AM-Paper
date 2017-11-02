@@ -317,58 +317,64 @@ statistical significance analytically is difficult. Shen \cite{shen2013novel} su
 empirically. We instead opted for stability selection (see below of details). 
 
 
-\textbf{glmnet:}  Glmnet is a general purpose R package for regression analysis. It implements elastic net, 
-a regularisation method where the penalty function 
-is a mixture of 
-$\ell_1$ (lasso) and $\ell_2$ (ridge regression) normalisation  \cite{zou2005regularization}. 
-This allows elastic net to avoid the limitations of lasso (ref) 
-while still being able to perform shrinkage and variable selection, simultaneously. 
+
+\textbf{glmnet:}  Glmnet is a general purpose R package for regression analysis  \cite{Friedman2010glmnet}. 
+The model used for analysis is 
+$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
+All snp effects are modelled, simultaneously. 
+Glmnet implements elastic net for the estimation of the parameters. Elastic net is a regularisation method where the 
+penalty function is a mixture of 
+$\ell_1$-norm (lasso) and $\ell_2$-norm (ridge regression) penalties  \cite{zou2005regularization}. 
+This allows elastic net to avoid the limitations of lasso 
+while still being able to perform shrinkage and variable selection, simultaneously \cite{zou2005regularization}. 
 Glmnet was not specifically built for association mapping. 
-However, it is included in our list of comparison applications due to its solid performance for genomic prediction (refs).
-The model upon which our analyses are based is 
-$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
+However, it is included in our list of comparison applications due to its solid performance for genomic prediction 
+\cite{heslot2012genomic,ogutu2012genomic,}.
 The glmnet package 
 implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. 
-However, from exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
+From exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
 We instead fixed the shrinkage parameter to a suitable value 
 and employed stability selection to estimate the significance of the snp coefficients, empirically (see below).  
 
 
 
-we included it amongst the applications to benchmark 
-Eagle against because of the interest surrounding its use for analysing data from genetic
-studies \cite{cho2010joint,huang2015empirical}.  The regression model we used for analysis is 
-$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
-Elastic net allows us to obtain parameter estimates from this model via a penalty function that is a mixture of 
-$\ell_1$ (lasso) and $\ell_2$ (ridge regression). 
-The glmnet package 
-implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. 
-However, from exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
-We instead fixed the shrinkage parameter to a suitable value 
-and employed stability selection to estimate the significance of the snp coefficients, empirically (see below).  
+\textbf{LMM-Lasso:} LMM-Lasso is a stand-alone computer program for association mapping within a linear 
+mixed model framework \cite{rakitsch2013lasso}. The (full) linear mixed model used for analysis is 
+$y =  \sum_{l=1}^L m_l \theta_l +   g  + e$ where $g^{(n ; \times 1)}$ is a vector of random polygenic effects such that 
+$g \sim N(0, \sigma^2_g K)$, and $K^{(n ; \times \; n)}$ is a realised relationship matrix reconstructed from the snp information. 
+All snp effects are modelled, simultaneously. However, a limitation of this model is its inability to accommodate 
+additional fixed effects (there is no $X \beta$ term). 
+The parameters are estimated via lasso \cite{Tibshirani1996lasso}. Lasso is a regularisation method with the capacity to perform parameter estimation and variable selection, simultaneously.  
+Lasso is computationally intensive, especially when applied to linear mixed models. To avoid this problem, a two-step 
+estimation procedure is adopted.  In the first step, the above model but without any snp effects is fitted via 
+maximum likelihood. In the second step, the unknown variance components in the full model are replaced by their estimates that were calculated in the first step.  This turns the full model from a linear mixed model into a simpler linear model. Here, lasso is far more tractable, computationally.  To assess the significance of the snp coefficients, as suggested \cite{rakitsch2013lasso}, we implemented stability selection (see below). 
 
 
+\textbf{MLMM:}  Of the multiple-locus applications considered in this paper, 
+MLMM bares the greatest similarity to Eagle algorithmically.  MLMM, like Eagle, performs 
+association mapping by building the "best" linear mixed model.  The model used for analysis 
+is the same as (\ref{eq1}) except that the genetic effect is 
+\begin{equation}
+\label{eqmlmm}
+u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + g
+\end{equation}
+where 
+$g^{(n ; \times 1)}$ is a vector of random polygenic effects with distribution 
+$g \sim N(0, \sigma^2_g K)$. The model is built iteratively, via forward-backward variable selection.  In Eagle, at each iteration, 
+the snp in strongest association with the trait is found by calculating the score statistic $t_j^2$.  In MLMM, at each iteration, 
+a separate linear mixed model analysis is performed for each snp not already selected. The snp yielding the most 
+significant result (lowest p-value) is selected for inclusion in the fixed effects part of (\ref{eqmlmm}).  
+Two selection 
+criteria are available for the model building process: 
+the EBIC and the multiple-Bonferroni criterion. We used only the EBIC. 
 
 
-
-Although glmnet has not been specifically built for association mapping, interest surrounds its use for the analysis of data from 
-an association study.  \cite{cho2010joint,huang2015empirical}. 
-The analysis model for association mapping 
-$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the regression coefficient for the $l$th snp. 
-It's penalty function for regularisation is a mixture of $\ell_1$ (lasso) and $\ell_2$ (ridge regression).  
-This allows elastic net to avoid some of the
-limitations of lasso (ref) while still being able to perform shrinkage and variable selection, simultaneously.  The glmnet package 
-implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. However, 
-from exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
-We instead fixed the shrinkage parameter to a suitable value 
-and employed stability selection to estimate the significance of the snp regression coefficients, empirically (see below).  
 
   
-  MMLM
-  
+   
   r2VIM
   
-  LMM-lasso
+ 
   
 
 

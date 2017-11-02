@@ -60,22 +60,6 @@
   Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{67}},
   \bibinfo{pages}{301--320} (\bibinfo{year}{2005}).
 
-\bibitem{cho2010joint}
-\bibinfo{author}{Cho, S.} \emph{et~al.}
-\newblock \bibinfo{title}{Joint identification of multiple genetic variants via
-  elastic-net variable selection in a genome-wide association analysis}.
-\newblock \emph{\bibinfo{journal}{Annals of human genetics}}
-  \textbf{\bibinfo{volume}{74}}, \bibinfo{pages}{416--428}
-  (\bibinfo{year}{2010}).
-
-\bibitem{huang2015empirical}
-\bibinfo{author}{Huang, A.}, \bibinfo{author}{Xu, S.} \& \bibinfo{author}{Cai,
-  X.}
-\newblock \bibinfo{title}{Empirical bayesian elastic net for multiple
-  quantitative trait locus mapping}.
-\newblock \emph{\bibinfo{journal}{Heredity}} \textbf{\bibinfo{volume}{114}},
-  \bibinfo{pages}{107--115} (\bibinfo{year}{2015}).
-
 \bibitem{efron2004least}
 \bibinfo{author}{Efron, B.}, \bibinfo{author}{Hastie, T.},
   \bibinfo{author}{Johnstone, I.}, \bibinfo{author}{Tibshirani, R.}
@@ -84,5 +68,21 @@
 \newblock \emph{\bibinfo{journal}{The Annals of statistics}}
   \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{407--499}
   (\bibinfo{year}{2004}).
+
+\bibitem{rakitsch2013lasso}
+\bibinfo{author}{Rakitsch, B.}, \bibinfo{author}{Lippert, C.},
+  \bibinfo{author}{Stegle, O.} \& \bibinfo{author}{Borgwardt, K.}
+\newblock \bibinfo{title}{A lasso multi-marker mixed model for association
+  mapping with population structure correction}.
+\newblock \emph{\bibinfo{journal}{Bioinformatics}}
+  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{206--214}
+  (\bibinfo{year}{2013}).
+
+\bibitem{Tibshirani1996lasso}
+\bibinfo{author}{Tibshirani, R.}
+\newblock \bibinfo{title}{Regression shrinkage and selection via the lasso}.
+\newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society.
+  Series B (Methodological)}} \textbf{\bibinfo{volume}{58}},
+  \bibinfo{pages}{267--288} (\bibinfo{year}{1996}).
 
 \end{thebibliography}
