@@ -23,7 +23,8 @@ AMplus is freely available as a fully documented R package.
 
 
 
-Over the past decade,  Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine.
+Over the past decade,  Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or simple 
+linear regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine.
 
 What has not changed over the past decade is that it remains common practice to analyse gwas data on a locus by locus basis. This is despite there being several significant problems with analysing data in this way. First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. The identification of these regions from these analyses is not always straightforward. Gwas results are reported, typically, via Manhattan plots that plot the -log10 of the p value for each locus against the map position of the locus. The location of peaks in this plot signify regions of interest. Inferring the exact number of regions of interest can be difficult If the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a significant result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome- wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple loci in linkage equilibrium with genes that influence the trait. Yet, A locus by locus mapping approach only assesses the evidence for association between a single marker locus and trait.
 
@@ -329,7 +330,7 @@ This allows elastic net to avoid the limitations of lasso
 while still being able to perform shrinkage and variable selection, simultaneously \cite{zou2005regularization}. 
 Glmnet was not specifically built for association mapping. 
 However, it is included in our list of comparison applications due to its solid performance for genomic prediction 
-\cite{heslot2012genomic,ogutu2012genomic,}.
+\cite{heslot2012genomic,ogutu2012genomic}.
 The glmnet package 
 implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. 
 From exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
@@ -368,17 +369,22 @@ Two selection
 criteria are available for the model building process: 
 the EBIC and the multiple-Bonferroni criterion. We used only the EBIC. 
 
+\textbf{r2VIM:} r2VIM is an R package, specifically designed for genome-wide association mapping \cite{szymczak2016r2vim}.
+It implements a modified form of random forests. When random forests are applied to association study data in a standard way, 
+the result is a ranking of the snp according to their importance values. The difficulty is in knowing how many of the top ranked 
+snp are associated, significantly, with the trait. In r2VIM, multiple separate random forest analyses of the data are performed. 
 
+
+In r2VIM, a strategy is implemented for identifying the snp in strongest association with the trait. 
+Here, multiple random forest analyses of the data are performed. For
+each analysis, a relative importance score is calculated for each snp based on the minimum observed importance value.  Only 
+those snp with large relative importance scores are determined to be in significant association with the trait. 
 
   
-   
-  r2VIM
-  
- 
   
 
 
-Single locus methods
+\subsubsection{Single locus methods}
 
 gemma
 

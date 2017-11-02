@@ -52,6 +52,15 @@
 \newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{193}},
   \bibinfo{pages}{1255--1268} (\bibinfo{year}{2013}).
 
+\bibitem{Friedman2010glmnet}
+\bibinfo{author}{Friedman, J.}, \bibinfo{author}{Hastie, T.} \&
+  \bibinfo{author}{Tibshirani, R.}
+\newblock \bibinfo{title}{Regularization paths for generalized linear models
+  via coordinate descent}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{1--22} (\bibinfo{year}{2010}).
+\newblock \urlprefix\url{http://www.jstatsoft.org/v33/i01/}.
+
 \bibitem{zou2005regularization}
 \bibinfo{author}{Zou, H.} \& \bibinfo{author}{Hastie, T.}
 \newblock \bibinfo{title}{Regularization and variable selection via the elastic
@@ -59,6 +68,23 @@
 \newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
   Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{67}},
   \bibinfo{pages}{301--320} (\bibinfo{year}{2005}).
+
+\bibitem{heslot2012genomic}
+\bibinfo{author}{Heslot, N.}, \bibinfo{author}{Yang, H.-P.},
+  \bibinfo{author}{Sorrells, M.~E.} \& \bibinfo{author}{Jannink, J.-L.}
+\newblock \bibinfo{title}{Genomic selection in plant breeding: a comparison of
+  models}.
+\newblock \emph{\bibinfo{journal}{Crop Science}} \textbf{\bibinfo{volume}{52}},
+  \bibinfo{pages}{146--160} (\bibinfo{year}{2012}).
+
+\bibitem{ogutu2012genomic}
+\bibinfo{author}{Ogutu, J.~O.}, \bibinfo{author}{Schulz-Streeck, T.} \&
+  \bibinfo{author}{Piepho, H.-P.}
+\newblock \bibinfo{title}{Genomic selection using regularized linear regression
+  models: ridge regression, lasso, elastic net and their extensions}.
+\newblock In \emph{\bibinfo{booktitle}{BMC proceedings}},
+  vol.~\bibinfo{volume}{6}, \bibinfo{pages}{S10} (\bibinfo{organization}{BioMed
+  Central}, \bibinfo{year}{2012}).
 
 \bibitem{efron2004least}
 \bibinfo{author}{Efron, B.}, \bibinfo{author}{Hastie, T.},
@@ -84,5 +110,12 @@
 \newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society.
   Series B (Methodological)}} \textbf{\bibinfo{volume}{58}},
   \bibinfo{pages}{267--288} (\bibinfo{year}{1996}).
+
+\bibitem{szymczak2016r2vim}
+\bibinfo{author}{Szymczak, S.} \emph{et~al.}
+\newblock \bibinfo{title}{r2vim: A new variable selection method for random
+  forests in genome-wide association studies}.
+\newblock \emph{\bibinfo{journal}{BioData mining}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
 
 \end{thebibliography}
