@@ -369,16 +369,13 @@ Two selection
 criteria are available for the model building process: 
 the EBIC and the multiple-Bonferroni criterion. We used only the EBIC. 
 
-\textbf{r2VIM:} r2VIM is an R package, specifically designed for genome-wide association mapping \cite{szymczak2016r2vim}.
-It implements a modified form of random forests. When random forests are applied to association study data in a standard way, 
-the result is a ranking of the snp according to their importance values. The difficulty is in knowing how many of the top ranked 
-snp are associated, significantly, with the trait. In r2VIM, multiple separate random forest analyses of the data are performed. 
-
-
-In r2VIM, a strategy is implemented for identifying the snp in strongest association with the trait. 
-Here, multiple random forest analyses of the data are performed. For
-each analysis, a relative importance score is calculated for each snp based on the minimum observed importance value.  Only 
-those snp with large relative importance scores are determined to be in significant association with the trait. 
+\textbf{r2VIM:} R2RIM is an R package specifically designed for association mapping \cite{szymczak2016r2vim}. 
+It implements random forests and a new way of measuring the importance of a snp.  In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. The challenge though is in knowing what proportion of the 
+highest ordered snp are in true association. R2VIM addresses this by calculating a relative importance score for a snp. Briefly,
+$m$ random forest analyses of the data are performed. Each analysis is reliant upon a different random number seed. 
+From an analysis, a relative importance score for a snp is obtained by taking the ratio of its importance score to the absolute 
+minimum of the importance scores across all the snp.  Those 
+snp with high relative scores across all $m$ analyses are deemed to be of interest \cite{szymczak2016r2vim}.
 
   
   
