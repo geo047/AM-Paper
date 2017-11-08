@@ -299,17 +299,62 @@ of (\ref{eq4}).
 
 \subsubsection{Multiple locus methods}
 
-We compared the performance of Eagle against five other multiple locus association mapping methods: BigRR, 
-glmnet, FaST-LASSO, MMLM, and r2VIM.  These five methods were selected because of their demonstrated value 
+We compared the computational and statistical performance of Eagle against five other multiple locus applications for 
+association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
+BigRR, LMM-Lasso, and glmnet  implement different regression-based regularisation methods. Regularisation methods have dominated 
+the development of multiple locus approaches.  They give opportunity for the effect of all the snp to be modelled simultaneously. 
+By introducing a penalty function that balances bias and variance, regularisation methods can 
+handle parameter estimation problems where the number of predictors is far greater than the number of samples.  
+MLMM is similar in philosophy to Eagle in that it treats association mapping as a model building problem. Here, a linear mixed 
+model is built through a forward-backward selected strategy.  
+R2VIM is different to the others in that it implements 
+random forests for association mapping. 
+Random forests is a machine learning approach that forms an ensemble of decision trees for regression and 
+classification. 
+These five methods were selected because of their demonstrated value 
 for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
 either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
-features is given in Table X. 
+features is given in Table X. Each method is now described in a little more detail. 
 
-Of the five multiple locus methods considered, BigRR, LMM-Lasso, and glmnet,  implement regularization methods for parameter
+
+
+Regression based regularization methods 
+are well suited to solving problems where the number of predictors (p) is much greater than the number of samples (as in
+genome-wide association studies).  Unsurprisingly,  regularization methods have dominated the development of 
+multiple locus assciation mapping approaches.  Regularisation-based 
+approaches model the effect of all the snp on a trait simultaneously. 
+Regularisation methods are able to yield solutions to problems that OLS cannot. They introduce a penalty function that balances
+bias against reduced variance. The fourth application implements a forward-backward selection approach for building a linear 
+mixed model. The fifth application uses random forests. 
+These five methods were selected because of their demonstrated value 
+for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
+either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
+features is given in Table X. Each method is now described briefly. 
+
+
+
+BigRR is an R package that implements generalized ridge regression. Generalized ridge regression is 
+which is an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
+to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
+a more realistic model to be specified. The model used in BigRR is 
+$y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
+effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
+
+
+
+
+
+
+BigRR, LMM-Lasso, and glmnet all implement regularization methods for parameter
 estimation. Regularization methods are well suited to problems where the number of predictors is far greater than the 
 number of samples. It is not surprising then that regularization methods have attracted considerable interest, primarily for 
-genomic prediction (refs) but also association mapping (refs). BigRR is an R package that implements generalized ridge regression
-which is an improvement on standard ridge regression. In standard ridge regression, coefficients of the predictors are shrunk 
+genomic prediction (refs) but also association mapping (refs). 
+BigRR implements generalized ridge regression, LMM-Lasso implements a two-step lasso approach, and glmnet makes use of 
+elastic net for parameter estimation.  
+
+
+BigRR is an R package that implements generalized ridge regression
+which is an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
 to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
 a more realistic model to be specified. The model used in BigRR is 
 $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
