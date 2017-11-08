@@ -297,6 +297,33 @@ of (\ref{eq4}).
 
 \subsection{Comparison Methods}
 
+\subsubsection{Multiple locus methods}
+
+We compared the performance of Eagle against five other multiple locus association mapping methods: BigRR, 
+glmnet, FaST-LASSO, MMLM, and r2VIM.  These five methods were selected because of their demonstrated value 
+for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
+either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
+features is given in Table X. 
+
+
+BigRR, FaST-LASSO, and glmnet are all based on regularization methods. Regression based regularization methods 
+are well suited to solving problems where the number of predictors (p) is far greater than the number of samples (n).  It 
+should come as no surprise then that multiple locus association mapping are dominated by regularization-based approaches.
+Regularisation methods are able to yield solutions to problems that OLS cannot. They introduce a penalty function that balances
+bias against reduced variance.  BigRR, an R package, implements gen
+
+
+
+BigRR is an R package that implements 
+
+
+$------$
+
+
+
+
+
+
 We compared the performance of Eagle against seven other association mapping applications. 
 Five of these applications, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the multiple locus analysis of data from genome-wide association studies. 
 The other two applications, GEMMA, and FaST-LMM implement single-locus association mapping methods. 
@@ -383,10 +410,23 @@ snp with high relative scores across all $m$ analyses are deemed to be of intere
 
 \subsubsection{Single locus methods}
 
-\textbf{FaST-LMM:}  FaST-LMM is a highly efficient stand along computer program for association mapping. It is based on a standard single-locus model (refs). Its computational efficiencies come through rotating the data with spectral decomposition. This 
-transforms the linear mixed 
-model into a much simpler linear model.  In doing so, FaST-LMM inherits the favourable property of having its analyses 
-scale linearly, in both run time and memory, with sample size ($n$). 
+\textbf{FaST-LMM:}  FaST-LMM is a highly efficient stand along computer program for association 
+mapping \cite{lippert2011fast}. It is based on a standard single-locus model 
+\cite{yu2006unified,zhao2007arabidopsis}. Its computational efficiencies come through factorising $K$ with spectral decomposition so that $K=U (S + \delta I) U^T$ where $U$ contains the eigenvectors and $\delta$ is the ratio of the genetic variance to the residual variance. 
+By rotating the data with $U$, the log likelihood of the linear mixed model can be expressed as the log likelihood for a simple 
+linear model.  This greatly reduces the computational cost of performing lmm-based  association mapping. With FaST-LMM, 
+analyses scale linearly with sample size $n$, both in terms of run-time and memory usage.
+
+
+
+
+
+
+
+
+
+
+
 
 \textbf{gemma}
 

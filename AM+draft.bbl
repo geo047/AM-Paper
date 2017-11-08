@@ -118,4 +118,27 @@
 \newblock \emph{\bibinfo{journal}{BioData mining}}
   \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
 
+\bibitem{lippert2011fast}
+\bibinfo{author}{Lippert, C.} \emph{et~al.}
+\newblock \bibinfo{title}{Fast linear mixed models for genome-wide association
+  studies}.
+\newblock \emph{\bibinfo{journal}{Nature methods}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{833--835}
+  (\bibinfo{year}{2011}).
+
+\bibitem{yu2006unified}
+\bibinfo{author}{Yu, J.} \emph{et~al.}
+\newblock \bibinfo{title}{A unified mixed-model method for association mapping
+  that accounts for multiple levels of relatedness}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{38}}, \bibinfo{pages}{203--208}
+  (\bibinfo{year}{2006}).
+
+\bibitem{zhao2007arabidopsis}
+\bibinfo{author}{Zhao, K.} \emph{et~al.}
+\newblock \bibinfo{title}{An arabidopsis example of association mapping in
+  structured samples}.
+\newblock \emph{\bibinfo{journal}{PLoS genetics}} \textbf{\bibinfo{volume}{3}},
+  \bibinfo{pages}{e4} (\bibinfo{year}{2007}).
+
 \end{thebibliography}
