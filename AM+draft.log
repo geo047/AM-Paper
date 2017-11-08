@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  8 NOV 2017 07:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  8 NOV 2017 17:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -83,28 +83,35 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4] [5]
-[6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] (./AM+draft.bbl
-[19]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 62.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [20])
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 445.
+[6] [7] [8] [9] [10] [11] [12] [13] [14]
 
-[21]
+LaTeX Warning: Reference `' on page 15 undefined on input line 332.
+
+[15] [16] [17] [18] [19] [20] (./AM+draft.bbl [21]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 62.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [22])
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 484.
+ [23]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 454.
- [22] (./AM+draft.aux)
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 493.
+
+[24] (./AM+draft.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 596 strings out of 493089
- 7504 string characters out of 6134842
+ 597 strings out of 493089
+ 7506 string characters out of 6134842
  58031 words of memory out of 5000000
- 4112 multiletter control sequences out of 15000+600000
+ 4113 multiletter control sequences out of 15000+600000
  25081 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,5n,21p,1427b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -124,10 +131,10 @@ e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
 times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AM+draft.pdf (22 pages, 203779 bytes).
+Output written on AM+draft.pdf (24 pages, 208498 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 147 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
