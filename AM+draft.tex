@@ -318,38 +318,7 @@ features is given in Table X. Each method is now described in a little more deta
 
 
 
-BigRR is an R package that implements generalized ridge regression. Generalized ridge regression is 
- an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
-to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
-a more realistic model to be specified. The model used in BigRR is 
-$y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
-effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
-
-
-
-
-BigRR is an R package that implements generalized ridge regression
-which is an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
-to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
-a more realistic model to be specified. The model used in BigRR is 
-$y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
-effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
-
-
-
-
-
-
-
-BigRR, LMM-Lasso, and glmnet all implement regularization methods for parameter
-estimation. Regularization methods are well suited to problems where the number of predictors is far greater than the 
-number of samples. It is not surprising then that regularization methods have attracted considerable interest, primarily for 
-genomic prediction (refs) but also association mapping (refs). 
-BigRR implements generalized ridge regression, LMM-Lasso implements a two-step lasso approach, and glmnet makes use of 
-elastic net for parameter estimation.  
-
-
-BigRR \cite{shen2013novel}  is an R package that implements generalized ridge regression.
+\textbf{BigRR:} BigRR \cite{shen2013novel}  is an R package that implements generalized ridge regression.
 In ridge regression, the coefficients of the predictors are shrunk 
 to zero by a constant amount.  In generalized ridge regression, the amount of shrinkage is allowed to vary, giving opportunity for 
 a more realistic model to be specified. The model used in BigRR can be formulated as a linear mixed model that is 
@@ -364,7 +333,7 @@ Permutation has been suggested as a way of calculating significance
 empirically \cite{shen2013novel} but we instead opted for stability selection.
 
 
-Lmm-Lasso  \cite{rakitsch2013lasso} is a stand-alone computer program that implements lasso within a linear mixed model 
+\textbf{LMM-Lasso:} LMM-Lasso  \cite{rakitsch2013lasso} is a stand-alone computer program that implements lasso within a linear mixed model 
 framework. Unlike in ridge regression, lasso performs parameter estimation and variable selection, simultaneously.   The 
 coefficients of "unimportant" predictors are shrunk to exactly zero.
 The (full) model is 
@@ -377,7 +346,7 @@ that were calculated in the first step. Lasso is then applied to this simpler mo
 As with BigRR,  the statistical significance of the snp effects are not calculated. We use stability selection to obtain the 
 significance empirically. 
 
-Glmnet  \cite{Friedman2010glmnet}, unlike BigRR and LMM-Lasso, was not purpose built for 
+\textbf{Glmnet:} Glmnet  \cite{Friedman2010glmnet}, unlike BigRR and LMM-Lasso, was not purpose built for 
 association mapping.  It is a general R package for 
 regression analysis. We have included it in our list of applications for comparison with Eagle because the 
 regularization method, elastic net, upon which the package is based has been found to be superior to ridge regression and 
@@ -390,7 +359,7 @@ $y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L
 We used stability selection to obtain the significance of the coefficients (snp effects). 
 
 
-Of the multiple-locus applications considered in this paper, 
+\textbf{MLMM:} Of the multiple-locus applications considered in this paper, 
 MLMM \cite{segura2012efficient} bares the greatest similarity to Eagle algorithmically.  MLMM, like Eagle, performs 
 association mapping by building the "best" linear mixed model.  The model used for analysis 
 is the same as (\ref{eq1}) except that the genetic effect is 
@@ -410,7 +379,6 @@ the EBIC and the multiple-Bonferroni criterion. We used only the EBIC.
 
 
 
-
 \textbf{r2VIM:} R2VIM is an R package specifically designed for association mapping \cite{szymczak2016r2vim}. 
 It implements random forests and a new way of measuring the importance of a snp.  In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. The challenge though is in knowing what proportion of the 
 highest ordered snp are in true association. R2VIM addresses this by calculating a relative importance score for a snp. Briefly,
@@ -427,6 +395,21 @@ step approaches).  Second, there is no relationship between relative importance 
 setting an appropriate genome-wide threshold is problematic. We avoid this problem by focusing, in the simulation study, 
 only on the relationship between threshold level and its false discovery rate and power. 
 
+\subsubsection{Single locus methods}
+
+We were also interested in comparing Eagle to single locus methods to measure the difference in run times and statistical power. Even by limiting our focus to LMM-based methods, there were a number of efficient applications to choose from. 
+We decided on GEMMA and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity (ref), produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are very similar theoretically. Both perform a single spectral decomposition of the relationship matrix K. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and reml log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent algorithm to optimise $\delta$. GEMMA instead implement's the Newton Raphson algorithm. Newton Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm (quadratic verse super-linear).  
+Both applications are stand along computer programs, popular, and in common use.
+
+
+
+
+
+\section{Stability Selection}
+
+\section{Simulation Study}
+
+\section{Implementation}
 
 
 $------$
@@ -537,10 +520,6 @@ analyses scale linearly with sample size $n$, both in terms of run-time and memo
 
 
 
-
-\textbf{gemma}
-
-Fast-LMM
 
 
 %%\bibliographystyle{naturemag}
