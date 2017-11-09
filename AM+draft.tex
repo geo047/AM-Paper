@@ -318,27 +318,23 @@ features is given in Table X. Each method is now described in a little more deta
 
 
 
-Regression based regularization methods 
-are well suited to solving problems where the number of predictors (p) is much greater than the number of samples (as in
-genome-wide association studies).  Unsurprisingly,  regularization methods have dominated the development of 
-multiple locus assciation mapping approaches.  Regularisation-based 
-approaches model the effect of all the snp on a trait simultaneously. 
-Regularisation methods are able to yield solutions to problems that OLS cannot. They introduce a penalty function that balances
-bias against reduced variance. The fourth application implements a forward-backward selection approach for building a linear 
-mixed model. The fifth application uses random forests. 
-These five methods were selected because of their demonstrated value 
-for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
-either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
-features is given in Table X. Each method is now described briefly. 
-
-
-
 BigRR is an R package that implements generalized ridge regression. Generalized ridge regression is 
+ an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
+to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
+a more realistic model to be specified. The model used in BigRR is 
+$y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
+effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
+
+
+
+
+BigRR is an R package that implements generalized ridge regression
 which is an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
 to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
 a more realistic model to be specified. The model used in BigRR is 
 $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
 effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
+
 
 
 
@@ -353,61 +349,57 @@ BigRR implements generalized ridge regression, LMM-Lasso implements a two-step l
 elastic net for parameter estimation.  
 
 
-BigRR is an R package that implements generalized ridge regression
-which is an improvement on ridge regression. In ridge regression, coefficients of the predictors are shrunk 
-to zero by a constant amount.  In generalized ridgre regression, the amount of shrinkage is allowed to vary, giving opportunity for 
-a more realistic model to be specified. The model used in BigRR is 
+BigRR \cite{shen2013novel}  is an R package that implements generalized ridge regression.
+In ridge regression, the coefficients of the predictors are shrunk 
+to zero by a constant amount.  In generalized ridge regression, the amount of shrinkage is allowed to vary, giving opportunity for 
+a more realistic model to be specified. The model used in BigRR can be formulated as a linear mixed model that is 
 $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
 effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
+The parameters are estimated via a 
+algorithm that makes clever use of the Cholesky decomposition of the genomic relationship matrix, 
+and the equivalence between the above model and animal models \ref{stranden2009animalmodel}. 
+One of the challenges in using BigRR for association mapping is that while it has the capacity to estimate the effect sizes of all the snp simultaneously, 
+obtaining their statistical significance is difficult. 
+Permutation has been suggested as a way of calculating significance 
+empirically \cite{shen2013novel} but we instead opted for stability selection.
 
 
-
-
-
-BigRR, LMM-LASSO, and glmnet are all based on regularization methods. Regression based regularization methods 
-are well suited to solving problems where the number of predictors (p) is far greater than the number of samples (n).  It 
-is not surprising that multiple locus association mapping are dominated by regularization-based approaches. Regularisation-based 
-approaches model the effect of all the snp on a trait simultaneously. 
-Regularisation methods are able to yield solutions to problems that OLS cannot. They introduce a penalty function that balances
-bias against reduced variance.  BigRR, an R package, implements generalised ridge regression. Here, the underlying model 
-can be formulated as a linear mixed model that is
- $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
-effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. The size of the random 
-snp effect is a measure of the strength of association between the snp and trait. The parameters are estimated via an
-algorithm that makes clever use of the equivalence between the above model and animal models \ref{}. 
-
-
-Lmm-Lasso  \cite{rakitsch2013lasso}, a stand-alone computer program, implements an estimation 
-procedure based on lasso for the (full) model 
+Lmm-Lasso  \cite{rakitsch2013lasso} is a stand-alone computer program that implements lasso within a linear mixed model 
+framework. Unlike in ridge regression, lasso performs parameter estimation and variable selection, simultaneously.   The 
+coefficients of "unimportant" predictors are shrunk to exactly zero.
+The (full) model is 
 $y =  \sum_{l=1}^L m_l \theta_l +   g  + e$ where $g^{(n ; \times 1)}$ is a vector of random polygenic effects such that 
 $g \sim N(0, \sigma^2_g K)$, and $K^{(n ; \times \; n)}$ is a realised relationship matrix reconstructed from the snp information. 
-Lasso is popular due to its capacity to perform parameter estimation and variable selection, simultaneously. Lasso though is demanding, computationally. To reduce this problem, a two-step 
-estimation procedure is adopted.  First, the above model without any snp effects is fitted. Second, the unknown variance components in the full model are replaced by their estimates that were calculated in the first step.  This turns the model into a simpler linear model for which lasso is far more tractable, computationally. 
+It is challenging, computationally,  to apply lasso directly to the full model for parameter estimation. Instead, a two step procedure 
+is adopted. In the first step, the above model without any snp effects is fitted. In the second step, 
+the unknown variance components in the full model are replaced by their estimates 
+that were calculated in the first step. Lasso is then applied to this simpler model making lasso more tractable, computationally. 
+As with BigRR,  the statistical significance of the snp effects are not calculated. We use stability selection to obtain the 
+significance empirically. 
 
-Glmnet, a general purpose R package, uses elastic net for parameter estimation. 
-
-makes use of elastic net. 
-The model used for analysis is 
-$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
-Glmnet implements elastic net for the estimation of the parameters. Elastic net is a regularisation method where the 
-penalty function is a mixture of 
+Glmnet  \cite{Friedman2010glmnet}, unlike BigRR and LMM-Lasso, was not purpose built for 
+association mapping.  It is a general R package for 
+regression analysis. We have included it in our list of applications for comparison with Eagle because the 
+regularization method, elastic net, upon which the package is based has been found to be superior to ridge regression and 
+lasso (ref needed???).  Elastic net uses a penalty function that is a mixture of 
 $\ell_1$-norm (lasso) and $\ell_2$-norm (ridge regression) penalties  \cite{zou2005regularization}. 
 This allows elastic net to avoid the limitations of lasso 
-while still being able to perform shrinkage and variable selection, simultaneously \cite{zou2005regularization}. 
+while still being able to perform shrinkage and variable selection, simultaneously. 
+Glmnet can handle a range of different models. For the analyses performed in this paper, the model is 
+$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
+We used stability selection to obtain the significance of the coefficients (snp effects). 
+
+
+
+
+
+
+
+
 
 
 
 $------$
-
-Here, 
-the 
-amount of shrinkage is allowed to vary across the predictors (snp effects) where in standard ridge regression, the amount of 
-shrinkage is constant. FaST-LMM, a stand-alone computer program, implements a two-step lasso approach.  
-
-
-BigRR is an R package that implements 
-
-
 
 
 
