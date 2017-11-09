@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  8 NOV 2017 19:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.8.31)  9 NOV 2017 11:21
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**AM+draft.tex
+**AM+draft
 (./AM+draft.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
@@ -43,7 +42,11 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)) (./AM+draft.aux)
+)) (./AM+draft.aux
+
+LaTeX Warning: Label `eqmlmm' multiply defined.
+
+)
 \openout1 = `AM+draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -81,60 +84,39 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
  [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4] [5]
-[6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
+] [2]
+[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
 
-LaTeX Warning: Reference `' on page 16 undefined on input line 360.
+LaTeX Warning: Reference `stranden2009animalmodel' on page 16 undefined on inpu
+t line 360.
 
-[16] [17] [18] [19] [20] [21] (./AM+draft.bbl
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 62.
+[16] [17] [18] [19] [20] [21] (./AM+draft.bbl [22]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 71.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [22] [23])
+) [23] [24])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 512.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 538.
 
-[24]
+[25]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 521.
- [25] (./AM+draft.aux)
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 547.
+ [26] (./AM+draft.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 597 strings out of 493089
- 7506 string characters out of 6134842
- 59031 words of memory out of 5000000
- 4113 multiletter control sequences out of 15000+600000
- 25081 words of font info for 49 fonts, out of 8000000 for 9000
+ 586 strings out of 493090
+ 7472 string characters out of 6134868
+ 59028 words of memory out of 5000000
+ 4114 multiletter control sequences out of 15000+600000
+ 13737 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,5n,21p,1427b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
-times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
-8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AM+draft.pdf (25 pages, 209986 bytes).
-PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28i,5n,21p,1423b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+Output written on AM+draft.dvi (26 pages, 56672 bytes).

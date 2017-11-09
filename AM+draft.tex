@@ -390,12 +390,42 @@ $y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L
 We used stability selection to obtain the significance of the coefficients (snp effects). 
 
 
+Of the multiple-locus applications considered in this paper, 
+MLMM \cite{segura2012efficient} bares the greatest similarity to Eagle algorithmically.  MLMM, like Eagle, performs 
+association mapping by building the "best" linear mixed model.  The model used for analysis 
+is the same as (\ref{eq1}) except that the genetic effect is 
+\begin{equation}
+\label{eqmlmm}
+u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + g
+\end{equation}
+where 
+$g^{(n ; \times 1)}$ is a vector of random polygenic effects with distribution 
+$g \sim N(0, \sigma^2_g K)$. The model is built iteratively, via forward-backward variable selection.  In Eagle, at each iteration, 
+the snp in strongest association with the trait is found by calculating the score statistic $t_j^2$.  In MLMM, at each iteration, 
+a separate linear mixed model analysis is performed for each snp not already selected. The snp yielding the most 
+significant result (lowest p-value) is selected for inclusion in the fixed effects part of (\ref{eqmlmm}).  
+Two selection 
+criteria are available for the model building process: 
+the EBIC and the multiple-Bonferroni criterion. We used only the EBIC. 
 
 
 
 
-
-
+\textbf{r2VIM:} R2VIM is an R package specifically designed for association mapping \cite{szymczak2016r2vim}. 
+It implements random forests and a new way of measuring the importance of a snp.  In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. The challenge though is in knowing what proportion of the 
+highest ordered snp are in true association. R2VIM addresses this by calculating a relative importance score for a snp. Briefly,
+$m$ random forest analyses of the data are performed. Each analysis is reliant upon a different random number seed. 
+From an analysis, a relative importance score for a snp is obtained by taking the ratio of its importance score to the absolute 
+minimum of the importance scores across all the snp.  Those 
+snp with high relative scores across all $m$ analyses are deemed to be of interest \cite{szymczak2016r2vim}.
+Applying r2VIM to the analysis of GWAS data is not without its challenges.  First, it is not possible to force every 
+decision tree to have important (fixed) effects without a change to the internal workings of the r2VIM package. 
+So we adopted a two step 
+strategy. In the first step, the fixed effects are regressed on to the trait and the residuals recorded.  In the second step, 
+r2VIM is employed were the trait data are the residuals obtained from the first step. This is not ideal (ref to problems with two
+step approaches).  Second, there is no relationship between relative importance scores and significance levels. Consequently, 
+setting an appropriate genome-wide threshold is problematic. We avoid this problem by focusing, in the simulation study, 
+only on the relationship between threshold level and its false discovery rate and power. 
 
 
 
