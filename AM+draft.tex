@@ -398,17 +398,43 @@ only on the relationship between threshold level and its false discovery rate an
 \subsubsection{Single locus methods}
 
 We were also interested in comparing Eagle to single locus methods to measure the difference in run times and statistical power. Even by limiting our focus to LMM-based methods, there were a number of efficient applications to choose from. 
-We decided on GEMMA and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity (ref), produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are very similar theoretically. Both perform a single spectral decomposition of the relationship matrix K. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and reml log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent algorithm to optimise $\delta$. GEMMA instead implement's the Newton Raphson algorithm. Newton Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm (quadratic verse super-linear).  
-Both applications are stand along computer programs, popular, and in common use.
-
-
-
+We decided on GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are very similar theoretically. Both perform a single spectral decomposition of the relationship matrix $K$. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and 
+restricted/residual maximum-likelihood (REML) 
+log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
 
 
 \section{Stability Selection}
+When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
+BigRR has an approximate way of setting each snp's separate regularization parameter (ref). However, the optimal value of 
+$\lambda$ must be found when using LMM-Lasso and glmnet. Also, 
+all three applications yield the effect sizes of the snp across the entire genome but not their statistical significance. To address 
+these issues, we made use of stability selection \cite{meinshausen2010stability}. 
+Stability selection is a resampling strategy.  With stability selection, we were able to avoid having to optimise $\lambda$ while 
+still being able to calculate, empirically, the statistical significance of the snp effects.
+
+We performed stability selection as follows. For LMM-Lasso and glmnet, we performed a preliminary analysis to find an 
+appropriate value for the regularization parameter.  We adjusted $\lambda$ so that they yielded 
+between 10 to 30 snp with non-zero effects. Fortunately, with stability selection, the setting of $\lambda$ does not have to be exact 
+but limiting LMM-Lasso and glmnet to only 10 to 30 non-zero effect sizes was straightforward. We then repeatedly subsampled, 
+without replacement, the data. As recommended \cite{meinshausen2010stability}, we draw 100 subsamples of size $n/2$. We 
+analysed the subsample, with $\lambda$ fixed for LMM-Lasso and glmnet.  To calculate, empirically,  the statistical significance of each 
+snp across the genome, we counted the number of times a snp had a non-zero effect size over all the replicates to the total 
+number of replicates (which was 100). 
+
+
+For BigRR, we modified our stability selection procedure slightly. 
+There was no need to find an appropriate value for the regularization 
+parameters as the BigRR package has an internal procedure for their 
+calculation. We draw subsamples as above and analyzed the data with BigRR. However, within an analysis, we ordered 
+the snp according to the absolute size of their snp effects and recorded the top 20 snp. We then measured the significance 
+of the snp across the entire genome as above. 
+
+
+\cite{meinshausen2010stability}
+
 
 \section{Simulation Study}
-
+Replicates are generated with data perturbation (Zhao et al. 2007). Data perturbation makes use of the phenotypic and genotypic data observed in a real study to create a simu- lated (quantitative) trait. It affords us the opportunity to generate replicates whose analysis more closely mirrors the complexities of analyzing real data. For computational expediency, our simulation study is based on data observed from the Biloela site in 2006. In generating trait data for a replicate, we assume a broad based heritability of 0.6, there is a single major QTL, the polygenic component consists of 30 polygenes where the effect of a polygene is formed from an unmapped SNP which was chosen randomly, and the variance structure of the simulated trait closely follows that of the loaf volume trait. The marker data consists of those genotypes collected in the association study from the 3129 SNP across the 21 homologous chromosomes. Each replicate has the same marker data. It is the simulated trait data that varies across replicates.Our simulation study consists of three parts. First, we conduct a null study to investigate whether our Monte Carlo sampling approach controls correctly the genome- wide type I error rate. We also evaluate the impact of assuming a block diagonal structure for V. We do this byalso calculating the genome-wide type I error rates when the variance matrix for the joint distribution of the test sta- tistic is formed from loci pairings across the entire genome. Ten thousand replicates are generated where the QTL has no effect. Results are reported for QK-based association mapping implemented as a single-stage and weighted two- stage analysis.Second, a power study is performed to investigate if there is a difference in performance between implementing QK-based association mapping as a single-stage analysis versus a two-stage analysis. Data are generated under QTL of different sizes and with varying percentages of missing marker data (1.1, 5, 9, 11 %). Missing marker genotypes are imputed for a marker locus by coding its SNP geno- types as ?1 and 1, normalizing its marker data, and replac- ing missing genotypes with zero values. One thousand replicates are generated for each of the four different per- centages of missing marker data and each differently sized QTL. A genome-wide signi cance level of 5 % is assumed.Third, a study to evaluate our heuristic procedure for choosing between single-stage and two-stage analysis is performed. Data are generated under a QTL of no, mod- erate, and large effect. One thousand replicates are gen- erated for each differently sized QTL. The performance of our heuristic procedure is measured by calculating the proportion of replicates for which the analysis type is inferred correctly. To determine if a single-stage analy- sis is truly needed, it is necessary to analyze fully the genome-wide data via single-stage and weighted two-stage analysis. Then, for each marker locus j, perform the test| ? log padj ? log qadj| > | ? log padj ? 1.3|, where we have jjjassumed a genome-wide signi cance level of 5 %. If true, an incorrect  nding occurs if our heuristic procedure deter- mines that it is valid to implement two-stage analysis.
 \section{Implementation}
 
 
