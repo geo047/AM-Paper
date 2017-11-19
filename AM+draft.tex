@@ -207,8 +207,9 @@ selected in the $k$th iteration. For example, if three iterations of our model b
 have been performed and say the 500023rd, 15th, and 420th, 
 snp were selected, then $S=\{500023, 15, 420\}$. 
 Let $y^{(n \; \times \;1)}$ be a vector containing the quantitative trait data. 
-Let $M^{(n \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
-from $L$ loci that span the genome.  It is common for the columns of this matrix to be in map order but this is not a requirement. 
+Let $M^{(n_g \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
+from $L$ loci that span the genome on $n_g$ groups/lines/strains.  In this paper, $n$ and $n_g$ are equal. 
+ It is common for the columns of this matrix to be in map order but this is not a requirement. 
 The vector $m_j^{(n \; \times \; 1)}$ contains the genotypes, from the $n$ individuals,  for the $j$th snp. 
 The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
@@ -218,13 +219,14 @@ gocard123
 The (current) model is of the form 
 \begin{equation}
 \label{eq1}
-y = X \tau + u_g + e
+y = X \tau + Z u_g + e
 \end{equation}
 where 
-$X^{(n \; \times \; p)}$ is a known design matrix of full rank and may contain data on non-genetic effects such as age and height 
-and/or principal component values to account for population structure (ref). The vector 
-$\tau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters. The vector 
-$u_g^{(n \; \times \; 1)}$ contains the 
+$X^{(n \; \times \; p)}$ and $Z^{( n \; \times \; n_g)}$ are known design matrices with $X$ being of full rank and $Z$ 
+containing zeros and ones that assign the appropriate genetic effect to each observation. 
+The vector 
+$\tau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters including the intercept. The vector 
+$u_g^{(n_g \; \times \; 1)}$ contains the 
 genetic effects. The vector of residuals is 
 $e^{(n \; \times \;1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \; \times \; n)})$. 
 So far,  this model differs little from standard linear mixed models for association mapping (refs). 
@@ -236,8 +238,8 @@ The genetic effects $u_g$ are modelled as
 \label{eq2}
 u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + M_{-S} a_{-S}
 \end{equation}
-where $m_{S_k}^{(n \; \times \; 1)}$ is the vector of genotypes for the $S_k$th snp locus which is the $k$th selected snp, 
-$a_{S_k}$ is the additive effect of the $S_k$th snp locus, $M_{-S}^{(n \; \times \; L-s)}$ is the matrix of  snp genotypes 
+where $m_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the $S_k$th snp locus which is the $k$th selected snp, 
+$a_{S_k}$ is the additive effect of the $S_k$th snp locus, $M_{-S}^{(b \; \times \; L-s)}$ is the matrix of  snp genotypes 
 with the data for the selected snp in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
 $a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
 The terms in the summation on the left hand side are fixed effects.  The other term is a random effect.  The terms 
@@ -274,7 +276,7 @@ They show how to reformulate (\ref{eq2}) to be a model with a random effect with
 \label{eq3}
 u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + (M_{-S} M_{-S}^T)^{1/2} a^*_{-S}
 \end{equation}
-where $a^* \sim N(0, \sigma_a^2 I^{(n \; \times \;  n)})$, and 
+where $a^* \sim N(0, \sigma_a^2 I^{(n_g \; \times \;  n_g)})$, and 
 $(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via single value decomposition (ref).  
 Although it may not be obvious, the two models are equivalent, 
 having identical variance structures. Yet, the computational cost of model (\ref{eq3}) compared to 
@@ -434,7 +436,38 @@ of the snp across the entire genome as above.
 
 
 \section{Simulation Study}
-Replicates are generated with data perturbation (Zhao et al. 2007). Data perturbation makes use of the phenotypic and genotypic data observed in a real study to create a simu- lated (quantitative) trait. It affords us the opportunity to generate replicates whose analysis more closely mirrors the complexities of analyzing real data. For computational expediency, our simulation study is based on data observed from the Biloela site in 2006. In generating trait data for a replicate, we assume a broad based heritability of 0.6, there is a single major QTL, the polygenic component consists of 30 polygenes where the effect of a polygene is formed from an unmapped SNP which was chosen randomly, and the variance structure of the simulated trait closely follows that of the loaf volume trait. The marker data consists of those genotypes collected in the association study from the 3129 SNP across the 21 homologous chromosomes. Each replicate has the same marker data. It is the simulated trait data that varies across replicates.Our simulation study consists of three parts. First, we conduct a null study to investigate whether our Monte Carlo sampling approach controls correctly the genome- wide type I error rate. We also evaluate the impact of assuming a block diagonal structure for V. We do this byalso calculating the genome-wide type I error rates when the variance matrix for the joint distribution of the test sta- tistic is formed from loci pairings across the entire genome. Ten thousand replicates are generated where the QTL has no effect. Results are reported for QK-based association mapping implemented as a single-stage and weighted two- stage analysis.Second, a power study is performed to investigate if there is a difference in performance between implementing QK-based association mapping as a single-stage analysis versus a two-stage analysis. Data are generated under QTL of different sizes and with varying percentages of missing marker data (1.1, 5, 9, 11 %). Missing marker genotypes are imputed for a marker locus by coding its SNP geno- types as ?1 and 1, normalizing its marker data, and replac- ing missing genotypes with zero values. One thousand replicates are generated for each of the four different per- centages of missing marker data and each differently sized QTL. A genome-wide signi cance level of 5 % is assumed.Third, a study to evaluate our heuristic procedure for choosing between single-stage and two-stage analysis is performed. Data are generated under a QTL of no, mod- erate, and large effect. One thousand replicates are gen- erated for each differently sized QTL. The performance of our heuristic procedure is measured by calculating the proportion of replicates for which the analysis type is inferred correctly. To determine if a single-stage analy- sis is truly needed, it is necessary to analyze fully the genome-wide data via single-stage and weighted two-stage analysis. Then, for each marker locus j, perform the test| ? log padj ? log qadj| > | ? log padj ? 1.3|, where we have jjjassumed a genome-wide signi cance level of 5 %. If true, an incorrect  nding occurs if our heuristic procedure deter- mines that it is valid to implement two-stage analysis.
+
+To explore the computational and statistical performance of Eagle, we conducted a large simulation data.  Genome-wide data 
+were generated under five different scenarios. These scenarios were data where the sample size was X and the number of snp Y (X x Y) ,
+
+We generated data under five different scenarios. 
+
+
+We generated 
+replicates via data perturbation (ref: Zhao et al. 2007).
+
+
+These are a GWAS of size 150 individuals and 5000 snp (150 X 5K), 350 individuals and 400000 snp (350 X 400K),  1500 individuals and 
+50000 snp (1500 x 50K), 2000 individuals and 500000 snp (2000 x 500K), 4000 individuals and 
+1500000 snp (4000 x 1.5M), and 10000 individuals and 1500000 snp (10000 x 1.5M).  
+We chose these scenarios to reflect some of the different sized GWAS being performed in animals, plants, and humans. 
+For each scenario, we generated 100 replicates of data. A single replicate consists of snp genotype data and quantitative trait data. 
+We obtained the snp data from the publicly available 1000 genome project (phase 3). The quantitative trait data we generated from the 
+snp data by selecting a set of snp loci, assigning allelic effects to these snp, and aggregating these effects for each individual along with 
+random error. The number of snp selected per replicate follows a Poisson distribution with mean 30.
+ The quantitative trait was generated to have a heritability of 50\%.
+Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, three Kepler Tesla GPUs, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS/LAPACK libraries. 
+
+
+
+
+Replicates are generated with data perturbation (Zhao et al. 2007). Data perturbation makes use of the phenotypic and genotypic data observed in a real study to create a simu- lated (quantitative) trait. It affords us the opportunity to generate replicates whose analysis more closely mirrors the complexities of analyzing real data. For computational expediency, our simulation study is based on data observed from the Biloela site in 2006. In generating trait data for a replicate, we assume a broad based heritability of 0.6, there is a single major QTL, the polygenic component consists of 30 polygenes where the effect of a polygene is formed from an unmapped SNP which was chosen randomly, and the variance structure of the simulated trait closely follows that of the loaf volume trait. The marker data consists of those genotypes collected in the association study from the 3129 SNP across the 21 homologous chromosomes. Each replicate has the same marker data. It is the simulated trait data that varies across replicates.
+Our simulation study consists of three parts. First, we conduct a null study to investigate whether our Monte Carlo sampling approach controls correctly the genome- wide type I error rate. We also evaluate the impact of assuming a block diagonal structure for V. We do this by
+also calculating the genome-wide type I error rates when the variance matrix for the joint distribution of the test sta- tistic is formed from loci pairings across the entire genome. Ten thousand replicates are generated where the QTL has no effect. Results are reported for QK-based association mapping implemented as a single-stage and weighted two- stage analysis.
+Second, a power study is performed to investigate if there is a difference in performance between implementing QK-based association mapping as a single-stage analysis versus a two-stage analysis. Data are generated under QTL of different sizes and with varying percentages of missing marker data (1.1, 5, 9, 11 %). Missing marker genotypes are imputed for a marker locus by coding its SNP geno- types as ?1 and 1, normalizing its marker data, and replac- ing missing genotypes with zero values. One thousand replicates are generated for each of the four different per- centages of missing marker data and each differently sized QTL. A genome-wide signi cance level of 5 % is assumed.
+Third, a study to evaluate our heuristic procedure for choosing between single-stage and two-stage analysis is performed. Data are generated under a QTL of no, mod- erate, and large effect. One thousand replicates are gen- erated for each differently sized QTL. The performance of our heuristic procedure is measured by calculating the proportion of replicates for which the analysis type is inferred correctly. To determine if a single-stage analy- sis is truly needed, it is necessary to analyze fully the genome-wide data via single-stage and weighted two-stage analysis. Then, for each marker locus j, perform the test
+| ? log padj ? log qadj| > | ? log padj ? 1.3|, where we have jjj
+assumed a genome-wide signi cance level of 5 %. If true, an incorrect  nding occurs if our heuristic procedure deter- mines that it is valid to implement two-stage analysis.
 \section{Implementation}
 
 
