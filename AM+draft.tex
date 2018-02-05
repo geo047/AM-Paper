@@ -470,6 +470,31 @@ Third, a study to evaluate our heuristic procedure for choosing between single-s
 assumed a genome-wide signi cance level of 5 %. If true, an incorrect  nding occurs if our heuristic procedure deter- mines that it is valid to implement two-stage analysis.
 \section{Implementation}
 
+\section{New section written on iPhone added 5 Feb 2018}
+\section{Simulation Study}
+We conduct a large simulation study to examine the performance characteristics of Eagle. Genome-wide data are generated under five different scenarios. These are a gwas of size 150 individuals and 5000 snp (150 x 5K), 350 individuals and 400000 snp (350 x 400k), 1500 individuals and 50000 snp (1500 x 50k), 200 individuals and ..... We chose these five scenarios to reflect some of the different sized studies being run in animals, plants, and humans. For each scenario, 100 replicates are generated.
+
+To generate a replacate, we used data perturbation (ref). Data perturbation makes use of real genotype data from which a (quantitative) trait is created.
+With data perturbation, we are able to preserve some of the challenges of analysing real data while still having trait data whose genetic architecture is known.
+
+The genotype data comes from the 1000 genome project, version 3 (ref). The original data contains X individuals with XX XX snp. From these data, according to the specifications of the scenario, the individuals and the snp loci are identified at random. What about polymorphic affect numbers? Chech).
+
+To generate the quantitative trait data, first the number of snp that are to be in complete with an underlying qtl (x) is drawn from a poison distribution with mean equal to 30. Second, x snp loci are select randomly from a scenario?s set of genotype data. Third, the snp values are summed across the selected loci for each individual to generate a vector of n genetic values. Here, each snp is having, roughly, the same effect on the trait, remembering that the maf of a snp also impacts a snps influence on a trait. Fourth, n deviates are drawn from a $N(0,sigma^2_e)$ where sigma_e^2 has been set to yield a trait with a heritability of 0.6. (Put in formula). Fifth, the quantitative trait data is generate as $y = g + e$. In this way, the same genotype data are used, within a scenario, for all replicates. Only the quantitative trait data varies across replicates.
+
+
+
+
+\section{Implementation}
+
+Eagle has been implemented as an R package of the same name. However, much of the calculation is performed through c++ functions for improved performance. Eagle has been specially designed to harness the multithreaded math libraries blast and lapack but it will run on a single processor computer. It can also deal with data larger than the memory capacity of a computer. Eagle can be run as a standard R package or via the web based GUI. The GUI relinquishes the need to know R to use Eagle.
+
+
+Eagle can be downloaded from CRAN and installed in the usual way. A containerised version of Eagle is also available. It is built with singularity (ref). This container already has Eagle installed on a multi-threaded version of R. The container is downloaded as a single file from ccxx
+
+
+A quick start guide, how to videos, installation instructions, and answers to frequently asked questions are available at the Eagle website (http://...)
+
+
 
 $------$
 
@@ -568,6 +593,10 @@ mapping \cite{lippert2011fast}. It is based on a standard single-locus model
 By rotating the data with $U$, the log likelihood of the linear mixed model can be expressed as the log likelihood for a simple 
 linear model.  This greatly reduces the computational cost of performing lmm-based  association mapping. With FaST-LMM, 
 analyses scale linearly with sample size $n$, both in terms of run-time and memory usage.
+
+\texbf{GEMMA}
+
+\section{Discussion}
 
 
 

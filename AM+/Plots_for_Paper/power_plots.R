@@ -218,6 +218,8 @@ postscript("~/Papers/AM-Paper/powerMultiple.eps", width=10, height=10, fonts=c("
 p
 dev.off()
 
+p1 <- p
+
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## power vs fdr for single-locus models
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -281,9 +283,11 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
 
 
+
 postscript("~/Papers/AM-Paper/powerSingle.eps", width=10, height=10, fonts=c("sans", fonts()),
            horizontal=FALSE)
 p
 dev.off()
 
 
+p2 <- p
