@@ -8,6 +8,7 @@
 
 \maketitle
 
+
 \begin{affiliations}
 \item Data61, CSIRO, Brisbane, Australia.
 \item IM \&T, CSIRO, Brisbane, Australia.
@@ -44,16 +45,27 @@ a genome-wide scale, for large data sets,  practical and we have built AMplus ac
 \subsection{Association Mapping Methods}
 
 We compared AMplus, in terms of computational and statistical performance, against seven other association mapping methods. 
-We chose methods that had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to mapping multiple locus-trait associations jointly.
+We chose methods that, mostly, had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to mapping multiple locus-trait associations jointly.
+
+ In Table 1, 
+we list some of the important features that make computer software for association mapping useful. We also identify which of these 
+features are present in Eagle and the other seven implementations. For example, all but glmnet were purpose-built for 
+association mapping. Not all the implementations come with a user manual.  Most could accomodate data on additional fixed effects but only Eagle and FaST-LMM could deal with data larger than the memory capacity of the computer. Also, if 
+the input data contained errors, we found only Eagle and FaST-LMM identified the errors and provided advice on how to fix 
+the errors. 
 
 
-From a practical perspective, how the methods were implemented, in terms of usability, varied greatly. In Table 1, we list seven important features for ensuring the usability of computer software for association mapping. We also identify which software has what features. 
-In forming this list of features, we assumed that the primary purpose of a genome-wide association study is 
-to identify the set of marker loci in true and strongest association with a trait.  The level of documentation varied across the implementations but only 
-a few came with user manuals detailing the format of the input data and how to perform analyses. 
-Most implementations could handle additional fixed effects which is important when accounting for hidden population structure. 
-Few though could cope with marker data larger than the memory capacity of the computer. Similarly, few returned the best set of marker loci in strongest association with a trait as their result. Almost all the software returned results that required further processing, either 
-by identifying the best set of marker loci via the setting of significance thresholds or having to do further analysis to calculate the significance of the results. Almost none of the association mapping software checked for errors in the input data.  Only AMplus has all seven features. 
+\subsection{Simulation Study}
+
+We were interested in answering two questions. 
+First, is Eagle faster, computationally, than other competing implementations? Second, is Eagle better, statistically, at 
+identifying the snp closest to the genes that are influencing a trait? To answer these questions, we conducted a large 
+simulation study. 
+
+
+
+First, how does Eagle compare, computationally, to other competing implementations? Second, 
+how accurate is Eagle for finding 
 
 
 \subsection{Computational Performance: run times and memory usage}
