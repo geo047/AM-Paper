@@ -3,8 +3,8 @@
 
 \begin{document}
 
-\title{Making multiple-locus association mapping on a genome-wide scale routine}
-\author{Andrew W. George$^1$ and Joshua Bowden$^2$}
+\title{Eagle: Making multiple-locus association mapping on a genome-wide scale routine}
+\author{Andrew W. George$^1$, Joshua Bowden$^2$, need to sort out the other authors}
 
 \maketitle
 
@@ -153,6 +153,8 @@ We can see from figure \ref{fig_threshold}  that the threshold impacts the fdr d
 
 
 \subsection{Mouse Study}
+Still to be written. 
+
 
 \section{Methods}
 
@@ -192,10 +194,12 @@ If so,  the new model becomes the current model and we repeat the process.   Onc
 %are recoded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
 
+The Eagle approach for multiple-locus association mapping follows from methods developed for QTL mapping in plant 
+populations \cite{verbyla2007analysis} (and some other WGAIM references). 
+It is based on building a linear mixed model, iteratively, via forward 
+selection.  
 
 
-The Eagle approach for multiple-locus association mapping is based on building a linear mixed model, iteratively, via forward 
-selection.  It is a simplification of a whole-genome method for mapping quantitative trait loci in classic linkage studies \cite{verbyla2007analysis}.
 Suppose $s$ iterations of our model building process have already been performed. This means $s$ snp-trait 
 associations have been identified.  It also means that $s$ separate genomic regions of interest have been found.  
 To perform the $s+1$th  iteration of 
@@ -212,9 +216,6 @@ from $L$ loci that span the genome on $n_g$ groups/lines/strains.  In this paper
  It is common for the columns of this matrix to be in map order but this is not a requirement. 
 The vector $m_j^{(n \; \times \; 1)}$ contains the genotypes, from the $n$ individuals,  for the $j$th snp. 
 The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
-
-
-gocard123
 
 The (current) model is of the form 
 \begin{equation}
@@ -479,7 +480,7 @@ With data perturbation, we are able to preserve some of the challenges of analys
 
 The genotype data comes from the 1000 genome project, version 3 (ref). The original data contains X individuals with XX XX snp. From these data, according to the specifications of the scenario, the individuals and the snp loci are identified at random. What about polymorphic affect numbers? Chech).
 
-To generate the quantitative trait data, first the number of snp that are to be in complete with an underlying qtl (x) is drawn from a poison distribution with mean equal to 30. Second, x snp loci are select randomly from a scenario?s set of genotype data. Third, the snp values are summed across the selected loci for each individual to generate a vector of n genetic values. Here, each snp is having, roughly, the same effect on the trait, remembering that the maf of a snp also impacts a snps influence on a trait. Fourth, n deviates are drawn from a $N(0,sigma^2_e)$ where sigma_e^2 has been set to yield a trait with a heritability of 0.6. (Put in formula). Fifth, the quantitative trait data is generate as $y = g + e$. In this way, the same genotype data are used, within a scenario, for all replicates. Only the quantitative trait data varies across replicates.
+To generate the quantitative trait data, first the number of snp that are to be in complete with an underlying qtl (x) is drawn from a poison distribution with mean equal to 30. Second, x snp loci are select randomly from a scenario?s set of genotype data. Third, the snp values are summed across the selected loci for each individual to generate a vector of n genetic values. Here, each snp is having, roughly, the same effect on the trait, remembering that the maf of a snp also impacts a snps influence on a trait. Fourth, n deviates are drawn from a $N(0,sigma^2_e)$ where $\sigma_e^2$ has been set to yield a trait with a heritability of 0.6. (Put in formula). Fifth, the quantitative trait data is generate as $y = g + e$. In this way, the same genotype data are used, within a scenario, for all replicates. Only the quantitative trait data varies across replicates.
 
 
 
@@ -594,7 +595,7 @@ By rotating the data with $U$, the log likelihood of the linear mixed model can 
 linear model.  This greatly reduces the computational cost of performing lmm-based  association mapping. With FaST-LMM, 
 analyses scale linearly with sample size $n$, both in terms of run-time and memory usage.
 
-\texbf{GEMMA}
+\textbf{GEMMA:}  to be done. 
 
 \section{Discussion}
 

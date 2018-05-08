@@ -1,0 +1,223 @@
+Assay,Measure,Name,Phenotype mean,Phenotype sd,Phenotype males mean,Phenotype males sd,Phenotype females mean,Phenotype females sd,LogP for phenotype sex difference,Nb samples,Linear model,Category,Name,Heritability,Heritability standard error,Heritability p-value
+Body weight measures,Body weight (g) at Startle PPI test (~17 weeks of age),Weight.Startle,40.2,6.28,44.1,5.23,36.5,4.7,171,1673,Weight.Startle~1 + Sex + (1|Batch),physiological,Weight.Startle,0.349,0.070,6.53E-09
+,Body weight (g) at Hypoxia test (~18 weeks of age),Weight.Hypo,40.8,6.46,44.7,5.37,36.9,4.94,168,1704,Weight.Hypo~1 + Sex + (1|Batch),physiological,Weight.Hypo,0.339,0.070,1.64E-08
+,Body weight (g) at Cardio test (~19 weeks of age),Weight.ECG,41.8,6.63,45.9,5.61,38,5,128,1323,Weight.ECG~1 + Sex + (1|Batch),physiological,Weight.ECG,0.315,0.086,1.84E-05
+,Body weight (g) at dissection after overnight fast (~20 weeks of age),Weight.Diss,37.3,6.09,40.6,5.32,34,4.92,145,1903,Weight.Diss~1 + Sex + (1|Batch),physiological,Weight.Diss,0.373,0.062,2.79E-12
+,"Mean of Weight.Startle, Weight.Hypo, Weight.ECG and Weight.Diss if at least 3 of the 4 measures are available (g)",Weight.Average,39.4,6.3,43.2,5.31,35.7,4.81,142,1482,Weight.Average~1 + Sex + (1|Batch),physiological,Weight.Average,0.414,0.079,2.71E-09
+,Body Mass Index (= Weight.Diss / Diss.Body.Length^2),Weight.BMI.body,0.326,0.0404,0.342,0.038,0.309,0.0358,73.9,1873,Weight.BMI.body~1 + Sex + (1|Batch),physiological,Weight.BMI.body,0.315,0.063,5.20E-09
+,Pseudo Body Mass Index (= Weight.Diss / Tibia.Length^2),Weight.BMI.tibia,0.104,0.0153,0.112,0.0134,0.0962,0.0126,128,1832,Weight.BMI.tibia~1 + Sex + (1|Batch),physiological,Weight.BMI.tibia,0.435,0.065,1.40E-14
+"Anatomical measures (Adrenals, hind limb muscles and brain weight, body, tibia and tail length)",Mean weight of adrenal glands (g),Adrenals.Adrenals_g,0.00502,0.00253,0.00276,0.000727,0.00725,0.0015,Inf,1488,Adrenals.Adrenals_g~1 + Sex + (1|Batch) + Body.Weight,tissue,Adrenals.Adrenals_g,0.244,0.076,1.59E-04
+,Weight of tibialis anterior (g),Muscles.TA.g,0.0608,0.00855,0.0668,0.0066,0.0549,0.00563,263,1828,Muscles.TA.g~1 + Sex + (1|Batch) + Tibia.Length,tissue,Muscles.TA.g,0.391,0.066,3.86E-12
+,Weight of extensor digitorum longus (g),Muscles.EDL.g,0.0123,0.00194,0.0137,0.00156,0.011,0.00123,254,1833,Muscles.EDL.g~1 + Sex + (1|Batch) + Tibia.Length,tissue,Muscles.EDL.g,0.303,0.067,1.76E-07
+,Weight of gastrocnemius (g),Muscles.Gast.g,0.143,0.0198,0.156,0.0161,0.131,0.0141,215,1832,Muscles.Gast.g~1 + Sex + (1|Batch) + Tibia.Length,tissue,Muscles.Gast.g,0.285,0.067,1.73E-06
+,Weight of plantaris (g),Muscles.Plant.g,0.0176,0.00283,0.0195,0.00222,0.0156,0.00187,255,1832,Muscles.Plant.g~1 + Sex + (1|Batch) + Tibia.Length,tissue,Muscles.Plant.g,0.226,0.063,2.36E-05
+,Weight of soleus (g),Muscles.Sol.g,0.00886,0.00148,0.00973,0.00131,0.00801,0.0011,163,1832,Muscles.Sol.g~1 + Sex + (1|Batch) + Tibia.Length,tissue,Muscles.Sol.g,0.331,0.066,8.31E-09
+,Length of tibia (mm),Tibia.Length,18.9,0.45,19,0.43,18.8,0.43,80,1841,Tibia.Length~1 + Sex + (1|Batch) + Body.Weight,tissue,Tibia.Length,0.469,0.057,1.86E-11
+,Weight of brain at dissection (g),Diss.Brain.Weight,0.456,0.0258,0.455,0.0259,0.457,0.0257,1.25,1863,Diss.Brain.Weight~1 + (1|Batch),tissue,Diss.Brain.Weight,0.323,0.066,2.62E-08
+,Length of body at dissection (mm),Diss.Body.Length,10.7,0.464,10.9,0.407,10.5,0.425,88.5,1829,Diss.Body.Length~1 + Sex + (1|Batch) + Body.Weight + Diss.Experimenter.CardiacPuncture + Diss.Cull.Date.Day_of_Year,physiological,Diss.Body.Length,0.142,0.063,8.01E-03
+,Length of tail at dissection (mm),Diss.Tail.Length,9.66,0.512,9.91,0.462,9.4,0.425,97.3,1549,Diss.Tail.Length~1 + Sex + (1|Batch) + Body.Weight + Diss.Experimenter.1,physiological,Diss.Tail.Length,0.277,0.076,3.09E-05
+Apparent Bone Mineral Content (AppBMC) and size of tibia,Most frequent occurring appBMC (pixel intensity in bone),BMC.Mode,166,14.6,169,15.8,163,12.7,16.9,1760,BMC.Mode~1 + Sex + (1|Batch),tissue,BMC.Mode,0.211,0.065,1.32E-04
+,Midpoint appBMC,BMC.Median,170,9.64,171,9.7,169,9.48,5.28,1835,BMC.Median~1 + Sex + (1|Batch),tissue,BMC.Median,0.464,0.064,1.00E-16
+,Mean appBMC,BMC.Mean,171,10.1,172,10.2,171,10,1.54,1838,BMC.Mean~1 + (1|Batch),tissue,BMC.Mean,0.450,0.063,1.00E-16
+,Standard deviation of appBMC,BMC.StdDev,28.6,4.21,29.3,4.4,28,3.93,9.36,1815,BMC.StdDev~1 + Sex + (1|Batch),tissue,BMC.StdDev,0.255,0.063,1.77E-06
+,Minimum value of appBMC,BMC.Min,82.4,29.1,80.9,29.5,83.9,28.6,1.58,1856,BMC.Min~1 + (1|Batch),tissue,BMC.Min,0.056,0.060,1.78E-01
+,Maximum value of appBMC,BMC.Max,243,7.48,244,7.33,242,7.49,8.01,1859,BMC.Max~1 + Sex + (1|Batch) + Body.Weight,tissue,BMC.Max,0.413,0.063,2.52E-15
+,Symmetry of distribution of appBMC,BMC.Skew,0.0637,0.314,0.0174,0.297,0.11,0.324,9.6,1826,BMC.Skew~1 + Sex + (1|Batch),tissue,BMC.Skew,0.032,0.059,2.92E-01
+,Quantification of match between the distibution of appBMC and a Gaussian distribution,BMC.Kurt,-0.197,0.459,-0.258,0.444,-0.137,0.465,7.69,1798,BMC.Kurt~1 + Sex + Diss.Transfer.Date.Month,tissue,BMC.Kurt,0.119,0.061,1.59E-02
+,Most frequent occurring appBMC (pixel intensity in bone) restricted to bones not affected by osteopetrosis (Mode<210),BMC.Mode.N,165,12.3,168,12.7,163,11.3,20,1736,BMC.Mode.N~1 + Sex + (1|Batch),tissue,BMC.Mode.N,0.234,0.067,4.89E-05
+,Midpoint appBMC restricted to bones not affected by osteopetrosis (Mode<210),BMC.Median.N,169,8.26,170,8.26,168,8.19,4.53,1728,BMC.Median.N~1 + (1|Batch) + Body.Weight,tissue,BMC.Median.N,0.369,0.067,1.73E-10
+,Mean appBMC restricted to bones not affected by osteopetrosis (Mode<210),BMC.Mean.N,170,8.62,170,8.63,169,8.6,0.918,1729,BMC.Mean.N~1 + (1|Batch),tissue,BMC.Mean.N,0.351,0.067,1.12E-09
+,Standard deviation of appBMC restricted to bones not affected by osteopetrosis (Mode<210),BMC.StdDev.N,28.2,3.9,28.8,4.05,27.7,3.68,7.71,1703,BMC.StdDev.N~1 + Sex + (1|Batch),tissue,BMC.StdDev.N,0.193,0.065,4.07E-04
+,Minimum value of appBMC restricted to bones not affected by osteopetrosis (Mode<210),BMC.Min.N,81.9,28.8,80.5,28.9,83.3,28.5,1.38,1738,BMC.Min.N~1 + (1|Batch),tissue,BMC.Min.N,0.043,0.064,2.55E-01
+,Maximum value of appBMC restricted to bones not affected by osteopetrosis (Mode<210),BMC.Max.N,242,7.12,243,6.93,242,7.2,6,1740,BMC.Max.N~1 + Sex + (1|Batch) + Body.Weight,tissue,BMC.Max.N,0.267,0.066,2.23E-06
+,Symmetry of distribution of appBMC restricted to bones not affected by osteopetrosis (Mode<210),BMC.Skew.N,0.086,0.304,0.0412,0.286,0.129,0.316,8.73,1700,BMC.Skew.N~1 + Sex + (1|Batch),tissue,BMC.Skew.N,0.082,0.066,9.76E-02
+,Quantification of match between the distibution of appBMC and a Gaussian distribution restricted to bones not affected by osteopetrosis (Mode<210),BMC.Kurt.N,-0.159,0.431,-0.221,0.412,-0.101,0.44,8.15,1695,BMC.Kurt.N~1 + Sex + (1|Batch),tissue,BMC.Kurt.N,0.028,0.062,3.22E-01
+,Bone area (mm2),BMC.Area,11.8,1.35,12.5,1.2,11.1,1.12,125,1847,BMC.Area~1 + Sex + (1|Batch) + Body.Weight,tissue,BMC.Area,0.129,0.060,8.17E-03
+,Length of outside boundary of bone,BMC.Perim,28.9,0.782,29.2,0.739,28.6,0.723,54.8,1841,BMC.Perim~1 + Sex + (1|Batch) + Body.Weight,tissue,BMC.Perim,0.341,0.066,5.87E-09
+,Width of smallest rectangle enclosing the bone,BMC.Width,12.3,0.307,12.4,0.298,12.3,0.299,23.9,1842,BMC.Width~1 + Sex + (1|Batch) + Body.Weight,tissue,BMC.Width,0.417,0.065,9.70E-14
+,Height of smallest rectangle enclosing the bone,BMC.Height,2.65,0.374,2.77,0.365,2.54,0.345,42.7,1821,BMC.Height~1 + Sex + (1|Batch),tissue,BMC.Height,0.000,0.000,1.00E+00
+Wound healing,Mean surface at dissection of two 2 square millimeters holes punched through the ears 5 weeks previously (mm^2),WH.Ears_Area,1.93,0.676,2.18,0.65,1.68,0.604,51.4,1541,WH.Ears_Area~1 + Sex + (1|Batch) + WH.Cage.Density,tissue,WH.Ears_Area,0.285,0.078,5.06E-05
+Hippocampal neurogenesis,Number of proliferating cells in the Dentate Gyrus of the Hippocampus (stained by antibody against Ki67 marker) ,Neuro.Ki67,88.1,27.5,88,26.5,88.2,28.5,0.0581,1484,Neuro.Ki67~1 + (1|Neuro.Staining.batch) + Neuro.Nb_slices_Ki67 + (1|Batch),tissue,Neuro.Ki67,0.336,0.079,1.80E-06
+,Number of newly formed neurons in the Dentate Gyrus of the Hippocampus (stained by antibody against DCX marker) ,Neuro.DCX,145,54.8,138,53.5,151,55.3,5.42,1438,Neuro.DCX~1 + (1|Neuro.Staining.batch) + Neuro.Nb_slices_DCX + Sex + (1|Batch),tissue,Neuro.DCX,0.336,0.080,1.51E-06
+"Blood measures (plasma clinical chemistry, platelet serotonin and haematology)",Albumin (g/l),Bioch.Albumin,27.8,1.93,27,1.75,28.6,1.77,48.5,1181,Bioch.Albumin~1 + Sex + (1|Batch) + Body.Weight + Diss.Experimenter.1,tissue,Bioch.Albumin,0.238,0.099,5.64E-03
+,Alkaline Phosphatase (U/l),Bioch.ALP,119,44.1,142,47.8,97,24.3,77.9,1228,Bioch.ALP~1 + Sex + (1|Batch),tissue,Bioch.ALP,0.596,0.092,6.74E-13
+,Alanine Aminotransferse (U/l),Bioch.ALAT,45.4,10.3,47.9,11,43,8.83,17.3,1258,Bioch.ALAT~1 + Sex + (1|Batch),tissue,Bioch.ALAT,0.333,0.094,6.87E-05
+,alpha-Amylase (U/l),Bioch.Amylase,604,95.4,624,99,583,86.7,14,1215,Bioch.Amylase~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.Amylase,0.348,0.093,2.05E-05
+,Aspartate aminotransferase (U/l),Bioch.ASAT,78.7,24.5,76.6,26.1,81,22.4,2.46,1029,Bioch.ASAT~1 + (1|Batch) + Body.Weight,tissue,Bioch.ASAT,0.000,0.000,1.00E+00
+,Calcium (mmol/l),Bioch.Calcium,2.34,0.0873,2.35,0.0885,2.34,0.0854,3.01,1282,Bioch.Calcium~1 + (1|Batch) + Body.Weight,tissue,Bioch.Calcium,0.172,0.089,2.02E-02
+,Chloride (mmol/l),Bioch.Chloride,111,2.88,112,2.57,109,2.54,67.4,1279,Bioch.Chloride~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.Chloride,0.130,0.088,6.41E-02
+,"Creatinine (enzymatic method, µmol/l)",Bioch.CreatinineEnzymatic,8.48,1.7,7.42,1.26,9.59,1.36,134,1173,Bioch.CreatinineEnzymatic~1 + Sex + (1|Batch),tissue,Bioch.CreatinineEnzymatic,0.212,0.096,7.61E-03
+,Free Fatty Acids (mmol/l),Bioch.FreeFattyAcid,0.912,0.277,0.796,0.233,1.03,0.267,56.4,1245,Bioch.FreeFattyAcid~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.FreeFattyAcid,0.218,0.093,6.42E-03
+,Glucose (mmol),Bioch.Glucose,10.2,1.96,10.7,1.99,9.84,1.83,13.9,1287,Bioch.Glucose~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.Glucose,0.159,0.086,2.19E-02
+,Glycerol (µmol/l),Bioch.Glycerol,284,94.9,231,67.8,340,87.2,103,1213,Bioch.Glycerol~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.Glycerol,0.090,0.096,1.81E-01
+,HDL Cholesterol (mmol/l),Bioch.HDL,2.23,0.546,2.65,0.391,1.8,0.287,247,1248,Bioch.HDL~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.HDL,0.534,0.092,8.63E-11
+,Iron (µmol/l),Bioch.Iron,36.5,6.68,35.4,5.84,37.8,7.33,7.89,1040,Bioch.Iron~1 + Sex + (1|Batch),tissue,Bioch.Iron,0.160,0.106,5.38E-02
+,Lactate Dehydrogenase (U/l),Bioch.LDH,582,172,578,174,587,170,0.333,905,Bioch.LDH~1 + (1|Batch) + Diss.Experimenter.CardiacPuncture + Diss.Experimenter.CardiacDissection + Diss.Cull.Date.Day_of_Year,tissue,Bioch.LDH,0.000,0.000,1.00E+00
+,LDL Cholesterol (mmol/l),Bioch.LDL,0.641,0.247,0.743,0.273,0.542,0.169,46.1,1185,Bioch.LDL~1 + Sex + (1|Batch) + Diss.Transfer.Date.Day_of_Year + Body.Weight,tissue,Bioch.LDL,0.256,0.093,1.01E-03
+,Inorganic Phosphate (mmol(l),Bioch.Phosphorous,1.81,0.303,1.78,0.288,1.84,0.314,3.11,1262,Bioch.Phosphorous~1 + (1|Batch),tissue,Bioch.Phosphorous,0.000,0.000,1.00E+00
+,Potassium (mmol/l),Bioch.Potassium,5.25,0.616,5.43,0.606,5.05,0.566,23.4,1059,Bioch.Potassium~1 + Sex + (1|Batch),tissue,Bioch.Potassium,0.068,0.100,2.37E-01
+,Sodium( mmol/l),Bioch.Sodium,147,2.89,148,2.56,145,2.67,56.8,1287,Bioch.Sodium~1 + Sex + (1|Batch),tissue,Bioch.Sodium,0.090,0.085,1.33E-01
+,Total Billirubin (µmol/l),Bioch.Tot.Billirubin,2.8,0.651,3.14,0.601,2.42,0.469,81.4,997,Bioch.Tot.Billirubin~1 + Sex + (1|Batch),tissue,Bioch.Tot.Billirubin,0.094,0.107,1.76E-01
+,Total Cholesterol (mmol/l),Bioch.Tot.Cholesterol,3.18,0.706,3.72,0.516,2.65,0.395,233,1271,Bioch.Tot.Cholesterol~1 + Sex + (1|Batch) + Body.Weight,tissue,Bioch.Tot.Cholesterol,0.509,0.091,1.13E-10
+,Total Protein (g/l),Bioch.Tot.Protein,55.4,2.86,55.4,2.84,55.4,2.87,0.161,1265,Bioch.Tot.Protein~1 + (1|Batch) + Body.Weight,tissue,Bioch.Tot.Protein,0.215,0.091,5.76E-03
+,Tryglycerides (mmol/l),Bioch.Triglycerides,1.3,0.415,1.25,0.419,1.34,0.407,3.54,1272,Bioch.Triglycerides~1 + (1|Batch) + Body.Weight,tissue,Bioch.Triglycerides,0.324,0.093,9.78E-05
+,Urea (mmol/l),Bioch.Urea,7.18,1.31,7.51,1.29,6.86,1.25,18.5,1269,Bioch.Urea~1 + Sex + (1|Batch),tissue,Bioch.Urea,0.259,0.099,5.71E-03
+,White Blood Cells Count from the Peroxidase Method (x10E03 cells/µL),Haem.WBCP,4.42,1.96,4.29,1.87,4.56,2.05,1.91,1340,Haem.WBCP~1 + (1|Batch),tissue,Haem.WBCP,0.236,0.082,6.87E-04
+,White Blood Cells Count from the Basophil Method (x10E03 cells/µL),Haem.WBCB,4.6,2.06,4.47,1.99,4.74,2.13,1.8,1343,Haem.WBCB~1 + (1|Batch),tissue,Haem.WBCB,0.261,0.084,3.69E-04
+,Red Blood Cells (x10E03 cells/µL),Haem.RBC,9.7,0.581,9.64,0.584,9.77,0.572,4.22,1339,Haem.RBC~1 + (1|Batch),tissue,Haem.RBC,0.422,0.081,1.21E-09
+,Haemoglobin (g/dL),Haem.measHGB,14.3,0.948,14,0.888,14.6,0.925,27.4,1336,Haem.measHGB~1 + Sex + (1|Batch),tissue,Haem.measHGB,0.200,0.082,3.30E-03
+,Hematocrit (L/L) = (RBC x MCV) ÷ 10,Haem.HCT,0.469,0.0277,0.464,0.0273,0.474,0.0273,9.33,1282,Haem.HCT~1 + Sex + (1|Batch),tissue,Haem.HCT,0.180,0.085,1.02E-02
+,Mean Corpuscular Volume (fL),Haem.MCV,48.3,1.54,48.2,1.57,48.5,1.5,4.2,1292,Haem.MCV~1 + Sex + (1|Batch),tissue,Haem.MCV,0.451,0.085,8.07E-10
+,Mean Corpuscular Haemoglobin (pg) = (HGB / RBC) x 10,Haem.MCH,14.7,0.667,14.6,0.65,14.9,0.628,25.9,1338,Haem.MCH~1 + Sex + (1|Batch),tissue,Haem.MCH,0.269,0.082,1.07E-04
+,Mean Corpuscular Haemoglobin Concentration (g/dL) = (HGB ÷ [RBC x MCV]) x 1000,Haem.MCHC,30.5,1.04,30.2,0.996,30.8,1.01,22.1,1273,Haem.MCHC~1 + Sex + (1|Batch),tissue,Haem.MCHC,0.113,0.085,8.29E-02
+,Cellular Haemoglobin Concentration Mean (g/L),Haem.CHCM,29.2,0.743,29.1,0.733,29.3,0.735,7.98,1293,Haem.CHCM~1 + Sex + (1|Batch),tissue,Haem.CHCM,0.153,0.083,2.43E-02
+,Red Blood Cell Distribution Width (%) = 100 x (SD of RBC Volume histogram ÷ MCV),Haem.RDW,15.4,1.17,15.4,1.19,15.3,1.15,0.303,1290,Haem.RDW~1 + (1|Batch),tissue,Haem.RDW,0.281,0.082,2.64E-05
+,Haemoglobin Concentration Distribution Width (g/dL),Haem.HDW,2.37,0.191,2.36,0.196,2.39,0.185,2.08,1348,Haem.HDW~1 + (1|Batch),tissue,Haem.HDW,0.396,0.080,1.20E-09
+,Platelet Count (x10E03 cells/µL),Haem.PLT,1340,280,1440,273,1230,246,42.9,1329,Haem.PLT~1 + Sex + (1|Batch),tissue,Haem.PLT,0.282,0.081,2.00E-05
+,Mean Platelet Volume (fL),Haem.MPV,6.9,0.755,6.67,0.758,7.12,0.681,28.2,1339,Haem.MPV~1 + Sex + (1|Batch),tissue,Haem.MPV,0.193,0.084,7.43E-03
+,Platelet Distribution Width (%) = 100 x (SD of PLT Volume histogram ÷ MPV),Haem.PDW,52.2,4.27,51.3,4.19,53.2,4.14,15.3,1324,Haem.PDW~1 + Sex + (1|Batch),tissue,Haem.PDW,0.237,0.085,1.08E-03
+,Platelets Concentration (%) = (PLT x MPV) ÷ 10 000,Haem.PCT,0.918,0.215,0.956,0.226,0.879,0.197,10.6,1335,Haem.PCT~1 + Sex + (1|Batch),tissue,Haem.PCT,0.229,0.080,4.52E-04
+,Percentage of Neutrophils (%),Haem.NEUT_percent,13.7,5.13,14.7,5.36,12.6,4.66,13.2,1327,Haem.NEUT_percent~1 + Sex + (1|Batch),tissue,Haem.NEUT_percent,0.152,0.083,2.76E-02
+,Percentage of Lymphocytes (%),Haem.LYM_percent,78.9,5.67,78,5.93,79.8,5.24,8.18,1322,Haem.LYM_percent~1 + Sex + (1|Batch),tissue,Haem.LYM_percent,0.192,0.083,6.11E-03
+,Percentage of Monocytes (%),Haem.MONO_percent,2.84,1.42,2.99,1.34,2.69,1.48,3.91,1318,Haem.MONO_percent~1 + (1|Batch) + Body.Weight,tissue,Haem.MONO_percent,0.174,0.081,7.93E-03
+,Percentage of Eosinophils (%),Haem.EOS_percent,2.54,1.26,2.61,1.25,2.46,1.27,1.52,1321,Haem.EOS_percent~1 + (1|Batch),tissue,Haem.EOS_percent,0.015,0.078,4.23E-01
+,Percentage of Large Unstained Cells (%) ,Haem.LUC_percent,1.03,0.816,0.806,0.669,1.27,0.891,24,1300,Haem.LUC_percent~1 + Sex + (1|Batch),tissue,Haem.LUC_percent,0.108,0.081,7.35E-02
+,Percentage of Basophils (%),Haem.BASO_percent,0.156,0.107,0.128,0.094,0.187,0.112,23.8,1335,Haem.BASO_percent~1 + Sex + (1|Batch),tissue,Haem.BASO_percent,0.201,0.083,3.58E-03
+,Absolute Count of Neutrophils (x10E03 cells/µL) = (%NEUT ÷ 100) x WBC ,Haem.abs_neuts,0.614,0.326,0.63,0.318,0.598,0.334,1.13,1327,Haem.abs_neuts~1 + (1|Batch),tissue,Haem.abs_neuts,0.270,0.082,9.28E-05
+,Absolute Count of Lymphocytes (x10E03 cells/µL) = (%LYMPH ÷ 100) x WBC ,Haem.abs_lymphs,3.61,1.69,3.44,1.58,3.8,1.78,4.04,1347,Haem.abs_lymphs~1 + Sex + (1|Batch),tissue,Haem.abs_lymphs,0.247,0.084,8.18E-04
+,Absolute Count of Monocytes (x10E03 cells/µL) = (%MONO ÷ 100) x WBC ,Haem.abs_mono,0.13,0.081,0.136,0.0843,0.125,0.077,1.95,1316,Haem.abs_mono~1 + (1|Batch) + Body.Weight,tissue,Haem.abs_mono,0.291,0.084,5.00E-05
+,Absolute Count of Eosinophils (x10E03 cells/µL) = (%EOS ÷ 100) x WBC ,Haem.abs_eos,0.111,0.0606,0.111,0.0613,0.111,0.06,0.0235,1333,Haem.abs_eos~1 + (1|Batch),tissue,Haem.abs_eos,0.035,0.074,3.09E-01
+,Asbsolute Count of Large Unstained Cells (x10E03 cells/µL) = (%LUC ÷ 100) x WBC ,Haem.abs_lucs,0.054,0.0569,0.0402,0.0429,0.0688,0.0656,19.2,1324,Haem.abs_lucs~1 + Sex + (1|Batch),tissue,Haem.abs_lucs,0.125,0.084,6.04E-02
+,Absolute Count of Basophils (x10E03 cells/µL) = (%BASO ÷ 100) x WBCB,Haem.abs_basos,0.0073,0.00777,0.00556,0.00654,0.00914,0.00852,16.2,1314,Haem.abs_basos~1 + Sex + (1|Batch),tissue,Haem.abs_basos,0.223,0.085,2.22E-03
+,Large Platelets (x10E03 cells/µL),Haem.Large_PLT,8.73,5.16,7.7,5.04,9.81,5.07,13.1,1312,Haem.Large_PLT~1 + Sex + (1|Batch),tissue,Haem.Large_PLT,0.192,0.087,1.04E-02
+,Serotonin measured in blood platelets (nM),Serotonin.Serotonin_nM,10800,4760,10600,4470,11000,5030,1.17,1716,Serotonin.Serotonin_nM~1 + Serotonin.Date.Year + (1|Batch) + Serotonin.Date.Month,tissue,Serotonin.Serotonin_nM,0.035,0.061,2.74E-01
+Genomic instability (micronucleus),Micronuclei in erythrocytes,Micronucleus.Mn.NCE,0.179,0.0492,0.208,0.0431,0.15,0.0358,140,1485,Micronucleus.Mn.NCE~1 + Sex + (1|Batch) + Micronucleus.Date.Year,tissue,Micronucleus.Mn.NCE,0.531,0.077,1.68E-15
+Immunology (spleen),CD3+ cells (%),FACS.CD3pos,28.7,5.5,28.3,5.24,29.1,5.71,2.26,1632,FACS.CD3pos~1 + (1|Batch) + Body.Weight,tissue,FACS.CD3pos,0.135,0.071,2.26E-02
+,CD45+/CD3+/CD4+ cells (%),FACS.CD45posCD3posCD4pos,20.7,4.19,20.2,3.87,21.1,4.4,4.86,1364,FACS.CD45posCD3posCD4pos~1 + Sex + (1|Batch) + Body.Weight,tissue,FACS.CD45posCD3posCD4pos,0.215,0.088,5.41E-03
+,CD45+/CD3+/CD8+ cells (%),FACS.CD45posCD3posCD8pos,5.74,1.84,5.8,1.82,5.67,1.86,0.798,1576,FACS.CD45posCD3posCD8pos~1 + (1|Batch),tissue,FACS.CD45posCD3posCD8pos,0.487,0.073,9.77E-16
+,CD45+/CD3-/CD19+ cells (%),FACS.CD45posCD3negCD19pos,62.4,5.64,62.8,5.3,62,5.9,2.22,1416,FACS.CD45posCD3negCD19pos~1 + (1|Batch),tissue,FACS.CD45posCD3negCD19pos,0.162,0.082,2.07E-02
+,CD45+/CD3-/DX5+ cells (%),FACS.CD45posCD3negDX5pos,2.16,0.843,2.26,0.857,2.06,0.817,5.17,1405,FACS.CD45posCD3negDX5pos~1 + Sex + (1|Batch),tissue,FACS.CD45posCD3negDX5pos,0.473,0.078,8.93E-14
+,CD3+/CD4+ cells (%),FACS.CD3posCD4pos,69.7,5.32,69.2,5.3,70.2,5.3,3.3,1357,FACS.CD3posCD4pos~1 + (1|Batch),tissue,FACS.CD3posCD4pos,0.564,0.081,7.28E-16
+,CD3+/CD8+ cells (%),FACS.CD3posCD8pos,16.8,4.62,17.1,4.73,16.5,4.49,2.22,1627,FACS.CD3posCD8pos~1 + (1|Batch),tissue,FACS.CD3posCD8pos,0.625,0.068,1.00E-16
+,Ratio of CD3+/CD4+ to CD3+/CD8+ cells,FACS.CD3posCD4CD8Ratio,4.33,1.42,4.18,1.35,4.47,1.46,3.74,1324,FACS.CD3posCD4CD8Ratio~1 + (1|Batch),tissue,FACS.CD3posCD4CD8Ratio,0.711,0.086,1.00E-16
+,CD3+/CD4+/CD44+ cells (%),FACS.CD3posCD4posCD44pos,40,14.1,39.3,13.4,40.6,14.7,1.05,1311,FACS.CD3posCD4posCD44pos~1 + (1|Batch),tissue,FACS.CD3posCD4posCD44pos,0.169,0.080,6.95E-03
+,CD3+/CD8+/CD44+ cells (%),FACS.CD3posCD8posCD44pos,39.8,12.9,39.3,12.4,40.2,13.5,0.838,1528,FACS.CD3posCD8posCD44pos~1 + (1|Batch),tissue,FACS.CD3posCD8posCD44pos,0.238,0.077,3.29E-04
+,Ratio of CD3+/CD44+/CD4+ to CD3+/CD44+/CD8+ cells (%),FACS.CD3posCD44posCD4CD8Ratio,4.34,1.67,4.21,1.6,4.47,1.73,2.27,1287,FACS.CD3posCD44posCD4CD8Ratio~1 + (1|Batch),tissue,FACS.CD3posCD44posCD4CD8Ratio,0.369,0.093,7.75E-06
+,Ratio of CD3+/CD44-/CD4+ to CD3+/CD44-/CD8+ cells (%),FACS.CD3posCD44negCD4CD8Ratio,4.31,1.65,4.2,1.62,4.41,1.67,1.65,1284,FACS.CD3posCD44negCD4CD8Ratio~1 + (1|Batch),tissue,FACS.CD3posCD44negCD4CD8Ratio,0.710,0.086,1.00E-16
+Ventilatory response to acute hypoxia,Baseline (Minute Volume),Hypoxia.MV_Baseline,250,44.3,253,44.6,246,43.8,3,1549,Hypoxia.MV_Baseline~1 + (1|Batch) + Body.Weight + Hypoxia.Chamber + Hypoxia.Time.Hour.Minute,physiological,Hypoxia.MV_Baseline,0.229,0.077,6.28E-04
+,Acute Hypoxic Response (Minute Volume),Hypoxia.MV_AHR,147,44.8,146,44.7,147,44.9,0.0818,1546,Hypoxia.MV_AHR~1 + (1|Batch) + Diss.Transfer.Date.Day_of_Year,physiological,Hypoxia.MV_AHR,0.084,0.073,1.22E-01
+,Hypoxic Ventilatory Decline (Minute Volume),Hypoxia.MV_HVD,151,48.2,141,46.3,161,48.2,16,1557,Hypoxia.MV_HVD~1 + Sex + (1|Batch) + Hypoxia.Time.Hour.Minute,physiological,Hypoxia.MV_HVD,0.129,0.070,2.02E-02
+,Undershoot (Minute Volume),Hypoxia.MV_Undershoot,149,43.8,153,42.7,144,44.5,3.65,1567,Hypoxia.MV_Undershoot~1 + (1|Batch) + Body.Weight + Hypoxia.Chamber,physiological,Hypoxia.MV_Undershoot,0.161,0.075,1.20E-02
+,Off-response (Minute Volume),Hypoxia.MV_Off_response,143,42.2,157,41.4,128,37.7,44.2,1570,Hypoxia.MV_Off_response~1 + Sex + (1|Batch) + Body.Weight + Hypoxia.Chamber,physiological,Hypoxia.MV_Off_response,0.197,0.074,1.69E-03
+,Sustained Hypoxic Response (Minute Volume),Hypoxia.MV_SHR,-5.48,49.2,4.14,50.5,-15.7,45.6,15.2,1572,Hypoxia.MV_SHR~1 + Sex + (1|Batch),physiological,Hypoxia.MV_SHR,0.242,0.073,1.13E-04
+,normoxia Recovery (Minute Volume),Hypoxia.MV_NR,111,42,105,41.4,117,41.8,8.13,1574,Hypoxia.MV_NR~1 + Sex + (1|Batch) + Body.Weight + Hypoxia.Chamber,physiological,Hypoxia.MV_NR,0.156,0.075,1.49E-02
+,Baseline (Respiratory Rate),Hypoxia.f_Baseline,362,73,364,71.2,360,74.8,0.556,1584,Hypoxia.f_Baseline~1 + (1|Batch),physiological,Hypoxia.f_Baseline,0.266,0.075,4.73E-05
+,Acute Hypoxic Response (Respiratory Rate),Hypoxia.f_AHR,28.6,68.1,26.9,66.2,30.4,70,0.513,1584,Hypoxia.f_AHR~1 + (1|Batch),physiological,Hypoxia.f_AHR,0.122,0.072,3.71E-02
+,Hypoxic Ventilatory Decline (Respiratory Rate),Hypoxia.f_HVD,139,49.2,136,47.8,142,50.5,2.06,1579,Hypoxia.f_HVD~1 + (1|Batch) + Body.Weight,physiological,Hypoxia.f_HVD,0.300,0.076,1.24E-05
+,Undershoot (Respiratory Rate),Hypoxia.f_Undershoot,201,79.7,208,76.2,194,82.7,3.45,1577,Hypoxia.f_Undershoot~1 + (1|Batch),physiological,Hypoxia.f_Undershoot,0.229,0.075,4.72E-04
+,Off-response (Respiratory Rate),Hypoxia.f_Off_response,92.9,31.2,99.5,27,85.5,33.8,17.7,1536,Hypoxia.f_Off_response~1 + Sex + Body.Weight,physiological,Hypoxia.f_Off_response,0.081,0.074,1.32E-01
+,Sustained Hypoxic Response (Respiratory Rate),Hypoxia.f_SHR,-111,79.2,-109,77.6,-113,80.9,0.367,1586,Hypoxia.f_SHR~1 + (1|Batch),physiological,Hypoxia.f_SHR,0.394,0.077,6.90E-09
+,normoxia Recovery (Respiratory Rate),Hypoxia.f_NR,93.1,53.5,94.8,53.1,91.2,53.9,0.728,1572,Hypoxia.f_NR~1 + (1|Batch),physiological,Hypoxia.f_NR,0.033,0.070,3.17E-01
+,Baseline (Tidal Volume),Hypoxia.TV_Baseline,0.76,0.169,0.767,0.166,0.751,0.173,1.22,1555,Hypoxia.TV_Baseline~1 + (1|Batch) + Body.Weight + Hypoxia.Chamber,physiological,Hypoxia.TV_Baseline,0.075,0.074,1.53E-01
+,Acute Hypoxic Response (Tidal Volume),Hypoxia.TV_AHR,0.464,0.167,0.471,0.164,0.456,0.17,1.08,1574,Hypoxia.TV_AHR~1 + (1|Batch) + Body.Weight + Hypoxia.Chamber,physiological,Hypoxia.TV_AHR,0.326,0.080,8.77E-06
+,Hypoxic Ventilatory Decline (Tidal Volume),Hypoxia.TV_HVD,0.229,0.123,0.199,0.12,0.261,0.119,23.4,1573,Hypoxia.TV_HVD~1 + Sex + (1|Batch),physiological,Hypoxia.TV_HVD,0.154,0.072,9.64E-03
+,Undershoot (Tidal Volume),Hypoxia.TV_Undershoot,0.159,0.153,0.136,0.152,0.184,0.151,9.46,1565,Hypoxia.TV_Undershoot~1 + Sex + (1|Batch),physiological,Hypoxia.TV_Undershoot,0.295,0.079,3.57E-05
+,Off-response (Tidal Volume),Hypoxia.TV_Off_response,0.397,0.12,0.408,0.118,0.385,0.12,3.7,1561,Hypoxia.TV_Off_response~1 + (1|Batch) + Body.Weight + Hypoxia.Chamber,physiological,Hypoxia.TV_Off_response,0.127,0.074,3.62E-02
+,Sustained Hypoxic Response (Tidal Volme),Hypoxia.TV_SHR,0.238,0.182,0.277,0.18,0.197,0.174,17.8,1569,Hypoxia.TV_SHR~1 + Sex + (1|Batch) + Hypoxia.Chamber,physiological,Hypoxia.TV_SHR,0.345,0.080,3.33E-06
+,normoxia Recovery (Tidal Volume),Hypoxia.TV_NR,0.289,0.157,0.245,0.148,0.335,0.154,30.6,1576,Hypoxia.TV_NR~1 + Sex + (1|Batch) + Hypoxia.Chamber,physiological,Hypoxia.TV_NR,0.056,0.069,2.04E-01
+Cardiac phenotype (ECG),Heart rate measured during ECG,Cardio.ECG.Heart_Rate,512,46.1,519,46.7,506,44.7,7.99,1807,Cardio.ECG.Heart_Rate~1 + Sex + (1|Batch) + Body.Weight,physiological,Cardio.ECG.Heart_Rate,0.200,0.065,3.72E-04
+,ECG: PR interval (main),Cardio.ECG.PR_main,39,3.39,38,3.16,40,3.29,38.8,1777,Cardio.ECG.PR_main~1 + Sex + (1|Batch) + Body.Weight + Cardio.Echo.Experimenter,physiological,Cardio.ECG.PR_main,0.254,0.067,1.03E-05
+,ECG: PR interval (peak),Cardio.ECG.PR_peak,38.1,3.36,37.2,3.19,39,3.29,28.6,1778,Cardio.ECG.PR_peak~1 + Sex + (1|Batch) + Body.Weight,physiological,Cardio.ECG.PR_peak,0.135,0.065,1.26E-02
+,ECG: P wave duration,Cardio.ECG.P_Duration,22,2.23,21.7,2.14,22.3,2.29,5.48,1308,Cardio.ECG.P_Duration~1 + Sex + (1|Batch),physiological,Cardio.ECG.P_Duration,0.020,0.078,3.97E-01
+,ECG: QRS complex (main),Cardio.ECG.QRS_main,9.74,0.664,9.85,0.686,9.62,0.62,13.1,1761,Cardio.ECG.QRS_main~1 + Sex + (1|Batch) + Body.Weight,physiological,Cardio.ECG.QRS_main,0.078,0.067,1.30E-01
+,ECG: QRS complex (peak),Cardio.ECG.QRS_peak,4.57,0.469,4.64,0.494,4.51,0.433,8.59,1743,Cardio.ECG.QRS_peak~1 + Sex + (1|Batch),physiological,Cardio.ECG.QRS_peak,0.018,0.062,3.84E-01
+,ECG: QT interval (main),Cardio.ECG.QT_main,40.7,4.36,40.5,4.3,40.9,4.42,1.08,1525,Cardio.ECG.QT_main~1 + (1|Batch),physiological,Cardio.ECG.QT_main,0.116,0.075,5.44E-02
+,ECG: QT interval (main) corrected for heart rate,Cardio.ECG.QTcorr_main,37.4,3.2,37.4,3.18,37.3,3.23,0.411,1531,Cardio.ECG.QTcorr_main~1 + (1|Batch),physiological,Cardio.ECG.QTcorr_main,0.118,0.072,3.64E-02
+,ECG: QT interval (peak) corrected for heart rate,Cardio.ECG.QTcorr_peak,32.5,3.27,32.5,3.27,32.5,3.26,0.0478,1513,Cardio.ECG.QTcorr_peak~1 + (1|Batch),physiological,Cardio.ECG.QTcorr_peak,0.125,0.073,3.16E-02
+,ECG: JT interval,Cardio.ECG.JT_Interval,30.9,4.35,30.6,4.31,31.2,4.37,2.39,1510,Cardio.ECG.JT_Interval~1 + (1|Batch),physiological,Cardio.ECG.JT_Interval,0.087,0.073,1.06E-01
+,ECG: T wave duration,Cardio.ECG.Tpeak_Tend,27.2,4.37,26.9,4.28,27.4,4.46,1.68,1444,Cardio.ECG.Tpeak_Tend~1 + (1|Batch) + Body.Weight,physiological,Cardio.ECG.Tpeak_Tend,0.048,0.074,2.52E-01
+Porsolt Swim Test,"Immobility during the first 2 minutes of test, omitting the first 10 seconds (%)",PST.Immobility.First2min,11.3,11.4,10.6,11.2,12,11.5,224,1809,PST.Immobility.First2min~1 + (1|Batch),behaviour,PST.Immobility.First2min,0.206,0.065,2.97E-04
+,Immobility during the last 4 minutes of test (%),PST.Immobility.Last4min,39.5,25.7,37.1,25.3,41.8,25.8,424,1879,PST.Immobility.Last4min~1 + (1|Batch),behaviour,PST.Immobility.Last4min,0.303,0.063,2.07E-08
+Elevated Plus Maze,Distance in closed arms (cm),EPM.ClosedArms.Distance,1010,191,983,184,1030,194,6.81,1772,EPM.ClosedArms.Distance~1 + Sex + (1|Batch),behaviour,EPM.ClosedArms.Distance,0.268,0.066,3.95E-06
+,Number of entries in closed arms,EPM.ClosedArms.Entries,18.7,5.28,18.1,5.33,19.2,5.17,4.69,1776,EPM.ClosedArms.Entries~1 + (1|Batch),behaviour,EPM.ClosedArms.Entries,0.138,0.064,1.07E-02
+,Time in closed arms (sec),EPM.ClosedArms.Time,167,33.8,176,34.6,159,30.9,24,1777,EPM.ClosedArms.Time~1 + Sex + (1|Batch),behaviour,EPM.ClosedArms.Time,0.114,0.063,2.76E-02
+,Distance in open arms (cm),EPM.OpenArms.Distance,172,144,149,138,197,146,11.3,1682,EPM.OpenArms.Distance~1 + Sex + (1|Batch) + Body.Weight,behaviour,EPM.OpenArms.Distance,0.080,0.063,8.27E-02
+,Number of entries in open arms,EPM.OpenArms.Entries,6.59,4.26,5.78,4.11,7.4,4.26,14.5,1702,EPM.OpenArms.Entries~1 + Sex + (1|Batch) + Body.Weight,behaviour,EPM.OpenArms.Entries,0.169,0.065,1.51E-03
+,Time in open arms (sec),EPM.OpenArms.Time,35.4,26.8,31.3,26.1,39.5,26.8,10,1761,EPM.OpenArms.Time~1 + Sex + (1|Batch),behaviour,EPM.OpenArms.Time,0.085,0.060,6.24E-02
+,Total distance (cm),EPM.Total.Distance,1540,292,1470,272,1620,292,26.9,1701,EPM.Total.Distance~1 + Sex + (1|Batch) + Body.Weight,behaviour,EPM.Total.Distance,0.276,0.069,3.11E-06
+Fear Conditioning,Time freezing at baseline (before first tone) during training (%),FC.Training.Baseline,9.77,7.64,10.9,8.2,8.72,6.91,8.79,1874,FC.Training.Baseline~1 + Sex + (1|Batch) *,behaviour,FC.Training.Baseline,0.063,0.058,1.27E-01
+,Time freezing at baseline (before first tone) during cue tes (%),FC.Cue.Baseline,7.32,7,7.94,7.02,6.7,6.94,3.94,1912,FC.Cue.Baseline~1 + Sex + (1|Batch) *,behaviour,FC.Cue.Baseline,0.073,0.057,8.21E-02
+,Time freezing at tone prior to shock during training (%),FC.Training.UnconditionedFreeze,32.5,22,36.1,22.8,29,20.5,11.6,1875,FC.Training.UnconditionedFreeze~1 + Sex + (1|Batch) *,behaviour,FC.Training.UnconditionedFreeze,0.166,0.062,1.78E-03
+,Time freezing at tone prior to shock corrected for baseline during training (%) = FC.Training.UnconditionedFreeze - FC.Training.Baseline,FC.Training.UnconditionedFreeze.Corrected,22.1,18.8,24.3,19.6,19.9,17.7,6.44,1873,FC.Training.UnconditionedFreeze.Corrected~1 + Sex + (1|Batch) *,behaviour,FC.Training.UnconditionedFreeze.Corrected,0.143,0.061,4.99E-03
+,Time freezing during duration of context testing (%),FC.Context.Freeze,33,22.1,38.5,22.8,27.6,20,26.8,1878,FC.Context.Freeze~1 + Sex + (1|Batch) *,behaviour,FC.Context.Freeze,0.179,0.061,5.04E-04
+,Time freezing during context testing corrected for baseline during training (%) = FC.Context.Freeze - FC.Training.Baseline,FC.Context.Freeze.Corrected,22.7,20,26.9,20.8,18.6,18.2,18.7,1866,FC.Context.Freeze.Corrected~1 + Sex + (1|Batch) *,behaviour,FC.Context.Freeze.Corrected,0.163,0.061,1.43E-03
+,Time freezing during tones in cue test (%),FC.Cue.MeanFreeze,37.8,25.7,41.1,25.7,34.5,25.2,7.68,1907,FC.Cue.MeanFreeze~1 + Sex + (1|Batch) *,behaviour,FC.Cue.MeanFreeze,0.091,0.059,4.97E-02
+,Time freezing during tones in cue test corrected for baseline in cue test (%) = FC.Cue.MeanFreeze - FC.Cue.Baseline,FC.Cue.MeanFreeze.Corrected,29.8,23,32.4,22.9,27.1,22.8,6.25,1904,FC.Cue.MeanFreeze.Corrected~1 + Sex + (1|Batch) *,behaviour,FC.Cue.MeanFreeze.Corrected,0.049,0.056,1.80E-01
+Open Field Test,Number of fecal boli counted at the end of test,OFT.Boli,3.54,2.27,3.49,2.17,3.59,2.37,0.485,1968,OFT.Boli~1 + (1|Batch),behaviour,OFT.Boli,0.064,0.056,1.18E-01
+,Time spent in the centre of the arena (sec),OFT.Centre.Time,3.84,3.32,3.41,3.12,4.26,3.46,7.91,1935,OFT.Centre.Time~1 + Sex + (1|Batch),behaviour,OFT.Centre.Time,0.139,0.061,8.60E-03
+,Distance travelled in the centre of the arena (cm),OFT.Centre.Distance,60.9,54.7,51.8,50.4,70.1,57.3,12.8,1928,OFT.Centre.Distance~1 + Sex + (1|Batch),behaviour,OFT.Centre.Distance,0.123,0.060,1.54E-02
+,Number of entries in the centre of the arena,OFT.Centre.Entries,3.41,2.96,2.9,2.77,3.91,3.05,13.4,1925,OFT.Centre.Entries~1 + Sex + (1|Batch),behaviour,OFT.Centre.Entries,0.066,0.058,1.25E-01
+,Total distance (cm),OFT.Arena.Distance,2430,769,2240,735,2610,757,26.9,1943,OFT.Arena.Distance~1 + Sex + (1|Batch),behaviour,OFT.Arena.Distance,0.163,0.060,1.72E-03
+,Time spent in the vicinity of the arena's wall (sec),OFT.Periphery.Time,281,12.1,283,11.8,280,12.1,9.98,1953,OFT.Periphery.Time~1 + Sex + (1|Batch),behaviour,OFT.Periphery.Time,0.131,0.060,1.11E-02
+,Distance travelled in the vicinity of the arena's wall (cm),OFT.Periphery.Distance,2130,599,1990,583,2270,584,24.3,1933,OFT.Periphery.Distance~1 + Sex + (1|Batch),behaviour,OFT.Periphery.Distance,0.162,0.061,1.95E-03
+,Time spent between the centre and the vicinity of the walls (sec),OFT.Open.Time,18.7,12.1,16.9,11.8,20.4,12.1,9.98,1953,OFT.Open.Time~1 + Sex + (1|Batch),behaviour,OFT.Open.Time,0.131,0.060,1.11E-02
+,Distance travelled while between the centre and the vicinity of the walls(cm),OFT.Open.Distance,281,211,240,197,322,217,17.2,1943,OFT.Open.Distance~1 + Sex + (1|Batch),behaviour,OFT.Open.Distance,0.114,0.060,2.32E-02
+Basal activity (home cage),Total mouvements (beam breaks) recorded between 0 and 5 minutes,PAS.First5,197,52.6,187,53.1,207,50.1,16.9,1900,PAS.First5~1 + Sex + (1|Batch),behaviour,PAS.First5,0.241,0.063,8.62E-06
+,Total mouvements (beam breaks) recorded between 20 and 30 minutes,PAS.Last10,87.2,28.4,85.1,28.5,89.4,28,2.95,1897,PAS.Last10~1 + (1|Batch),behaviour,PAS.Last10,0.332,0.063,1.11E-09
+,Total mouvements (beam breaks) recorded for the complete duration of the test (0-30 minutes),PAS.Total_Activity,119,27.2,117,27.4,121,26.8,2.83,1900,PAS.Total_Activity~1 + (1|Batch),behaviour,PAS.Total_Activity,0.340,0.063,1.77E-10
+Sleeping behaviour in normal 12/12 light/dark conditions,Mean time spent asleep over 24 hours (h),Sleep.s24h,8.02,1.61,8.7,1.46,7.32,1.45,72,1590,Sleep.s24h~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.s24h,0.054,0.068,2.06E-01
+,Mean time spent asleep during the 12h light period (h),Sleep.s12h_L,4.76,0.848,4.97,0.844,4.55,0.799,23.1,1590,Sleep.s12h_L~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.s12h_L,0.145,0.070,1.11E-02
+,Mean time spent asleep during the 12h dark period (h),Sleep.s12h_D,3.27,1.08,3.74,0.94,2.78,0.999,78.2,1594,Sleep.s12h_D~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.s12h_D,0.172,0.072,5.71E-03
+,Difference in time spent asleep between light and dark period (h),Sleep.sDif_LD,1.47,1.07,1.2,0.994,1.75,1.07,24.4,1584,Sleep.sDif_LD~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.sDif_LD,0.308,0.074,1.72E-06
+,Variance in the 24 hourly values for time spent asleep over 24h,Sleep.VAR,151,39.8,148,41.4,154,37.8,2.93,1589,Sleep.VAR~1 + (1|Batch) + Body.Weight,behaviour,Sleep.VAR,0.147,0.069,8.87E-03
+,Percent of total wakefulness spent in long (>17min) waking episodes (%),Sleep.Percent_wake_over_17min,67.2,7.86,64.8,8.15,69.7,6.68,37.7,1580,Sleep.Percent_wake_over_17min~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.Percent_wake_over_17min,0.115,0.070,4.16E-02
+,Longest continuous waking episode (h),Sleep.Max_wake_episode.h,3.53,1.66,3.03,1.39,4.06,1.76,35.3,1569,Sleep.Max_wake_episode.h~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.Max_wake_episode.h,0.140,0.073,2.22E-02
+,Number of short (<1min) sleep episodes expressed per hour of sleep,Sleep.short_sleep,71.9,13.6,69.2,12.9,74.6,13.7,14.9,1578,Sleep.short_sleep~1 + Sex + (1|Batch),behaviour,Sleep.short_sleep,0.320,0.072,1.12E-07
+,Number of long (>1min) sleep episodes expressed per hour of sleep,Sleep.long_sleep,19.9,1.75,20.1,1.7,19.6,1.76,10.1,1577,Sleep.long_sleep~1 + Sex,behaviour,Sleep.long_sleep,0.307,0.072,3.62E-07
+,Percent of total sleep spent in long sleep episodes (%),Sleep.long_sleep.percent_total,56.2,7.47,57.4,7.22,54.9,7.5,11,1584,Sleep.long_sleep.percent_total~1 + Sex + (1|Batch),behaviour,Sleep.long_sleep.percent_total,0.368,0.071,5.89E-10
+,Longest continuous sleep episode (min),Sleep.longest_sleep.min,4.36,0.887,4.5,0.885,4.22,0.868,9.41,1557,Sleep.longest_sleep.min~1 + Sex + (1|Batch),behaviour,Sleep.longest_sleep.min,0.124,0.072,3.46E-02
+,Averaged square of the differences between corresponding 24 hourly values of the two recording days (Dmin2),Sleep.VAR_1h,178,68.9,184,70.6,170,66.4,4.3,1565,Sleep.VAR_1h~1 + Sex,behaviour,Sleep.VAR_1h,0.167,0.072,6.58E-03
+,Day-to-day differences in amount of sleep during the light period (Dh),Sleep.VAR_12hL,0.0918,0.516,0.0924,0.52,0.0911,0.513,0.0176,1563,Sleep.VAR_12hL~1 + (1|Batch),behaviour,Sleep.VAR_12hL,0.102,0.071,6.58E-02
+,Day-to-day differences in amount of sleep during the dark period (Dh),Sleep.VAR_12hD,-0.322,0.68,-0.156,0.581,-0.497,0.731,22.9,1571,Sleep.VAR_12hD~1 + Sex + (1|Batch),behaviour,Sleep.VAR_12hD,0.000,0.000,1.00E+00
+,Day-to-day differences in the total amount of sleep over 24h (Dh),Sleep.VAR_24h,-0.222,0.87,-0.0522,0.779,-0.4,0.924,14.7,1569,Sleep.VAR_24h~1 + Sex + (1|Batch),behaviour,Sleep.VAR_24h,0.000,0.000,1.00E+00
+,Amount of sleep in the first 2 hours after light onset (min),Sleep.sleep_L_onset,26.3,21.1,30.6,21.5,22,19.7,15.6,1595,Sleep.sleep_L_onset~1 + Sleep.Light + Sex + (1|Batch),behaviour,Sleep.sleep_L_onset,0.120,0.071,3.98E-02
+,Amount of sleep in the first 2 hours after dark onset (min),Sleep.sleep_D_onset,9.56,9.73,11.3,10.5,7.81,8.51,11.9,1568,Sleep.sleep_D_onset~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.sleep_D_onset,0.000,0.000,1.00E+00
+,Mid-point of the 12h interval with the most sleep (in hours after light onset)  ,Sleep.T_max,2.33,1.46,2.15,1.38,2.52,1.5,6.36,1551,Sleep.T_max~1 + Sex + (1|Batch),behaviour,Sleep.T_max,0.086,0.071,1.06E-01
+,"Difference in sleep duration between the 12h intervals with the most and least sleep, respectively (Dh)",Sleep.Ampl,3.09,0.823,2.95,0.811,3.24,0.81,11.8,1587,Sleep.Ampl~1 + Sex + (1|Batch) + Body.Weight,behaviour,Sleep.Ampl,0.226,0.073,3.11E-04
+Startle PPI,100dB pulse reactivity (ln transformed),SPPI.ln_pa,3.41,1.03,3.47,1.05,3.34,1.02,2.12,1756,SPPI.ln_pa~1 + (1|Batch) + Body.Weight,behaviour,SPPI.ln_pa,0.186,0.067,1.67E-03
+,110dB pulse reactivity (ln transformed),SPPI.ln_pb,4.34,1.13,4.43,1.18,4.25,1.08,3.01,1753,SPPI.ln_pb~1 + (1|Batch) + Body.Weight,behaviour,SPPI.ln_pb,0.271,0.069,9.94E-06
+,120dB pulse reactivity (ln transformed),SPPI.ln_pc,4.62,1.11,4.71,1.16,4.54,1.06,2.84,1755,SPPI.ln_pc~1 + (1|Batch) + Body.Weight,behaviour,SPPI.ln_pc,0.291,0.069,2.33E-06
+,Habituation,SPPI.Habituation,0.371,0.618,0.347,0.642,0.396,0.592,1.04,1770,SPPI.Habituation~1,behaviour,SPPI.Habituation,0.160,0.067,5.86E-03
+,Prepulse-elicited reactivity,SPPI.ppReactivity,0.168,0.205,0.161,0.197,0.174,0.211,0.795,1763,SPPI.ppReactivity~1 + (1|Batch),behaviour,SPPI.ppReactivity,0.180,0.066,1.85E-03
+,Pulse reactivity,SPPI.pReactivity,0.97,0.436,0.96,0.432,0.981,0.44,0.509,1740,SPPI.pReactivity~1 + Diss.Transfer.Date.Month,behaviour,SPPI.pReactivity,0.299,0.069,7.32E-07
+,"PPI to 100dB pulse (mean, %)",SPPI.pc_average_pA,40.6,25.1,40.2,25.5,41,24.7,0.291,1730,SPPI.pc_average_pA~1,behaviour,SPPI.pc_average_pA,0.135,0.066,1.42E-02
+,"PPI to 110dB pulse (mean, %)",SPPI.pc_average_pB,29.3,22.9,30.4,23.4,28.2,22.3,1.33,1735,SPPI.pc_average_pB~1 + (1|Batch),behaviour,SPPI.pc_average_pB,0.000,0.000,1.00E+00
+,"PPI to 120dB pulse (mean, %)",SPPI.pc_average_pC,18.1,22.5,17.9,23.6,18.3,21.2,0.154,1747,SPPI.pc_average_pC~1 + (1|Batch),behaviour,SPPI.pc_average_pC,0.232,0.069,1.32E-04
+,Mean PPI (%),SPPI.pc_average_ABC,28.2,19.3,28.3,20.1,28.1,18.4,0.0938,1747,SPPI.pc_average_ABC~1 + (1|Batch),behaviour,SPPI.pc_average_ABC,0.079,0.065,1.04E-01
+,"Slope of PPI (71, 77 and 83dB) to 100dB pulse ",SPPI.slope_pA,0.313,0.214,0.312,0.223,0.314,0.205,0.0473,1776,SPPI.slope_pA~1,behaviour,SPPI.slope_pA,0.147,0.064,5.71E-03
+,"Slope of PPI (71, 77 and 83dB) to 110dB pulse ",SPPI.slope_pB,0.235,0.174,0.247,0.178,0.222,0.168,2.67,1765,SPPI.slope_pB~1,behaviour,SPPI.slope_pB,0.083,0.063,8.18E-02
+,"Slope of PPI (71, 77 and 83dB) to 120dB pulse ",SPPI.slope_pC,0.149,0.133,0.154,0.139,0.144,0.128,0.862,1754,SPPI.slope_pC~1 + (1|Batch),behaviour,SPPI.slope_pC,0.148,0.066,8.49E-03
+,Mean of PPI slopes,SPPI.slpPPI_average,0.232,0.141,0.239,0.149,0.226,0.132,1.23,1768,SPPI.slpPPI_average~1,behaviour,SPPI.slpPPI_average,0.186,0.066,1.15E-03
+Neophagia,"Latency to eat novel food (sec), censored at 360 seconds",Neo.Latency,159,128,167,134,151,123,2.29,1932,Neo.Latency~1 + (1|Batch),behaviour,Neo.Latency,0.139,0.059,5.26E-03
+,,,,,,,,,,,,,,,,
+"* The testing box had a strong effect on the Feac Conditioning measures so they were first qualtile normalised by box ID (1,2,3 or 4) before applying linear model to calculate residuals",,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Covariates used for the calultation of the residuals,,,,,,,,,,,,,,,,
+Name of covariate,Description,,,,,,,,,,,,,,,
+Body.Weight,Body weight measured at the time of sacrifice (20 weeks),,,,,,,,,,,,,,,
+Diss.Experimenter.1,Identity of experimenter performing dissection,,,,,,,,,,,,,,,
+Batch,Defines group of mice being phenotyped at the same time,,,,,,,,,,,,,,,
+Sex,Sex of the animal,,,,,,,,,,,,,,,
+Diss.Experimenter.CardiacPuncture,Identify of the experimenter collecting blood by cardiac puncture,,,,,,,,,,,,,,,
+Diss.Experimenter.CardiacDissection,Identify of experimenter perfoming fine dissection of the heart,,,,,,,,,,,,,,,
+Diss.Cull.Date.Day_of_Year,Day of year as numeric (1-365) when animal was culled,,,,,,,,,,,,,,,
+Diss.Transfer.Date.Day_of_Year,Day of year as numeric (1-365) when animal was transfered from quarantine to the animal facility,,,,,,,,,,,,,,,
+Tibia.Length,Length of tibia (mm),,,,,,,,,,,,,,,
+Hypoxia.Chamber,"Enclosure where response to hypoxia was measured (1, 2 , 3 or 4)",,,,,,,,,,,,,,,
+Hypoxia.Time.Hour.Minute,Time of day  when response to hypoxia test started (1-23),,,,,,,,,,,,,,,
+WH.Cage.Density,Number of mice housed in the same cage at the time ear puncture was performed,,,,,,,,,,,,,,,
+Cardio.Echo.Experimenter,Identify of experimenter performing cardiac measure,,,,,,,,,,,,,,,
+Neuro.Staining.batch,Defines group of brains stained at the same time,,,,,,,,,,,,,,,
+Neuro.Nb_slices_Ki67,Number of brain slices available for the counting of Ki67 stained cells (3 or 4),,,,,,,,,,,,,,,
+Neuro.Nb_slices_DCX,"Number of brain slices available for the counting of DCX stained cells (6, 7 or 8)",,,,,,,,,,,,,,,
+Serotonin.Date.Month,Month of plasma serotonin measure (1-12),,,,,,,,,,,,,,,

@@ -16,3 +16,10 @@ ls()
 head(mat)
 load("/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/resS_1.RData")
 head(mat)
+load("/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/resHS_1.RData")
+mat1 <- mat
+load("/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/resHS_3.RData")
+mat3 <- mat
+mat1[,1] - mat3[,1]
+head(mat1)
+head(mat3)

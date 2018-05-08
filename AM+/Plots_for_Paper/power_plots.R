@@ -37,14 +37,27 @@ DIR <- paste(getwd(),"/", sep="")
 DIR <- "/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/"
 sizefn <- 16
 thresh_indx <- 1:500
-
+#thresh_indx <- 1:2
 
 ## vector initialisation
 fam <- c("W", "S",  "L","HS","A","HL")
+#fam <- NULL
+#for(ii in c(700,800,900,1000))
+#{
+#  for(jj in c(5,50,500))
+#  {
+#    nme <- paste0("X",ii,"new",jj)
+#    fam <- c(fam, nme)
+#  }
+#  
+#}
+
+
 names.of.methods <- c("am", "mlmm","glmnet","lasso","r2VIM","bigRR", "gemma", "fastALL", "fast")
 
 
 ## list initialisation
+
 FDR <- list()
 recall <- list()  ## == power
 dfres <- list()
@@ -132,8 +145,8 @@ dfres$method <- factor(dfres$method, levels=c("am", "mlmm",   "glmnet", "lasso",
 levels(dfres$method) <- c("AMplus", "MLMM", "glmnet", "LMM-Lasso", "r2VIM", "bigRR", "GEMMA", "FaST-LMM^all", 
                       "FaST-LMM^few")
 
-levels(dfres$fam) <- c("150 x 5K", "350 x 500K", "1500 x 50K", "2000 x 500K", 
-                       "4000 x 1.5M", "10000 x 1.5M")
+    levels(dfres$fam) <- c("150 x 5K", "350 x 500K", "1500 x 50K", "2000 x 500K", 
+                      "4000 x 1.5M", "10000 x 1.5M")
 
 ## change family labels to simulation labels
 #  W  150 x 5 K           750
@@ -157,7 +170,7 @@ df1 <- subset(subset(dfres, !(method=="AMplus" | method=="MLMM" | method=="GEMMA
 
 df2 <- subset(subset(dfres, method=="AMplus" | method=="MLMM"),  !(fam=="4000 x 1.5M" | fam=="10000 x 1.5M"))
 
-
+library(RColorBrewer)
 
 p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
   geom_point(data=df2, aes(FDR, recall), size=2) +
@@ -168,7 +181,7 @@ p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
 
 p <- p + scale_color_manual(
   breaks=c("AMplus","MLMM","bigRR","glmnet","LMM-Lasso","r2VIM"),
-values=brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
+values=RColorBrewer:::brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
 guide = guide_legend(override.aes = list(
   linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
   shape=c(16, 16, NA, NA, NA, NA))))
