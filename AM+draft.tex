@@ -56,19 +56,30 @@ the errors.
 
 
 \subsection{Simulation Study}
+We performed a large simulation study where we sought to  answer two questions. 
+First, how does Eagle compare, in terms of run time and memory usage, to 
+competing implementations? Second, how well does Eagle find true associations (power) and avoid 
+false associations (type 1 errors)? We generated data under five different scenarios; a study of size 150 individuals 
+and 500 snp (150 x 5K),  350 individuals and 400000 snp (350 X 400K),  1500 individuals and 
+50000 snp (1500 x 50K), 2000 individuals and 500000 snp (2000 x 500K), 4000 individuals and 
+1500000 snp (4000 x 1.5M), and 10000 individuals and 1500000 snp (10000 x 1.5M).   
+We chose these scenarios to mirror some of the different sized GWAS being performed in animals, plants, and humans. 
 
-We were interested in answering two questions. 
-First, is Eagle faster, computationally, than other competing implementations? Second, is Eagle better, statistically, at 
-identifying the snp closest to the genes that are influencing a trait? To answer these questions, we conducted a large 
-simulation study. 
+For each scenario, we generated 100 replicates of data. A single replicate consists of snp data and quantitative trait data. 
+To introduce some of the complexities of dealing with real genotypes into the study, we obtained the snp genotypes from 
+the publicly available 1000 genome project, phase 3  \cite{10002010map}.  The quantitative trait data are generated 
+by selecting randomly a set of snp loci, assigning allelic effects to these loci, and then aggregating these effects for 
+each individual along with a random error.  
+ The number of snp selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
+ across the selected loci are equal.  A heritability of  50\% is assumed for the trait. 
+ 
 
 
 
-First, how does Eagle compare, computationally, to other competing implementations? Second, 
-how accurate is Eagle for finding 
+\subsection{Run times and memory usage}
 
+Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS/LAPACK libraries. 
 
-\subsection{Computational Performance: run times and memory usage}
 
 
 To asses the computational performance of AMplus, we conducted a large simulation study. 
