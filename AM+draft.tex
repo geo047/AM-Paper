@@ -45,7 +45,7 @@ a genome-wide scale, for large data sets,  practical and we have built AMplus ac
 \subsection{Association Mapping Methods}
 
 We compared AMplus, in terms of computational and statistical performance, against seven other association mapping methods. 
-We chose methods that, mostly, had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to mapping multiple locus-trait associations jointly.
+We chose methods that, mostly, had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to multiple-locus association mapping.
 
  In Table 1, 
 we list some of the important features that make computer software for association mapping useful. We also identify which of these 
@@ -78,22 +78,45 @@ each individual along with a random error.
 
 \subsection{Run times and memory usage}
 
+We analysed the simulated data with Eagle and the other implementations, recording their run (or elapse) times and 
+memory usage. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 Giggabytes of RAM.
+Not all implementations could be run under all scenarios.  Of the multiple-locus methods, bigRR and 
+LMM-Lasso could only deal with the smaller sized data sets generated under scenarios 150x5K, 1500x50K, and 350x400K.
+This was because of their large memory footprint.   The implementations glmnet, MLMM, and r2VIM could analyse larger data sets. 
+However, of the multiple-locus methods, only Eagle, due to its capacity to handle data larger than the memory capacity of a computer, could produce results for data generated under scenario 10000x1.5M.  Of the single-locus methods,  
+it was feasible to analyse data under any of the scenarios with GEMMA and 
+FaST-LMM$^few$ (where the covariance matrix for the polygenic effect is calculated from a subset of the available snp data) . 
+However, the memory requirements for FaST-LMM$^all$ (all snp data used in formation of covariance matrix for polygenic effect) 
+were too large for data generated under 4000x1.5M and 10000x1.5M. 
+
+
+
+
+The goal of association mapping is to identify those snp closest to the genes controlling a trait. Glmnet, r2VIM, and ... 
+produced results relatively quickly. However, these results were an ordering of the snp from most to least important. 
+Additional computation, in the form of stability selection (see Methods), was required before the statistical significance 
+of the snp could be determined. Only Eagle and MLMM produced results where no further computation was required. 
+
+
+Analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 Giggabytes of RAM.
+Our goal in performing these analyses was to not just order the snp from most to least important but to identify those snp which are closest to the genes controlling the trait.  Although glmnet, r2VIM, and .... produced an ordering of the snp 
+relatively quickly, additional computation in the form of stability selection (see Methods)  was required to assign significance to the results. 
+
+
+
+
+In performing an analysis, our goal was not merely to order the snp from most important to least important. If this was the goal, 
+then the implementations 
+glmnet, r2VIM, ... 
+
+
+
 Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS/LAPACK libraries. 
 
 
 
-To asses the computational performance of AMplus, we conducted a large simulation study. 
-We were interested in  the impact of study size on  performance so we generated data under five different scenarios. 
-These are a GWAS of size 150 individuals and 5000 snp (150 X 5K), 350 individuals and 400000 snp (350 X 400K),  1500 individuals and 
-50000 snp (1500 x 50K), 2000 individuals and 500000 snp (2000 x 500K), 4000 individuals and 
-1500000 snp (4000 x 1.5M), and 10000 individuals and 1500000 snp (10000 x 1.5M).  
-We chose these scenarios to reflect some of the different sized GWAS being performed in animals, plants, and humans. 
-For each scenario, we generated 100 replicates of data. A single replicate consists of snp genotype data and quantitative trait data. 
-We obtained the snp data from the publicly available 1000 genome project (phase 3). The quantitative trait data we generated from the 
-snp data by selecting a set of snp loci, assigning allelic effects to these snp, and aggregating these effects for each individual along with 
-random error. The number of snp selected per replicate follows a Poisson distribution with mean 30.
- The quantitative trait was generated to have a heritability of 50\%.
-Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, three Kepler Tesla GPUs, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS/LAPACK libraries. 
+
+
 
 \begin{figure}
 \label{fig_runtimes}
@@ -102,7 +125,9 @@ Analyses were performed on a high end desktop computer. It had dual 8-core Xeon 
 \end{figure}
 
 
-The run times for AMplus against the other software programs, across the five scenarios, is shown in figure \ref{fig_runtimes} To help with interpretibility of the results, in both plots, we have taken the x and y axes to be on a log scale. This means a unit change on the x or y axes is equivalent to a change in the order of magnitude. 
+The run times for Eagle against the other computer implementations, across the five scenarios, is shown in figure \ref{fig_runtimes} 
+The x and y axes are on a log scale due to the large difference in run times and number of genotypes across the different study 
+scenarios.  This means a unit change on the x or y axes is equivalent to a change in the order of magnitude. 
 In the top plot, a point is the median of the ratios of elapse times of the multiple locus method to AMplus for a given scenario. The median is over the 100 replicates. Here, since the median of the ratios are all positive on the log scale, it means that AMplus had a shorter run time than than all the other multiple locus methods. In fact, in some cases, AMplus was over a hundred times, or over two orders of magnitude, faster. Unlike AMplus, the size of data under scenario 10000 X 1.5M was beyond the memory constraints of the other multiple locus implementations. This was also the case for LMM-Lasso, bigRR, and glmnet, for scenario 4000 x 1.5M.
 
 In the bottom plot of figure \ref{fig_runtimes}, we compare the median run time of AMplus against the median run times of the single locus methods, FaST-LMM and GEMMA. 

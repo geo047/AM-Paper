@@ -25,19 +25,20 @@ library(RColorBrewer)
 
 setwd("/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper")
 df <- read.table(file="cputimes.dat", header=TRUE)
-sizefn <- 14
+
+sizefn <- 12
 
 df<- melt(df)
-names(df) <- c("Pop", "method","ratio")
+names(df) <- c("Pop", "method","time")
 
-df$ratio[df$ratio<1] <- 1  ## setting times less than 1 to 1
+df$time[df$time<1] <- 1  ## setting times less than 1 to 1
 levels(df$Pop) <- c(10000*1500000, 150*5000, 1500*50000,2000*500000, 350*400000,  4000*1500000)
 df$Pop <- as.numeric(as.character(df$Pop))
 
 pps <- sort(unique(df$Pop))
-names(df) <- c("Pop", "method","ratio")
+names(df) <- c("Pop", "method","time")
 ##--------------------
-## times - ratios
+## times - times
 ##--------------------
 
 ## data frame for line segments
@@ -51,16 +52,16 @@ gsdf <- data.frame(x1=(pps), y1=rep(1,length(pps)),
 
 ## maybe draw vertical lines first to get around problem.
 
-p <- ggplot(df, aes(x=Pop, y=ratio, group=method,shape=method, colour=method)) + 
-  geom_line(size=2) + geom_point(aes(colour=method),size=5) +
-  scale_shape_manual(breaks=c("mlmm","glmnet","lasso","rf_ranger","bigRR"), 
-                     labels=c("MLMM","glmnet", "LMM-Lasso",
+p <- ggplot(df, aes(x=Pop, y=time, group=method,shape=method, colour=method)) + 
+  geom_line(size=2) + geom_point(aes(colour=method),size=4) +
+  scale_shape_manual(breaks=c("am.", "mlmm","glmnet","lasso","rf_ranger","bigRR"), 
+                     labels=c("Eagle", "MLMM","glmnet", "LMM-Lasso",
                               "r2VIM","bigRR"),
-                     values=c(rep(19,5)))+
-  scale_colour_manual(breaks=c("mlmm","glmnet","lasso","rf_ranger","bigRR"),
-                      labels=c("MLMM","glmnet", "LMM-Lasso",
+                     values=c(rep(19,6)))+
+  scale_colour_manual(breaks=c("am.", "mlmm","glmnet","lasso","rf_ranger","bigRR"),
+                      labels=c("Eagle", "MLMM","glmnet", "LMM-Lasso",
                                "r2VIM","bigRR"),
-                      values=brewer.pal(9, "Paired")[c(2,3,9, 4,5)]) + 
+                      values=brewer.pal(9, "Paired")[c(2,3,9, 4,5, 1)]) + 
   scale_size(guide = 'none') 
 p
 
@@ -96,7 +97,7 @@ p  <- p + scale_x_continuous(trans="log10", limits=c(500000, 1e11),
 
 
 ##log tick marks
-p <- p +annotation_logticks(scale=TRUE, side="bl")
+### p <- p +annotation_logticks(scale=TRUE, side="bl")
 
 
 
@@ -107,17 +108,17 @@ p <- p + theme(plot.margin = grid::unit(c(1,0,4,1), "lines"))
 p <-  p + theme_classic()
 
 ## specify xlab and ylab
-p <- p  + ylab(bquote("Median ratio of elapse times\n(comparison to AMplus)\n")) + 
+p <- p  + ylab(bquote("Median of elapse times (in minutes)\n")) + 
   xlab(bquote('\nNumber of genotypes'))
 
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=16)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=16))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=14,  angle=0)) +
+  theme(axis.text.x = element_text(size=12,  angle=0)) +
   theme(axis.text.y=element_text(size=sizefn, hjust=0.5))
 
 ## increase font of lengend + remove legend title
@@ -134,16 +135,16 @@ p <- p +  annotate("text", x=pps, y=rep(1000,length(pps)), label= c("150x5K" ,
                                                                       "",  
                                                                       "4000x1.5M",  
                                                                       ""),
-                     size=5)
+                     size=4)
 
 
 p <- p +  annotate("text", x=pps, y=rep(700,length(pps)), label= c("" , 
-                                                                     "1500x50K",
+                                                                     "\n 1500x50K",
                                                                      "" ,  
-                                                                     "2000x500K", 
+                                                                     "\n 2000x500K", 
                                                                      "",  
-                                                                     "10000x1.5M"),
-                     size=5)
+                                                                     "\n 10000x1.5M"),
+                     size=4)
 p <- p + theme(legend.position = c(0.82, 0.8), 
                legend.justification = c(0, 1))
 
@@ -165,13 +166,15 @@ p_time
   
   
 ##----------------------------------------------------------
-## Absolute times for fast, fastall, gemma, am+, and am+GPU
+## Absolute times for fast, fastall, gemma, am+
 
 ##----------------------------------------------------------
   
   df <- read.table(file="abscputimes.dat", header=TRUE)
- 
-  sizefn <- 14
+ # remove column for am.GPU
+ indx <- which(colnames(df)=="am.GPU")
+ df <- df[, -indx]
+  sizefn <- 12
   indx <- which(df[,2:ncol(df)]<1, arr.ind=TRUE) 
   # add on first col
   indx[,"col"] <- indx[, "col"] + 1
@@ -194,20 +197,18 @@ p_time
   
   p <- ggplot(df, aes(x=Pop, y=time, group=method,shape=method, colour=method)) +
     geom_line(size=2) + geom_point(aes(colour=method),size=5) +
-    scale_shape_manual(breaks=c("am.", "am.GPU", "gemma", "fastALL", "fast"), 
-                                labels=c(bquote('AMplus'),
-                                bquote('AMplus'^GPU),
+    scale_shape_manual(breaks=c("am.", "gemma", "fastALL", "fast"), 
+                                labels=c("Eagle",
                                 "GEMMA",
                                 bquote('FaST-LMM'^all),
                                 bquote('FaST-LMM'^few)),
-                       values=c(rep(19,2),rep(17,3)))+
-    scale_colour_manual(breaks=c("am.", "am.GPU", "gemma", "fastALL", "fast"),
-      labels=c(bquote('AMplus'),
-                                 bquote('AMplus'^GPU),
+                       values=c(rep(19,1),rep(17,3)))+
+    scale_colour_manual(breaks=c("am.", "gemma", "fastALL", "fast"),
+      labels=c("Eagle",
                                  "GEMMA",
                                  bquote('FaST-LMM'^all),
                                  bquote('FaST-LMM'^few)),
-                        values=brewer.pal(10, "Paired")[c(1,10,8,6,7)]) + 
+                        values=brewer.pal(10, "Paired")[c(1,8,6,7)]) + 
     scale_size(guide = 'none') ## suppressed extra legend for size
   
   
@@ -242,17 +243,17 @@ p_time
   
   
   ## specify xlab and ylab
-  p <- p  + ylab(bquote("Median elapse times (in minutes)\n")) + 
+  p <- p  + ylab(bquote("Median of elapse times (in minutes) \n")) + 
     xlab(bquote('\nNumber of genotypes'))
   
   
   ##  change x and y labels size and bold
-  p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=16)) 
-  p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=16))
+  p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
+  p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
   
   # alter x and y axis labels 
   p <- p + 
-    theme(axis.text.x = element_text(size=14,  angle=0)) +
+    theme(axis.text.x = element_text(size=12,  angle=0)) +
     theme(axis.text.y=element_text(size=sizefn, hjust=0.5))
   
   ## increase font of lengend + remove legend title
@@ -269,7 +270,7 @@ p_time
                                                                       "",  
                                                                       "4000x1.5M",  
                                                                       ""),
-                     size=5)
+                     size=4)
   
   
   p <- p +  annotate("text", x=pps, y=rep(6000,length(pps)), label= c("" , 
@@ -278,7 +279,7 @@ p_time
                                                                      "2000x500K", 
                                                                      "",  
                                                                      "10000x1.5M"),
-                     size=5)
+                     size=4)
   
   p <- p + theme(legend.position = c(0.82, 0.8), 
                  legend.justification = c(0, 1))
