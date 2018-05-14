@@ -44,15 +44,15 @@ a genome-wide scale, for large data sets,  practical and we have built AMplus ac
 
 \subsection{Association Mapping Methods}
 
-We compared AMplus, in terms of computational and statistical performance, against seven other association mapping methods. 
-We chose methods that, mostly, had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer software. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to multiple-locus association mapping.
+We compared Eagle, in terms of computational and statistical performance, against seven other association mapping methods. 
+We chose methods that (mostly) had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer programs. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to multiple-locus association mapping.
 
  In Table 1, 
-we list some of the important features that make computer software for association mapping useful. We also identify which of these 
+we list some of the key features that make computer programs for association mapping useful. We also identify which of these 
 features are present in Eagle and the other seven implementations. For example, all but glmnet were purpose-built for 
-association mapping. Not all the implementations come with a user manual.  Most could accomodate data on additional fixed effects but only Eagle and FaST-LMM could deal with data larger than the memory capacity of the computer. Also, if 
-the input data contained errors, we found only Eagle and FaST-LMM identified the errors and provided advice on how to fix 
-the errors. 
+association mapping. Not all the computer programs come with a user manual.  Most could accomodate data on additional fixed effects but only Eagle and FaST-LMM could deal with data larger than the memory capacity of the computer. Also, if 
+the input data contained errors, we found only Eagle and FaST-LMM tried to diagnose the problem and 
+provided advice on how to fix the errors. 
 
 
 \subsection{Simulation Study}
@@ -78,12 +78,27 @@ each individual along with a random error.
 
 \subsection{Run times and memory usage}
 
-We analysed the simulated data with Eagle and the other implementations, recording their run (or elapse) times and 
-memory usage. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 Giggabytes of RAM.
+We analysed the simulated data with Eagle and the other computer programs, recording their memory usage and 
+run (or elapse) times. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 Giggabytes of RAM. Not all data generated under the five scenarios could be analysed by all implementations. Memory usage 
+for many of the computer programs was the limiting factor (See Sup figure 1).  The single-locus program GEMMA was by 
+far the most memory efficient. Not surprisingly, the multiple-locus programs were memory intensive. Most required in 
+excess of the 128 Gbytes of available RAM for the analysis of data generated under 4000x1.5M and 10000x1.5M.  Even FaST-LMM, a single locus
+implementation, required more than 128 Gbytes of memory for the analysis of the larger data sets 
+when all the marker data was used to calculate the relationship matrix. Of the multiple-locus programs, only Eagle,  
+with its ability to handle data larger than the memory capacity of the computer, was capable of producing findings 
+for data from scenario 10000x1.5M. 
+
+
+As the data sets became large, (4000x1.5m and 10000x1.5m), the multiple locus implementations memory footprint become excessive. Some even struggled with memory for data generated under 2000 x 500k. GEMMA, a single locus implementation had the lowest memory usage (sup figure 1). However, Eagle, with its ability to handle data larger than the memory capacity of the computer, was the only multiple locus implementation capable of producing findings for data from 10000x1.5m.
+
+In Figure 1, the median run times is displayed for the multiple locus implementations (top plot) and single locus implementations (bottom plot) compared to Eagle.
+
+
+
 Not all implementations could be run under all scenarios.  Of the multiple-locus methods, bigRR and 
-LMM-Lasso could only deal with the smaller sized data sets generated under scenarios 150x5K, 1500x50K, and 350x400K.
+LMM-Lasso were confined to the smaller sized data sets generated under scenarios 150x5K, 1500x50K, and 350x400K.
 This was because of their large memory footprint.   The implementations glmnet, MLMM, and r2VIM could analyse larger data sets. 
-However, of the multiple-locus methods, only Eagle, due to its capacity to handle data larger than the memory capacity of a computer, could produce results for data generated under scenario 10000x1.5M.  Of the single-locus methods,  
+However, of the multiple-locus methods, only Eagle, due to its ability to analyse data larger than the memory capacity of a computer, could produce results for data generated under scenario 10000x1.5M.  Of the single-locus methods,  
 it was feasible to analyse data under any of the scenarios with GEMMA and 
 FaST-LMM$^few$ (where the covariance matrix for the polygenic effect is calculated from a subset of the available snp data) . 
 However, the memory requirements for FaST-LMM$^all$ (all snp data used in formation of covariance matrix for polygenic effect) 
