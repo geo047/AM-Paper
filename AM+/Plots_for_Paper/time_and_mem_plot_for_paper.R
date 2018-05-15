@@ -344,10 +344,11 @@ p_time
   
   
   
-  p <- ggplot(df, aes(x=Pop, y=mem, group=method, shape=method, colour=method)) + 
+  p <- ggplot(df, aes(x=Pop, y=mem, group=method, colour=method)) + 
     geom_line(size=2) + geom_point(aes(colour=method),size=5) +
+   # scale_shape_manual(values=1:nlevels(df$method)) +
     scale_colour_manual(breaks=c("am.", "bigRR", "glmnet", "lasso", "mlmm", "r2VIM", "gemma", "fastALL", "fast"),
-                       labels=c("AMplus","bigRR", "glmnet", "LMM-Lasso", "MLMM", "r2VIM", "GEMMA", bquote("FaST-LMM"^all), 
+                       labels=c("Eagle","bigRR", "glmnet", "LMM-Lasso", "MLMM", "r2VIM", "GEMMA", bquote("FaST-LMM"^all), 
                                 bquote("FaST-LMM"^few)),
                        values=brewer.pal(9, "Paired")) +
     
@@ -356,15 +357,15 @@ p_time
                                 bquote("FaST-LMM"^few)),
                        values = c(19,19,19,19,19,17,17,17,19)) +
 
-    scale_size(guide = 'none')  + scale_y_continuous(limits = c(0, 120))
+    scale_size(guide = 'none')  + scale_y_continuous(limits = c(0, 130))
   
   
-  p  <- p +  geom_segment(aes(x=7.5e5, y=0,xend=7.5e5,yend=115), colour="grey", cex=0.5) +
-    geom_segment(aes(x=7.5e7, y=0,xend=7.5e7,yend=110), colour="grey", cex=0.5) +     
-    geom_segment(aes(x=1.4e8, y=0,xend=1.4e8,yend=115), colour="grey", cex=0.5) +
-    geom_segment(aes(x=1.0e9, y=0,xend=1.0e9,yend=110), colour="grey", cex=0.5) +
-    geom_segment(aes(x=6.0e9, y=0,xend=6.0e9,yend=115), colour="grey", cex=0.5) +
-    geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=110), colour="grey", cex=0.5) 
+  p  <- p +  geom_segment(aes(x=7.5e5, y=0,xend=7.5e5,yend=127), colour="grey", cex=0.5) +
+    geom_segment(aes(x=7.5e7, y=0,xend=7.5e7,yend=120), colour="grey", cex=0.5) +     
+    geom_segment(aes(x=1.4e8, y=0,xend=1.4e8,yend=127), colour="grey", cex=0.5) +
+    geom_segment(aes(x=1.0e9, y=0,xend=1.0e9,yend=120), colour="grey", cex=0.5) +
+    geom_segment(aes(x=6.0e9, y=0,xend=6.0e9,yend=127), colour="grey", cex=0.5) +
+    geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=120), colour="grey", cex=0.5) 
   
   
   ## log log scale
@@ -384,7 +385,7 @@ p_time
   p <-  p + theme_classic()
   
   ## specify xlab and ylab
-  p <- p  + ylab(bquote("Memory usage (in GB)")) + 
+  p <- p  + ylab(bquote("Memory usage (in Gbytes)")) + 
     xlab(bquote('\nNumber of genotypes'))
   
   
@@ -405,7 +406,7 @@ p_time
   
   
   ## add text to plots
-  p <- p +  annotate("text", x=pps, y=rep(118,length(pps)), label= c("150x5K" , 
+  p <- p +  annotate("text", x=pps, y=rep(129,length(pps)), label= c("150x5K" , 
                                                                       "",
                                                                       "350x400K" , 
                                                                       "",  
@@ -414,7 +415,7 @@ p_time
                      size=5)
   
   
-  p <- p +  annotate("text", x=pps, y=rep(112,length(pps)), label= c("" , 
+  p <- p +  annotate("text", x=pps, y=rep(123,length(pps)), label= c("" , 
                                                                      "1500x50K",
                                                                      "" ,  
                                                                      "2000x500K", 
