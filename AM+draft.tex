@@ -89,6 +89,25 @@ with its ability to handle data larger than the memory capacity of the computer,
 for data from our largest scenario 10000x1.5M. 
 
 
+The median run times for Eagle and the other computer programs across the six scenarios are shown in Figure 1. 
+Eagle was significantly faster, sometimes by orders of magnitude,  than the other multiple-locus
+ implementations, especially for the larger data sets. For a simulation study with 150 individuals and 
+ 5000 snp, Eagle produced results in seconds.  For the larger simulation scenarios 1500x50K and 350x400K, 
+ analyses with Eagle took under two minutes. Even for data from a couple of thousand individuals and half a million 
+ snp (2000x500K), the median run time of Eagle was under 14 minutes. For our scenarios where there 
+ were thousands of individuals and 1.5 million snp, Eagle took just over two hours for the analysis of data from 
+ 4000x1.5M and just under 12 hours for the analysis of data from 10000x1.5M. However, the long run time for 10000x1.5M 
+ is due, largely, to the extra processing required for having data larger than the memory capacity of the computer. 
+ Towards the end of our simulation study, we gained access to a high memory computer with 512 Gigabytes of RAM. 
+ We reran Eagle on data from the largest scenario 10000x1.5M to measure the impact on run time.  By increasing 
+ the memory, the median run time dropped by almost half from 699.55 minutes to 413.23 minutes. 
+ 
+ 
+
+
+
+
+
 In Figure 1, the median run times is displayed for the multiple locus implementations (top plot) and single locus implementations (bottom plot) compared to Eagle.
 
 
