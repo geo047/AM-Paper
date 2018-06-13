@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{authblk}
+
+
+\begin{document}
+
+
+\begin{table}
+\begin{tabular}{llcccccc}
+              &           &  \multicolumn{6}{c}{Simulation Scenarios} \\ \cline{3-8}
+ Method & Name & 150x5K & 1500x50K & 350x400K & 2000x500K & 4000x1.5M & 10000x1.5M \\ \hline
+  Multiple & Eagle 	&	   0.08  &   1.62   &  \bf{2.7}1  &   \bf{13.65}   & \bf{127.63}  &   699.55  \\
+               & MLMM 	&	   0.15    &  2.91    & 19.04  &  143.01  &  870.84  &     \\
+               & glmnet 	&	  0.11     & 3.95    & 14.06    & 74.03    &        &    \\
+               & r2VIM 	&	   0.09    &  3.66    &  5.51    & 50.59    & 380.52  &   \\ 
+               & bigRR 	&	    1.01   & 113.35   &  54.99   & 1030.61  &        &     \\
+               & LMM-Lasso 	&     0.57  &   52.08 &    92.20  & 1031.85 &           &     \\ \\
+Single     &  GEMMA 	&      0.02  &   5.02   &   6.17  &   84.83   & 723.33  & 4071.60 \\
+               & FaST-LMM$^{few}$ 	&    \bf{0.01}   &  \bf{0.80}   &   7.07   &  20.16   & 193.90   & \bf{346.19} \\ 
+               & FaST-LMM$^{all}$   	&   0.03   & 2.96  &    7.90   &  41.27  &            &   \\ \hline
+\end{tabular}
+
+\end{table}
+
+
+\end{document}

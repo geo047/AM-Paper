@@ -61,7 +61,7 @@ p <- ggplot(df, aes(x=Pop, y=time, group=method,shape=method, colour=method)) +
   scale_colour_manual(breaks=c("am.", "mlmm","glmnet","lasso","rf_ranger","bigRR"),
                       labels=c("Eagle", "MLMM","glmnet", "LMM-Lasso",
                                "r2VIM","bigRR"),
-                      values=brewer.pal(9, "Paired")[c(2,3,9, 4,5, 1)]) + 
+                      values=brewer.pal(10, "Paired")[c(2,1,3, 4,5, 6)]) + 
   scale_size(guide = 'none') 
 p
 
@@ -78,12 +78,14 @@ p
 
 
 
-p  <- p +  geom_segment(aes(x=7.5e5, y=0,xend=7.5e5,yend=700), colour="grey", cex=0.5) +
-  geom_segment(aes(x=7.5e7, y=0,xend=7.5e7,yend=500), colour="grey", cex=0.5) +     
-  geom_segment(aes(x=1.4e8, y=0,xend=1.4e8,yend=700), colour="grey", cex=0.5) +
-  geom_segment(aes(x=1.0e9, y=0,xend=1.0e9,yend=500), colour="grey", cex=0.5) +
-  geom_segment(aes(x=6.0e9, y=0,xend=6.0e9,yend=700), colour="grey", cex=0.5) +
-  geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=500), colour="grey", cex=0.5) 
+
+p  <- p +  geom_segment(aes(x=7.5e5, y=0,xend=7.5e5,yend=6000), colour="grey", cex=0.5) +
+  geom_segment(aes(x=7.5e7, y=0,xend=7.5e7,yend=4000), colour="grey", cex=0.5) +     
+  geom_segment(aes(x=1.4e8, y=0,xend=1.4e8,yend=6000), colour="grey", cex=0.5) +
+  geom_segment(aes(x=1.0e9, y=0,xend=1.0e9,yend=4000), colour="grey", cex=0.5) +
+  geom_segment(aes(x=6.0e9, y=0,xend=6.0e9,yend=6000), colour="grey", cex=0.5) +
+  geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=4000), colour="grey", cex=0.5) 
+
 
 
 ## log log scale
@@ -91,13 +93,13 @@ p  <- p + scale_x_continuous(trans="log10", limits=c(500000, 1e11),
                              breaks = scales::trans_breaks("log10", function(x) 10^x),
                              labels = scales::trans_format("log10", scales::math_format(10^.x))
 )+
-  scale_y_continuous(trans="log10", limits=c(1, 1000), 
+  scale_y_continuous(trans="log10", limits=c(1, 10000), 
                      breaks = scales::trans_breaks("log10", function(x) 10^x),
                      labels = scales::trans_format("log10", scales::math_format(10^.x)))
 
 
 ##log tick marks
-### p <- p +annotation_logticks(scale=TRUE, side="bl")
+ p <- p +annotation_logticks(scale=TRUE, side="bl")
 
 
 
@@ -109,7 +111,7 @@ p <-  p + theme_classic()
 
 ## specify xlab and ylab
 p <- p  + ylab(bquote("Median of elapse times (in minutes)\n")) + 
-  xlab(bquote('\nNumber of genotypes'))
+  xlab(bquote('Number of genotypes'))
 
 
 ##  change x and y labels size and bold
@@ -128,34 +130,41 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
 
 
+
 ## add text to plots
-p <- p +  annotate("text", x=pps, y=rep(1000,length(pps)), label= c("150x5K" , 
-                                                                     "",
-                                                                      "350x400K" , 
-                                                                      "",  
-                                                                      "4000x1.5M",  
-                                                                      ""),
-                     size=4)
+p <- p +  annotate("text", x=pps, y=rep(9000,length(pps)), label= c("150x5K" , 
+                                                                    "",
+                                                                    "350x400K" , 
+                                                                    "",  
+                                                                    "4000x1.5M",  
+                                                                    ""),
+                   size=4)
 
 
-p <- p +  annotate("text", x=pps, y=rep(700,length(pps)), label= c("" , 
-                                                                     "\n 1500x50K",
-                                                                     "" ,  
-                                                                     "\n 2000x500K", 
-                                                                     "",  
-                                                                     "\n 10000x1.5M"),
-                     size=4)
+p <- p +  annotate("text", x=pps, y=rep(6000,length(pps)), label= c("" , 
+                                                                    "1500x50K",
+                                                                    "" ,  
+                                                                    "2000x500K", 
+                                                                    "",  
+                                                                    "10000x1.5M"),
+                   size=4)
+
+
+
+
+
 p <- p + theme(legend.position = c(0.82, 0.8), 
                legend.justification = c(0, 1))
 
 # remove x axis labels
- p <- p + theme(axis.text.x=element_blank(),axis.title.x=element_blank())
+ #p <- p + theme(axis.text.x=element_blank(),axis.title.x=element_blank())
  
  ## putting some space around the plot
  p <- p + theme(plot.margin = grid::unit(c(1,5,1,1), "lines"))
  
- 
+
 p_time <- p
+
 p_time
 
 
@@ -208,7 +217,7 @@ p_time
                                  "GEMMA",
                                  bquote('FaST-LMM'^all),
                                  bquote('FaST-LMM'^few)),
-                        values=brewer.pal(10, "Paired")[c(1,8,6,7)]) + 
+                        values=brewer.pal(10, "Paired")[c(2,7,9,10)]) + 
     scale_size(guide = 'none') ## suppressed extra legend for size
   
   
@@ -244,7 +253,7 @@ p_time
   
   ## specify xlab and ylab
   p <- p  + ylab(bquote("Median of elapse times (in minutes) \n")) + 
-    xlab(bquote('\nNumber of genotypes'))
+    xlab(bquote('Number of genotypes'))
   
   
   ##  change x and y labels size and bold
@@ -299,11 +308,23 @@ p_time
   
   library(grid)
   
-  postscript("~/Papers/AM-Paper/time.eps", width=10, height=10, 
+  postscript("~/Papers/AM-Paper/time1.eps", width=10, height=10, 
              horizontal=FALSE)
-  grid.newpage()
-  grid.draw(rbind(ggplotGrob(p_time), ggplotGrob(p_abstime), size = "last"))
+  # square plot
+  p_time + coord_fixed() 
   dev.off()
+  
+  postscript("~/Papers/AM-Paper/time2.eps", width=10, height=10, 
+             horizontal=FALSE)
+  # square plot
+  p_abstime + coord_fixed() 
+  dev.off()
+  
+  
+  
+ # grid.newpage()
+#  grid.draw(cbind(ggplotGrob(p_time), ggplotGrob(p_abstime), size = "last"))
+ # dev.off()
   
 
   

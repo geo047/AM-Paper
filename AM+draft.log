@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 MAR 2018 14:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  17 MAY 2018 12:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -43,7 +43,11 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)) (./AM+draft.aux)
+)) (./AM+draft.aux
+
+LaTeX Warning: Label `eqmlmm' multiply defined.
+
+)
 \openout1 = `AM+draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -78,293 +82,74 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 9.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 17.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4] [5]
-
-LaTeX Warning: Reference `fig_runtimes' on page 6 undefined on input line 82.
-
-
-LaTeX Warning: Reference `fig_runtimes' on page 6 undefined on input line 85.
-
-[6]
-
-LaTeX Warning: Reference `fig_memory' on page 7 undefined on input line 95.
-
-[7]
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 119.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-19.
-
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 119.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-19.
-
-
-LaTeX Warning: Reference `fig_power_multiple' on page 8 undefined on input line
- 122.
-
-
-LaTeX Warning: Reference `fig_power_single' on page 8 undefined on input line 1
-22.
-
-
-LaTeX Warning: Reference `fig_threshold' on page 8 undefined on input line 126.
-
-
-
-LaTeX Warning: Reference `fig_threshold' on page 8 undefined on input line 130.
-
-
-[8]
+ [4]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 166.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
 
 
-LaTeX Warning: Citation `nicod2016genome' on page 9 undefined on input line 166
-.
+LaTeX Warning: Citation `10002010map' on page 5 undefined on input line 70.
 
-[9]
-
-LaTeX Warning: Citation `verbyla2007analysis' on page 10 undefined on input lin
-e 198.
-
-[10] [11]
-
-LaTeX Warning: Reference `eq1' on page 12 undefined on input line 255.
-
-
-LaTeX Warning: Reference `eq2' on page 12 undefined on input line 255.
-
-[12]
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 264.
-
-
-LaTeX Warning: Citation `chen2008extended' on page 13 undefined on input line 2
-65.
-
-
-LaTeX Warning: Citation `chen2008extended' on page 13 undefined on input line 2
-66.
-
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 271.
-
-
-LaTeX Warning: Citation `verbyla2012rwgaim' on page 13 undefined on input line 
-274.
-
-
-LaTeX Warning: Citation `verbyla2014whole' on page 13 undefined on input line 2
-74.
-
-
-LaTeX Warning: Reference `eq2' on page 13 undefined on input line 275.
-
-[13]
-
-LaTeX Warning: Reference `eq3' on page 14 undefined on input line 283.
-
-
-LaTeX Warning: Reference `eq2' on page 14 undefined on input line 284.
-
-
-LaTeX Warning: Citation `verbyla2012rwgaim' on page 14 undefined on input line 
-286.
-
-
-LaTeX Warning: Citation `verbyla2014whole' on page 14 undefined on input line 2
-86.
-
-
-LaTeX Warning: Reference `eq4' on page 14 undefined on input line 297.
-
-[14]
-
-LaTeX Warning: Citation `shen2013novel' on page 15 undefined on input line 324.
-
-
+[5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
 
 LaTeX Warning: Reference `stranden2009animalmodel' on page 15 undefined on inpu
-t line 332.
-
-
-LaTeX Warning: Citation `shen2013novel' on page 15 undefined on input line 336.
-
+t line 353.
 
 [15]
-
-LaTeX Warning: Citation `rakitsch2013lasso' on page 16 undefined on input line 
-339.
-
-
-Overfull \hbox (1.04546pt too wide) in paragraph at lines 339--351
+Overfull \hbox (1.04546pt too wide) in paragraph at lines 360--372
 []\OT1/ptm/b/n/12 LMM-Lasso: \OT1/ptm/m/n/12 LMM-Lasso $[]$ is a stand-alone co
 m-puter pro-gram that im-ple-ments lasso within
  []
 
+[16] [17]
 
-LaTeX Warning: Citation `Friedman2010glmnet' on page 16 undefined on input line
- 352.
-
-
-LaTeX Warning: Citation `zou2005regularization' on page 16 undefined on input l
-ine 357.
-
-[16]
-
-LaTeX Warning: Citation `segura2012efficient' on page 17 undefined on input lin
-e 366.
-
-
-LaTeX Warning: Reference `eq1' on page 17 undefined on input line 368.
-
-
-LaTeX Warning: Reference `eqmlmm' on page 17 undefined on input line 378.
-
-[17]
-
-LaTeX Warning: Citation `szymczak2016r2vim' on page 18 undefined on input line 
-385.
-
-
-LaTeX Warning: Citation `szymczak2016r2vim' on page 18 undefined on input line 
-391.
-
-
-LaTeX Warning: Citation `zhou2012genome' on page 18 undefined on input line 404
+LaTeX Warning: Citation `zhou2012genome' on page 18 undefined on input line 425
 .
 
 
-LaTeX Warning: Citation `lippert2011fast' on page 18 undefined on input line 40
-4.
-
-
-LaTeX Warning: Citation `zhou2012genome' on page 18 undefined on input line 404
+LaTeX Warning: Citation `zhou2012genome' on page 18 undefined on input line 425
 .
 
 [18]
 
 LaTeX Warning: Citation `meinshausen2010stability' on page 19 undefined on inpu
-t line 414.
+t line 435.
 
 [19]
 
 LaTeX Warning: Citation `meinshausen2010stability' on page 20 undefined on inpu
-t line 422.
+t line 443.
 
 
 LaTeX Warning: Citation `meinshausen2010stability' on page 20 undefined on inpu
-t line 436.
+t line 457.
 
-[20] [21] [22] [23] [24] [25]
-
-LaTeX Warning: Citation `shen2013novel' on page 26 undefined on input line 514.
-
-
-
-LaTeX Warning: Citation `shen2013novel' on page 26 undefined on input line 522.
-
-
-
-LaTeX Warning: Citation `Friedman2010glmnet' on page 26 undefined on input line
- 527.
-
-
-LaTeX Warning: Citation `zou2005regularization' on page 26 undefined on input l
-ine 533.
-
-
-LaTeX Warning: Citation `zou2005regularization' on page 26 undefined on input l
-ine 535.
-
-
-LaTeX Warning: Citation `heslot2012genomic' on page 26 undefined on input line 
-538.
-
-
-LaTeX Warning: Citation `ogutu2012genomic' on page 26 undefined on input line 5
-38.
-
-
-LaTeX Warning: Citation `efron2004least' on page 26 undefined on input line 540
-.
-
-[26]
-
-LaTeX Warning: Citation `rakitsch2013lasso' on page 27 undefined on input line 
-548.
-
-
-LaTeX Warning: Citation `Tibshirani1996lasso' on page 27 undefined on input lin
-e 553.
-
-
-LaTeX Warning: Citation `rakitsch2013lasso' on page 27 undefined on input line 
-556.
-
-
-LaTeX Warning: Reference `eq1' on page 27 undefined on input line 562.
-
-[27]
-
-LaTeX Warning: Reference `eqmlmm' on page 28 undefined on input line 572.
-
-
-LaTeX Warning: Citation `szymczak2016r2vim' on page 28 undefined on input line 
-577.
-
-
-LaTeX Warning: Citation `szymczak2016r2vim' on page 28 undefined on input line 
-583.
-
-[28]
-
-LaTeX Warning: Citation `lippert2011fast' on page 29 undefined on input line 59
-2.
-
-
-LaTeX Warning: Citation `yu2006unified' on page 29 undefined on input line 593.
-
-
-
-LaTeX Warning: Citation `zhao2007arabidopsis' on page 29 undefined on input lin
-e 593.
-
-(./AM+draft.bbl [29]
+[20] [21] [22] [23] [24] [25] [26] [27] [28] (./AM+draft.bbl [29]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 71.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [30])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 619.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 640.
  [31]
 [32]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 628.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 649.
  [33] (./AM+draft.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  603 strings out of 493089
- 7625 string characters out of 6134842
+ 7622 string characters out of 6134842
  60031 words of memory out of 5000000
  4118 multiletter control sequences out of 15000+600000
  26707 words of font info for 51 fonts, out of 8000000 for 9000
@@ -386,7 +171,7 @@ e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
 times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AM+draft.pdf (33 pages, 225380 bytes).
+Output written on AM+draft.pdf (33 pages, 226031 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams

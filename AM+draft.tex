@@ -68,7 +68,7 @@ We chose these scenarios to mirror some of the different sized GWAS being perfor
 For each scenario, we generated 100 replicates of data. A single replicate consists of snp data and quantitative trait data. 
 To introduce some of the complexities of dealing with real genotypes into the study, we obtained the snp genotypes from 
 the publicly available 1000 genome project, phase 3  \cite{10002010map}.  The quantitative trait data are generated 
-by selecting randomly a set of snp loci, assigning allelic effects to these loci, and then aggregating these effects for 
+by selecting randomly a set of snp loci, assigning additive allelic effects to these loci, and then aggregating these effects for 
 each individual along with a random error.  
  The number of snp selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
  across the selected loci are equal.  A heritability of  50\% is assumed for the trait. 
@@ -89,109 +89,54 @@ with its ability to handle data larger than the memory capacity of the computer,
 for data from our largest scenario 10000x1.5M. 
 
 
-The median run times for Eagle and the other computer programs across the six scenarios are shown in Figure 1. 
+The median run times for Eagle and the other computer programs across the six scenarios are shown in Figure \ref{fig_time}. 
+The x- and y-axes are on a log scale.  This means a unit change on the x- or y-axes is equivalent to a change in the order of magnitude.  In answer to our question of how does Eagle compare, in terms of run time, to competing implementations, 
 Eagle was significantly faster, sometimes by orders of magnitude,  than the other multiple-locus
- implementations, especially for the larger data sets. For a simulation study with 150 individuals and 
+ implementations and is comparable to the single-locus implementations. For a simulation study with 150 individuals and 
  5000 snp, Eagle produced results in seconds.  For the larger simulation scenarios 1500x50K and 350x400K, 
  analyses with Eagle took under two minutes. Even for data from a couple of thousand individuals and half a million 
  snp (2000x500K), the median run time of Eagle was under 14 minutes. For our scenarios where there 
  were thousands of individuals and 1.5 million snp, Eagle took just over two hours for the analysis of data from 
- 4000x1.5M and just under 12 hours for the analysis of data from 10000x1.5M. However, the long run time for 10000x1.5M 
- is due, largely, to the extra processing required for having data larger than the memory capacity of the computer. 
- Towards the end of our simulation study, we gained access to a high memory computer with 512 Gigabytes of RAM. 
- We reran Eagle on data from the largest scenario 10000x1.5M to measure the impact on run time.  By increasing 
- the memory, the median run time dropped by almost half from 699.55 minutes to 413.23 minutes. 
+ 4000x1.5M and just under 12 hours for the analysis of data from 10000x1.5M. 
+ Towards the final stages of writing this paper, 
+ we gained access to a XXXXXXXXXX, a faster desktop computer. We reran Eagle on data from the largest
+  scenario 10000x1.5M to measure the impact, if any, on run time. The median run time dropped by more than 50\% 
+  from just under 12 hours to 4.56 hours. 
  
+  
+ It is also worth noting that an increase in the number of snp genotypes in a study does not necessitate, automatically,  
+ an increase in the memory usage and run times for its analysis. This is  evidenced by the non-monotonically 
+ increasing behaviour of the curves in the memory (Sup Figure 1) and run-time plots (Figure \ref{fig_time}).  It 
+it is the study dimensions, not number of genotypes, that drives the computing resources required by 
+association mapping programs.   
  
-
-
-
-
-
-In Figure 1, the median run times is displayed for the multiple locus implementations (top plot) and single locus implementations (bottom plot) compared to Eagle.
-
-
-
-Not all implementations could be run under all scenarios.  Of the multiple-locus methods, bigRR and 
-LMM-Lasso were confined to the smaller sized data sets generated under scenarios 150x5K, 1500x50K, and 350x400K.
-This was because of their large memory footprint.   The implementations glmnet, MLMM, and r2VIM could analyse larger data sets. 
-However, of the multiple-locus methods, only Eagle, due to its ability to analyse data larger than the memory capacity of a computer, could produce results for data generated under scenario 10000x1.5M.  Of the single-locus methods,  
-it was feasible to analyse data under any of the scenarios with GEMMA and 
-FaST-LMM$^few$ (where the covariance matrix for the polygenic effect is calculated from a subset of the available snp data) . 
-However, the memory requirements for FaST-LMM$^all$ (all snp data used in formation of covariance matrix for polygenic effect) 
-were too large for data generated under 4000x1.5M and 10000x1.5M. 
-
-
-
-
-The goal of association mapping is to identify those snp closest to the genes controlling a trait. Glmnet, r2VIM, and ... 
-produced results relatively quickly. However, these results were an ordering of the snp from most to least important. 
-Additional computation, in the form of stability selection (see Methods), was required before the statistical significance 
-of the snp could be determined. Only Eagle and MLMM produced results where no further computation was required. 
-
-
-Analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 Giggabytes of RAM.
-Our goal in performing these analyses was to not just order the snp from most to least important but to identify those snp which are closest to the genes controlling the trait.  Although glmnet, r2VIM, and .... produced an ordering of the snp 
-relatively quickly, additional computation in the form of stability selection (see Methods)  was required to assign significance to the results. 
-
-
-
-
-In performing an analysis, our goal was not merely to order the snp from most important to least important. If this was the goal, 
-then the implementations 
-glmnet, r2VIM, ... 
-
-
-
-Analyses were performed on a high end desktop computer. It had dual 8-core Xeon processors, and 128 Giggabytes of RAM. All implementations except, GEMMA, made use of distributed computing, either explicitly or implicitly through multi-threaded BLAS/LAPACK libraries. 
-
-
-
-
-
-
+  
 \begin{figure}
-\label{fig_runtimes}
-\caption{Run times}
-\includegraphics[width=10cm]{time}
-\end{figure}
+\caption{Median run times, in minutes, for the analysis of association study data from the six simulation scenarios. 
+Eagle is compared against five other multiple-locus programs (top left plot) and two single-locus programs (top right plot). 
+The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multiple-locus 
+programs, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
+The actual median run times for the programs across the scenarios are given in the table. The entries in a bold font 
+correspond to the lowest run-time for a scenario. 
+ FaST-LMM$^{all}$ is where the single-locus results are based on all the available 
+snp data. FaST-LMM$^{few}$ is where the single-locus results as based on a subset of the available snp data. }
 
+\label{fig_time}
+figure 2 goes here {Figure2_time.pdf}
 
-The run times for Eagle against the other computer implementations, across the five scenarios, is shown in figure \ref{fig_runtimes} 
-The x and y axes are on a log scale due to the large difference in run times and number of genotypes across the different study 
-scenarios.  This means a unit change on the x or y axes is equivalent to a change in the order of magnitude. 
-In the top plot, a point is the median of the ratios of elapse times of the multiple locus method to AMplus for a given scenario. The median is over the 100 replicates. Here, since the median of the ratios are all positive on the log scale, it means that AMplus had a shorter run time than than all the other multiple locus methods. In fact, in some cases, AMplus was over a hundred times, or over two orders of magnitude, faster. Unlike AMplus, the size of data under scenario 10000 X 1.5M was beyond the memory constraints of the other multiple locus implementations. This was also the case for LMM-Lasso, bigRR, and glmnet, for scenario 4000 x 1.5M.
-
-In the bottom plot of figure \ref{fig_runtimes}, we compare the median run time of AMplus against the median run times of the single locus methods, FaST-LMM and GEMMA. 
-FaST-LMM was run in two ways. It was run where the genetic similarity matrix was built with all the marker data (FaST-LMM$^all$) or with data on every 500th snp (FaST-LMM$^few$). 
-AMplus was also run in two ways.  The default behavior for AMplus is to make use of CPUs for computing. However, AMplus also has the capacity to harness multiple GPUs (AMplus$^GPU$). 
-From the bottom plot, all the implementations have short run times when analysing data from scenario 150x5K. However, for the other scenarios, AMplus and AMplus$GPU$ have 
-significantly shorter run times than GEMMA and FaST-LMM$^all$. FaST-LMM$^few$ has a shorter run time than AMplus and AMplus$^GPU$ but only for scenarios 1500x50K and 
-10000x1.5M.  Furthermore, for scenario 10000x1.5M, the median run time for GEMMA is 4071 minutes, for AMplus is 699 minutes, for AMplus$^GPU$ is 447 minutes, and for 
-FaST-LMM$^few$ is 346 minutes. The very fast single-locus method FaST-LMM$^few$ is only 29\% faster than our multiple-locus method AMplus$^GPU$. It is worth noting though that 
-there is a setup cost to accessing GPU computing, making AMplus$^GPU$ most efficient on the larger data. 
-
-
-We also examined the memory usage of the different software programs (figure \ref{fig_memory} supplementary materials). 
-AMplus is comparable to the most efficient single locus implementation, FaST-LMM$^few$. 
-AMplus is also the only multiple locus program able to analyse data under scenarios ..... and ..... . 
-AMplus can process data larger than the memory capacity of the computer.
-
-\begin{figure}
-\label{fig_memory}
-\caption{Memory usage}
-\includegraphics[width=10cm]{mem}
 \end{figure}
 
 
 
 
-\subsection{Statistical Performance: power, FDR, and significance thresholds}
+\subsection{Power and false discovery rates}
 
-As part of assessing the performance of AMplus against the other association mapping methods, 
-we calculated their statistical power and false discovery rates. 
-We want a method to have high statistical power (probability of finding a true positive finding) but 
-low false discovery rate (proportion of findings that are false positives). 
+To answer how well Eagle finds true associations (power) and avoids 
+false associations (type 1 errors), we calculated the statistical power and false discovery rate of the different 
+association mapping methods, across the six simulation scenarios.  We want Eagle to have a high statistical power 
+(probability of finding a true positive finding) and low false discovery rate (proportion of findings that are false positives). 
+
+
 All the methods, besides AMplus and MLMM, required a threshold to be set in order to identify significant findings. 
 A conservative threshold guards against false discoveries but reduces power. 
 A anti-conservative threshold increases power at the cost of also increasing the false discovery rate. Only AMplus and mlmm avoid thresholds by treating association mapping as a model selection problem where the best model is found by minimising the model selection statistic, extBIC.

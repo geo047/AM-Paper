@@ -1,5 +1,5 @@
-## plotting power and FDR for multi-locus mehtods and single-locus methods (fast, fastALL, gemma)
 ## Last revised:   29/11/2016  MAjor change. Plotting Power vs FDR 
+## plotting power and FDR for multi-locus mehtods and single-locus methods (fast, fastALL, gemma)
 ## 
 ## Note: don't know why but this error would come up a lot when printing final plots. 
 ##
@@ -36,8 +36,8 @@ library(extrafont)
 DIR <- paste(getwd(),"/", sep="")
 DIR <- "/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/"
 sizefn <- 16
-thresh_indx <- 1:500
-#thresh_indx <- 1:2
+#thresh_indx <- 1:499
+thresh_indx <- 1:100
 
 ## vector initialisation
 fam <- c("W", "S",  "L","HS","A","HL")
@@ -153,16 +153,23 @@ levels(dfres$method) <- c("AMplus", "MLMM", "glmnet", "LMM-Lasso", "r2VIM", "big
 #  S  350 x 400K         140,000
 #  L  1500 x 50K          75,000
 #  HS 2000 x 500K         1,000,000
-#  A  4000 x 1.5M       600,000,000
+#  A  400 x 1.5M       600,000,000
 #  HL 10000 x 1.5M      1.5*e10
 
 # "am"      "mlmm"    "glmnet"  "lasso"   "r2VIM"   "bigRR"   "gemma"   "fastALL" "fast"  
 
-##------------------------------------
+# remove any 0's 
+    indx <- which(dfres$FDR==0  )
+    dfres <- dfres[-indx,]
+   # stop()
+    indx <- which(dfres$fam=="150 x 5K" & dfres$method=="glmnet")
+
+    
+    ##------------------------------------
 ## Draw plot for multi-locus methods
 ##-------------------------------------
 ## dropping MLMM recall values by a little bit because they are lower and so that we can see it in the plot
-dfres[which(dfres$method=="MLMM"), "recall"] <-  dfres[which(dfres$method=="MLMM"), "recall"] * 0.95
+#dfres[which(dfres$method=="MLMM"), "recall"] <-  dfres[which(dfres$method=="MLMM"), "recall"] * 0.95
 
 
 df1 <- subset(subset(dfres, !(method=="AMplus" | method=="MLMM" | method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" )),
@@ -172,8 +179,8 @@ df2 <- subset(subset(dfres, method=="AMplus" | method=="MLMM"),  !(fam=="4000 x 
 
 library(RColorBrewer)
 
-p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
-  geom_point(data=df2, aes(FDR, recall), size=2) +
+p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1, se=FALSE, method="loess")  +
+  geom_point(data=df2, aes(FDR, recall), size=1.5) +
   facet_wrap(~fam, ncol=2) + 
   theme(aspect.ratio = 1) # try with and without
 
@@ -203,8 +210,6 @@ p <- p  + ylab(bquote("Power")) +
   xlab(bquote('False discovery rate'))
 
 
-
-
 ##  change x and y labels size and bold
 p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=14)) 
 p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=14))
@@ -224,36 +229,109 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 #p + theme_economist_white()
 #p + theme_few()
 
+## xlimit
+p <- p + coord_cartesian(xlim = c(0, 0.05), ylim=c(0, 1)) 
 
-
-postscript("~/Papers/AM-Paper/powerMultiple.eps", width=10, height=10, fonts=c("sans", fonts()),
-           horizontal=FALSE)
-p
+jpeg("/Users/geo047/Papers/AM-Paper/power1main.jpg", width=7, height=7, units="in", res=500)
+print(p)
 dev.off()
 
 p1 <- p
+
+
+
+
+# inset plots
+insert_plot <- function(df1, df2, family){
+  
+   df1 <- subset(subset(dfres, !(method=="AMplus" | method=="MLMM" | method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" )),
+                   (fam==family))
+   df2 <- subset(subset(dfres, method=="AMplus" | method=="MLMM"),  (fam==family))
+
+
+  
+   p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=5, se=FALSE)  +
+               geom_point(data=df2, aes(FDR, recall), size=5) +
+               theme(aspect.ratio = 1) # try with and without
+
+   ## specify xlab and ylab 
+   p <- p  + ylab(bquote("Power")) + 
+             xlab(bquote('False discovery rate'))
+
+   # set theme
+   p <- p + theme_hc()+  theme(legend.position="none")
+
+
+   
+   p <- p + scale_color_manual(
+     breaks=c("AMplus","MLMM","bigRR","glmnet","LMM-Lasso","r2VIM"),
+     labels=c("Eagle", "MLMM", "bigRR","glmnet","LMM-Lasso","r2VIM"),
+     values=RColorBrewer:::brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
+     guide = guide_legend(override.aes = list(
+       linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
+       shape=c(16, 16, NA, NA, NA, NA))))
+   
+   ##  change x and y labels size and bold
+   p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=44)) 
+   p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=44))
+
+   # alter x and y axis labels 
+   p <- p +  
+       theme(axis.text.x = element_text(size=40,  angle=0)) +
+       theme(axis.text.y=element_text(size=40, hjust=0.5)) +
+       theme(strip.text = element_text(size=40))
+
+   ## increase font of lengend + remove legend title
+   p <- p +  theme(legend.position="none")
+
+   ## xlimit
+   p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1) ) 
+
+   p <- p + theme(panel.background = element_rect(fill="white"))
+
+   return(p)
+
+}
+
+
+jpeg("/Users/geo047//Papers/AM-Paper/power1sub1.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "150 x 5K"))
+dev.off()
+
+jpeg("/Users/geo047/Papers/AM-Paper/power1sub2.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "350 x 500K"))
+dev.off()
+
+jpeg("/Users/geo047/Papers/AM-Paper/power1sub3.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "1500 x 50K"))
+dev.off()
+
+jpeg("/Users/geo047/Papers/AM-Paper/power1sub4.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "2000 x 500K"))
+dev.off()
+
+
+
+##########-------------------- SINGLE LOCUS METHODS --------------------------##################
+
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## power vs fdr for single-locus models
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
 df1 <- subset(dfres, (method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" ))
-
 df2 <- subset(dfres, method=="AMplus" | method=="MLMM")
 
 
-
-p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
-  geom_point(data=df2, aes(FDR, recall), size=2) +
+p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.5, se=FALSE, method="loess")  +
+  geom_point(data=df2, aes(FDR, recall), size=1.5) +
   facet_wrap(~fam, ncol=3) + 
   theme(aspect.ratio = 1) # try with and without
 
 
 p <- p + scale_color_manual(
   breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
-  labels=c("AMplus", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
+  labels=c("Eagle", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
   values=brewer.pal(12, "Paired")[c(1,7,6,12,2)], 
   guide = guide_legend(override.aes = list(
     linetype = c("blank", "blank", "solid", "solid", "solid"),
@@ -272,35 +350,145 @@ p <- p  + ylab(bquote("Power")) +
   xlab(bquote('False discovery rate'))
 
 
-p
-
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=14)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=14))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=28)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=28))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=11,  angle=0)) +
-  theme(axis.text.y=element_text(size=11, hjust=0.5)) +
-  theme(strip.text = element_text(size=14))
+  theme(axis.text.x = element_text(size=24,  angle=0)) +
+  theme(axis.text.y=element_text(size=24, hjust=0.5)) +
+  theme(strip.text = element_text(size=24))
 
 ## increase font of lengend + remove legend title
 p <- p +  theme(legend.text=element_text(size=12))
 p <- p +  theme(legend.title=element_blank())
 p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
-#p + theme_base()
-#p + theme_economist_white()
-#p + theme_few()
 
 
 
 
-postscript("~/Papers/AM-Paper/powerSingle.eps", width=10, height=10, fonts=c("sans", fonts()),
-           horizontal=FALSE)
+## xlimit
+p <- p + coord_cartesian(xlim = c(0, 0.05), ylim=c(0, 1)) 
+
+
+## increase font of lengend + remove legend title
+p <- p +  theme(legend.position="none")
+
+## xlimit
+p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1) ) 
+
+p <- p + theme(panel.background = element_rect(fill="white"))
+
+
+
 p
+
+
+jpeg("/Users/geo047/Papers/AM-Paper/power2main.jpg", width=7, height=7, units="in", res=500)
+print(p)
 dev.off()
 
 
-p2 <- p
+##----------- Subplots -- insets  ----------  ##
+
+
+
+# inset plots
+insert_plot <- function(df1, df2, family){
+ 
+  
+  df1 <- subset( subset(dfres, (method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" )), (fam==family))
+  
+  df2 <- subset( subset(dfres, method=="AMplus" | method=="MLMM"), (fam==family))
+  
+  
+  p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=5, se=FALSE, method="loess")  +
+    geom_point(data=df2, aes(FDR, recall), size=5) +
+    facet_wrap(~fam, ncol=3) + 
+    theme(aspect.ratio = 1) # try with and without
+  
+  
+  p <- p + scale_color_manual(
+    breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
+    labels=c("Eagle", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
+    values=brewer.pal(12, "Paired")[c(1,7,6,12,2)], 
+    guide = guide_legend(override.aes = list(
+      linetype = c("blank", "blank", "solid", "solid", "solid"),
+      shape=c(16, 16, NA, NA, NA))))
+  
+  
+  
+  ## set theme
+  p <- p + theme_hc()
+  
+  ## increase spacing between facet plots
+  p <- p + theme(panel.spacing = unit(3, "lines"))
+  
+  ## specify xlab and ylab
+  p <- p  + ylab(bquote("Power")) + 
+    xlab(bquote('False discovery rate'))
+  
+  
+  
+  ##  change x and y labels size and bold
+  p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=44)) 
+  p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=44))
+  
+  # alter x and y axis labels 
+  p <- p + 
+    theme(axis.text.x = element_text(size=40,  angle=0)) +
+    theme(axis.text.y=element_text(size=40, hjust=0.5)) +
+    theme(strip.text = element_text(size=40))
+  
+  
+  ## increase font of lengend + remove legend title
+  p <- p +  theme(legend.position="none")
+  
+  ## xlimit
+  p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1) ) 
+  
+  p <- p + theme(panel.background = element_rect(fill="white"))
+  
+  
+  return(p)
+  
+}  
+  
+
+jpeg("/Users/geo047//Papers/AM-Paper/power2sub1.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "150 x 5K"))
+dev.off()
+
+
+
+jpeg("/Users/geo047//Papers/AM-Paper/power2sub2.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "350 x 500K"))
+dev.off()
+
+
+
+jpeg("/Users/geo047//Papers/AM-Paper/power2sub3.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "1500 x 50K"))
+dev.off()
+
+
+
+jpeg("/Users/geo047//Papers/AM-Paper/power2sub4.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "2000 x 500K"))
+dev.off()
+
+
+
+jpeg("/Users/geo047//Papers/AM-Paper/power2sub5.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "4000 x 1.5M"))
+dev.off()
+
+
+
+jpeg("/Users/geo047//Papers/AM-Paper/power2sub6.jpg", width=12, height=12, units="in", res=2000)
+print(insert_plot(df1, df2, "10000 x 1.5M"))
+dev.off()
+
