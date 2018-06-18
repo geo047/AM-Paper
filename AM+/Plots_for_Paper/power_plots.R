@@ -36,7 +36,7 @@ library(extrafont)
 DIR <- paste(getwd(),"/", sep="")
 DIR <- "/Users/geo047/Papers/AM-Paper/AM+/Plots_for_Paper/"
 sizefn <- 16
-#thresh_indx <- 1:499
+#thresh_indx <- 1:100
 thresh_indx <- 1:100
 
 ## vector initialisation
@@ -179,6 +179,13 @@ df2 <- subset(subset(dfres, method=="AMplus" | method=="MLMM"),  !(fam=="4000 x 
 
 library(RColorBrewer)
 
+
+#p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
+#  geom_point(data=df2, aes(FDR, recall), size=1.5) +
+#  facet_wrap(~fam, ncol=2) + 
+#  theme(aspect.ratio = 1) # try with and without
+
+
 p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1, se=FALSE, method="loess")  +
   geom_point(data=df2, aes(FDR, recall), size=1.5) +
   facet_wrap(~fam, ncol=2) + 
@@ -187,13 +194,16 @@ p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1, se=F
 
 
 p <- p + scale_color_manual(
-  breaks=c("AMplus","MLMM","bigRR","glmnet","LMM-Lasso","r2VIM"),
-values=RColorBrewer:::brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
+  breaks=c("AMplus", "MLMM","glmnet","LMM-Lasso","r2VIM","bigRR"),
+  labels=c("Eagle", "MLMM","glmnet", "LMM-Lasso",
+           "r2VIM","bigRR"),
+    values=brewer.pal(10, "Paired")[c(2,5,3,6,1,4)],
+  
 guide = guide_legend(override.aes = list(
   linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
   shape=c(16, 16, NA, NA, NA, NA))))
 
-p
+
 
 
 
@@ -264,9 +274,10 @@ insert_plot <- function(df1, df2, family){
 
    
    p <- p + scale_color_manual(
-     breaks=c("AMplus","MLMM","bigRR","glmnet","LMM-Lasso","r2VIM"),
-     labels=c("Eagle", "MLMM", "bigRR","glmnet","LMM-Lasso","r2VIM"),
-     values=RColorBrewer:::brewer.pal(9, "Paired")[c(1,4,3,5,2,9)], 
+     breaks=c("AMplus", "MLMM","glmnet","LMM-Lasso","r2VIM","bigRR"),
+     labels=c("Eagle", "MLMM","glmnet", "LMM-Lasso",
+              "r2VIM","bigRR"),
+     values=brewer.pal(10, "Paired")[c(2,5,3,6,1,4)],
      guide = guide_legend(override.aes = list(
        linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
        shape=c(16, 16, NA, NA, NA, NA))))
@@ -311,9 +322,9 @@ print(insert_plot(df1, df2, "2000 x 500K"))
 dev.off()
 
 
-
-##########-------------------- SINGLE LOCUS METHODS --------------------------##################
-
+##--------------------------------------------------------------------------------------------##
+###                            SINGLE LOCUS METHODS                                          ###
+##--------------------------------------------------------------------------------------------##
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## power vs fdr for single-locus models
@@ -322,6 +333,10 @@ dev.off()
 df1 <- subset(dfres, (method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" ))
 df2 <- subset(dfres, method=="AMplus" | method=="MLMM")
 
+#p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1.5)  +
+#  geom_point(data=df2, aes(FDR, recall), size=1.5) +
+#  facet_wrap(~fam, ncol=3) + 
+#  theme(aspect.ratio = 1) # try with and without
 
 p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.5, se=FALSE, method="loess")  +
   geom_point(data=df2, aes(FDR, recall), size=1.5) +
@@ -332,11 +347,10 @@ p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.5, se
 p <- p + scale_color_manual(
   breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
   labels=c("Eagle", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
-  values=brewer.pal(12, "Paired")[c(1,7,6,12,2)], 
+  values=brewer.pal(10, "Paired")[c(2,10,9,7,1)], 
   guide = guide_legend(override.aes = list(
     linetype = c("blank", "blank", "solid", "solid", "solid"),
     shape=c(16, 16, NA, NA, NA))))
-
 
 
 ## set theme
@@ -352,14 +366,14 @@ p <- p  + ylab(bquote("Power")) +
 
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=28)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=28))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=16)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=16))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=24,  angle=0)) +
-  theme(axis.text.y=element_text(size=24, hjust=0.5)) +
-  theme(strip.text = element_text(size=24))
+  theme(axis.text.x = element_text(size=12,  angle=0)) +
+  theme(axis.text.y=element_text(size=12, hjust=0.5)) +
+  theme(strip.text = element_text(size=12))
 
 ## increase font of lengend + remove legend title
 p <- p +  theme(legend.text=element_text(size=12))
@@ -375,7 +389,7 @@ p <- p + coord_cartesian(xlim = c(0, 0.05), ylim=c(0, 1))
 
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.position="none")
+#p <- p +  theme(legend.position="none")
 
 ## xlimit
 p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1) ) 
@@ -414,11 +428,16 @@ insert_plot <- function(df1, df2, family){
   p <- p + scale_color_manual(
     breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
     labels=c("Eagle", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
-    values=brewer.pal(12, "Paired")[c(1,7,6,12,2)], 
+    values=brewer.pal(10, "Paired")[c(2,10,9,7,1)], 
     guide = guide_legend(override.aes = list(
       linetype = c("blank", "blank", "solid", "solid", "solid"),
       shape=c(16, 16, NA, NA, NA))))
   
+    
+    
+    
+    
+
   
   
   ## set theme
