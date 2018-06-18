@@ -185,8 +185,14 @@ library(RColorBrewer)
 #  facet_wrap(~fam, ncol=2) + 
 #  theme(aspect.ratio = 1) # try with and without
 
-
+require(mgcv)
 p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1, se=FALSE, method="loess")  +
+  geom_point(data=df2, aes(FDR, recall), size=1.5) +
+  facet_wrap(~fam, ncol=2) + 
+  theme(aspect.ratio = 1) # try with and without
+
+
+ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
   geom_point(data=df2, aes(FDR, recall), size=1.5) +
   facet_wrap(~fam, ncol=2) + 
   theme(aspect.ratio = 1) # try with and without
