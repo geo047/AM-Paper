@@ -131,20 +131,29 @@ figure 2 goes here {Figure2_time.pdf}
 
 \subsection{Power and false discovery rates}
 
+We calculated, empirically, the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. 
+We were interested in answering the question of how well Eagle finds true snp-trait associations and avoids false snp-trait associations. 
+For each replicate, we knew which snp had been used in creating the quantitative trait data. These snp are in true association with 
+the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these snp. 
+ Based on these snp, we were able to assess the validity of a  method's findings. When a replicated was analysed, 
+ a method's findings were counted as true if the snp were located within 40 kb of snp in true 
+association with the trait. 
+
+
 
 In answer to the question of how well Eagle finds true and avoids false snp-trait associations, we calculated, empirically, 
-the statistical power and false discovery rates of the different methods across the six scenarios. We did this by recording the set of snp that had been selected for generating a replicate's trait data. 
-These snp are in true association with the trait. Each replicate had a different set of selected snp. We then determined for a method
+the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. We did this by recording the set of snp that had been used for generating a replicate's trait data. 
+These selected snp are in true association with the trait and these are the snp that each of the association mapping methods are 
+trying to identify. Each replicate had a different set of selected snp. Based on these snp, 
+we then determined for a method
  which of its findings were true and which were false. Those snp findings that were located within 40 kb of the location of a true snp were 
- deemed to be true.  
-
-To calculate the power of a method, we averaged across the 100 replicates of a scenario where for each replicate, we divided the number of snp findings that were true by the number of selected (true) 
+ deemed to be true.  To calculate the power of a method, we averaged across the 100 replicates of a scenario where for each replicate, we divided the number of snp findings that were true by the number of selected (true) 
 snp used in generating the trait data.  Similarly, to calculate a method's fdr, we averaged across the 100 replicates of a scenario where 
 for each replicate, we divide the number of true snp found by the number of (true and false) snp found.  
 
-
-In Figure X, we plot how power changes with fdr for the multiple locus methods. See sup Figure X for how power changes with fdr for Eagle and 
-the single-locus methods.  A plot contains a mix of single points and power curves. The single points are the power and corresponding fdrs for Eagle and mlmm. These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
+In Figure X, the power and fdrs of Eagle are compared to the other multiple locus methods. For a comparison with single-locus methods, 
+see Sup Figure X. Each plot contains a mix of single points and power curves. The single points are the power and fdrs for Eagle and MLMM. 
+These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 In contrast, the other methods treat association mapping as a parameter estimation problem. As such, a threshold value is required before a snp 
 can be deemed as being in significant association with a trait.  The challenge is in setting this significance threshold. The curves in Figure 
 X and Sup Figure X  show how power changes with the fdr as the significance level (and resulting significance threshold) is allowed to vary. 
