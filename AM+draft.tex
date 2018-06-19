@@ -132,23 +132,25 @@ figure 2 goes here {Figure2_time.pdf}
 \subsection{Power and false discovery rates}
 
 
-In answer to the question of how well Eagle finds true snp-trait associations and avoids false snp-trait associations, we calculated, empirically, 
-the statistical power and false discovery rate of the different methods across the six scenarios. We did this by recording the set of snp that had been selected to have an additive allelic effect when generating a 
-replicate's trait data. These snp are in true association with the trait. Each replicate had a different set of selected snp. 
+In answer to the question of how well Eagle finds true and avoids false snp-trait associations, we calculated, empirically, 
+the statistical power and false discovery rates of the different methods across the six scenarios. We did this by recording the set of snp that had been used in generating a replicate's trait data. These snp are in true association with the trait. Each replicate had a different set of selected snp. 
 When the data were analysed via a particular method, 
 we were able to determine for that method which of its snp-trait findings were true and which were false. A snp finding was deemed to be true if it was positioned within 40 kb of the location of a true snp. Hence, 
 for each method for a given replicate, we were able to record the number of true and false findings.   
 
+To calculate the power of a method, for each replicate,  the number of true snp that were found by a method is divided by the number 
+of (true) snp used in generating the quantitative trait data. We then averaged across the 100 replicates. Similarly, to calculate the fdr, for 
+each replicate, the number of true snp that were found is divided by the number of (true and false) snp findings for the method. We then 
+averaged these power and fdr values across the 100 replicates. 
 
-To calculate the power of a method, we averaged across the 100 replicates, the number of snp that were found by the method and true, divided by the number of true snp used in generating the quantitative trait. To calculate the false discovery rate of a method, we averaged across the 100 replicates, the number of snp that were found by the method and true divided by the number of (true and false) snp that were found by the method.
+
+To calculate the power of a method, we averaged across the 100 replicates of a scenario, the number of snp that were found by the method and true, divided by the number of true snp used in generating the quantitative trait. To calculate the false discovery rate of a method, we averaged across the 100 replicates, the number of snp that were found and true divided by the number of (true and false) snp that were found.
 
 In Figure X, we plot how power changes with fdr for the multiple locus methods. See sup Figure X for how power changes with fdr for Eagle and 
-the single-locus methods.  A plot contains a mix of single points and power curves. The single points are the power and corresponding fdrs for Eagle and mlmm. These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. The other 
-methods all require a significance threshold to be specified before a finding can be deemed as 
-
+the single-locus methods.  A plot contains a mix of single points and power curves. The single points are the power and corresponding fdrs for Eagle and mlmm. These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 In contrast, the other methods treat association mapping as a parameter estimation problem. As such, a threshold value is required before a snp 
-can be deemed as being in significant association with a trait.  The challenge is in setting this significance threshold. The power curves in Figure 
-X and Sup Figure X  are obtained by varying the significance level. A high (low) significance level results in low (high) power but a high (low) fdr.  
+can be deemed as being in significant association with a trait.  The challenge is in setting this significance threshold. The curves in Figure 
+X and Sup Figure X  show how power changes with the fdr as the significance level (and resulting significance threshold) is allowed to vary. 
 
 
 
