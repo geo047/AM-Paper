@@ -135,19 +135,15 @@ We calculated, empirically, the statistical power and false discovery rates of E
 We were interested in answering the question of how well Eagle finds true snp-trait associations and avoids false snp-trait associations. 
 For each replicate, we knew which snp had been used in creating the quantitative trait data. These snp are in true association with 
 the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these snp. 
- Based on these snp, we were able to assess the validity of a  method's findings. When a replicated was analysed, 
+ Based on these snp, we were able to assess the validity of a  method's findings. When a replicate was analysed, 
  a method's findings were counted as true if the snp were located within 40 kb of snp in true 
 association with the trait. 
 
+To calculate the power of a method, for each replicate, we divided the number of true snp findings by the number of snp that had been used 
+in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the fdr of a method, for each replicate, 
+we divided the number of true snp findings by the number of (true and false) snp findings. We then averaged across the 100 replicates.  
 
-
-In answer to the question of how well Eagle finds true and avoids false snp-trait associations, we calculated, empirically, 
-the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. We did this by recording the set of snp that had been used for generating a replicate's trait data. 
-These selected snp are in true association with the trait and these are the snp that each of the association mapping methods are 
-trying to identify. Each replicate had a different set of selected snp. Based on these snp, 
-we then determined for a method
- which of its findings were true and which were false. Those snp findings that were located within 40 kb of the location of a true snp were 
- deemed to be true.  To calculate the power of a method, we averaged across the 100 replicates of a scenario where for each replicate, we divided the number of snp findings that were true by the number of selected (true) 
+ To calculate the power of a method, we averaged across the 100 replicates of a scenario where for each replicate, we divided the number of snp findings that were true by the number of selected (true) 
 snp used in generating the trait data.  Similarly, to calculate a method's fdr, we averaged across the 100 replicates of a scenario where 
 for each replicate, we divide the number of true snp found by the number of (true and false) snp found.  
 
