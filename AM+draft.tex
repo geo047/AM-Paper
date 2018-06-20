@@ -134,12 +134,10 @@ figure 2 goes here {Figure2_time.pdf}
 We calculated, empirically, the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. 
 We were interested in answering the question of how well Eagle finds true snp-trait associations and avoids false snp-trait associations. 
 For each replicate, we knew which snp had been used in creating the quantitative trait data. These snp are in true association with 
-the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these snp. 
- Based on these snp, we were able to assess the validity of a  method's findings. When a replicate was analysed, 
+the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these snp. By knowing which snp are in true 
+association with the trait, we were able to assess the validity of a  method's findings. When a replicate was analysed, 
  a method's findings were counted as true if the snp were located within 40 kb of snp in true 
-association with the trait. 
-
-To calculate the power of a method, for each replicate, we divided the number of true snp findings by the number of snp that had been used 
+association with the trait. To calculate the power of a method, for each replicate, we divided the number of true snp findings by the number of snp that had been used 
 in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the fdr of a method, for each replicate, 
 we divided the number of true snp findings by the number of (true and false) snp findings. We then averaged across the 100 replicates.  
 
@@ -151,41 +149,36 @@ single points and power curves. The single points are the power and fdrs for Eag
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 The power curves are for those methods that treat association mapping as a parameter estimation problem. Here, the 
 significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
-the fdr as the significance threshold (and underlying significance level) is varied. 
+the fdr as the significance threshold (and underlying significance level) is adjusted. 
 
-
-
-
-In Figure X, the power and fdr of Eagle are compared to the other multiple locus methods. For a comparison with single-locus methods, 
-see Sup Figure X. Each plot contains a mix of single points and power curves. The single points are the power and fdrs for Eagle and MLMM. 
-These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
-In contrast, the other methods treat association mapping as a parameter estimation problem. As such, a threshold value is required before a snp 
-can be deemed as being in significant association with a trait.  The challenge is in setting this significance threshold. The curves in Figure 
-X and Sup Figure X  show how power changes with the fdr as the significance level (and resulting significance threshold) is allowed to vary. 
-
+At first glance, Eagle appears underpowered. Several of the other methods have higher power than Eagle. The goal of association 
+mapping though is not only to find true snp-trait associations but to also avoid false snp-trait associations. For those methods with higher power than Eagle, the cost of this higher power is much higher false discovery rates. In other words, these methods are finding more true results 
+but they also find many more false results. If we restrict our attention to the power of these methods when the (genome-wide) fdr is less 
+than 5\% (see inset plots in Figure X and Sup Figure X), we see that Eagle, closely followed by MLMM,  has the highest power for the lowest 
+fdr. This is especially true when Eagle is compared against single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
 
 
 
 
 
 
+If the goal of association mapping was purely to implemented methods with high power, hence having high probability of finding 
+snp in true association with a trait, then from Fig ..., it is possible to do this. 
+
+
+If the goal of association mapping was purely to find snp in true association with a trait, then from Figure X and Sup Figure X,  for those 
+methods based on parameter estimation, to 
+set a threshold that results in higher power of the method than Eagle. 
+
+
+
+From Figure X and Sup Figure X, across the scenarios, it is possible to 
 
 
 
 
 
-To answer how well Eagle finds true associations (power) and avoids 
-false associations (type 1 errors), we calculated the statistical power and false discovery rate of the different 
-association mapping methods, across the six simulation scenarios.  We want Eagle to have a high statistical power 
-(probability of finding a true positive finding) and low false discovery rate (proportion of findings that are false positives). 
 
-
-All the methods, besides AMplus and MLMM, required a threshold to be set in order to identify significant findings. 
-A conservative threshold guards against false discoveries but reduces power. 
-A anti-conservative threshold increases power at the cost of also increasing the false discovery rate. Only AMplus and mlmm avoid thresholds by treating association mapping as a model selection problem where the best model is found by minimising the model selection statistic, extBIC.
-
-Figures \ref{fig_power_multiple}  and \ref{fig_power_single} show the relationship, calculated empirically, between the power and fdr for each method. The multiple-locus (Figure \ref{fig_power_multiple})   and the single-locus (Figure \ref{fig_power_single})  methods are plotted separately for clarity. 
-AMplus features in both plots for comparison. By varying the significance thresholds for the different methods, we were able to calculate the change in power and fdr. Since AMplus and MLMM do not rely on thresholds, their power and fdr appear as single points in the plots. In practice, the true power and fdr is unknown. However, because we generated data where we knew which loci were acting as quantitative trait loci, we were able to calculate the true power and fdr for the methods.
 
 From figures \ref{fig_power_multiple}  and \ref{fig_power_single}, the superior performance of AMplus is apparent. When the fdr is low, AMplus has the highest power with Mlmm also performing well. AMplus is noticeably more powerful than the single locus methods. 
 It is possible to set a significance threshold for these other methods that results in higher power. 
