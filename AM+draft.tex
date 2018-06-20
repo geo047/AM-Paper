@@ -143,11 +143,20 @@ To calculate the power of a method, for each replicate, we divided the number of
 in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the fdr of a method, for each replicate, 
 we divided the number of true snp findings by the number of (true and false) snp findings. We then averaged across the 100 replicates.  
 
- To calculate the power of a method, we averaged across the 100 replicates of a scenario where for each replicate, we divided the number of snp findings that were true by the number of selected (true) 
-snp used in generating the trait data.  Similarly, to calculate a method's fdr, we averaged across the 100 replicates of a scenario where 
-for each replicate, we divide the number of true snp found by the number of (true and false) snp found.  
 
-In Figure X, the power and fdrs of Eagle are compared to the other multiple locus methods. For a comparison with single-locus methods, 
+The power and fdr of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure X.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
+the data could only be analysed by Eagle, MLMM, and r2VIM. For scenario 10000 x 1.5M, the data could only be analysed by Eagle. 
+The power and fdr of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in Sup Figure X.  Each plot contains 
+single points and power curves. The single points are the power and fdrs for Eagle and MLMM.
+These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
+The power curves are for those methods that treat association mapping as a parameter estimation problem. Here, the 
+significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
+the fdr as the significance threshold (and underlying significance level) is varied. 
+
+
+
+
+In Figure X, the power and fdr of Eagle are compared to the other multiple locus methods. For a comparison with single-locus methods, 
 see Sup Figure X. Each plot contains a mix of single points and power curves. The single points are the power and fdrs for Eagle and MLMM. 
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 In contrast, the other methods treat association mapping as a parameter estimation problem. As such, a threshold value is required before a snp 
@@ -156,16 +165,6 @@ X and Sup Figure X  show how power changes with the fdr as the significance leve
 
 
 
-
-
-
- in order to determine which are significant findings. 
-
-
-before the truth of a snp result can be assessed.  
-
-
-This is not true for the other methods. They all require a significance threshold upon which to determine the truth of a finding. The power curves are formed from varying the threshold so that the significance level ranges from 99.9% to 0.1%.
 
 
 
