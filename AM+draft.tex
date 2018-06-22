@@ -123,7 +123,6 @@ snp data. FaST-LMM$^{few}$ is where the single-locus results as based on a subse
 
 \label{fig_time}
 figure 2 goes here {Figure2_time.pdf}
-
 \end{figure}
 
 
@@ -149,46 +148,15 @@ single points and power curves. The single points are the power and fdrs for Eag
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 The power curves are for those methods that treat association mapping as a parameter estimation problem. Here, the 
 significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
-the fdr as the significance threshold (and underlying significance level) is adjusted. 
+the fdr as the significance threshold  is adjusted. 
 
 At first glance, Eagle appears underpowered. Several of the other methods have higher power than Eagle. The goal of association 
-mapping though is not only to find true snp-trait associations but to also avoid false snp-trait associations. For those methods with higher power than Eagle, the cost of this higher power is much higher false discovery rates. In other words, these methods are finding more true results 
-but they also find many more false results. If we restrict our attention to the power of these methods when the (genome-wide) fdr is less 
-than 5\% (see inset plots in Figure X and Sup Figure X), we see that Eagle, closely followed by MLMM,  has the highest power for the lowest 
-fdr. This is especially true when Eagle is compared against single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
+mapping though is not only to find true snp-trait associations but to also avoid false snp-trait associations. For those methods with higher power than Eagle, the cost is much higher false discovery rates. In other words, these methods are finding more true results 
+but they are also finding many more false results. If we restrict our attention to that part of the plot where the (genome-wide) fdr is less than 
+5\% (see inset plots in Figure X and Sup Figure X),  we see that Eagle, closely followed by MLMM,  has the highest power for the lowest 
+fdr. This is especially true when the power and fdr of Eagle is compared to the single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
 
 
-
-
-
-
-If the goal of association mapping was purely to implemented methods with high power, hence having high probability of finding 
-snp in true association with a trait, then from Fig ..., it is possible to do this. 
-
-
-If the goal of association mapping was purely to find snp in true association with a trait, then from Figure X and Sup Figure X,  for those 
-methods based on parameter estimation, to 
-set a threshold that results in higher power of the method than Eagle. 
-
-
-
-From Figure X and Sup Figure X, across the scenarios, it is possible to 
-
-
-
-
-
-
-
-From figures \ref{fig_power_multiple}  and \ref{fig_power_single}, the superior performance of AMplus is apparent. When the fdr is low, AMplus has the highest power with Mlmm also performing well. AMplus is noticeably more powerful than the single locus methods. 
-It is possible to set a significance threshold for these other methods that results in higher power. 
-However, this comes at the cost of an intolerably high fdr.
-
-For the methods evaluated here that require a significance threshold, figure  \ref{fig_threshold}  shows how 
-threshold size impacts fdr. Each plot corresponds to the results from a different method. 
-A curve within a plot is formed from analysing data with the method and using different threshold values to identify locus-trait associations. 
-The true fdr is then calculated from these findings.
-We can see from figure \ref{fig_threshold}  that the threshold impacts the fdr differently across methods. The relationship between threshold value and fdr even differs when data are analysed with the same method but for different scenarios. This demonstrates one of the challenges in using association mapping methods that are reliant upon thresholds. With AMplus, we do not have this challenge. For completeness, for the small sampled size scenarios ... And ....., the fdr for AMplus was 0.07 and 0.09, respectively. With the larger study sizes of ..., ..., and ...., the fdr drops to ..., .., and ..... respectively.
 
 
 \begin{figure}
@@ -214,7 +182,72 @@ We can see from figure \ref{fig_threshold}  that the threshold impacts the fdr d
 
 
 \subsection{Mouse Study}
+
+To demonstrate the strengths of Eagle over single-locus association mapping, we analysed data from a large study in outbred mice. We chose this study for several reasons; the data are publicly available, measurements were taken on a large number of traits, and many of the snp-trait associations were validated through other published results. The primary reason for choosing this study though was that its analyses were based on snp dosages (continuous values from zero to one of expected allele counts) rather than snp genotypes. 
+Analyses based on dosages rather than genotypes have been shown to have increased power \cite{zheng2011comparison}.  
+By repeating their single-locus analyses but with dosages converted into genotypes, we obtained a subset of the original snp-trait findings. 
+Whether additional findings by Eagle were true could be determined, if they were found in the original study. 
+
+
+The performance of Eagle 
+
+We were able to evaluate the performance of Eagle against single-locus association mapping with 
+real data. 
+
+Here, we had the unique opportunity of being able to evaluate the performance of Eagle against single-locus association mapping with 
+real data. The truth of new findings from Eagle, if found in the original study but now found when the dosage data was converted into 
+genotypes, could be assessed. 
+
+Any new findings from Eagle not found by single-locus mapping 
+
+The performance of Eagle could then be compared to single-locus association mapping for real data without the delema of knowing 
+whether new findings from Eagle were valid.  We were able to confirm the validity of Eagle's findings through the original findings.  
+
+
+This then gave us the opportunity that any new findings found by Eagle
+
+
+When Eagle analyses were performed on the 
+
+ 
+
+By repeating  the analyses of REF but with genotypes converted from the dosage data, we obtained single-locus results that were a 
+subset of the results found and confirmed in ref. When Eagle was run on the same genotype data and new results not found by the single-locus 
+method found, we had the unique opportunity of evaluating the validity of these new results against the original findings for a real data set. 
+
+We were then afforded the opportunity to 
+
+
+
+
+Since our 
+focus is on the more commonly used genotypes, the dosages were converted into the discrete values AA, AB, and BB. 
+
+
+
+was that it use of snp 
+dosages rather than genotypes. 
+
+
+though was that this study differed from most other studies
+in that the analyses were based on snp dosages (continuous values from zero to one of expected allele counts) rather than snp genotypes (Discrete values AA,AB, BB).  Analyses based on dosages rather than genotypes have been shown to have increased power \cite{zheng2011comparison}.  When we repeated the single-locus analyses of ref, by focusing on genoytpes, we found a subset of the previously 
+found results due to a loss in information. 
+
+
+
+Here, we have a unique opportunity. 
+
+
+By focusing on genotypes, we had a unique opportunity. 
+
+
+Since the use of genotypes is more common in association studies than dosages, 
+
+
+
 Still to be written. 
+
+
 
 
 \section{Methods}
