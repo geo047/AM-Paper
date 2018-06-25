@@ -183,71 +183,30 @@ fdr. This is especially true when the power and fdr of Eagle is compared to the 
 
 \subsection{Mouse Study}
 
-To demonstrate the strengths of Eagle over single-locus association mapping, we analysed data from a large study in outbred mice. We chose this study for several reasons; the data are publicly available, measurements were taken on a large number of traits, and many of the snp-trait associations were validated through other published results. The primary reason for choosing this study though was that its analyses were based on snp dosages (continuous values from zero to one of expected allele counts) rather than snp genotypes. 
-Analyses based on dosages rather than genotypes have been shown to have increased power \cite{zheng2011comparison}.  
-By repeating their single-locus analyses but with dosages converted into genotypes, we obtained a subset of the original snp-trait findings. 
-Whether additional findings by Eagle were true could be determined, if they were found in the original study. 
 
+We were interested in comparing results from Eagle with those from single locus association mapping for a real data set.
+ We chose to focus on a large outbred mouse study. This study was unusual in that it collected and analysed snp dosages (continuous values from zero to one of expected allele counts)  instead of the more common snp genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power of detection \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single locus program FaSt-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found snp-trait associations not found with the FaST-LMM. However, we were 
+ able to confirm the validity of these new findings as they matched what was found in the original study.
 
-The performance of Eagle 
+For the single locus analysis of the data, we followed the same procedure as xxxx. 
+The only exceptions were that we focused on the autosomal snp and it was necessary to 
+increase the number of permutations for the controlling of the fdr from 100 to 500.
 
-We were able to evaluate the performance of Eagle against single-locus association mapping with 
-real data. 
+Eagle was run in two ways; under its default settings ($Eagle^{default}$) and where we specified the regularisation parameter for model selection ($Eagle^{optimal}$ ) Eagle chooses the best model via the extended BIC criteria (ref). The conservativeness of the extended BIC can be adjusted by a single regularisation parameter that ranges from 0 to 1. In the simulation study, this parameter was set to 1, its most conservative and default setting. However, there is also opportunity to set the parameter to a value less than 1. This increases power but also increases the fdr. For each trait, we used permutation to set the regularisation parameter to give a fdr of 5\% .
 
-Here, we had the unique opportunity of being able to evaluate the performance of Eagle against single-locus association mapping with 
-real data. The truth of new findings from Eagle, if found in the original study but now found when the dosage data was converted into 
-genotypes, could be assessed. 
-
-Any new findings from Eagle not found by single-locus mapping 
-
-The performance of Eagle could then be compared to single-locus association mapping for real data without the delema of knowing 
-whether new findings from Eagle were valid.  We were able to confirm the validity of Eagle's findings through the original findings.  
-
-
-This then gave us the opportunity that any new findings found by Eagle
-
-
-When Eagle analyses were performed on the 
-
- 
-
-By repeating  the analyses of REF but with genotypes converted from the dosage data, we obtained single-locus results that were a 
-subset of the results found and confirmed in ref. When Eagle was run on the same genotype data and new results not found by the single-locus 
-method found, we had the unique opportunity of evaluating the validity of these new results against the original findings for a real data set. 
-
-We were then afforded the opportunity to 
+The genome wide results from the analyses of the mouse data are shown in Figure X. The mouse study took
+measurements on 200 traits.  However, we focused our analyses on the 43 traits whose snp-trait associations could be
+corroborated by prior published evidence. Each plot contains the number of snp-trait associations that were found and in agreement with the original findings. Neither method found snp not identified in the original mouse study.
+As we saw in the simulation study, there is a notable difference in the two methods capacity to discover snp-trait associations. $Eagle^{default}$, under its default settings, for x traits found the same number of findings as FaST-LMM and for y traits found more findings. $Eagle^{optimal}$, 
+with its regularisation parameter fine tuned to the trait, for x traits found the same number of findings as FaST-LMM and for y traits 
+found more findings. Overall, $Eagle^{default}$ and $Eagle^{optimal}$ found xx\% and yy\% more snp-trait associations than a 
+single-locus analysis of the mouse data. 
 
 
 
 
-Since our 
-focus is on the more commonly used genotypes, the dosages were converted into the discrete values AA, AB, and BB. 
 
-
-
-was that it use of snp 
-dosages rather than genotypes. 
-
-
-though was that this study differed from most other studies
-in that the analyses were based on snp dosages (continuous values from zero to one of expected allele counts) rather than snp genotypes (Discrete values AA,AB, BB).  Analyses based on dosages rather than genotypes have been shown to have increased power \cite{zheng2011comparison}.  When we repeated the single-locus analyses of ref, by focusing on genoytpes, we found a subset of the previously 
-found results due to a loss in information. 
-
-
-
-Here, we have a unique opportunity. 
-
-
-By focusing on genotypes, we had a unique opportunity. 
-
-
-Since the use of genotypes is more common in association studies than dosages, 
-
-
-
-Still to be written. 
-
-
+ß
 
 
 \section{Methods}
