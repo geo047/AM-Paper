@@ -326,10 +326,73 @@ of (\ref{eq4}).
 
 \subsubsection{Multiple locus methods}
 
-We compared the computational and statistical performance of Eagle against five other multiple locus applications for 
+We compared the computational and statistical performance of Eagle against five other multiple locus methods for 
 association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
+These five methods were selected because of their demonstrated value 
+for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
+either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
+features is given in Table X. 
+
+BigRR, LMM-Lasso, and glmnet  implement different regression-based regularisation methods. 
+Regularisation methods can handle parameter estimation problems where the number of predictors is far greater than the number of 
+samples. When applied to association mapping, they allow the effect of all snp to be modelled simultaneously. 
+BigRR implements generalized ridge regression.
+In ridge regression, the coefficients of the predictors are shrunk 
+to zero by a constant amount.  In generalized ridge regression, the amount of shrinkage is allowed to vary. LMM-Lasso 
+implements lasso within a linear mixed model 
+framework. Unlike in ridge regression, lasso performs parameter estimation and variable selection, simultaneously.   The 
+coefficients of "unimportant" predictors are shrunk to exactly zero.
+Glmnet is based on elastic net, a regularisation method that is an improvement over ridge regression and lasso (ref needed). 
+All three methods are sophisticated pieces of statistical machinery. The challenge is that while they have the capacity to estimate the 
+effect sizes of snp across an entire genome simultaneously, obtaining the statistical significance of these snp is problematic. 
+Permutation has been suggested as a way of calculating significance 
+empirically \cite{shen2013novel} but we instead opted for stability selection (see below).
+
+
+
+
+
+
+Regularisation methods have dominated 
+the development of multiple locus approaches.  They allow the effect of all the snp to be modelled simultaneously. 
+By introducing a penalty function that balances bias and variance, regularisation methods can 
+handle parameter estimation problems where the number of predictors is far greater than the number of samples.  
+One of the challenges in using BigRR for association mapping is that while it has the capacity to estimate the effect sizes of all the snp simultaneously, 
+obtaining their statistical significance is difficult. 
+Permutation has been suggested as a way of calculating significance 
+empirically \cite{shen2013novel} but we instead opted for stability selection.
+
+MLMM, of the five multiple locus methods, is the closest in philosophy to Eagle. It too is based on a model building philosophy 
+and builds the best linear mixed model via a forward selection strategy. However, MLMM does not make use of dimension 
+reduction which adds to its computational cost. Also, its model building process is different. Eagle 
+identifies the $(s+1)$th snp that is in strongest association with the trait by maximising a score statistic. MLMM 
+identifies this snp by constructing a separate linear mixed model for each unidentified snp and calculating its statistical significance in
+the fixed effects part of the model. The snp with the highest significance is included in the next iteration of the model building process. 
+
+R2VIM is quite different to the other association mapping methods. It implements random forests for association mapping, 
+a machine learning algorithm to measure the 
+importance of the snp-trait associations. 
+There is no relationship between relative importance scores and significance levels. Consequently, 
+setting an appropriate genome-wide threshold is problematic. We avoid this problem by focusing, in the simulation study, 
+only on the relationship between threshold level and its false discovery rate and power. 
+
+
+
+
+
+BigRR \cite{shen2013novel}  is an R package that implements generalized ridge regression.
+In ridge regression, the coefficients of the predictors are shrunk 
+to zero by a constant amount.  In generalized ridge regression, the amount of shrinkage is allowed to vary. 
+The model used in BigRR can be formulated as a linear mixed model.
+One of the challenges in using BigRR for association mapping is that while it can estimate the effect sizes of all the snp simultaneously, 
+obtaining their statistical significance is difficult. 
+Permutation has been suggested as a way of calculating significance 
+empirically \cite{shen2013novel} but we instead opted for stability selection (see below).
+
+
+
 BigRR, LMM-Lasso, and glmnet  implement different regression-based regularisation methods. Regularisation methods have dominated 
-the development of multiple locus approaches.  They give opportunity for the effect of all the snp to be modelled simultaneously. 
+the development of multiple locus approaches.  They allow the effect of all the snp to be modelled simultaneously. 
 By introducing a penalty function that balances bias and variance, regularisation methods can 
 handle parameter estimation problems where the number of predictors is far greater than the number of samples.  
 MLMM is similar in philosophy to Eagle in that it treats association mapping as a model building problem. Here, a linear mixed 
