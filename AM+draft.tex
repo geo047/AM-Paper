@@ -1,5 +1,7 @@
 \documentclass{nature}
 \bibliographystyle{naturemag}
+\renewcommand{\baselinestretch}{1} 
+
 
 \begin{document}
 
@@ -157,8 +159,6 @@ but they are also finding many more false results. If we restrict our attention 
 fdr. This is especially true when the power and fdr of Eagle is compared to the single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
 
 
-
-
 \begin{figure}
 \label{fig_power_multiple}
 \caption{Power curves for  multiple locus methods}
@@ -181,11 +181,10 @@ fdr. This is especially true when the power and fdr of Eagle is compared to the 
 
 
 
-\subsection{Mouse Study}
-
+\subsection{Mouse Data Analysis}
 
 We were interested in comparing results from Eagle with those from single locus association mapping for a real data set.
- We chose to focus on a large outbred mouse study. This study was unusual in that it collected and analysed snp dosages (continuous values from zero to one of expected allele counts)  instead of the more common snp genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power of detection \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single locus program FaSt-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found snp-trait associations not found with the FaST-LMM. However, we were 
+ We chose to focus on data from a large outbred mouse study. This study was unusual in that it collected and analysed snp dosages (continuous values from zero to one of expected allele counts)  instead of the more common snp genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power of detection \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single locus program FaSt-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found snp-trait associations not found with the FaST-LMM. However, we were 
  able to confirm the validity of these new findings as they matched what was found in the original study.
 
 For the single locus analysis of the data, we followed the same procedure as xxxx. 
@@ -204,72 +203,45 @@ single-locus analysis of the mouse data.
 
 
 
-
-
-ß
-
-
 \section{Methods}
 
 \subsection{Outbred Mice Study}
+\subsection{Mouse Data}
 
-Phenotypic and genotypic data were collected on a large study population of commercially 
-available outbred mice. The aim of the study was to map, through association, the genetic basis
-of complex traits in mice. The construction of the population and collection of data are described in detail in 
-\cite{nicod2016genome}.  Briefly, the population consists of 2073 adult outbred mice from Charles River Laboratories. Phenotypic data
-were obtained from 200 traits. These traits fell into the categories of behaviour, tissue, and physiology. Genotype 
-data were collected from 7, 073, 398 SNPs.  A reduced set of 359, 559 SNP across the 19 
-autosomes and sex chromosome was then identified, upon which all genome-wide analyses were based.  These SNP tagged all other SNP with MAF $> 0.1\%$
-and LD $r^2 > 0.98$.  Missing data?
+The mouse data were obtained from a large genome-wide association study which was performed in outbred mice. 
+The study is described in detail in \cite{nicod2016genome}. Phenotypic and genotypic data were available on 1,887 adult mice. 
+The phenotypic data consisted of measurements from 200 behavioural, tissue based, and physiological traits.  Of these traits, 
+43 yielded snp-trait associations that could be corroborated through other independent published work. It was these 
+43 traits which were the focus of our real data analyses. Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
+form of marker dosages (expected allele counts that range from zero to one). All missing data had been imputed. 
+We converted these  dosages into discrete genotypes 
+by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. 
+
 
 \subsection{Eagle Approach for Multiple-locus Association Mapping}
-\subsubsection{Overview}
+
+Eagle is a method for multiple locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of parameter estimation problem. Consequently,  we do not have to content with multiple testing issues or having to construct significance thresholds. 
+The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
+quantitative trait loci in experimental crosses \cite{verbyla2007analysis} 
 
 
-Eagle is an approach that identifies genomic regions of interest for a trait via the building of a (linear mixed) model. The model is built iteratively, without need of significance levels or thresholds. The model has two parts, a fixed effects part and a random effects part. The random effects part contains the error and an effect for the snp-trait association across the entire genome. It is from this effect 
- that we are able to identify which snp is in strongest association with the trait.  
- Our model building process is as follows. First we fit the current model to the data. Second, from the random effect for association, we identify which snp is in strongest association  with the trait.  Third, we move this snp from the random effects to the fixed effects.
-We do this to stop the neighbours of the chosen snp from being selected in subsequent iterations and 
-to give opportunity to snp in linkage disequilibrium with genes having lesser impact on the trait to be discovered. 
- Fourth, we calculate if the new model is "better" than the current model. 
-If so,  the new model becomes the current model and we repeat the process.   Once the model building process is complete, the findings from Eagle are the set of snp that have been moved into the fixed effects part of the model.  These snp map the seperate regions of the genome that house genes that are influencing the trait.  
- 
- 
- 
- 
-
-\subsubsection{The specifics}
-
-%%Suppose data are collected from a genome-wide association study.  The study involves $n$ individuals. 
-%Let $y^{(n \times 1)}$ be the vector containing the quantitative trait data. 
-%Let $M^{(n \times L)} = [m_1 m_2 \ldots m_L]$ be the matrix containing the genotype data. Snp genotypes 
-%are collected from $L$ loci. The vector $m_j^{(n \times 1)}$ contains the snp genotypes for the $j$th snp. The genotypes 
-%are recoded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
-
-
-The Eagle approach for multiple-locus association mapping follows from methods developed for QTL mapping in plant 
-populations \cite{verbyla2007analysis} (and some other WGAIM references). 
-It is based on building a linear mixed model, iteratively, via forward 
-selection.  
-
-
-Suppose $s$ iterations of our model building process have already been performed. This means $s$ snp-trait 
-associations have been identified.  It also means that $s$ separate genomic regions of interest have been found.  
-To perform the $s+1$th  iteration of 
-our model building procedure, we do the following. 
-
-First, we fit the current model to the data. 
 Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of ordinal numbers where $S_k$ is the $S_k$th ordered snp that was 
 selected in the $k$th iteration. For example, if three iterations of our model building procedure 
 have been performed and say the 500023rd, 15th, and 420th, 
 snp were selected, then $S=\{500023, 15, 420\}$. 
-Let $y^{(n \; \times \;1)}$ be a vector containing the quantitative trait data. 
+Let $y^{(n \; \times \;1)}$ be a vector containing $n$ quantitative trait measurements. 
 Let $M^{(n_g \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
-from $L$ loci that span the genome on $n_g$ groups/lines/strains.  In this paper, $n$ and $n_g$ are equal. 
- It is common for the columns of this matrix to be in map order but this is not a requirement. 
-The vector $m_j^{(n \; \times \; 1)}$ contains the genotypes, from the $n$ individuals,  for the $j$th snp. 
+from $L$ loci that span the genome on $n_g$ groups/lines/strains.  Here, $n \geq n_g$ meaning that several trait measurements 
+may be taken of the same group/line/strain. 
+ It is common for the columns of $M$ to be in map order but this is not a requirement. 
+The vector $m_j^{(n_g \; \times \; 1)}$ contains the genotypes for the $j$th snp. 
 The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
 
+The specifics of the Eagle method are as follows. 
+Eagle builds the "best" model iteratively, via forward selection. 
+Suppose $s$ iterations of our model building process have already been performed. This means $s$ snp-trait 
+associations have been identified.  It also means that $s$ separate genomic regions of interest have been found.  
+To perform the $s+1$th  iteration, we first fit the current model to the data. 
 The (current) model is of the form 
 \begin{equation}
 \label{eq1}
@@ -277,7 +249,7 @@ y = X \tau + Z u_g + e
 \end{equation}
 where 
 $X^{(n \; \times \; p)}$ and $Z^{( n \; \times \; n_g)}$ are known design matrices with $X$ being of full rank and $Z$ 
-containing zeros and ones that assign the appropriate genetic effect to each observation. 
+containing zeros and ones that assign the appropriate genetic effect to each measurement. 
 The vector 
 $\tau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters including the intercept. The vector 
 $u_g^{(n_g \; \times \; 1)}$ contains the 
@@ -303,7 +275,6 @@ snp-trait associations along the entire genome, except for those snp that have a
 This is a simple genetic model but it 
 is effective for discovering snp-trait associations. It also reduces the computational cost of our model building procedure. 
 
-%The simplicity of our genetic model also reduces the cost of computation. 
 
 Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood estimation. 
 
