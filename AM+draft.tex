@@ -1,42 +1,44 @@
 \documentclass{nature}
+\usepackage{xr}
 \bibliographystyle{naturemag}
 \renewcommand{\baselinestretch}{1} 
+
+%% external tex files
+\externaldocument{Figure2_time}
 
 
 \begin{document}
 
 \title{Eagle: Making multiple-locus association mapping on a genome-wide scale routine}
-\author{Andrew W. George$^1$, Joshua Bowden$^2$, need to sort out the other authors}
+\author{Andrew W. George$^1$, Arunas Verbyla$^1$, Joshua Bowden$^2$, need to sort out the other authors}
 
 \maketitle
 
 
 \begin{affiliations}
-\item Data61, CSIRO, Brisbane, Australia.
-\item IM \&T, CSIRO, Brisbane, Australia.
+\item Data61, CSIRO, Australia.
+\item IM \&T, CSIRO, Australia.
 \end{affiliations}
 
 \begin{abstract}
-Since the earliest of genome-wide association studies, a key shortcoming in how their data have been analysed has persisted. The strength of association between a marker locus and trait is measured for each locus separately, on a locus-by-locus basis. Multiple-locus methods that map multiple locus-trait associations simultaneously have been available for some time. However, they have attracted little attention. They can be demanding, computationally, and their results are not always easy to interpret. Yet, it is widely accepted that multiple-locus methods are superior, statistically, to locus-by-locus methods. Here, we present our method that makes the multiple-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. 
+Since the earliest of genome-wide association studies, a key shortcoming in how their data have been analysed has persisted. The strength of association between a marker locus and trait is measured for each locus separately, on a locus-by-locus basis. Multiple-locus methods that map multiple-locus trait associations simultaneously have been available for some time. However, they have attracted little attention. They can be demanding, computationally, and their results are not always easy to interpret. Yet, it is widely accepted that multiple-locus methods are superior, statistically, to locus-by-locus methods. Here, we present our method that makes the multiple-locus analysis of data from genome wide association studies routine. It is formulated within a linear mixed model framework. 
 We call our method AMplus.  AMplus produces results faster than competing multiple-locus methods and often with greater statistical power. Also, it is just a little slower than the fastest single-locus linear mixed model implementations. 
 AMplus is freely available as a fully documented R package. 
 \end{abstract}
 
 
-
-
-
-Over the past decade,  Genome wide association studies have changed considerably in both their analysis and design. Early gwas followed a case-control design. Association mapping methods were no more complicated than contingency table tests or simple 
+Over the past decade,  Genome wide association studies (GWAS) have changed considerably in both their analysis and design. Early GWAS
+ followed a case-control design. Association mapping methods were no more complicated than contingency table tests or simple 
 linear regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine.
 
-What has not changed over the past decade is that it remains common practice to analyse gwas data on a locus by locus basis. This is despite there being several significant problems with analysing data in this way. First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. The identification of these regions from these analyses is not always straightforward. Gwas results are reported, typically, via Manhattan plots that plot the -log10 of the p value for each locus against the map position of the locus. The location of peaks in this plot signify regions of interest. Inferring the exact number of regions of interest can be difficult If the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a significant result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome- wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple loci in linkage equilibrium with genes that influence the trait. Yet, A locus by locus mapping approach only assesses the evidence for association between a single marker locus and trait.
+What has not changed over the past decade is that it remains common practice to analyse gwas data on a locus by locus basis. This is despite there being several significant problems with analysing data in this way. First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. The identification of these regions from these analyses is not always straightforward. GWAS results are reported, typically, via Manhattan plots that plot the -log10 of the p value for each locus against the map position of the locus. The location of peaks in this plot signify regions of interest. Inferring the exact number of regions of interest can be difficult If the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a significant result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome- wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple loci in linkage equilibrium with genes that influence the trait. Yet, A locus by locus mapping approach only assesses the evidence for association between a single marker locus and trait.
 
-It is somewhat surprising then that multiple locus association mapping methods haven't attracted more attention. Methods based on 
+It is somewhat surprising then that multiple-locus association mapping methods haven't attracted more attention. Methods based on 
 regularisation techniques, such as ridge regression and lasso, measure all locus-trait associations simultaneously. 
-Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, their results can be difficult to interpret. The strength of association is not measured by a p-value but by the size of the regression coefficient for a locus in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). An multiple locus method that does show promise is the multi-locus linear mixed model method (ref). The best multiple locus model is built with simple variable selection. Results are immediately interpretable but here, computation can be a challenge for large data.
+Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, their results can be difficult to interpret. The strength of association is not measured by a p-value but by the size of the regression coefficient for a locus in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). An multiple-locus method that does show promise is the multi-locus linear mixed model method (ref). The best multiple-locus model is built with simple variable selection. Results are immediately interpretable but here, computation can be a challenge for large data.
 
-In this paper, we present our new multiple locus method for genome wide association mapping, which we are calling Eagle. Eagle combines the strength of regularisation techniques (being able to fit all locus-trait associations jointly), with simple variable selection (having easy to interpret results). Our method does not require a significance threshold to be set nor regularisation parameters to be fine tuned. Through a clever dimension reduction step, we are able to achieve a computational performance similar to the fastest single locus linear mixed model implementations. Eagle is statistically more powerful than single locus association mapping and is as and often more powerful than 
-most multiple locus methods. Our aim is to make multiple locus association mapping on a genome wide scale routine. To this end, we have created a fully documented R package, that is easy to use, even for non R users.  Our package accepts marker data of different 
+In this paper, we present our new multiple-locus method for genome wide association mapping, which we are calling Eagle. Eagle combines the strength of regularisation techniques (being able to fit all locus-trait associations jointly), with simple variable selection (having easy to interpret results). Our method does not require a significance threshold to be set nor regularisation parameters to be fine tuned. Through a clever dimension reduction step, we are able to achieve a computational performance similar to the fastest single-locus linear mixed model implementations. Eagle is statistically more powerful than single-locus association mapping and is as and often more powerful than 
+most multiple-locus methods. Our aim is to make multiple-locus association mapping on a genome wide scale routine. To this end, we have created a fully documented R package, that is easy to use, even for non R users.  Our package accepts marker data of different 
 formats and can handle data larger than a computer's  memory capacity. It includes detailed error checking and makes heavy use of 
 distributed computing for computation when available.  The purpose of this work was to make multiple-locus association mapping on 
 a genome-wide scale, for large data sets,  practical and we have built AMplus accordingly. 
@@ -47,14 +49,21 @@ a genome-wide scale, for large data sets,  practical and we have built AMplus ac
 \subsection{Association Mapping Methods}
 
 We compared Eagle, in terms of computational and statistical performance, against seven other association mapping methods. 
-We chose methods that (mostly) had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer programs. Two of the methods are based on single locus (or locus-by-locus) models and five are based on multiple locus models. Of the many ways of performing single locus association mapping, we chose GEMMA and FaST-LMM because of their popularity and computational speed. For multiple locus association mapping, we chose bigRR, glmnet, LMM-Lasso, MLMM, and r2VIM.  Each takes a different approach to multiple-locus association mapping.
+We chose methods that (mostly) had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer programs. Two of the methods are based on single-locus (or locus-by-locus) models and five are based on multiple-locus models. Of the many ways of performing single-locus association mapping, we chose 
+GEMMA \cite{zhou2012genome}  and FaST-LMM \cite{lippert2011fast} because of their popularity and computational speed. 
+For multiple-locus association mapping, we chose bigRR \cite{shen2013novel}, glmnet \cite{Friedman2010glmnet}, 
+LMM-Lasso \cite{rakitsch2013lasso}, MLMM \cite{segura2012efficient} , and r2VIM \cite{szymczak2016r2vim}.  
+Each takes a different approach to multiple-locus association mapping.
 
- In Table 1, 
+ In Table \ref{suptabsummary}, 
 we list some of the key features that make computer programs for association mapping useful. We also identify which of these 
 features are present in Eagle and the other seven implementations. For example, all but glmnet were purpose-built for 
 association mapping. Not all the computer programs come with a user manual.  Most could accomodate data on additional fixed effects but only Eagle and FaST-LMM could deal with data larger than the memory capacity of the computer. Also, if 
 the input data contained errors, we found only Eagle and FaST-LMM tried to diagnose the problem and 
 provided advice on how to fix the errors. 
+
+{\em Table 1 goes around here}
+
 
 
 \subsection{Simulation Study}
@@ -62,17 +71,17 @@ We performed a large simulation study where we sought to  answer two questions.
 First, how does Eagle compare, in terms of run time and memory usage, to 
 competing implementations? Second, how well does Eagle find true associations (power) and avoid 
 false associations (type 1 errors)? We generated data under five different scenarios; a study of size 150 individuals 
-and 500 snp (150 x 5K),  350 individuals and 400000 snp (350 X 400K),  1500 individuals and 
-50000 snp (1500 x 50K), 2000 individuals and 500000 snp (2000 x 500K), 4000 individuals and 
-1500000 snp (4000 x 1.5M), and 10000 individuals and 1500000 snp (10000 x 1.5M).   
+and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 X 400K),  1,500 individuals and 
+50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
+1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
 We chose these scenarios to mirror some of the different sized GWAS being performed in animals, plants, and humans. 
 
-For each scenario, we generated 100 replicates of data. A single replicate consists of snp data and quantitative trait data. 
-To introduce some of the complexities of dealing with real genotypes into the study, we obtained the snp genotypes from 
-the publicly available 1000 genome project, phase 3  \cite{10002010map}.  The quantitative trait data are generated 
-by selecting randomly a set of snp loci, assigning additive allelic effects to these loci, and then aggregating these effects for 
+For each scenario, we generated 100 replicates of data. A single replicate consists of SNP data and quantitative trait data. 
+To introduce some of the complexities of dealing with real genotypes into the study, we obtained the SNP genotypes from 
+the publicly available 1000 Genome Project, phase 3  \cite{10002010map}.  The quantitative trait data are generated 
+by selecting, randomly, a set of SNP loci, assigning additive allelic effects to these loci, and then aggregating these effects for 
 each individual along with a random error.  
- The number of snp selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
+ The number of SNPs selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
  across the selected loci are equal.  A heritability of  50\% is assumed for the trait. 
  
 
@@ -81,51 +90,41 @@ each individual along with a random error.
 \subsection{Run times and memory usage}
 
 We analysed the simulated data with Eagle and the other computer programs, recording their memory usage and 
-run (or elapse) times. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 Giggabytes of RAM. Not all data generated under the five scenarios could be analysed by all implementations. Memory usage 
-for many of the computer programs was the limiting factor (See Sup figure 1).  The single-locus program GEMMA was by 
+run (or elapse) times. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the five scenarios could be analysed by all implementations. Memory usage 
+for many of the computer programs was the limiting factor (See Sup Figure 1).  The single-locus program GEMMA was by 
 far the most memory efficient. Not surprisingly, the multiple-locus programs were memory intensive. Most required in 
-excess of the 128 Gbytes of available RAM for the analysis of data generated under 4000x1.5M and 10000x1.5M.  Even FaST-LMM, a single locus
+excess of the 128 gigabytes of available RAM for the analysis of data generated under 4000 x 1.5M and 10000 x 1.5M.  
+Even FaST-LMM, a single-locus
 implementation, required more than 128 Gbytes of memory for the analysis of the larger data sets 
 when all the marker data was used to calculate the relationship matrix. Of the multiple-locus programs, only Eagle,  
 with its ability to handle data larger than the memory capacity of the computer, was capable of producing findings 
-for data from our largest scenario 10000x1.5M. 
+for data from our largest scenario 10000 x 1.5M. 
 
 
 The median run times for Eagle and the other computer programs across the six scenarios are shown in Figure \ref{fig_time}. 
-The x- and y-axes are on a log scale.  This means a unit change on the x- or y-axes is equivalent to a change in the order of magnitude.  In answer to our question of how does Eagle compare, in terms of run time, to competing implementations, 
+The x- and y-axes are on a log scale.  This means a unit change on the x- or y-axis is equivalent to a change in the order of magnitude.  In answer to our question of how does Eagle compare in terms of run time to competing implementations, 
 Eagle was significantly faster, sometimes by orders of magnitude,  than the other multiple-locus
  implementations and is comparable to the single-locus implementations. For a simulation study with 150 individuals and 
- 5000 snp, Eagle produced results in seconds.  For the larger simulation scenarios 1500x50K and 350x400K, 
+ 5000 SNPs, Eagle produced results in seconds.  For the larger simulation scenarios 1500 x  50K and 350 x4 00K, 
  analyses with Eagle took under two minutes. Even for data from a couple of thousand individuals and half a million 
- snp (2000x500K), the median run time of Eagle was under 14 minutes. For our scenarios where there 
- were thousands of individuals and 1.5 million snp, Eagle took just over two hours for the analysis of data from 
- 4000x1.5M and just under 12 hours for the analysis of data from 10000x1.5M. 
+ SNPs (2000 x 500K), the median run time of Eagle was under 14 minutes. For our scenarios where there 
+ were thousands of individuals and 1.5 million SNPs, Eagle took just over two hours for the analysis of data from 
+ 4000 x 1.5M and just under 12 hours for the analysis of data from 10000 x 1.5M. 
  Towards the final stages of writing this paper, 
  we gained access to a XXXXXXXXXX, a faster desktop computer. We reran Eagle on data from the largest
-  scenario 10000x1.5M to measure the impact, if any, on run time. The median run time dropped by more than 50\% 
+  scenario 10000 x 1.5M to measure the impact, if any, on run time. The median run time dropped by more than 50\% 
   from just under 12 hours to 4.56 hours. 
  
   
- It is also worth noting that an increase in the number of snp genotypes in a study does not necessitate, automatically,  
+ It is also worth noting that an increase in the number of SNP genotypes in a study does not necessitate, automatically,  
  an increase in the memory usage and run times for its analysis. This is  evidenced by the non-monotonically 
  increasing behaviour of the curves in the memory (Sup Figure 1) and run-time plots (Figure \ref{fig_time}).  It 
 it is the study dimensions, not number of genotypes, that drives the computing resources required by 
 association mapping programs.   
- 
-  
-\begin{figure}
-\caption{Median run times, in minutes, for the analysis of association study data from the six simulation scenarios. 
-Eagle is compared against five other multiple-locus programs (top left plot) and two single-locus programs (top right plot). 
-The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multiple-locus 
-programs, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
-The actual median run times for the programs across the scenarios are given in the table. The entries in a bold font 
-correspond to the lowest run-time for a scenario. 
- FaST-LMM$^{all}$ is where the single-locus results are based on all the available 
-snp data. FaST-LMM$^{few}$ is where the single-locus results as based on a subset of the available snp data. }
 
-\label{fig_time}
-figure 2 goes here {Figure2_time.pdf}
-\end{figure}
+ 
+\em{ Figure 2 goes here}
+
 
 
 
@@ -133,14 +132,14 @@ figure 2 goes here {Figure2_time.pdf}
 \subsection{Power and false discovery rates}
 
 We calculated, empirically, the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. 
-We were interested in answering the question of how well Eagle finds true snp-trait associations and avoids false snp-trait associations. 
-For each replicate, we knew which snp had been used in creating the quantitative trait data. These snp are in true association with 
-the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these snp. By knowing which snp are in true 
+We were interested in answering the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. 
+For each replicate, we knew which SNPs had been used in creating the quantitative trait data. These SNPs are in true association with 
+the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these SNPs. By knowing which SNPs are in true 
 association with the trait, we were able to assess the validity of a  method's findings. When a replicate was analysed, 
- a method's findings were counted as true if the snp were located within 40 kb of snp in true 
-association with the trait. To calculate the power of a method, for each replicate, we divided the number of true snp findings by the number of snp that had been used 
+ a method's findings were counted as true if the SNPs were located within 40 kb of SNP in true 
+association with the trait. To calculate the power of a method, for each replicate, we divided the number of true SNP findings by the number of SNP that had been used 
 in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the fdr of a method, for each replicate, 
-we divided the number of true snp findings by the number of (true and false) snp findings. We then averaged across the 100 replicates.  
+we divided the number of true SNP findings by the number of (true and false) SNP findings. We then averaged across the 100 replicates.  
 
 
 The power and fdr of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure X.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
@@ -153,7 +152,7 @@ significance of the findings are assessed against a significance threshold. The 
 the fdr as the significance threshold  is adjusted. 
 
 At first glance, Eagle appears underpowered. Several of the other methods have higher power than Eagle. The goal of association 
-mapping though is not only to find true snp-trait associations but to also avoid false snp-trait associations. For those methods with higher power than Eagle, the cost is much higher false discovery rates. In other words, these methods are finding more true results 
+mapping though is not only to find true SNP-trait associations but to also avoid false SNP-trait associations. For those methods with higher power than Eagle, the cost is much higher false discovery rates. In other words, these methods are finding more true results 
 but they are also finding many more false results. If we restrict our attention to that part of the plot where the (genome-wide) fdr is less than 
 5\% (see inset plots in Figure X and Sup Figure X),  we see that Eagle, closely followed by MLMM,  has the highest power for the lowest 
 fdr. This is especially true when the power and fdr of Eagle is compared to the single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
@@ -161,7 +160,7 @@ fdr. This is especially true when the power and fdr of Eagle is compared to the 
 
 \begin{figure}
 \label{fig_power_multiple}
-\caption{Power curves for  multiple locus methods}
+\caption{Power curves for  multiple-locus methods}
 \includegraphics[width=10cm]{powerMultiple}
 \end{figure}
 
@@ -183,22 +182,22 @@ fdr. This is especially true when the power and fdr of Eagle is compared to the 
 
 \subsection{Mouse Data Analysis}
 
-We were interested in comparing results from Eagle with those from single locus association mapping for a real data set.
- We chose to focus on data from a large outbred mouse study. This study was unusual in that it collected and analysed snp dosages (continuous values from zero to one of expected allele counts)  instead of the more common snp genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power of detection \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single locus program FaSt-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found snp-trait associations not found with the FaST-LMM. However, we were 
+We were interested in comparing results from Eagle with those from single-locus association mapping for a real data set.
+ We chose to focus on data from a large outbred mouse study. This study was unusual in that it collected and analysed SNP dosages (continuous values from zero to one of expected allele counts)  instead of the more common SNP genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power of detection \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single-locus program FaSt-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found SNP-trait associations not found with the FaST-LMM. However, we were 
  able to confirm the validity of these new findings as they matched what was found in the original study.
 
-For the single locus analysis of the data, we followed the same procedure as xxxx. 
-The only exceptions were that we focused on the autosomal snp and it was necessary to 
+For the single-locus analysis of the data, we followed the same procedure as xxxx. 
+The only exceptions were that we focused on the autosomal SNP and it was necessary to 
 increase the number of permutations for the controlling of the fdr from 100 to 500.
 
 Eagle was run in two ways; under its default settings ($Eagle^{default}$) and where we specified the regularisation parameter for model selection ($Eagle^{optimal}$ ) Eagle chooses the best model via the extended BIC criteria (ref). The conservativeness of the extended BIC can be adjusted by a single regularisation parameter that ranges from 0 to 1. In the simulation study, this parameter was set to 1, its most conservative and default setting. However, there is also opportunity to set the parameter to a value less than 1. This increases power but also increases the fdr. For each trait, we used permutation to set the regularisation parameter to give a fdr of 5\% .
 
 The genome wide results from the analyses of the mouse data are shown in Figure X. The mouse study took
-measurements on 200 traits.  However, we focused our analyses on the 43 traits whose snp-trait associations could be
-corroborated by prior published evidence. Each plot contains the number of snp-trait associations that were found and in agreement with the original findings. Neither method found snp not identified in the original mouse study.
-As we saw in the simulation study, there is a notable difference in the two methods capacity to discover snp-trait associations. $Eagle^{default}$, under its default settings, for x traits found the same number of findings as FaST-LMM and for y traits found more findings. $Eagle^{optimal}$, 
+measurements on 200 traits.  However, we focused our analyses on the 43 traits whose SNP-trait associations could be
+corroborated by prior published evidence. Each plot contains the number of SNP-trait associations that were found and in agreement with the original findings. Neither method found SNP not identified in the original mouse study.
+As we saw in the simulation study, there is a notable difference in the two methods capacity to discover SNP-trait associations. $Eagle^{default}$, under its default settings, for x traits found the same number of findings as FaST-LMM and for y traits found more findings. $Eagle^{optimal}$, 
 with its regularisation parameter fine tuned to the trait, for x traits found the same number of findings as FaST-LMM and for y traits 
-found more findings. Overall, $Eagle^{default}$ and $Eagle^{optimal}$ found xx\% and yy\% more snp-trait associations than a 
+found more findings. Overall, $Eagle^{default}$ and $Eagle^{optimal}$ found xx\% and yy\% more SNP-trait associations than a 
 single-locus analysis of the mouse data. 
 
 
@@ -211,7 +210,7 @@ single-locus analysis of the mouse data.
 The data were obtained from a large genome-wide association study which was performed in outbred mice. 
 The study is described in detail in \cite{nicod2016genome}. Phenotypic and genotypic data were available on 1,887 adult mice. 
 The phenotypic data consisted of measurements from 200 behavioural, tissue, and physiological traits.  Of these traits, 
-43 yielded snp-trait associations that could be corroborated through other independent published work. It was these 
+43 yielded SNP-trait associations that could be corroborated through other independent published work. It was these 
 43 traits that were the focus of our real data analyses. Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
 form of marker dosages (expected allele counts that ranged from zero to one). All missing data had been imputed. 
 We converted the dosages into discrete genotypes 
@@ -220,28 +219,28 @@ by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and B
 
 \subsection{Eagle Approach for Multiple-locus Association Mapping}
 
-Eagle is a method for multiple locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of parameter estimation problem. Consequently,  we do not have to contend with multiple testing issues or having to construct significance thresholds.  
+Eagle is a method for multiple-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of parameter estimation problem. Consequently,  we do not have to contend with multiple testing issues or having to construct significance thresholds.  
 Eagle also 
-reports as its findings only those snp that are in strongest linkage disequilibrium, and hence closest, to the genes influencing a trait. 
+reports as its findings only those SNPs that are in strongest linkage disequilibrium, and hence closest, to the genes influencing a trait. 
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
 quantitative trait loci in experimental crosses \cite{verbyla2007analysis} 
 
 
-Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of ordinal numbers where $S_k$ is the $S_k$th ordered snp that was 
+Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of ordinal numbers where $S_k$ is the $S_k$th ordered SNP that was 
 selected in the $k$th iteration. Suppose three iterations of our model building procedure 
 have been performed and say the 500023rd, 15th, and 420th, 
-snp were selected, then $S=\{500023, 15, 420\}$. 
+SNP were selected, then $S=\{500023, 15, 420\}$. 
 Let $y^{(n \; \times \;1)}$ be a vector containing $n$ measurements of the quantitative trait. 
 Let $M^{(n_g \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
 from $L$ loci that span the genome on $n_g$ groups/lines/strains.  Here, $n \geq n_g$ meaning that a single or several trait measurements 
 may be taken of the same group/line/strain. 
  It is common for the columns of $M$ to be in map order but this is not a requirement. 
-The vector $m_j^{(n_g \; \times \; 1)}$ contains the genotypes for the $j$th snp. 
-The genotypes are coded as -1, 0, and 1 corresponding to snp genotypes AA, AB, and BB, respectively. 
+The vector $m_j^{(n_g \; \times \; 1)}$ contains the genotypes for the $j$th SNP. 
+The genotypes are coded as -1, 0, and 1 corresponding to SNP genotypes AA, AB, and BB, respectively. 
 
 The specifics of the Eagle method are as follows. 
 Eagle builds the "best" model iteratively, via forward selection. 
-Suppose $s$ iterations of our model building process have already been performed. This means $s$ snp-trait 
+Suppose $s$ iterations of our model building process have already been performed. This means $s$ SNP-trait 
 associations have been identified.  It also means that $s$ separate genomic regions of interest have been found.  
 To perform the $s+1$th  iteration, we first fit the current model to the data. 
 The (current) model is of the form 
@@ -266,9 +265,9 @@ The genetic effects $u_g$ are modelled as
 \label{eq2}
 u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + M_{-S} a_{-S}
 \end{equation}
-where $m_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the $S_k$th snp locus which is the $k$th selected snp, 
-$a_{S_k}$ is the additive effect of the $S_k$th snp locus, $M_{-S}^{(b \; \times \; L-s)}$ is the matrix of  snp genotypes 
-with the data for the selected snp in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
+where $m_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the $S_k$th SNP locus which is the $k$th selected SNP, 
+$a_{S_k}$ is the additive effect of the $S_k$th SNP locus, $M_{-S}^{(b \; \times \; L-s)}$ is the matrix of  SNP genotypes 
+with the data for the selected SNP in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
 $a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
 The terms in the summation on the left hand side are fixed effects.  The other term is a random effect.  The terms 
 in the summation account 
@@ -327,9 +326,9 @@ of (\ref{eq4}).
 
 \subsection{Comparison Methods}
 
-\subsubsection{Multiple locus methods}
+\subsubsection{Multiple-locus methods}
 
-We compared the computational and statistical performance of Eagle against five other multiple locus methods for 
+We compared the computational and statistical performance of Eagle against five other multiple-locus methods for 
 association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
 These five methods were selected because of their demonstrated value 
 for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
@@ -345,7 +344,7 @@ is needed in association mapping,  can not be calculated easily. Permutation as 
 limitation \cite{shen2013novel} 
 but we have instead opted for stability selection (see below).
 
-MLMM, of the five multiple locus methods, is the closest in philosophy to Eagle. It too is based on  building the 
+MLMM, of the five multiple-locus methods, is the closest in philosophy to Eagle. It too is based on  building the 
 best  linear mixed model via forward selection using the ExtBIC criterion. 
 However, there are several differences between the two methods.
  MLMM does not make use of dimension reduction and they are implemented quite differently leading to substantial 
@@ -386,7 +385,7 @@ empirically \cite{shen2013novel} but we instead opted for stability selection (s
 
 
 BigRR, LMM-Lasso, and glmnet  implement different regression-based regularisation methods. Regularisation methods have dominated 
-the development of multiple locus approaches.  They allow the effect of all the snp to be modelled simultaneously. 
+the development of multiple-locus approaches.  They allow the effect of all the snp to be modelled simultaneously. 
 By introducing a penalty function that balances bias and variance, regularisation methods can 
 handle parameter estimation problems where the number of predictors is far greater than the number of samples.  
 MLMM is similar in philosophy to Eagle in that it treats association mapping as a model building problem. Here, a linear mixed 
@@ -479,9 +478,9 @@ step approaches).  Second, there is no relationship between relative importance 
 setting an appropriate genome-wide threshold is problematic. We avoid this problem by focusing, in the simulation study, 
 only on the relationship between threshold level and its false discovery rate and power. 
 
-\subsubsection{Single locus methods}
+\subsubsection{Single-locus methods}
 
-We were also interested in comparing Eagle to single locus methods to measure the difference in run times and statistical power. Even by limiting our focus to LMM-based methods, there were a number of efficient applications to choose from. 
+We were also interested in comparing Eagle to single-locus methods to measure the difference in run times and statistical power. Even by limiting our focus to LMM-based methods, there were a number of efficient applications to choose from. 
 We decided on GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are very similar theoretically. Both perform a single spectral decomposition of the relationship matrix $K$. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and 
 restricted/residual maximum-likelihood (REML) 
 log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
@@ -584,12 +583,12 @@ $------$
 
 
 We compared the performance of Eagle against seven other association mapping applications. 
-Five of these applications, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the multiple locus analysis of data from genome-wide association studies. 
+Five of these applications, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the Multiple-locus analysis of data from genome-wide association studies. 
 The other two applications, GEMMA, and FaST-LMM implement single-locus association mapping methods. 
 The packages 
 differ in their features (summarized in Table X).  The packages also differ in their underlying methods (summarized below). 
 
-\subsubsection{Multiple locus methods}
+\subsubsection{Multiple-locus methods}
 
 \textbf{BigRR:}  In the BigRR package,  generalised ridge regression is implemented  for
 the analysis of genetic data \cite{shen2013novel}.  Generalised ridge regression 
@@ -667,7 +666,7 @@ snp with high relative scores across all $m$ analyses are deemed to be of intere
   
 
 
-\subsubsection{Single locus methods}
+\subsubsection{Single-locus methods}
 
 \textbf{FaST-LMM:}  FaST-LMM is a highly efficient stand along computer program for association 
 mapping \cite{lippert2011fast}. It is based on a standard single-locus model 

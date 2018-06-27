@@ -14,27 +14,28 @@
 
 
 \begin{table}
+\caption{A summary of the features possessed by the Eagle package and the comparison implementations.}
 \begin{tabular}{lccccccccc}
                                 &  \multicolumn{9}{c}{Computer Software for Association Mapping} \\ \cline{2-10}
-                                 & \multicolumn{6}{c}{Multiple-locus methods}  & & \multicolumn{2}{c}{Single-locus methods} \\  \cline{2-7}   \cline{9-10}
- Features                 & AMplus  & bigRR & glmnet & LMM-Lasso & MLMM & r2VIM     & & FaST-LMM & GEMMA \\  \hline
-purpose built$^\dagger$    &   \cmark     &    \cmark      &  \xmark   &  \cmark  &  \cmark  &  \cmark && \cmark & \cmark           \\ [0.2cm]
- user  manual           & \cmark &   \xmark   & \cmark   & \xmark     &   \cmark     & \xmark          && \cmark    &    \cmark    \\  [0.2cm]
-all snps fitted  &    \cmark     &    \cmark        &   \cmark          &      \cmark             &  \xmark          &  \xmark              &&   \xmark   &  \xmark     \\  
-simultaneously      &         &            &             &                   &            &                &&      &      \\  [0.2cm]
-capacity to include          &   \cmark   &      \cmark      &     \cmark    &  \xmark                 &      \cmark      &      \cmark          &&      \cmark & \cmark     \\  
-other fixed effects$^\ddagger$                  &         &              &          &                    &            &                &&      &      \\  [0.2cm]
-limited  memory$^\star$                   &   \cmark    &      \xmark      & \xmark          &  \xmark    &  \xmark    &   \xmark     && \cmark      & \xmark    \\  [0.2cm]
-best set of snp           &    \cmark     &  \xmark    &  \xmark         &    \xmark               &     \cmark       &  \xmark              &&  \xmark   & \xmark      \\  
-returned as result$^\uparrow$               &                           &        & & & & & & & \\  [0.2cm]
-error checking           &  \cmark      &     \xmark        &      \xmark     &           \xmark        &      \xmark       &         \xmark       && \cmark  & \xmark \\ \hline
+                                 & \multicolumn{6}{c}{Multiple-locus}  & & \multicolumn{2}{c}{Single-locus} \\  \cline{2-7}   \cline{9-10}
+ Features                 & Eagle  & bigRR & glmnet & LMM-Lasso & MLMM & r2VIM     & & FaST-LMM & GEMMA \\  \hline
+Purpose built$^1$    &   \cmark     &    \cmark      &  \xmark   &  \cmark  &  \cmark  &  \cmark && \cmark & \cmark           \\ [0.2cm]
+Well documented$^2$           & \cmark &   \xmark   & \cmark   & \xmark     &   \cmark     & \xmark          && \cmark    &    \cmark    \\  [0.2cm]
+Simultaneous   &    \cmark     &    \cmark        &   \cmark          &      \cmark             &  \xmark          &  \xmark              &&   \xmark   &  \xmark     \\  
+fitting of SNPs     &         &            &             &                   &            &                &&      &      \\  [0.2cm]
+Additional fixed effects$^3$          &   \cmark   &      \cmark      &     \cmark    &  \xmark                 &      \cmark      &      \cmark          &&      \cmark & \cmark     \\   [0.2cm]
+Data larger than RAM$^4$                   &   \cmark    &      \xmark      & \xmark          &  \xmark    &  \xmark    &   \xmark     && \cmark      & \xmark    \\  [0.2cm]
+Threshold free$^5$        &    \cmark     &  \xmark    &  \xmark         &    \xmark               &     \cmark       &  \xmark              &&  \xmark   & \xmark      \\  [0.2cm]
+Informative error checking           &  \cmark      &     \xmark        &      \xmark     &           \xmark        &      \xmark       &         \xmark       && \cmark  & \xmark \\ \hline
 
 \end{tabular}
-{$^\dagger$ \scriptsize{computer software specifically designed for the analysis of data from GWAS}}\\
-{$^\ddagger$ \scriptsize{ allows  for the effect of population structure to be included as additional fixed effects}}\\
-{\small $^\star$ \scriptsize{able to deal with data larger than the memory capacity of the computer}} \\
-{\small $^\uparrow$ \scriptsize{no need to determine which 
-marker loci are significant relative to some threshold or further analysis to calculate the significance of the findings. }}
+{$^1$ \scriptsize{Computer software specifically designed for the analysis of data from GWAS.}}\\
+{$^2$ \scriptsize{More than just a readme file or comments in an example file. Those programs with ticks had detailed user manuals.}}\\
+{$^3$ \scriptsize{Ability to accommodate additional fixed effects in the model such as age, sex, and population structure effects.}} \\
+{$^4$ \scriptsize{Able to deal with data larger than the memory capacity of the computer.}} \\
+{$^5$ \scriptsize{Results reported as the set of SNP closest to the genes influencing a trait. No need to construct thresholds to determine 
+significance of the findings.}}\\
+{$^6$  \scriptsize{All the programs terminated on errors. However, not all the programs informed the user of the cause and how to fix the errors.}}\\
 \end{table}
 
 

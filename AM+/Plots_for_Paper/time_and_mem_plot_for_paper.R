@@ -132,21 +132,21 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
 
 ## add text to plots
-p <- p +  annotate("text", x=pps, y=rep(9000,length(pps)), label= c("150x5K" , 
+p <- p +  annotate("text", x=pps, y=rep(9000,length(pps)), label= c("150 x 5K" , 
                                                                     "",
-                                                                    "350x400K" , 
+                                                                    "350 x 400K" , 
                                                                     "",  
-                                                                    "4000x1.5M",  
+                                                                    "4000 x 1.5M",  
                                                                     ""),
                    size=4)
 
 
 p <- p +  annotate("text", x=pps, y=rep(6000,length(pps)), label= c("" , 
-                                                                    "1500x50K",
+                                                                    "1500 x 50K",
                                                                     "" ,  
-                                                                    "2000x500K", 
+                                                                    "2000 x 500K", 
                                                                     "",  
-                                                                    "10000x1.5M"),
+                                                                    "10000 x 1.5M"),
                    size=4)
 
 
@@ -191,7 +191,7 @@ p_time
   
   
   
-  df[df<1] <- 1  ## so that it will plot on the log scale
+  #df[df<1] <- 1  ## so that it will plot on the log scale
   
   df<- melt(df)
   
@@ -322,9 +322,11 @@ p_time
   
   
   
- # grid.newpage()
-#  grid.draw(cbind(ggplotGrob(p_time), ggplotGrob(p_abstime), size = "last"))
+ grid.newpage()
+  grid.draw(cbind(ggplotGrob(p_time), ggplotGrob(p_abstime), size = "last"))
  # dev.off()
+  stop()
+  
   
 
   
@@ -427,21 +429,21 @@ p_time
   
   
   ## add text to plots
-  p <- p +  annotate("text", x=pps, y=rep(129,length(pps)), label= c("150x5K" , 
+  p <- p +  annotate("text", x=pps, y=rep(129,length(pps)), label= c("150 x 5K" , 
                                                                       "",
-                                                                      "350x400K" , 
+                                                                      "350 x 400K" , 
                                                                       "",  
-                                                                      "4000x1.5M",  
+                                                                      "4000 x 1.5M",  
                                                                       ""),
                      size=5)
   
   
   p <- p +  annotate("text", x=pps, y=rep(123,length(pps)), label= c("" , 
-                                                                     "1500x50K",
+                                                                     "1500 x 50K",
                                                                      "" ,  
-                                                                     "2000x500K", 
+                                                                     "2000 x 500K", 
                                                                      "",  
-                                                                     "10000x1.5M"),
+                                                                     "10000 x 1.5M"),
                      size=5)
   p <- p + theme(legend.position = c(0.84, 0.6), 
                  legend.justification = c(0, 1))
