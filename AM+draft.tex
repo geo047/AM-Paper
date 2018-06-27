@@ -208,30 +208,32 @@ single-locus analysis of the mouse data.
 \subsection{Outbred Mice Study}
 \subsection{Mouse Data}
 
-The mouse data were obtained from a large genome-wide association study which was performed in outbred mice. 
+The data were obtained from a large genome-wide association study which was performed in outbred mice. 
 The study is described in detail in \cite{nicod2016genome}. Phenotypic and genotypic data were available on 1,887 adult mice. 
-The phenotypic data consisted of measurements from 200 behavioural, tissue based, and physiological traits.  Of these traits, 
+The phenotypic data consisted of measurements from 200 behavioural, tissue, and physiological traits.  Of these traits, 
 43 yielded snp-trait associations that could be corroborated through other independent published work. It was these 
-43 traits which were the focus of our real data analyses. Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
-form of marker dosages (expected allele counts that range from zero to one). All missing data had been imputed. 
-We converted these  dosages into discrete genotypes 
+43 traits that were the focus of our real data analyses. Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
+form of marker dosages (expected allele counts that ranged from zero to one). All missing data had been imputed. 
+We converted the dosages into discrete genotypes 
 by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. 
 
 
 \subsection{Eagle Approach for Multiple-locus Association Mapping}
 
-Eagle is a method for multiple locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of parameter estimation problem. Consequently,  we do not have to content with multiple testing issues or having to construct significance thresholds. 
+Eagle is a method for multiple locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of parameter estimation problem. Consequently,  we do not have to contend with multiple testing issues or having to construct significance thresholds.  
+Eagle also 
+reports as its findings only those snp that are in strongest linkage disequilibrium, and hence closest, to the genes influencing a trait. 
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
 quantitative trait loci in experimental crosses \cite{verbyla2007analysis} 
 
 
 Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of ordinal numbers where $S_k$ is the $S_k$th ordered snp that was 
-selected in the $k$th iteration. For example, if three iterations of our model building procedure 
+selected in the $k$th iteration. Suppose three iterations of our model building procedure 
 have been performed and say the 500023rd, 15th, and 420th, 
 snp were selected, then $S=\{500023, 15, 420\}$. 
-Let $y^{(n \; \times \;1)}$ be a vector containing $n$ quantitative trait measurements. 
+Let $y^{(n \; \times \;1)}$ be a vector containing $n$ measurements of the quantitative trait. 
 Let $M^{(n_g \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
-from $L$ loci that span the genome on $n_g$ groups/lines/strains.  Here, $n \geq n_g$ meaning that several trait measurements 
+from $L$ loci that span the genome on $n_g$ groups/lines/strains.  Here, $n \geq n_g$ meaning that a single or several trait measurements 
 may be taken of the same group/line/strain. 
  It is common for the columns of $M$ to be in map order but this is not a requirement. 
 The vector $m_j^{(n_g \; \times \; 1)}$ contains the genotypes for the $j$th snp. 
@@ -270,10 +272,10 @@ with the data for the selected snp in $S$ removed,  and $a_{-S}^{(L-s \; \times 
 $a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
 The terms in the summation on the left hand side are fixed effects.  The other term is a random effect.  The terms 
 in the summation account 
-for the additive effects of genes that are in linkage disequilibrium with the selected snp. The other term models 
-snp-trait associations along the entire genome, except for those snp that have already been selected. 
+for the additive effects of the selected snp that are in linkage disequilibrium with genes that are influencing the trait. The other term models 
+snp-trait associations along the entire genome, simultaneously, except for those snp that have already been selected. 
 This is a simple genetic model but it 
-is effective for discovering snp-trait associations. It also reduces the computational cost of our model building procedure. 
+is effective for discovering snp-trait associations. 
 
 
 Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood estimation. 
@@ -305,9 +307,10 @@ where $a^* \sim N(0, \sigma_a^2 I^{(n_g \; \times \;  n_g)})$, and
 $(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via single value decomposition (ref).  
 Although it may not be obvious, the two models are equivalent, 
 having identical variance structures. Yet, the computational cost of model (\ref{eq3}) compared to 
-model (\ref{eq2}) is much less due to the random term having only $n$ effects needing estimating. 
+model (\ref{eq2}) is much less, due to the random term in model (\ref{eq3}) having only $n$ instead of $L-s$ 
+effects needing estimating. 
 
-Verbyla \cite{verbyla2012rwgaim,verbyla2014whole} go on to show how to recover $\widetilde{a}$ from estimates from model (3) with 
+Verbyla \cite{verbyla2012rwgaim,verbyla2014whole} go on to show how to recover $\widetilde{a}$ from estimates from model  (\ref{eq3})  with 
 \begin{equation}
 \widetilde{a} = \left [ M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \right ] \widetilde{a}^*
 \end{equation}
@@ -330,29 +333,39 @@ We compared the computational and statistical performance of Eagle against five 
 association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
 These five methods were selected because of their demonstrated value 
 for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
-either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
-features is given in Table X. 
+either stand-alone computer programs or as  packages. See Table X for a summary of their features. 
 
 BigRR, LMM-Lasso, and glmnet  implement three different regression-based regularisation methods; generalized ridge regression, 
-lasso, and elastic net, respectively. 
-Regularisation methods can handle parameter estimation problems where the number of predictors is far greater than the number of 
-samples. This is particularly advantageous in the context of association mapping as it allows the effects of snp across an entire 
-genome to be estimated simultaneously. 
-All three methods are sophisticated pieces of statistical machinery. The limitation though is that the significance of an effect, which 
-is needed in association mapping,  can not be calculated easily. 
- A possible solution is to estimate the significance of the effects via permutation  \cite{shen2013novel}  
+lasso, and elastic net, respectively. Regularisation methods can handle parameter estimation problems where the number of predictors is
+ far greater than the number of  samples. This is made possible through a penalty function that balances bias against variance. 
+The application of regularisation methods to association mapping has appeal because it means that the snp effects across an 
+entire genome can be estimated, simultaneously. 
+All three methods are sophisticated pieces of statistical machinery but the significance of an effect, which 
+is needed in association mapping,  can not be calculated easily. Permutation as been suggest as an empirical solution to this 
+limitation \cite{shen2013novel} 
 but we have instead opted for stability selection (see below).
 
-MLMM, of the five multiple locus methods, is the closest in philosophy to Eagle. It too is based on a model building philosophy 
-and builds the best linear mixed model via a forward selection strategy. However, MLMM does not make use of dimension 
-reduction which adds to its computational cost. Also, its model building process differs from that of Eagle's. Eagle 
-identifies the $(s+1)$th snp that is in strongest association with the trait by finding the snp effect with the maximum score statistic. 
-MLMM instead identifies the snp, that when included as a fixed effect in the model, has the highest statistical 
-significance. This neccesitates the construction and fitting of a separate linear mixed model for each unidentified snp. MLMM does this efficiently.
-
-R2VIM implements random forests and a new way of measuring the importance of a snp.  In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. The challenge though is in knowing what proportion of the 
-highest ordered snp are in true association. R2VIM addresses this, partially, by calculating a relative importance score for a snp. However, 
-there is no relationship between relative importance scores and significance levels, making the setting of a threshold difficult. 
+MLMM, of the five multiple locus methods, is the closest in philosophy to Eagle. It too is based on  building the 
+best  linear mixed model via forward selection using the ExtBIC criterion. 
+However, there are several differences between the two methods.
+ MLMM does not make use of dimension reduction and they are implemented quite differently leading to substantial 
+ differences  in run time and memory usage (see Results).  Also, they differ in how a model is built. 
+ Eagle uses a score statistic formed from parameter estimates of the random genetic effect in which to identify the next snp to enter 
+ the model.  MLMM uses the statistical significance of a snp when it is treated as a fixed effect in the model. 
+ This necessitates fitting a separate linear mixed model for each unidentified snp. Fortunately,  MLMM does do this 
+ efficiently.
+ 
+R2VIM is quite different to the other four methods. Here, a non-parametric model-free rather than model-based statistical approach is adopted. 
+R2VIM implements random forests and a new way of measuring the importance of a snp.  
+In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. 
+It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. 
+The difficulty is in knowing what proportion of the 
+highest ordered snp are in true association. R2VIM addresses this by performing multiple parallel runs. Each run uses a different 
+random seed, giving slightly different results for the random forest analyses. Within a run, a relative importance score (f) is calculated for 
+each snp. The greater f is than one, the more evidence there is that the snp is in association with a trait.  A snp-trait association is 
+declared if f for the snp is above some threshold value across all parallel runs. The difficulty is that the relationship between 
+this threshold value and the chance of finding false positives is unknown.  The threshold value could be found via permutation but 
+this would be computationally challenging for all but the smallest of association studies. 
 
 
 ======================= The above needs a bit more detail may need to look up papers ================
