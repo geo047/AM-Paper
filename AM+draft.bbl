@@ -5,6 +5,79 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
+\bibitem{zhou2012genome}
+\bibinfo{author}{Zhou, X.} \& \bibinfo{author}{Stephens, M.}
+\newblock \bibinfo{title}{Genome-wide efficient mixed-model analysis for
+  association studies}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{821--824}
+  (\bibinfo{year}{2012}).
+
+\bibitem{lippert2011fast}
+\bibinfo{author}{Lippert, C.} \emph{et~al.}
+\newblock \bibinfo{title}{Fast linear mixed models for genome-wide association
+  studies}.
+\newblock \emph{\bibinfo{journal}{Nature methods}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{833--835}
+  (\bibinfo{year}{2011}).
+
+\bibitem{shen2013novel}
+\bibinfo{author}{Shen, X.}, \bibinfo{author}{Alam, M.}, \bibinfo{author}{Fikse,
+  F.} \& \bibinfo{author}{R{\"o}nneg{\aa}rd, L.}
+\newblock \bibinfo{title}{A novel generalized ridge regression method for
+  quantitative genetics}.
+\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{193}},
+  \bibinfo{pages}{1255--1268} (\bibinfo{year}{2013}).
+
+\bibitem{Friedman2010glmnet}
+\bibinfo{author}{Friedman, J.}, \bibinfo{author}{Hastie, T.} \&
+  \bibinfo{author}{Tibshirani, R.}
+\newblock \bibinfo{title}{Regularization paths for generalized linear models
+  via coordinate descent}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{1--22} (\bibinfo{year}{2010}).
+\newblock \urlprefix\url{http://www.jstatsoft.org/v33/i01/}.
+
+\bibitem{rakitsch2013lasso}
+\bibinfo{author}{Rakitsch, B.}, \bibinfo{author}{Lippert, C.},
+  \bibinfo{author}{Stegle, O.} \& \bibinfo{author}{Borgwardt, K.}
+\newblock \bibinfo{title}{A lasso multi-marker mixed model for association
+  mapping with population structure correction}.
+\newblock \emph{\bibinfo{journal}{Bioinformatics}}
+  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{206--214}
+  (\bibinfo{year}{2013}).
+
+\bibitem{segura2012efficient}
+\bibinfo{author}{Segura, V.} \emph{et~al.}
+\newblock \bibinfo{title}{An efficient multi-locus mixed-model approach for
+  genome-wide association studies in structured populations}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{825--830}
+  (\bibinfo{year}{2012}).
+
+\bibitem{szymczak2016r2vim}
+\bibinfo{author}{Szymczak, S.} \emph{et~al.}
+\newblock \bibinfo{title}{r2vim: A new variable selection method for random
+  forests in genome-wide association studies}.
+\newblock \emph{\bibinfo{journal}{BioData mining}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
+
+\bibitem{10002010map}
+\bibinfo{author}{Consortium, . G.~P.} \emph{et~al.}
+\newblock \bibinfo{title}{A map of human genome variation from population-scale
+  sequencing}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{467}},
+  \bibinfo{pages}{1061} (\bibinfo{year}{2010}).
+
+\bibitem{zheng2011comparison}
+\bibinfo{author}{Zheng, J.}, \bibinfo{author}{Li, Y.},
+  \bibinfo{author}{Abecasis, G.~R.} \& \bibinfo{author}{Scheet, P.}
+\newblock \bibinfo{title}{A comparison of approaches to account for uncertainty
+  in analysis of imputed genotypes}.
+\newblock \emph{\bibinfo{journal}{Genetic epidemiology}}
+  \textbf{\bibinfo{volume}{35}}, \bibinfo{pages}{102--110}
+  (\bibinfo{year}{2011}).
+
 \bibitem{nicod2016genome}
 \bibinfo{author}{Nicod, J.} \emph{et~al.}
 \newblock \bibinfo{title}{Genome-wide association of multiple complex traits in
@@ -44,31 +117,12 @@
   \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{1569--1584}
   (\bibinfo{year}{2014}).
 
-\bibitem{shen2013novel}
-\bibinfo{author}{Shen, X.}, \bibinfo{author}{Alam, M.}, \bibinfo{author}{Fikse,
-  F.} \& \bibinfo{author}{R{\"o}nneg{\aa}rd, L.}
-\newblock \bibinfo{title}{A novel generalized ridge regression method for
-  quantitative genetics}.
-\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{193}},
-  \bibinfo{pages}{1255--1268} (\bibinfo{year}{2013}).
-
-\bibitem{rakitsch2013lasso}
-\bibinfo{author}{Rakitsch, B.}, \bibinfo{author}{Lippert, C.},
-  \bibinfo{author}{Stegle, O.} \& \bibinfo{author}{Borgwardt, K.}
-\newblock \bibinfo{title}{A lasso multi-marker mixed model for association
-  mapping with population structure correction}.
-\newblock \emph{\bibinfo{journal}{Bioinformatics}}
-  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{206--214}
-  (\bibinfo{year}{2013}).
-
-\bibitem{Friedman2010glmnet}
-\bibinfo{author}{Friedman, J.}, \bibinfo{author}{Hastie, T.} \&
-  \bibinfo{author}{Tibshirani, R.}
-\newblock \bibinfo{title}{Regularization paths for generalized linear models
-  via coordinate descent}.
-\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
-  \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{1--22} (\bibinfo{year}{2010}).
-\newblock \urlprefix\url{http://www.jstatsoft.org/v33/i01/}.
+\bibitem{meinshausen2010stability}
+\bibinfo{author}{Meinshausen, N.} \& \bibinfo{author}{B{\"u}hlmann, P.}
+\newblock \bibinfo{title}{Stability selection}.
+\newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
+  Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{72}},
+  \bibinfo{pages}{417--473} (\bibinfo{year}{2010}).
 
 \bibitem{zou2005regularization}
 \bibinfo{author}{Zou, H.} \& \bibinfo{author}{Hastie, T.}
@@ -77,14 +131,6 @@
 \newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
   Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{67}},
   \bibinfo{pages}{301--320} (\bibinfo{year}{2005}).
-
-\bibitem{segura2012efficient}
-\bibinfo{author}{Segura, V.} \emph{et~al.}
-\newblock \bibinfo{title}{An efficient multi-locus mixed-model approach for
-  genome-wide association studies in structured populations}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
-  \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{825--830}
-  (\bibinfo{year}{2012}).
 
 \bibitem{heslot2012genomic}
 \bibinfo{author}{Heslot, N.}, \bibinfo{author}{Yang, H.-P.},
@@ -118,21 +164,6 @@
 \newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society.
   Series B (Methodological)}} \textbf{\bibinfo{volume}{58}},
   \bibinfo{pages}{267--288} (\bibinfo{year}{1996}).
-
-\bibitem{szymczak2016r2vim}
-\bibinfo{author}{Szymczak, S.} \emph{et~al.}
-\newblock \bibinfo{title}{r2vim: A new variable selection method for random
-  forests in genome-wide association studies}.
-\newblock \emph{\bibinfo{journal}{BioData mining}}
-  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
-
-\bibitem{lippert2011fast}
-\bibinfo{author}{Lippert, C.} \emph{et~al.}
-\newblock \bibinfo{title}{Fast linear mixed models for genome-wide association
-  studies}.
-\newblock \emph{\bibinfo{journal}{Nature methods}}
-  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{833--835}
-  (\bibinfo{year}{2011}).
 
 \bibitem{yu2006unified}
 \bibinfo{author}{Yu, J.} \emph{et~al.}

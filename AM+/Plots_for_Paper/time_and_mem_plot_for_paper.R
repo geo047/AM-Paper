@@ -1,3 +1,14 @@
+## Notes to self
+# 1. this script cannot be run from source. The plots do not write to file.
+# 2. this script sometimes gives plotting errors. Just keep running it with "run" until success.
+# 3. the runtime plots are printed separately. They then need to be read in to powerpoint a long with a 
+#     screen grab of the latex produced table.  This is then saved as a jpeg file to produce Figure 1 in paper.
+
+
+
+
+
+
 ## Results are obtained from bragg
 ## input matrices cputimes.dat and memory.dat, and abstimes.dat
 ## Input obtained from /home/geo047/MWAM/SimStudy/Timing/Results  on Bragg cluster. 
@@ -321,11 +332,13 @@ p_time
   dev.off()
   
   
-  
- grid.newpage()
-  grid.draw(cbind(ggplotGrob(p_time), ggplotGrob(p_abstime), size = "last"))
- # dev.off()
-  stop()
+#  postscript("~/Papers/AM-Paper/time.eps", width=10, height=10, 
+#             horizontal=FALSE)
+# grid.newpage()
+#  grid.draw(rbind(ggplotGrob(p_time), ggplotGrob(p_abstime), size = "last"))
+#  
+#dev.off()
+#  stop()
   
   
 

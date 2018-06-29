@@ -1,4 +1,6 @@
 \documentclass{article}
+\usepackage{xr}
+
 \usepackage{graphicx}
 \usepackage{authblk}
 \usepackage{amsfonts}
@@ -6,8 +8,11 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 
+\renewcommand{\tablename}{Supplementary Table}
+\renewcommand{\figurename}{Supplementary Figure}
 
 \begin{document}
+
 
 \title{Eagle: Making multiple-locus association mapping on a genome-wide scale routine}
 \author[1]{Andrew W. George}
@@ -26,8 +31,9 @@
 
 
 \begin{table}
-\label{suptabsummary}
 \caption{A summary of the features possessed by the Eagle package and the comparison implementations.}
+\label{suptabsummary}
+
 \begin{tabular}{lccccccccc}
                                 &  \multicolumn{9}{c}{Computer Software for Association Mapping} \\ \cline{2-10}
                                  & \multicolumn{6}{c}{Multiple-locus}  & & \multicolumn{2}{c}{Single-locus} \\  \cline{2-7}   \cline{9-10}
@@ -66,10 +72,29 @@ implementation able to produce results for data under  scenario 10000 x 1.5M. Th
 to handle data larger than the available memory of a computer. FaST-LMM was run where all the SNP data are used 
 to estimate the relationship matrix (FaST-LMM$^{all}$)   and where genotype data from every five-hundredth SNP are used to 
 estimate the relationship matrix (FaST-LMM$^{few}$)}.
+\label{supfigmem}
+
 \begin{center}
 \includegraphics[width=15cm, height=15cm]{mem.eps}
 \end{center}
 \end{figure}
+
+
+
+\begin{figure}
+\caption{Power verse false discovery rates for Eagle and the single-locus methods GEMMA and FaST-LMM. 
+FaST-LMM was run where all the SNP data are used 
+to estimate the relationship matrix (FaST-LMM$^{all}$)   and where genotype data from every five-hundredth SNP are used to 
+estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially higher power than the single-locus methods.   }
+
+
+\label{supfigpowersingle}
+\begin{center}
+\includegraphics[width=15cm, height=15cm]{power2main.eps}
+\end{center}
+
+\end{figure}
+
 
 
 \begin{table}

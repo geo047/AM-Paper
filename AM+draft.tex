@@ -1,11 +1,14 @@
 \documentclass{nature}
 \usepackage{xr}
 \bibliographystyle{naturemag}
-\renewcommand{\baselinestretch}{1} 
+\renewcommand{\baselinestretch}{1.3} 
 
 %% external tex files
-\externaldocument{Figure2_time}
+\externaldocument{figure1_runtimes}
+\externaldocument{figure2_powerFDRmultiple}
+\externaldocument{figure3_mouse}
 
+\externaldocument{supmaterials}
 
 \begin{document}
 
@@ -55,14 +58,13 @@ For multiple-locus association mapping, we chose bigRR \cite{shen2013novel}, glm
 LMM-Lasso \cite{rakitsch2013lasso}, MLMM \cite{segura2012efficient} , and r2VIM \cite{szymczak2016r2vim}.  
 Each takes a different approach to multiple-locus association mapping.
 
- In Table \ref{suptabsummary}, 
-we list some of the key features that make computer programs for association mapping useful. We also identify which of these 
+ 
+ We list some of the key features that make computer programs for association mapping useful in 
+Supplementary Table \ref{suptabsummary}. We also identify which of these 
 features are present in Eagle and the other seven implementations. For example, all but glmnet were purpose-built for 
 association mapping. Not all the computer programs come with a user manual.  Most could accomodate data on additional fixed effects but only Eagle and FaST-LMM could deal with data larger than the memory capacity of the computer. Also, if 
 the input data contained errors, we found only Eagle and FaST-LMM tried to diagnose the problem and 
 provided advice on how to fix the errors. 
-
-{\em Table 1 goes around here}
 
 
 
@@ -87,15 +89,15 @@ each individual along with a random error.
 
 
 
-\subsection{Run times and memory usage}
+\subsection{Memory Usage and Run Times}
 
 We analysed the simulated data with Eagle and the other computer programs, recording their memory usage and 
 run (or elapse) times. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the five scenarios could be analysed by all implementations. Memory usage 
-for many of the computer programs was the limiting factor (See Sup Figure 1).  The single-locus program GEMMA was by 
+for many of the computer programs was the limiting factor (See {\bf Supplementary Figure \ref{supfigmem}}).  The single-locus program GEMMA was by 
 far the most memory efficient. Not surprisingly, the multiple-locus programs were memory intensive. Most required in 
 excess of the 128 gigabytes of available RAM for the analysis of data generated under 4000 x 1.5M and 10000 x 1.5M.  
 Even FaST-LMM, a single-locus
-implementation, required more than 128 Gbytes of memory for the analysis of the larger data sets 
+implementation, required more than 128 gigabytes of memory for the analysis of the larger data sets 
 when all the marker data was used to calculate the relationship matrix. Of the multiple-locus programs, only Eagle,  
 with its ability to handle data larger than the memory capacity of the computer, was capable of producing findings 
 for data from our largest scenario 10000 x 1.5M. 
@@ -111,94 +113,87 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
  were thousands of individuals and 1.5 million SNPs, Eagle took just over two hours for the analysis of data from 
  4000 x 1.5M and just under 12 hours for the analysis of data from 10000 x 1.5M. 
  Towards the final stages of writing this paper, 
- we gained access to a XXXXXXXXXX, a faster desktop computer. We reran Eagle on data from the largest
-  scenario 10000 x 1.5M to measure the impact, if any, on run time. The median run time dropped by more than 50\% 
-  from just under 12 hours to 4.56 hours. 
+ we gained access to a desktop computer with 14-core Xeon processors with 256 gigabytes of RAM. We reran Eagle on data from the largest
+  scenario 10000 x 1.5M to measure the impact on run time. The median run time dropped by more than 70\% 
+  from just under 12 hours to 3.31 hours. 
  
   
  It is also worth noting that an increase in the number of SNP genotypes in a study does not necessitate, automatically,  
  an increase in the memory usage and run times for its analysis. This is  evidenced by the non-monotonically 
- increasing behaviour of the curves in the memory (Sup Figure 1) and run-time plots (Figure \ref{fig_time}).  It 
-it is the study dimensions, not number of genotypes, that drives the computing resources required by 
+ increasing behaviour of the curves in the memory (Supplementary Figure \ref{supfigmem}) and run-time plots (Figure \ref{fig_time}).  It 
+is the study dimensions, not number of genotypes, that drives the computing resources required by 
 association mapping programs.   
 
  
-\em{ Figure 2 goes here}
+{\em Figure \ref{fig_time} goes around here}
 
 
 
 
 
-\subsection{Power and false discovery rates}
+\subsection{Power and False Discovery Rates}
 
 We calculated, empirically, the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. 
 We were interested in answering the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. 
 For each replicate, we knew which SNPs had been used in creating the quantitative trait data. These SNPs are in true association with 
 the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these SNPs. By knowing which SNPs are in true 
 association with the trait, we were able to assess the validity of a  method's findings. When a replicate was analysed, 
- a method's findings were counted as true if the SNPs were located within 40 kb of SNP in true 
+ a method's findings were counted as true if the SNPs were located within 40 kilobase pairs of SNP in true 
 association with the trait. To calculate the power of a method, for each replicate, we divided the number of true SNP findings by the number of SNP that had been used 
-in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the fdr of a method, for each replicate, 
+in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the false discovery rate of a method, 
+for each replicate, 
 we divided the number of true SNP findings by the number of (true and false) SNP findings. We then averaged across the 100 replicates.  
 
 
-The power and fdr of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure X.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
+The power and false discovery rate of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure \ref{figpowermultiple}.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
 the data could only be analysed by Eagle, MLMM, and r2VIM. For scenario 10000 x 1.5M, the data could only be analysed by Eagle. 
-The power and fdr of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in Sup Figure X.  Each plot contains 
-single points and power curves. The single points are the power and fdrs for Eagle and MLMM.
+The power and false discovery rate of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in
+Supplementary Figure \ref{supfigpowersingle}.  Each plot contains 
+single points and power curves. The single points are the power and false discovery rates for Eagle and MLMM.
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 The power curves are for those methods that treat association mapping as a parameter estimation problem. Here, the 
 significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
-the fdr as the significance threshold  is adjusted. 
+the false discovery rate as the significance threshold  is adjusted. 
 
-At first glance, Eagle appears underpowered. Several of the other methods have higher power than Eagle. The goal of association 
-mapping though is not only to find true SNP-trait associations but to also avoid false SNP-trait associations. For those methods with higher power than Eagle, the cost is much higher false discovery rates. In other words, these methods are finding more true results 
-but they are also finding many more false results. If we restrict our attention to that part of the plot where the (genome-wide) fdr is less than 
-5\% (see inset plots in Figure X and Sup Figure X),  we see that Eagle, closely followed by MLMM,  has the highest power for the lowest 
-fdr. This is especially true when the power and fdr of Eagle is compared to the single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
-
-
-\begin{figure}
-\label{fig_power_multiple}
-\caption{Power curves for  multiple-locus methods}
-\includegraphics[width=10cm]{powerMultiple}
-\end{figure}
-
-\begin{figure}
-\label{fig_power_single}
-\caption{Power curves for single-locus methods -- Put into sup methods}
-\includegraphics[width=10cm]{powerSingle}
-\end{figure}
+In answer to the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations, it does extremely 
+well.  Of the multiple-locus methods, Eagle has the highest power
+while keeping its false discovery rate low (Figure \ref{figpowermultiple}). MLMM also performed well. However, it is when Eagle is compared against single-locus methods 
+that the difference in power is most noticeable.  Eagle has much greater power than single-locus methods for finding SNP in true 
+association with a trait while avoiding false associations (Supplementary Figure \ref{supfigpowersingle}). 
 
 
-\begin{figure}
-\label{fig_threshold}
-\caption{The impact of threshold on FDR }
-\includegraphics[width=10cm]{threshold}
-\end{figure}
 
+%%At first glance, Eagle appears underpowered. Several of the other methods have higher power than Eagle. The goal of association mapping though is not only to find true SNP-trait associations but to also avoid false SNP-trait associations. For those methods with higher power than Eagle, the cost is much higher false discovery rates. In other words, these methods are finding more true results  but they are also finding many more false results. If we restrict our attention to that part of the plot where the (genome-wide) fdr is less than  5\% (see inset plots in Figure X and Sup Figure X),  we see that Eagle, closely followed by MLMM,  has the highest power for the lowest  fdr. This is especially true when the power and fdr of Eagle is compared to the single-locus methods. For single-locus methods to achieve the same level of power as Eagle, a threshold has to be set where the fdr is extremely high. 
+
+
+{\em Figure \ref{figpowermultiple} goes here}
 
 
 
 \subsection{Mouse Data Analysis}
 
 We were interested in comparing results from Eagle with those from single-locus association mapping for a real data set.
- We chose to focus on data from a large outbred mouse study. This study was unusual in that it collected and analysed SNP dosages (continuous values from zero to one of expected allele counts)  instead of the more common SNP genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power of detection \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single-locus program FaSt-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found SNP-trait associations not found with the FaST-LMM. However, we were 
- able to confirm the validity of these new findings as they matched what was found in the original study.
+ We chose to focus on data from a large outbred mouse study \cite{nicod2016genome}. This study was unusual in that it collected and analysed SNP dosages (continuous values from zero to one of expected allele counts)  instead of the more common SNP genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power for the detection of genes that are influencing a trait  \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single-locus program FaST-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found SNP-trait associations not found with the FaST-LMM. However, we were 
+ able to confirm the validity of these new findings as they matched what was found in the original study. Having the ability to confirm new findings 
+ in a real study was 
+ one of the primary motivators for choosing these data for analysis. 
+For the single-locus analysis of the data, we followed the same procedure as originally followed for the analysis of the mouse data \cite{nicod2016genome}. The only differences were that we focused on the autosomal SNP and it was necessary to 
+increase the number of permutations for the controlling of the false discovery rate from 100 to 500.
 
-For the single-locus analysis of the data, we followed the same procedure as xxxx. 
-The only exceptions were that we focused on the autosomal SNP and it was necessary to 
-increase the number of permutations for the controlling of the fdr from 100 to 500.
+Eagle was run in two ways; under its default settings (Eagle$^{default}$) and where we specified the regularisation parameter for model selection (Eagle$^{optimal}$ ) Eagle chooses the best model via the extended Bayesian information criteria (extBIC) \cite{chen2008extended}. 
+  The conservativeness of the extBIC can be adjusted by a single regularisation parameter that ranges from zero to one. In the simulation study, this parameter was set to one, its most conservative and default setting. However, there is also opportunity to set the parameter to a value less than one. This increases power but also increases the false discovery rate. For each trait, we used permutation to set the regularisation parameter to give a false discovery rate of 5\% .
 
-Eagle was run in two ways; under its default settings ($Eagle^{default}$) and where we specified the regularisation parameter for model selection ($Eagle^{optimal}$ ) Eagle chooses the best model via the extended BIC criteria (ref). The conservativeness of the extended BIC can be adjusted by a single regularisation parameter that ranges from 0 to 1. In the simulation study, this parameter was set to 1, its most conservative and default setting. However, there is also opportunity to set the parameter to a value less than 1. This increases power but also increases the fdr. For each trait, we used permutation to set the regularisation parameter to give a fdr of 5\% .
-
-The genome wide results from the analyses of the mouse data are shown in Figure X. The mouse study took
-measurements on 200 traits.  However, we focused our analyses on the 43 traits whose SNP-trait associations could be
-corroborated by prior published evidence. Each plot contains the number of SNP-trait associations that were found and in agreement with the original findings. Neither method found SNP not identified in the original mouse study.
-As we saw in the simulation study, there is a notable difference in the two methods capacity to discover SNP-trait associations. $Eagle^{default}$, under its default settings, for x traits found the same number of findings as FaST-LMM and for y traits found more findings. $Eagle^{optimal}$, 
-with its regularisation parameter fine tuned to the trait, for x traits found the same number of findings as FaST-LMM and for y traits 
-found more findings. Overall, $Eagle^{default}$ and $Eagle^{optimal}$ found xx\% and yy\% more SNP-trait associations than a 
-single-locus analysis of the mouse data. 
+The genome wide results from the analyses of the mouse data are shown in Figure  \ref{figmouse}. The mouse study took
+measurements on 200 traits. When these traits were first analysed in the original study, findings for 45 of these traits were able to be 
+corroborated by prior published evidence. We focused our analyses here on these same 45 traits. For 39 traits, we found SNP-trait associations. 
+For the other six, neither FaST-LMM nor Eagle found any associations. 
+Each plot contains the number of SNP-trait associations that were found and in agreement with the original findings. 
+Neither method found SNP not identified in the original mouse study so neither method found false positives. 
+As we saw in the simulation study, there is a notable difference in the two methods capacity to discover SNP-trait associations. Eagle$^{default}$, under its default settings, for eight traits found the same number of findings as FaST-LMM and for 28 traits found more findings. Eagle$^{optimal}$, 
+with its regularisation parameter fine tuned to the trait, for six traits found the same number of findings as FaST-LMM and for 32 traits 
+found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, snp-trait findings respectively. 
+Eagle$^{default}$ and Eagle$^{optimal}$ found two-and-a-half times and over three-and-a-half times, respectively, more SNP-trait 
+associations than what is the established way of analysing these data. Furthermore, these are all findings that were confirmed in the original study. 
 
 
 
@@ -287,9 +282,10 @@ in linear and linear mixed models (ref).
 
 Fourth, we determine the importance of the $(s+1)$th selected snp via a model selection strategy. 
 We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected snp.  We then fit this new model to the data
-via maximum likelihood and calculate its extended Bayesian information criteria (ExtBIC) \cite{chen2008extended}.  The ExtBIC is a model selection measure that takes into account the number of unknown parameters and the complexity 
-of the model space.  It is especially well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. If this new model has a larger ExtBIC than the current model, then the $s+1$th selected snp is added to 
-the current model and the above process is repeated. If this new model has a smaller ExtBIC than the current model, then the 
+via maximum likelihood and calculate its extended Bayesian information criteria (extBIC) \cite{chen2008extended}.  The 
+extBIC is a model selection measure that takes into account the number of unknown parameters and the complexity 
+of the model space.  It is especially well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. If this new model has a larger  than the current model, then the $s+1$th selected snp is added to 
+the current model and the above process is repeated. If this new model has a smaller extBIC than the current model, then the 
 model building process is complete. The set of snp in strongest association with the trait is the $s$ snp previously identified. 
 
 \subsubsection{Reducing the dimension of the model}
@@ -370,112 +366,6 @@ this would be computationally challenging for all but the smallest of associatio
 ======================= The above needs a bit more detail may need to look up papers ================
 
 
-
-
-BigRR \cite{shen2013novel}  is an R package that implements generalized ridge regression.
-In ridge regression, the coefficients of the predictors are shrunk 
-to zero by a constant amount.  In generalized ridge regression, the amount of shrinkage is allowed to vary. 
-The model used in BigRR can be formulated as a linear mixed model.
-One of the challenges in using BigRR for association mapping is that while it can estimate the effect sizes of all the snp simultaneously, 
-obtaining their statistical significance is difficult. 
-Permutation has been suggested as a way of calculating significance 
-empirically \cite{shen2013novel} but we instead opted for stability selection (see below).
-
-
-
-BigRR, LMM-Lasso, and glmnet  implement different regression-based regularisation methods. Regularisation methods have dominated 
-the development of multiple-locus approaches.  They allow the effect of all the snp to be modelled simultaneously. 
-By introducing a penalty function that balances bias and variance, regularisation methods can 
-handle parameter estimation problems where the number of predictors is far greater than the number of samples.  
-MLMM is similar in philosophy to Eagle in that it treats association mapping as a model building problem. Here, a linear mixed 
-model is built through a forward-backward selected strategy.  
-R2VIM is different to the others in that it implements 
-random forests for association mapping. 
-Random forests is a machine learning approach that forms an ensemble of decision trees for regression and 
-classification. 
-These five methods were selected because of their demonstrated value 
-for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
-either stand-alone computer programs or as  packages. A summary of how the computer programs/packages differ in their 
-features is given in Table X. Each method is now described in a little more detail. 
-
-
-
-\textbf{BigRR:} BigRR \cite{shen2013novel}  is an R package that implements generalized ridge regression.
-In ridge regression, the coefficients of the predictors are shrunk 
-to zero by a constant amount.  In generalized ridge regression, the amount of shrinkage is allowed to vary, giving opportunity for 
-a more realistic model to be specified. The model used in BigRR can be formulated as a linear mixed model that is 
-$y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of snp effects, and each snp 
-effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$. 
-The parameters are estimated via a 
-algorithm that makes clever use of the Cholesky decomposition of the genomic relationship matrix, 
-and the equivalence between the above model and animal models \ref{stranden2009animalmodel}. 
-One of the challenges in using BigRR for association mapping is that while it has the capacity to estimate the effect sizes of all the snp simultaneously, 
-obtaining their statistical significance is difficult. 
-Permutation has been suggested as a way of calculating significance 
-empirically \cite{shen2013novel} but we instead opted for stability selection.
-
-
-\textbf{LMM-Lasso:} LMM-Lasso  \cite{rakitsch2013lasso} is a stand-alone computer program that implements lasso within a linear mixed model 
-framework. Unlike in ridge regression, lasso performs parameter estimation and variable selection, simultaneously.   The 
-coefficients of "unimportant" predictors are shrunk to exactly zero.
-The (full) model is 
-$y =  \sum_{l=1}^L m_l \theta_l +   g  + e$ where $g^{(n ; \times 1)}$ is a vector of random polygenic effects such that 
-$g \sim N(0, \sigma^2_g K)$, and $K^{(n ; \times \; n)}$ is a realised relationship matrix reconstructed from the snp information. 
-It is challenging, computationally,  to apply lasso directly to the full model for parameter estimation. Instead, a two step procedure 
-is adopted. In the first step, the above model without any snp effects is fitted. In the second step, 
-the unknown variance components in the full model are replaced by their estimates 
-that were calculated in the first step. Lasso is then applied to this simpler model making lasso more tractable, computationally. 
-As with BigRR,  the statistical significance of the snp effects are not calculated. We use stability selection to obtain the 
-significance empirically. 
-
-\textbf{Glmnet:} Glmnet  \cite{Friedman2010glmnet}, unlike BigRR and LMM-Lasso, was not purpose built for 
-association mapping.  It is a general R package for 
-regression analysis. We have included it in our list of applications for comparison with Eagle because the 
-regularization method, elastic net, upon which the package is based has been found to be superior to ridge regression and 
-lasso (ref needed???).  Elastic net uses a penalty function that is a mixture of 
-$\ell_1$-norm (lasso) and $\ell_2$-norm (ridge regression) penalties  \cite{zou2005regularization}. 
-This allows elastic net to avoid the limitations of lasso 
-while still being able to perform shrinkage and variable selection, simultaneously. 
-Glmnet can handle a range of different models. For the analyses performed in this paper, the model is 
-$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
-We used stability selection to obtain the significance of the coefficients (snp effects). 
-
-
-\textbf{MLMM:} Of the multiple-locus applications considered in this paper, 
-MLMM \cite{segura2012efficient} bares the greatest similarity to Eagle algorithmically.  MLMM, like Eagle, performs 
-association mapping by building the "best" linear mixed model.  The model used for analysis 
-is the same as (\ref{eq1}) except that the genetic effect is 
-\begin{equation}
-\label{eqmlmm}
-u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + g
-\end{equation}
-where 
-$g^{(n ; \times 1)}$ is a vector of random polygenic effects with distribution 
-$g \sim N(0, \sigma^2_g K)$. The model is built iteratively, via forward-backward variable selection.  In Eagle, at each iteration, 
-the snp in strongest association with the trait is found by calculating the score statistic $t_j^2$.  In MLMM, at each iteration, 
-a separate linear mixed model analysis is performed for each snp not already selected. The snp yielding the most 
-significant result (lowest p-value) is selected for inclusion in the fixed effects part of (\ref{eqmlmm}).  
-Two selection 
-criteria are available for the model building process: 
-the EBIC and the multiple-Bonferroni criterion. We used only the EBIC. 
-
-
-
-\textbf{r2VIM:} R2VIM is an R package specifically designed for association mapping \cite{szymczak2016r2vim}. 
-It implements random forests and a new way of measuring the importance of a snp.  In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. The challenge though is in knowing what proportion of the 
-highest ordered snp are in true association. R2VIM addresses this by calculating a relative importance score for a snp. Briefly,
-$m$ random forest analyses of the data are performed. Each analysis is reliant upon a different random number seed. 
-From an analysis, a relative importance score for a snp is obtained by taking the ratio of its importance score to the absolute 
-minimum of the importance scores across all the snp.  Those 
-snp with high relative scores across all $m$ analyses are deemed to be of interest \cite{szymczak2016r2vim}.
-Applying r2VIM to the analysis of GWAS data is not without its challenges.  First, it is not possible to force every 
-decision tree to have important (fixed) effects without a change to the internal workings of the r2VIM package. 
-So we adopted a two step 
-strategy. In the first step, the fixed effects are regressed on to the trait and the residuals recorded.  In the second step, 
-r2VIM is employed were the trait data are the residuals obtained from the first step. This is not ideal (ref to problems with two
-step approaches).  Second, there is no relationship between relative importance scores and significance levels. Consequently, 
-setting an appropriate genome-wide threshold is problematic. We avoid this problem by focusing, in the simulation study, 
-only on the relationship between threshold level and its false discovery rate and power. 
 
 \subsubsection{Single-locus methods}
 

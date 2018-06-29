@@ -246,11 +246,27 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 #p + theme_few()
 
 ## xlimit
-p <- p + coord_cartesian(xlim = c(0, 0.05), ylim=c(0, 1)) 
+p <- p + coord_cartesian(xlim = c(0, 0.1), ylim=c(0, 1)) 
 
-jpeg("/Users/geo047/Papers/AM-Paper/power1main.jpg", width=7, height=7, units="in", res=500)
+# change number of digits in labels on x-axis
+scaleFUN <- function(x) sprintf("%.2f", x)
+p <- p + scale_x_continuous(labels=scaleFUN)
+
+
+
+#jpeg("/Users/geo047/Papers/AM-Paper/power1main.jpg", width=7, height=7, units="in", res=500)
+#print(p)
+#dev.off()
+
+
+postscript("~/Papers/AM-Paper/power1main.eps", width=10, height=10, fonts=c("sans"),
+           horizontal=FALSE)
+# square plot
 print(p)
 dev.off()
+
+
+
 
 p1 <- p
 
@@ -310,22 +326,25 @@ insert_plot <- function(df1, df2, family){
 
 }
 
+# inset pltos 
+# decided not to use these
 
-jpeg("/Users/geo047//Papers/AM-Paper/power1sub1.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "150 x 5K"))
-dev.off()
 
-jpeg("/Users/geo047/Papers/AM-Paper/power1sub2.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "350 x 500K"))
-dev.off()
+#jpeg("/Users/geo047//Papers/AM-Paper/power1sub1.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "150 x 5K"))
+#dev.off()
 
-jpeg("/Users/geo047/Papers/AM-Paper/power1sub3.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "1500 x 50K"))
-dev.off()
+#jpeg("/Users/geo047/Papers/AM-Paper/power1sub2.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "350 x 500K"))
+#dev.off()
 
-jpeg("/Users/geo047/Papers/AM-Paper/power1sub4.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "2000 x 500K"))
-dev.off()
+#jpeg("/Users/geo047/Papers/AM-Paper/power1sub3.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "1500 x 50K"))
+#dev.off()
+
+#jpeg("/Users/geo047/Papers/AM-Paper/power1sub4.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "2000 x 500K"))
+#dev.off()
 
 
 ##--------------------------------------------------------------------------------------------##
@@ -337,8 +356,7 @@ dev.off()
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 df1 <- subset(dfres, (method=="GEMMA" | method=="FaST-LMM^few" | method=="FaST-LMM^all" ))
-df2 <- subset(dfres, method=="AMplus" | method=="MLMM")
-
+df2 <- subset(dfres, method=="AMplus")
 #p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1.5)  +
 #  geom_point(data=df2, aes(FDR, recall), size=1.5) +
 #  facet_wrap(~fam, ncol=3) + 
@@ -353,10 +371,10 @@ p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.5, se
 p <- p + scale_color_manual(
   breaks=c("AMplus","MLMM","FaST-LMM^all","FaST-LMM^few","GEMMA"),
   labels=c("Eagle", "MLMM", bquote("FaST-LMM"^all), bquote("FaST-LMM"^few), "GEMMA"),
-  values=brewer.pal(10, "Paired")[c(2,10,9,7,1)], 
+  values=brewer.pal(10, "Paired")[c(2,10,9,7)], 
   guide = guide_legend(override.aes = list(
-    linetype = c("blank", "blank", "solid", "solid", "solid"),
-    shape=c(16, 16, NA, NA, NA))))
+    linetype = c("blank", "solid", "solid", "solid"),
+    shape=c(16, NA, NA, NA))))
 
 
 ## set theme
@@ -372,17 +390,17 @@ p <- p  + ylab(bquote("Power")) +
 
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=16)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=16))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=12,  angle=0)) +
-  theme(axis.text.y=element_text(size=12, hjust=0.5)) +
-  theme(strip.text = element_text(size=12))
+  theme(axis.text.x = element_text(size=10,  angle=0)) +
+  theme(axis.text.y=element_text(size=10, hjust=0.5)) +
+  theme(strip.text = element_text(size=10))
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=12))
+p <- p +  theme(legend.text=element_text(size=10))
 p <- p +  theme(legend.title=element_blank())
 p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
@@ -391,25 +409,30 @@ p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
 
 
 ## xlimit
-p <- p + coord_cartesian(xlim = c(0, 0.05), ylim=c(0, 1)) 
+p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1)) 
 
 
 ## increase font of lengend + remove legend title
 #p <- p +  theme(legend.position="none")
 
 ## xlimit
-p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1) ) 
+p <- p + coord_cartesian(xlim = c(0, 0.1), ylim=c(0, 1) ) 
 
 p <- p + theme(panel.background = element_rect(fill="white"))
 
+# change number of digits in labels on x-axis
+scaleFUN <- function(x) sprintf("%.2f", x)
+p <- p + scale_x_continuous(labels=scaleFUN)
 
 
-p
 
 
-jpeg("/Users/geo047/Papers/AM-Paper/power2main.jpg", width=7, height=7, units="in", res=500)
+postscript("~/Papers/AM-Paper/power2main.eps", width=10, height=10,  fonts=c("sans"),
+           horizontal=FALSE)
+# square plot
 print(p)
 dev.off()
+
 
 
 ##----------- Subplots -- insets  ----------  ##
@@ -481,35 +504,38 @@ insert_plot <- function(df1, df2, family){
   return(p)
   
 }  
-  
-
-jpeg("/Users/geo047//Papers/AM-Paper/power2sub1.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "150 x 5K"))
-dev.off()
+ 
+# inset pltos 
+# decided not to use these
 
 
-
-jpeg("/Users/geo047//Papers/AM-Paper/power2sub2.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "350 x 500K"))
-dev.off()
+#jpeg("/Users/geo047//Papers/AM-Paper/power2sub1.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "150 x 5K"))
+#dev.off()
 
 
 
-jpeg("/Users/geo047//Papers/AM-Paper/power2sub3.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "1500 x 50K"))
-dev.off()
+#jpeg("/Users/geo047//Papers/AM-Paper/power2sub2.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "350 x 500K"))
+#dev.off()
 
 
 
-jpeg("/Users/geo047//Papers/AM-Paper/power2sub4.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "2000 x 500K"))
-dev.off()
+#jpeg("/Users/geo047//Papers/AM-Paper/power2sub3.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "1500 x 50K"))
+#dev.off()
 
 
 
-jpeg("/Users/geo047//Papers/AM-Paper/power2sub5.jpg", width=12, height=12, units="in", res=2000)
-print(insert_plot(df1, df2, "4000 x 1.5M"))
-dev.off()
+#jpeg("/Users/geo047//Papers/AM-Paper/power2sub4.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "2000 x 500K"))
+#dev.off()
+
+
+
+#jpeg("/Users/geo047//Papers/AM-Paper/power2sub5.jpg", width=12, height=12, units="in", res=2000)
+#print(insert_plot(df1, df2, "4000 x 1.5M"))
+#dev.off()
 
 
 
