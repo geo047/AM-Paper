@@ -363,14 +363,10 @@ this threshold value and the chance of finding false positives is unknown.  The 
 this would be computationally challenging for all but the smallest of association studies. 
 
 
-======================= The above needs a bit more detail may need to look up papers ================
-
-
-
 \subsubsection{Single-locus methods}
 
 We were also interested in comparing Eagle to single-locus methods to measure the difference in run times and statistical power. Even by limiting our focus to LMM-based methods, there were a number of efficient applications to choose from. 
-We decided on GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are very similar theoretically. Both perform a single spectral decomposition of the relationship matrix $K$. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and 
+We decided on GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are similar theoretically. Both perform a single spectral decomposition of the relationship matrix $K$. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and 
 restricted/residual maximum-likelihood (REML) 
 log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
 
@@ -385,24 +381,22 @@ Stability selection is a resampling strategy.  With stability selection, we were
 still being able to calculate, empirically, the statistical significance of the snp effects.
 
 We performed stability selection as follows. For LMM-Lasso and glmnet, we performed a preliminary analysis to find an 
-appropriate value for the regularization parameter.  We adjusted $\lambda$ so that they yielded 
+appropriate value for the regularization parameter.  We adjusted $\lambda$ so that LMM-Lasso and glmnet yielded 
 between 10 to 30 snp with non-zero effects. Fortunately, with stability selection, the setting of $\lambda$ does not have to be exact 
-but limiting LMM-Lasso and glmnet to only 10 to 30 non-zero effect sizes was straightforward. We then repeatedly subsampled, 
+ We then repeatedly subsampled, 
 without replacement, the data. As recommended \cite{meinshausen2010stability}, we draw 100 subsamples of size $n/2$. We 
 analysed the subsample, with $\lambda$ fixed for LMM-Lasso and glmnet.  To calculate, empirically,  the statistical significance of each 
-snp across the genome, we counted the number of times a snp had a non-zero effect size over all the replicates to the total 
-number of replicates (which was 100). 
+SNP across the genome, we counted the number of times a SNP had a non-zero effect size over all the replicates. We then 
+divided this number by the number of replicates (which was 100) to form an empirical probability estimate of the significance of a SNP. 
 
 
 For BigRR, we modified our stability selection procedure slightly. 
 There was no need to find an appropriate value for the regularization 
 parameters as the BigRR package has an internal procedure for their 
 calculation. We draw subsamples as above and analyzed the data with BigRR. However, within an analysis, we ordered 
-the snp according to the absolute size of their snp effects and recorded the top 20 snp. We then measured the significance 
-of the snp across the entire genome as above. 
+the SNPs according to the absolute size of their SNP effects and recorded the top 20 SNPs. We then measured the significance 
+of the SNPs across the entire genome as above. 
 
-
-\cite{meinshausen2010stability}
 
 
 \section{Simulation Study}
@@ -442,12 +436,24 @@ assumed a genome-wide signi cance level of 5 %. If true, an incorrect  nding occ
 
 \section{New section written on iPhone added 5 Feb 2018}
 \section{Simulation Study}
-We conduct a large simulation study to examine the performance characteristics of Eagle. Genome-wide data are generated under five different scenarios. These are a gwas of size 150 individuals and 5000 snp (150 x 5K), 350 individuals and 400000 snp (350 x 400k), 1500 individuals and 50000 snp (1500 x 50k), 200 individuals and ..... We chose these five scenarios to reflect some of the different sized studies being run in animals, plants, and humans. For each scenario, 100 replicates are generated.
+Genome-wide data are generated under five different scenarios. These five scenarios partially mimic the size of study being performed in 
+animals, plants, and humans. They are a GWAS of size 150 individuals 
+and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 X 400K),  1,500 individuals and 
+50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
+1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
 
-To generate a replacate, we used data perturbation (ref). Data perturbation makes use of real genotype data from which a (quantitative) trait is created.
-With data perturbation, we are able to preserve some of the challenges of analysing real data while still having trait data whose genetic architecture is known.
 
-The genotype data comes from the 1000 genome project, version 3 (ref). The original data contains X individuals with XX XX snp. From these data, according to the specifications of the scenario, the individuals and the snp loci are identified at random. What about polymorphic affect numbers? Chech).
+To generate a replicate, we used data perturbation (ref). Data perturbation makes use of real genotype data from which a (quantitative) trait is created. With data perturbation, we are able to preserve some of the challenges of analysing real data while still having trait data whose genetic architecture is known. We obtained the genotype data from the 1000 Genome Project, version 3   \cite{10002010map} consisting of over
+78 million autosomal SNPs collected from 2504 individuals across 26 populations.  To form the genotype data, we 
+sampled randomly from the 2504 individuals and 78 million loci according to the specifications of the scenario. 
+
+According to the specifications of the scenario,
+we identified, randomly, the individuals and loci. We then extracted this information from the larger data set 
+to form the genotype data for a scenario. The individuals 
+and loci chosen varied across scenarios but the same genotype data were used across the 100 replicates within a scenario. 
+
+
+ The original data contains X individuals with XX XX snp. From these data, according to the specifications of the scenario, the individuals and the snp loci are identified at random. What about polymorphic affect numbers? Chech).
 
 To generate the quantitative trait data, first the number of snp that are to be in complete with an underlying qtl (x) is drawn from a poison distribution with mean equal to 30. Second, x snp loci are select randomly from a scenario?s set of genotype data. Third, the snp values are summed across the selected loci for each individual to generate a vector of n genetic values. Here, each snp is having, roughly, the same effect on the trait, remembering that the maf of a snp also impacts a snps influence on a trait. Fourth, n deviates are drawn from a $N(0,sigma^2_e)$ where $\sigma_e^2$ has been set to yield a trait with a heritability of 0.6. (Put in formula). Fifth, the quantitative trait data is generate as $y = g + e$. In this way, the same genotype data are used, within a scenario, for all replicates. Only the quantitative trait data varies across replicates.
 
@@ -456,116 +462,14 @@ To generate the quantitative trait data, first the number of snp that are to be 
 
 \section{Implementation}
 
-Eagle has been implemented as an R package of the same name. However, much of the calculation is performed through c++ functions for improved performance. Eagle has been specially designed to harness the multithreaded math libraries blast and lapack but it will run on a single processor computer. It can also deal with data larger than the memory capacity of a computer. Eagle can be run as a standard R package or via the web based GUI. The GUI relinquishes the need to know R to use Eagle.
-
-
-Eagle can be downloaded from CRAN and installed in the usual way. A containerised version of Eagle is also available. It is built with singularity (ref). This container already has Eagle installed on a multi-threaded version of R. The container is downloaded as a single file from ccxx
-
-
-A quick start guide, how to videos, installation instructions, and answers to frequently asked questions are available at the Eagle website (http://...)
-
-
-
-$------$
-
-
-
-
-We compared the performance of Eagle against seven other association mapping applications. 
-Five of these applications, BigRR, glmnet, FaST-LASSO, MMLM, r2VIM implement methods that have been applied to the Multiple-locus analysis of data from genome-wide association studies. 
-The other two applications, GEMMA, and FaST-LMM implement single-locus association mapping methods. 
-The packages 
-differ in their features (summarized in Table X).  The packages also differ in their underlying methods (summarized below). 
-
-\subsubsection{Multiple-locus methods}
-
-\textbf{BigRR:}  In the BigRR package,  generalised ridge regression is implemented  for
-the analysis of genetic data \cite{shen2013novel}.  Generalised ridge regression 
- is a regularisation method in that it produces regression solutions 
-that have higher bias than ordinary least squares but reduced variance for improved prediction accuracy. The underlying 
-model is  $y = X \beta + M u + e$ where $u^{(L \times 1)}$ is a vector of genetic effects, and each genetic 
-effect is normally distributed with its own variance such that $u_l \sim N(0, \sigma^2_l); l=1,2, \ldots, L$.  The 
-amount of shrinkage is allowed to vary across the genetic (snp) effects. This differs to 
-standard ridge regression where the shrinkage is constant. 
-Generalised ridge regression is apt at estimating the effect sizes of snp on a genome-wide scale but  obtaining their 
-statistical significance analytically is difficult. Shen \cite{shen2013novel} suggested permutation as a way of calculating significance 
-empirically. We instead opted for stability selection (see below of details). 
-
-
-
-\textbf{glmnet:}  Glmnet is a general purpose R package for regression analysis  \cite{Friedman2010glmnet}. 
-The model used for analysis is 
-$y = X \beta + \sum_{l=1}^L m_l \theta_l + e$ where $\theta_l; l=(1,2, \ldots, L)$ is the coefficient for the $l$th snp. 
-All snp effects are modelled, simultaneously. 
-Glmnet implements elastic net for the estimation of the parameters. Elastic net is a regularisation method where the 
-penalty function is a mixture of 
-$\ell_1$-norm (lasso) and $\ell_2$-norm (ridge regression) penalties  \cite{zou2005regularization}. 
-This allows elastic net to avoid the limitations of lasso 
-while still being able to perform shrinkage and variable selection, simultaneously \cite{zou2005regularization}. 
-Glmnet was not specifically built for association mapping. 
-However, it is included in our list of comparison applications due to its solid performance for genomic prediction 
-\cite{heslot2012genomic,ogutu2012genomic}.
-The glmnet package 
-implements a modification of the LARS algorithm \cite{efron2004least} for finding the optimal regularisation (solution) path. 
-From exploratory analyses of the simulated data, we found this algorithm yielded a high proportion of false positives. 
-We instead fixed the shrinkage parameter to a suitable value 
-and employed stability selection to estimate the significance of the snp coefficients, empirically (see below).  
-
-
-
-\textbf{LMM-Lasso:} LMM-Lasso is a stand-alone computer program for association mapping within a linear 
-mixed model framework \cite{rakitsch2013lasso}. The (full) linear mixed model used for analysis is 
-$y =  \sum_{l=1}^L m_l \theta_l +   g  + e$ where $g^{(n ; \times 1)}$ is a vector of random polygenic effects such that 
-$g \sim N(0, \sigma^2_g K)$, and $K^{(n ; \times \; n)}$ is a realised relationship matrix reconstructed from the snp information. 
-All snp effects are modelled, simultaneously. However, a limitation of this model is its inability to accommodate 
-additional fixed effects (there is no $X \beta$ term). 
-The parameters are estimated via lasso \cite{Tibshirani1996lasso}. Lasso is a regularisation method with the capacity to perform parameter estimation and variable selection, simultaneously.  
-Lasso is computationally intensive, especially when applied to linear mixed models. To avoid this problem, a two-step 
-estimation procedure is adopted.  In the first step, the above model but without any snp effects is fitted via 
-maximum likelihood. In the second step, the unknown variance components in the full model are replaced by their estimates that were calculated in the first step.  This turns the full model from a linear mixed model into a simpler linear model. Here, lasso is far more tractable, computationally.  To assess the significance of the snp coefficients, as suggested \cite{rakitsch2013lasso}, we implemented stability selection (see below). 
-
-
-\textbf{MLMM:}  Of the multiple-locus applications considered in this paper, 
-MLMM bares the greatest similarity to Eagle algorithmically.  MLMM, like Eagle, performs 
-association mapping by building the "best" linear mixed model.  The model used for analysis 
-is the same as (\ref{eq1}) except that the genetic effect is 
-\begin{equation}
-\label{eqmlmm}
-u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + g
-\end{equation}
-where 
-$g^{(n ; \times 1)}$ is a vector of random polygenic effects with distribution 
-$g \sim N(0, \sigma^2_g K)$. The model is built iteratively, via forward-backward variable selection.  In Eagle, at each iteration, 
-the snp in strongest association with the trait is found by calculating the score statistic $t_j^2$.  In MLMM, at each iteration, 
-a separate linear mixed model analysis is performed for each snp not already selected. The snp yielding the most 
-significant result (lowest p-value) is selected for inclusion in the fixed effects part of (\ref{eqmlmm}).  
-Two selection 
-criteria are available for the model building process: 
-the EBIC and the multiple-Bonferroni criterion. We used only the EBIC. 
-
-\textbf{r2VIM:} R2RIM is an R package specifically designed for association mapping \cite{szymczak2016r2vim}. 
-It implements random forests and a new way of measuring the importance of a snp.  In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. The challenge though is in knowing what proportion of the 
-highest ordered snp are in true association. R2VIM addresses this by calculating a relative importance score for a snp. Briefly,
-$m$ random forest analyses of the data are performed. Each analysis is reliant upon a different random number seed. 
-From an analysis, a relative importance score for a snp is obtained by taking the ratio of its importance score to the absolute 
-minimum of the importance scores across all the snp.  Those 
-snp with high relative scores across all $m$ analyses are deemed to be of interest \cite{szymczak2016r2vim}.
+Eagle has been implemented as an R package of the same name. Much of the heavy computation though is performed outside of R 
+via c++ functions that utilise Eigen C++ routines. Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
+mathematical libraries common to most computer systems. By making use of multi-threaded  BLAS and LAPACK libraries, many of the 
+calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How To guides, and 
+demos are available on the Eagle website (ref).  Eagle is available for download from the CRAN website. 
 
   
   
-
-
-\subsubsection{Single-locus methods}
-
-\textbf{FaST-LMM:}  FaST-LMM is a highly efficient stand along computer program for association 
-mapping \cite{lippert2011fast}. It is based on a standard single-locus model 
-\cite{yu2006unified,zhao2007arabidopsis}. Its computational efficiencies come through factorising $K$ with spectral decomposition so that $K=U (S + \delta I) U^T$ where $U$ contains the eigenvectors and $\delta$ is the ratio of the genetic variance to the residual variance. 
-By rotating the data with $U$, the log likelihood of the linear mixed model can be expressed as the log likelihood for a simple 
-linear model.  This greatly reduces the computational cost of performing lmm-based  association mapping. With FaST-LMM, 
-analyses scale linearly with sample size $n$, both in terms of run-time and memory usage.
-
-\textbf{GEMMA:}  to be done. 
-
 \section{Discussion}
 
 

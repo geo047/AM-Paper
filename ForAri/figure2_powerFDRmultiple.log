@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 JUN 2018 11:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 JUN 2018 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -79,7 +79,7 @@ LaTeX Font Info:    Try loading font information for U+psy on input line 64.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
-(./figure2_powerFDRmultiple.aux)
+No file figure2_powerFDRmultiple.aux.
 \openout1 = `figure2_powerFDRmultiple.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -94,7 +94,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
-
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count88
@@ -156,47 +155,47 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+
+LaTeX Warning: File `power1main.eps' not found on input line 27.
+
 Package epstopdf Info: Source file: <power1main.eps>
-(epstopdf)                    date: 2018-06-29 11:19:58
-(epstopdf)                    size: 89195 bytes
 (epstopdf)             Output file: <power1main-eps-converted-to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=power1main-eps-converted-t
 o.pdf power1main.eps>
 (epstopdf)             \includegraphics on input line 27.
-runsystem(repstopdf --outfile=power1main-eps-converted-to.pdf power1main.eps)..
-.executed safely (allowed).
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <power1main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-29 11:20:11
-(epstopdf)                    size: 16875 bytes.
+./figure2_powerFDRmultiple.tex:27: Package pdftex.def Error: File `power1main-e
+ps-converted-to.pdf' not found.
 
-<power1main-eps-converted-to.pdf, id=1, 561.09625pt x 722.7pt>
-File: power1main-eps-converted-to.pdf Graphic file (type pdf)
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 ...s[width=15cm, height=15cm]{power1main.eps}
+                                                  
+? 
+./figure2_powerFDRmultiple.tex:27: Emergency stop.
+ ...                                              
+                                                  
+l.27 ...s[width=15cm, height=15cm]{power1main.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use power1main-eps-converted-to.pdf>
-Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 27.
-
-(pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
-
-Overfull \hbox (10.65672pt too wide) in paragraph at lines 27--28
- [] 
- []
-
-[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./pow
-er1main-eps-converted-to.pdf>] (./figure2_powerFDRmultiple.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ 
 Here is how much of TeX's memory you used:
- 1584 strings out of 493089
- 23183 string characters out of 6134842
- 79510 words of memory out of 5000000
- 5069 multiletter control sequences out of 15000+600000
+ 1573 strings out of 493089
+ 23029 string characters out of 6134842
+ 78510 words of memory out of 5000000
+ 5063 multiletter control sequences out of 15000+600000
  4330 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,5n,24p,395b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+ 37i,2n,24p,257b,210s stack positions out of 5000i,500n,10000p,200000b,80000s
+./figure2_powerFDRmultiple.tex:27:  ==> Fatal error occurred, no output PDF fil
+e produced!
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 
 Output written on figure2_powerFDRmultiple.pdf (1 page, 30642 bytes).
 PDF statistics:
