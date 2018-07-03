@@ -17,6 +17,15 @@
 
 \maketitle
 
+%% To Add
+%%-------------------------
+%% 1. how real data was analysed
+%% 2. default settings for methods in simulation study.
+%% 3. real data analyses - how were they done fixed effects?
+%% 4. simulation study very simple in terms of design, fixed effects etc. 
+
+
+
 
 \begin{affiliations}
 \item Data61, CSIRO, Australia.
@@ -435,29 +444,28 @@ assumed a genome-wide signi cance level of 5 %. If true, an incorrect  nding occ
 \section{Implementation}
 
 \section{New section written on iPhone added 5 Feb 2018}
-\section{Simulation Study}
-Genome-wide data are generated under five different scenarios. These five scenarios partially mimic the size of study being performed in 
-animals, plants, and humans. They are a GWAS of size 150 individuals 
-and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 X 400K),  1,500 individuals and 
-50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
-1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
+\section{Generation of Simulation Data}
 
+The data were generated via data perturbation. Data perturbation amalgamates real with simulated data to generate replicates. 
+It is a way of introducing greater realism into a simulation study. 
+ Here, the genotype data are real, the 
+quantitative trait data are simulated. 
+ The SNP genotypes were drawn, 
+according to the specifications of the scenario, from data collected from the 1000 Genome Project, version 3   \cite{10002010map}. 
+Across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. 
 
-To generate a replicate, we used data perturbation (ref). Data perturbation makes use of real genotype data from which a (quantitative) trait is created. With data perturbation, we are able to preserve some of the challenges of analysing real data while still having trait data whose genetic architecture is known. We obtained the genotype data from the 1000 Genome Project, version 3   \cite{10002010map} consisting of over
-78 million autosomal SNPs collected from 2504 individuals across 26 populations.  To form the genotype data, we 
-sampled randomly from the 2504 individuals and 78 million loci according to the specifications of the scenario. 
+To generate the trait data $y$, first, $q$, the number of SNP that are to be assigned a quantitative value is drawn from a Poisson distribution with 
+mean 30. Second, $q$ SNP are selected randomly. Third, we assume an additive model for the SNP. The SNP genotypes AA, AB, and BB 
+are assigned the values -1, 0, and 1, respectively. Fourth, the SNP effects are summed across the $q$ selected loci, for each individual, to 
+generate a $g^{(n \times 1)}$ vector of genetic values where $n$ is the number of individuals. 
+Fifth, $e^{(n \times 1)}, a vector of residuals, is drawn from a normal distribution where $e_i \sim N(0, \sigma^2_e)$ and $\sigma^2_e$ is 
+the residual variance that has been set to yield a trait with heritability 0.5. Sixth,  the trait data are formed as $y =  g + e$.  
 
-According to the specifications of the scenario,
-we identified, randomly, the individuals and loci. We then extracted this information from the larger data set 
-to form the genotype data for a scenario. The individuals 
-and loci chosen varied across scenarios but the same genotype data were used across the 100 replicates within a scenario. 
-
-
- The original data contains X individuals with XX XX snp. From these data, according to the specifications of the scenario, the individuals and the snp loci are identified at random. What about polymorphic affect numbers? Chech).
-
-To generate the quantitative trait data, first the number of snp that are to be in complete with an underlying qtl (x) is drawn from a poison distribution with mean equal to 30. Second, x snp loci are select randomly from a scenario?s set of genotype data. Third, the snp values are summed across the selected loci for each individual to generate a vector of n genetic values. Here, each snp is having, roughly, the same effect on the trait, remembering that the maf of a snp also impacts a snps influence on a trait. Fourth, n deviates are drawn from a $N(0,sigma^2_e)$ where $\sigma_e^2$ has been set to yield a trait with a heritability of 0.6. (Put in formula). Fifth, the quantitative trait data is generate as $y = g + e$. In this way, the same genotype data are used, within a scenario, for all replicates. Only the quantitative trait data varies across replicates.
-
-
+ In forming $y$, 
+we have purposely not included any fixed effects such as age, sex, or experimental design effects. The reason for this is that 
+not all the multiple-locus methods considered could accommodate additional random effects. 
+Although a two-stage approach is often adopted to deal with this limitation, we wanted to 
+generate data that did not require further processing before analysis by any of the methods. 
 
 
 \section{Implementation}
