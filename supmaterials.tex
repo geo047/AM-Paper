@@ -1,15 +1,16 @@
 \documentclass{article}
 \usepackage{xr}
+\usepackage{lscape}
 
 \usepackage{graphicx}
 \usepackage{authblk}
 \usepackage{amsfonts}
 \usepackage{pifont}
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
 
 \renewcommand{\tablename}{Supplementary Table}
 \renewcommand{\figurename}{Supplementary Figure}
+\newcommand{\rowgroup}[1]{\hspace{-1em}#1}
+
 
 \begin{document}
 
@@ -18,7 +19,6 @@
 \author[1]{Andrew W. George}
 \author[1]{Arunas Verbyla}
 \author[2]{Joshua Bowden}
-\author[1]{Some other authors}
 
 \affil[1]{Data61, CSIRO, Australia.}
 \affil[2]{IM \&T, CSIRO, Australia.}
@@ -30,27 +30,94 @@
 
 
 
-\begin{table}
-\caption{A summary of the features possessed by the Eagle package and the comparison implementations.}
-\label{suptabsummary}
+\begin{landscape}
 
-\begin{tabular}{lccccccccc}
-                                &  \multicolumn{9}{c}{Computer Software for Association Mapping} \\ \cline{2-10}
-                                 & \multicolumn{6}{c}{Multiple-locus}  & & \multicolumn{2}{c}{Single-locus} \\  \cline{2-7}   \cline{9-10}
- Features                 & Eagle  & bigRR & glmnet & LMM-Lasso & MLMM & r2VIM     & & FaST-LMM & GEMMA \\  \hline
-Purpose built$^1$    &   \cmark     &    \cmark      &  \xmark   &  \cmark  &  \cmark  &  \cmark && \cmark & \cmark           \\ [0.2cm]
-Well documented$^2$           & \cmark &   \xmark   & \cmark   & \xmark     &   \cmark     & \xmark          && \cmark    &    \cmark    \\  [0.2cm]
-Simultaneous   &    \cmark     &    \cmark        &   \cmark          &      \cmark             &  \xmark          &  \xmark              &&   \xmark   &  \xmark     \\  
-fitting of SNPs     &         &            &             &                   &            &                &&      &      \\  [0.2cm]
-Additional fixed effects$^3$          &   \cmark   &      \cmark      &     \cmark    &  \xmark                 &      \cmark      &      \cmark          &&      \cmark & \cmark     \\   [0.2cm]
-Data larger than RAM$^4$                   &   \cmark    &      \xmark      & \xmark          &  \xmark    &  \xmark    &   \xmark     && \cmark      & \xmark    \\  [0.2cm]
-Threshold free$^5$        &    \cmark     &  \xmark    &  \xmark         &    \xmark               &     \cmark       &  \xmark              &&  \xmark   & \xmark      \\  [0.2cm]
-Informative error checking           &  \cmark      &     \xmark        &      \xmark     &           \xmark        &      \xmark       &         \xmark       && \cmark  & \xmark \\ \hline
+\begin{table}
+\caption{{\bf Implementation and methodology attributes of eight computer programs/packages for genome-wide association mapping.} For the different types of model, 
+LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalised linear mixed model, and RF is random forests. 
+}
+\label{suptabsummary}
+\vspace{0.5cm}
+\begin{tabular}{lcccccccc} \hline
+                                                   Attributes                  & {\bf Eagle}                                 & {\bf bigRR}             & {\bf glmnet}            & {\bf LMM-Lasso}                    & {\bf MLMM} & {\bf r2VIM}      & {\bf FaST-LMM} & {\bf GEMMA} \\  \hline
+{\em Implementation}    &         &            &             &                   &            &                &      &      \\ 
+\hspace{1mm}  Purpose built$^a$    &   Yes     &    Yes      &  No   &   Yes  &  Yes  &  Yes  & Yes  & Yes          \\ [0.35cm]
+
+
+\hspace{1mm}  Language                 &  R/C++       &    R        &      R       &     Python     &  R          &    R         &  C++ and     &   C++   \\  
+                                                          &         &            &             &                   &            &                                     &   Python$^b$       &      \\  [0.35cm]
+
+\hspace{1mm} GUI                            & Yes &    No      & No          &  No    &  No    &   No     & No     & No    \\  [0.35cm]
+
+
+
+
+\hspace{1mm} Documentation        &  Videos,                &    R help       &  Vignettes,    &   Readme.txt,       &   Vignette,          &     R help           &   Videos,              &  User-manual,     \\  
+                                                        &   user-manuals,    &                      &  R help         &    test script           &  R help              &                           &    user-manuals,  &   website  \\
+                                                        &   website,    R help          &                      &                     &                              &                           &                           &    website            &    \\   [0.35cm]
+
+                                                                         
+\hspace{1mm} Additional fixed        &   Yes   &      Yes      &     Yes    &  No                 &      Yes      &      Yes          &      Yes & Yes     \\  
+\hspace{1mm} effects$^c$               &           &                   &                 &                   &                   &                     &              &   adsf    \\  [0.35cm]
+
+\hspace{1mm} Types of  &  Cont.      &   Cont.,          &   Cont.,           &   Cont.                 &   Cont.          &     Cont.           &   Cont.   &  Cont.    \\  
+\hspace{1mm} trait data  &                &    binary,      &      binary,         &                   &            &                &      &      \\  
+                                      &                &   count         &       count          &                   &            &                &      &      \\  [0.35cm]
+
+
+\hspace{1mm} Data larger                   &   Yes    &      No      & No          &  No    &  No    &   No     & Yes      & No    \\  
+\hspace{1mm} than memory                                             &         &            &             &                   &            &                &      &      \\  [0.8cm]
+
+
+{\em Methodology}    &         &            &             &                   &            &                &      &      \\  
+\hspace{1mm}  Model                     & LMM   &   &  GLMM &   GLM  & LMM  & RF & LMM   & LMM \\ [0.15cm]
+
+\hspace{1mm} SNPs fitted       &    All/multiple      &    All       &   All        &      All          &  Multiple          &  Multiple              &   Single   &  Single   \\  [0.35cm]
+
+
+\hspace{1mm}  Selection type              & Model   & Variable  &  Variable &  Variable  &  Model  &  Variable & Variable  & Variable \\  [0.35cm]
+
+\hspace{1mm} Threshold free$^5$        &    Yes     &  No    &  No         &    No               &     Yes       &  No              &  No   & No      \\  [0.15cm]  \hline
+           
 
 \end{tabular}
-{$^1$ \scriptsize{Computer software specifically designed for the analysis of data from GWAS.}}\\
-{$^2$ \scriptsize{More than just a readme file or comments in an example file. Those programs with ticks had detailed user manuals.}}\\
-{$^3$ \scriptsize{Ability to accommodate additional fixed effects in the model such as age, sex, and population structure effects.}} \\
+{$^a$ \scriptsize{Specifically created for the analysis of GWAS data.}}\\
+{$^b$ \scriptsize{Separate programs, one written in Python, the other C++}} \\
+{$^c$ \scriptsize{Capacity for additional fixed effects (such as  age, sex, and/or population structure effects) to be included directly in the model.}} \\
+\end{table}
+
+
+\end{landscape}
+
+
+
+
+
+
+
+\begin{landscape}
+
+\begin{table}
+\caption{Some of the key features possessed by Eagle and the other seven computer programs/packages for association mapping}
+\label{suptabsummary}
+
+\begin{tabular}{lccccccccc} 
+                                &  \multicolumn{9}{c}{Computer Programs/Packages for Association Mapping} \\ \cline{2-10}
+                                 & \multicolumn{6}{c}{Multiple-locus}  & & \multicolumn{2}{c}{Single-locus} \\  \cline{2-7}   \cline{9-10}
+ Features                 & Eagle  & bigRR & glmnet & LMM-Lasso & MLMM & r2VIM     & & FaST-LMM & GEMMA \\  \hline
+Purpose built$^1$    &   Yes     &    Yes      &  No   &  Yes  &  Yes  &  Yes && Yes & Yes           \\ [0.2cm]
+Well documented$^2$           & Yes &   No   & Yes   & No     &   Yes     & No          && Yes    &    Yes    \\  [0.2cm]
+Simultaneous   &    Yes     &    Yes        &   Yes          &      Yes             &  No          &  No              &&   No   &  No     \\  
+fitting of SNPs     &         &            &             &                   &            &                &&      &      \\  [0.2cm]
+Additional fixed effects$^3$          &   Yes   &      Yes      &     Yes    &  No                 &      Yes      &      Yes          &&      Yes & Yes     \\   [0.2cm]
+Data larger than RAM$^4$                   &   Yes    &      No      & No          &  No    &  No    &   No     && Yes      & No    \\  [0.2cm]
+Threshold free$^5$        &    Yes     &  No    &  No         &    No               &     Yes       &  No              &&  No   & No      \\  [0.2cm]
+Informative error checking           &  Yes      &     No        &      No     &           No        &      No       &         No       && Yes  & No \\ \hline
+
+\end{tabular}
+{$^1$ \scriptsize{Specifically created for the analysis of GWAS data.}}\\
+{$^2$ \scriptsize{More than just a readme file or comments in an example file. Programs/packages with a tick had a detailed user manual.}}\\
+{$^3$ \scriptsize{Ability to handle additional fixed effects such as  age, sex, and/or population structure effects.}} \\
 {$^4$ \scriptsize{Able to deal with data larger than the memory capacity of the computer.}} \\
 {$^5$ \scriptsize{Results reported as the set of SNP closest to the genes influencing a trait. No need to construct thresholds to determine 
 significance of the findings.}}\\
@@ -58,6 +125,7 @@ significance of the findings.}}\\
 \end{table}
 
 
+\end{landscape}
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  28 JUN 2018 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  10 JUL 2018 15:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -27,13 +27,9 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 1994/05/28 v5.02 eXternal References (DPC)
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
-)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
@@ -55,7 +51,14 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
-))
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
@@ -86,23 +89,26 @@ LaTeX Font Info:    Try loading font information for U+psy on input line 63.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
-(./supmaterials.aux)
+(./supmaterials.aux
+
+LaTeX Warning: Label `suptabsummary' multiply defined.
+
+)
 \openout1 = `supmaterials.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
 \scratchdimen=\dimen105
@@ -172,16 +178,32 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 26.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (179.34804pt too wide) in paragraph at lines 37--58
+) [1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (37.09154pt too wide) in paragraph at lines 41--87
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--58
+Underfull \hbox (badness 10000) in paragraph at lines 41--87
 
  []
 
+
+LaTeX Warning: Float too large for page by 121.57047pt on input line 87.
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 104--125
+[][] $[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--125
+
+ []
+
+[3]
 Package epstopdf Info: Source file: <mem.eps>
 (epstopdf)                    date: 2018-06-27 17:17:49
 (epstopdf)                    size: 27772 bytes
@@ -190,69 +212,61 @@ Package epstopdf Info: Source file: <mem.eps>
 (epstopdf)                    size: 15511 bytes
 (epstopdf)             Command: <repstopdf --outfile=mem-eps-converted-to.pdf m
 em.eps>
-(epstopdf)             \includegraphics on input line 78.
+(epstopdf)             \includegraphics on input line 146.
 Package epstopdf Info: Output file is already uptodate.
-<mem-eps-converted-to.pdf, id=1, 561.09625pt x 722.7pt>
+ <mem-eps-converted-to.pdf, id=20, 561.09625pt x 722.7pt>
 File: mem-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mem-eps-converted-to.pdf>
-Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 78.
+Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 146.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 78--79
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 146--147
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 59.29732pt on input line 80.
+LaTeX Warning: Float too large for page by 59.29732pt on input line 148.
 
 Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    date: 2018-06-28 14:47:44
 (epstopdf)                    size: 37544 bytes
 (epstopdf)             Output file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 14:19:19
+(epstopdf)                    date: 2018-06-28 15:22:19
 (epstopdf)                    size: 16954 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
-(epstopdf)             \includegraphics on input line 93.
-runsystem(repstopdf --outfile=power2main-eps-converted-to.pdf power2main.eps)..
-.executed safely (allowed).
-
-Package epstopdf Info: Result file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 15:22:19
-(epstopdf)                    size: 16954 bytes.
-<power2main-eps-converted-to.pdf, id=2, 561.09625pt x 722.7pt>
+(epstopdf)             \includegraphics on input line 161.
+Package epstopdf Info: Output file is already uptodate.
+<power2main-eps-converted-to.pdf, id=21, 561.09625pt x 722.7pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power2main-eps-converted-to.pdf>
-Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 93.
-
+Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 161
+.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 93--94
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 161--162
  [] 
  []
 
 
-Overfull \hbox (160.9526pt too wide) in paragraph at lines 102--115
+Overfull \hbox (160.9526pt too wide) in paragraph at lines 170--183
 [][] 
  []
 
-[1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3 <./mem-eps-converted-to.pdf>] [4 <./power2main-eps-converted-to.pdf>]
+[4] [5 <./mem-eps-converted-to.pdf>] [6 <./power2main-eps-converted-to.pdf>]
 (./supmaterials.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1723 strings out of 493089
- 24644 string characters out of 6134842
- 92307 words of memory out of 5000000
- 5179 multiletter control sequences out of 15000+600000
- 11281 words of font info for 44 fonts, out of 8000000 for 9000
+ 1736 strings out of 493089
+ 24911 string characters out of 6134842
+ 90042 words of memory out of 5000000
+ 5188 multiletter control sequences out of 15000+600000
+ 11627 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,9n,24p,895b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -262,11 +276,11 @@ sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on supmaterials.pdf (4 pages, 124288 bytes).
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on supmaterials.pdf (6 pages, 143113 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 73 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
