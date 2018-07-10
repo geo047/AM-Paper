@@ -61,21 +61,16 @@ distributed computing for computation when available.
 \subsection{Association Mapping Methods}
 
 We compared Eagle, in terms of computational and statistical performance, against seven other association mapping methods. 
-We chose methods that (mostly) had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer programs. Two of the methods are based on single-locus (or locus-by-locus) models and five are based on multiple-locus models. Of the many ways of performing single-locus association mapping, we chose 
+We chose methods that almost all had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer programs or packages. Two of the methods are based on single-locus (or locus-by-locus) models and five are based on multiple-locus models. Of the many ways of performing single-locus association mapping, we chose 
 GEMMA \cite{zhou2012genome}  and FaST-LMM \cite{lippert2011fast} because of their popularity and computational speed. 
 For multiple-locus association mapping, we chose bigRR \cite{shen2013novel}, glmnet \cite{Friedman2010glmnet}, 
 LMM-Lasso \cite{rakitsch2013lasso}, MLMM \cite{segura2012efficient} , and r2VIM \cite{szymczak2016r2vim}.  
-Each takes a different approach to multiple-locus association mapping.
+Each takes a different approach to multiple-locus association mapping. A summary of the key attributes to the different computer programs/packages 
+is given in Supplementary Table \ref{suptabsummary}. 
+Further details about the computer programs/packages and how they were used in the analysis of the simulated data can be found in Methods.
+
 
  
- We list some of the key features that make computer programs for association mapping useful in 
-Supplementary Table \ref{suptabsummary}. We also identify which of these 
-features are present in Eagle and the other seven implementations. For example, all but glmnet were purpose-built for 
-association mapping. Not all the computer programs come with a user manual.  Most could accomodate data on additional fixed effects but only Eagle and FaST-LMM could deal with data larger than the memory capacity of the computer. Also, if 
-the input data contained errors, we found only Eagle and FaST-LMM tried to diagnose the problem and 
-provided guidance on how to fix the errors. 
-
-
 
 \subsection{Simulation Study}
 We performed a large simulation study where we sought to  answer two questions. 
@@ -208,11 +203,11 @@ associations than what is the established way of analysing these data. Furthermo
 
 \section{Methods}
 
-\subsection{Outbred Mice Study}
+
 \subsection{Mouse Data}
 
-The data were obtained from a large genome-wide association study which was performed in outbred mice. 
-The study is described in detail in \cite{nicod2016genome}. Phenotypic and genotypic data were available on 1,887 adult mice. 
+The data were obtained from a large genome-wide association study which was performed in outbred mice \cite{nicod2016genome}. 
+Phenotypic and genotypic data were available on 1,887 adult mice. 
 The phenotypic data consisted of measurements from 200 behavioural, tissue, and physiological traits.  Of these traits, 
 43 yielded SNP-trait associations that could be corroborated through other independent published work. It was these 
 43 traits that were the focus of our real data analyses. Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
@@ -223,7 +218,7 @@ by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and B
 
 \subsection{Eagle Approach for Multiple-locus Association Mapping}
 
-Eagle is a method for multiple-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of parameter estimation problem. Consequently,  we do not have to contend with multiple testing issues or having to construct significance thresholds.  
+Eagle is a method for multiple-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of variable selection problem. Consequently,  we do not have to contend with multiple testing issues or having to construct significance thresholds.  
 Eagle also 
 reports as its findings only those SNPs that are in strongest linkage disequilibrium, and hence closest, to the genes influencing a trait. 
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
@@ -337,7 +332,7 @@ We compared the computational and statistical performance of Eagle against five 
 association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
 These five methods were selected because of their demonstrated value 
 for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
-either stand-alone computer programs or as  packages. See Table X for a summary of their features. 
+either stand-alone computer programs or as  packages.
 
 BigRR, LMM-Lasso, and glmnet  implement three different regression-based regularisation methods; generalized ridge regression, 
 lasso, and elastic net, respectively. Regularisation methods can handle parameter estimation problems where the number of predictors is
@@ -345,7 +340,7 @@ lasso, and elastic net, respectively. Regularisation methods can handle paramete
 The application of regularisation methods to association mapping has appeal because it means that the snp effects across an 
 entire genome can be estimated, simultaneously. 
 All three methods are sophisticated pieces of statistical machinery but the significance of an effect, which 
-is needed in association mapping,  can not be calculated easily. Permutation as been suggest as an empirical solution to this 
+is needed in association mapping,  can not be calculated easily. Permutation has been suggest as an empirical solution to this 
 limitation \cite{shen2013novel} 
 but we have instead opted for stability selection (see below).
 
@@ -380,7 +375,7 @@ restricted/residual maximum-likelihood (REML)
 log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
 
 
-\section{Stability Selection}
+\subsection{Stability Selection}
 When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
 BigRR has an approximate way of setting each snp's separate regularization parameter (ref). However, the optimal value of 
 $\lambda$ must be found when using LMM-Lasso and glmnet. Also, 
@@ -408,7 +403,7 @@ of the SNPs across the entire genome as above.
 
 
 
-\section{Generation of Simulation Data}
+\subsection{Generation of Simulation Data}
 
 The data were generated via data perturbation (Zhao et al. 2007). Data perturbation amalgamates real with simulated data to generate replicates. 
 It is a way of introducing greater realism into a simulation study. 
@@ -424,25 +419,29 @@ are assigned the values -1, 0, and 1, respectively. Fourth, the SNP effects are 
 generate a $g^{(n \times 1)}$ vector of genetic values where $n$ is the number of individuals. 
 Fifth, $e^{(n \times 1)}$, a vector of residuals, is drawn from a normal distribution where $e_i \sim N(0, \sigma^2_e)$ and $\sigma^2_e$ is 
 the residual variance that has been set to yield a trait with heritability 0.5. Sixth,  the trait data are formed as $y =  g + e$.  
-
- In forming $y$, 
-we have purposely not included any fixed effects such as age, sex, or experimental design effects. The reason for this is that 
-not all the multiple-locus methods considered could accommodate additional random effects. 
-Although a two-stage approach is often adopted to deal with this limitation, we wanted to 
-generate data that did not require further processing before analysis by any of the methods. 
+In forming $y$, we have purposely not included any other environmental variables such as age, sex, or experimental design effects. This is because 
+not all the methods were implemented to handle the inclusion of additional fixed effects. A two-stage modelling approach (ref) 
+is often adopted to deal with this situation, be we chose not to introduce this complexity to the analyses.  
 
 
-\section{Implementation}
+\subsection{Implementation}
 
 Eagle has been implemented as an R package of the same name. Much of the heavy computation though is performed outside of R 
-via c++ functions that utilise Eigen C++ routines. Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
+via C++ functions that utilise Eigen C++ routines. Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
 mathematical libraries common to most computer systems. By making use of multi-threaded  BLAS and LAPACK libraries, many of the 
-calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How To guides, and 
-demos are available on the Eagle website (ref).  Eagle is available for download from the CRAN website. 
+calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How-To guides, and 
+a link to our server for demonstrating Eagle on some test data are available on the Eagle website (ref).  
+Eagle is available for download from the CRAN website. 
 
   
   
 \section{Discussion}
+
+How to deal with more complex models. 
+
+Comment on cloud based FaST-LMM
+
+Performance could change with changes to default values. 
 
 
 
