@@ -102,19 +102,19 @@ each individual along with a random error.
  The number of SNPs selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
  across the selected loci are equal.  A heritability of  50\% is assumed for the trait. 
  
- A replicate was analysed via the different methods as follows. All programs/packages were run at their default settings. 
+ A replicate was analysed as follows. All programs/packages were run at their default settings. 
  The Eagle package and MLMM script were the easiest of the programs/packages to implement. 
  Their results are immediately 
  interpretable. Their findings are the set of SNPs in strongest association with the trait. Each 
 SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP.  
+Implementing BigRR, LMM-Lasso, and glmnet required more work. 
+The computer programs/packages are based on regularisation methods. Being able to fit all the SNPs simultaneously within a regression 
+framework is their strength. The analytical challenges of calculating p-values due to the adaptive nature of the estimation procedure is their 
+weakness.  To solve this problem, at the cost of increased computation, we calculated the significance of a SNP empirically via stability selection (see Methods). R2VIM is an R package that implements random forests.  
+We were required to 
+specify the minimum size of a terminal node, the number of trees, and number of potential variables 
+for building a tree. 
 
-BigRR, LMM-Lasso, and glmnet  implement regression-based 
-regularisation methods. Coefficient estimates of the SNP from fitting all loci simultaneously are reported. However, for these results to be useable, the statistical significance of a
-SNP in the model is also required.  The statistical significance rather than the coefficient size of a SNP is a better measure of the strength of evidence for a SNP-trait association. 
-Calculating the significance of effects within these regularisation methods is challenging. We resort to 
-stability selection, a sampling approach that allows us to calculate 
-the statistical significance of the 
-SNP empirically (see Methods for details). This does increase the computational burden of implementing these methods for genome-wide association mapping. 
 
 R2VIM implements random forests. As part of analysing data with r2VIM, we were required to specify the minimum size of a terminal node, the number of trees, and number of potential variables 
 for building a tree.   HOW TO CHOSE THESE - REASONABLE VALUES ???? LOOK AT PAPERS ... 
