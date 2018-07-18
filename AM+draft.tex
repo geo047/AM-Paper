@@ -97,27 +97,30 @@ We chose these scenarios to mirror some of the different sized GWAS being perfor
 For each scenario, we generated 100 replicates of data. A single replicate consists of SNP data and quantitative trait data. 
 To introduce some of the complexities of dealing with real genotypes into the study, we obtained the SNP genotypes from 
 the publicly available 1000 Genome Project, phase 3  \cite{10002010map}.  The quantitative trait data are generated 
-by selecting, randomly, a set of SNP loci, assigning additive allelic effects to these loci, and then aggregating these effects for 
+by selecting, randomly, a set of SNPs, assigning additive allelic effects to these loci, and then aggregating their effects for 
 each individual along with a random error.  
  The number of SNPs selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
  across the selected loci are equal.  A heritability of  50\% is assumed for the trait. 
  
  A replicate was analysed as follows. All programs/packages were run at their default settings. 
- The Eagle package and MLMM script were the easiest of the programs/packages to implement. 
+ Eagle and MLMM were the easiest of the programs/packages to implement. 
  Their results are immediately 
  interpretable. Their findings are the set of SNPs in strongest association with the trait. Each 
 SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP.  
-Implementing BigRR, LMM-Lasso, and glmnet required more work. 
-The computer programs/packages are based on regularisation methods. Being able to fit all the SNPs simultaneously within a regression 
-framework is their strength. The analytical challenges of calculating p-values due to the adaptive nature of the estimation procedure is their 
-weakness.  To solve this problem, at the cost of increased computation, we calculated the significance of a SNP empirically via stability selection (see Methods). R2VIM is an R package that implements random forests.  
-We were required to 
-specify the minimum size of a terminal node, the number of trees, and number of potential variables 
-for building a tree. 
+The other programs/packages were not as easy to implement  BigRR, LMM-Lasso, and glmnet make use of regularlisation methods. 
+All SNPs are fitted simultaneously in a regression framework.  However, due to the adaptive nature of the estimation procedure, it is challenging, 
+analytically, to calculate P values for the effects in the model. 
+To solve this problem, at the cost of increased computation, we calculated the significance of a SNP empirically 
+via stability selection (see Methods).  R2VIM, a random forest approach, required three parameters to be specified. These are the
+ minimum size of a terminal node, the number of trees, and number of potential variables 
+for building a tree.  It is not clear how "best" to set these parameters so we followed ref. The minimum size of a node was set to 10\% of the sample size. 
+The number of trees was set to 1000. The number of variables was set to 20\% of the number of SNP. A relative importance measure is calculated 
+for each SNP measuring the strength of association with the trait. 
+FaST-LMM and GEMMA implement single-locus association mapping. The P values of the SNP are reported as their results. 
+For all but Eagle and MLMM, the set of SNPs in strongest and significant association with the trait were found 
+by placing the SNP in map order, setting a threshold, identifying peak regions with 
+significance measures above the threshold, and recording the SNP with the largest significance measure in these peak regions. 
 
-
-R2VIM implements random forests. As part of analysing data with r2VIM, we were required to specify the minimum size of a terminal node, the number of trees, and number of potential variables 
-for building a tree.   HOW TO CHOSE THESE - REASONABLE VALUES ???? LOOK AT PAPERS ... 
 
 
 
@@ -165,9 +168,6 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
 
 
 \subsection{Power and False Discovery Rates}
-=============================
-How did we define a finding ?????
-============================
 
 We calculated, empirically, the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. 
 We were interested in answering the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. 
@@ -175,74 +175,14 @@ For each replicate, we knew which SNPs had been used in creating the quantitativ
 the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these SNPs. By knowing which SNPs are in true 
 association with the trait, we were able to assess the validity of a  method's findings.  
 
-==>
-
-Of the methods, the findings from Eagle and MLMM are immediately usable. 
-Eagle and MLMM, return as their findings
- the set of SNPs in strongest association with the trait. Each 
-SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP.
-For the other methods, FaST-LMM and GEMMA report a P value for each SNP as their primary finding. BigRR, LMM-Lasso, and glmnet, after 
-stability selection has been performed (see Methods),  report a probability of importance for each SNP. 
-
-FaST-LMM and GEMMA report P values for the statistical significance of a SNP, 
-
-For the other methods, either a P value (.....), relative importance measure (r2VIM), or probability of importance (...,, ..., ...) are reported as the 
-findings. Before the results can be interpreted, the snp are placed in map order, peak regions (based on the significance measure) are identified, 
-a threshold is set, and a set of SNP findings obtained from identifying the SNP with the largest significance measure in those peak regions above the 
-threshold. 
- 
-
-
-
-findings were reported as either a P value (FaST-LMM and GEMMA), importance 
-
-
-
-Eagle and MLMM, return as their findings
- the set of SNPs in strongest association with the trait. Each 
-SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP.
-BigRR, LMM-Lasso, and glment, after stability selection has been performed (see Methods), 
-
-
-Eagle and MLMM return as their findings the set of SNPs in strongest association with the trait. Each 
-SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP. 
-The other methods required the identification of SNP in 
-BigRR, XX, and XX return as their findings 
-
-
-
-
-Interpreting the findings of Eagle and MLMM is trivial. They return as their findings the set of SNPs in strongest association with the trait. Each 
-SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP. 
-Interpreting the findings of the other methods is more difficult
-
-
-
-Only those SNP found to be in strongest association 
-
-Eagle and MLMM, return as their findings, those SNPs found to be in strongest association with the trait. Each SNP identifies a separate 
-genomic region of interest via it's map location. 
-
-The results from Eagle and MLMM required no further processing. Each SNP denotes a separate region of interest where the SNP 
-
 
 To calculate the power of a method, for each replicate, we divided the number of true SNP findings by the number of SNP that had been used 
 in creating the trait data. We then averaged across the 100 replicates.  
 Similarly, to calculate the false discovery rate of a method, 
 for each replicate, 
 we divided the number of true SNP findings by the number of (true and false) SNP findings. We then averaged across the 100 replicates.  
-When a replicate was analysed, 
- a method's findings were counted as true if the SNPs were located within 40 kilobase pairs of a SNP in true 
+A finding was counted as true if the SNP is located within 40 kilobase pairs of a SNP in true 
 association with the trait. 
-
-<======
-
-When a replicate was analysed, 
- a method's findings were counted as true if the SNPs were located within 40 kilobase pairs of a SNP in true 
-association with the trait. To calculate the power of a method, for each replicate, we divided the number of true SNP findings by the number of SNP that had been used 
-in creating the trait data. We then averaged across the 100 replicates.  Similarly, to calculate the false discovery rate of a method, 
-for each replicate, 
-we divided the number of true SNP findings by the number of (true and false) SNP findings. We then averaged across the 100 replicates.  
 
 
 The power and false discovery rate of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure \ref{figpowermultiple}.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
@@ -540,6 +480,11 @@ Eagle is available for download from the CRAN website.
   
 \section{Discussion}
 
+
+Eagle is a new method and R package for multiple locus association mapping. It differs from other multiple locus methods. It can handle large datasets due to dimension reduction It treats association mapping as a model selection instead of a variable selection problem so we don?t have to deal with multiple testing issues. Its results are immediately interpretable. As we saw in the simulation study, Eagle has considerably higher power than single-locus methods and is comparable in run time. However, It was in the analysis of the mouse data that the true worth of Eagle is evident. With Eagle, we found more than double the results than with single locus association mapping, the method of choice and these extra results were all validated as true.
+
+
+
 How to deal with more complex models. 
 
 Comment on cloud based FaST-LMM
@@ -551,6 +496,31 @@ stability selection that involved 100 further analyses, though these analyses we
 These methods give parameter estimates efficiently.  
 
 Since we consider the goal of associaiton mapping is to identify those genomic regions housing genes that are influencing a trait, then 
+
+======
+
+General introductory para - gwas growing in size. 
+
+Epistatic effects
+
+More complex models
+
+Last paragraph
+==============
+We see what we are presented here as the first step in the development of Eagle. GWAS are only growing in size, both in terms of number of 
+samples and number of genotypes. Our goal here was to develop the methods and implement those methods in package that could be run on a desktop. 
+However, the computational power of desktop will not suffice for datasets where there are hundreds of thousands of samples and millions of loci. 
+Here, computer clusters will be needed to meet the computational challenges and we have written the Eagle package with this in mind. We do not 
+keep the marker data in memory. Also, we perform block multiplication of matrices that would otherwise be too large to fit into memory. These are all 
+preemptive steps to make the porting of Eagle onto a cluster environment easier. 
+
+
+
+
+
+
+
+
 
 
 
