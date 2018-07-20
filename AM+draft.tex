@@ -481,48 +481,32 @@ Eagle is available for download from the CRAN website.
 \section{Discussion}
 
 
-Eagle is a new method (and R package) for multiple locus association mapping. It differs from other multiple locus methods. It can handle large datasets due to dimension reduction It treats association mapping as a model selection instead of a variable selection problem so we don?t have to deal with multiple testing issues. Its results are immediately interpretable. As we saw in the simulation study, Eagle has considerably higher power than single-locus methods and is comparable in run time. However, It was in the analysis of the mouse data that the true worth of Eagle is evident. With Eagle, we found more than double the results than with single locus association mapping, the method of choice. The truth of these extra results were all validated. 
+Eagle is a new method (and R package) for multiple-locus association mapping. It differs from other multiple-locus methods. Its results are 
+immediately interpretable,  it can handle much larger datasets due to dimension reduction, and it treats association mapping as a model selection instead of a variable selection problem which avoids multiple testing issues. As we saw in the simulation study, Eagle has considerably higher power than single-locus methods and is comparable in run time. However, the true worth of Eagle is apparent from the analyses of the mouse data. It  found 
+more than double the SNP-trait associations than with single-locus association mapping, the method of choice. Furthermore, these extra results 
+were not false positives but true verifiable results.  Eagle was built to make multiple-locus association mapping an attractive alternative 
+to single-locus association mapping.  
 
-What we present in this paper is a first step in the development of Eagle. GWAS are only becoming larger. 
-Ever larger GWAS are becoming feasible, as the cost of collecting genetic data from 
-array-based WGS technologies continues to drop.  We are already experimenting with a GPU-based version of Eagle. Early results suggest 
-that for small to moderate sized datasets (<10,000 samples), there is little improvement in performance. However for larger study sizes, 
-we are seeing a 50\% increase in speed, and this is with prototype code. We also have plans to develop Eagle for clusters, and our larger than 
-memory calculations were a preemptive step on our part in this direction.  Interestingly, as were were in the final stages of drafting this paper, 
-we became aware of Microsofts further advancement of FaST-LMM where they have implemented it for the cloud. This is an exciting development, 
-enabling huge datasets to be analysed quickly. However, it still has the inherint weaknesses association with single-locus association mapping. 
+High-throughput array-based technologies 
+continue to drive down the cost of collecting SNP data. Also, access to whole-genome sequence is no longer a distant reality. The cost is still 
+prohibitive for large scale deployment but this will change. 
+The datasets being generated in GWASs are only going to increase in size over the coming years. 
+This is why we have structured the Eagle package for continued development. We are already experimenting with a GPU-based version of Eagle. 
+Early results suggest that for small to moderate sized datasets (<10,000 samples), there is little improvement in performance over CPU-based 
+computation.  However, for larger study sizes, we are seeing up to a 40\% decrease in run times which is encouraging for prototype code. 
+We also have plans for Eagle to run on computer clusters. Structuring Eagle for larger-than-memory calculations was a 
+preemptive step on our part in this direction. 
 
-
-
-
-
-How we decided on stability selection for the empirical calculation fo signfi of SNP effects for ..., ..., and ... deserves some disucssion. 
-
-
-
-
-In implementing the regularisation methods, ..., ..., and ..., we opted to calculate the significance of the SNP effects via stability selection. 
-However, there are other empirical approaches. 
-Permutation 
-Multi sample-splitting approach. 
+In our simulation study, we compared the performance of Eagle against six multiple-locus methods.  We found that Eagle outperforms these methods. 
+However, we are cognisant that our deductions are contingent on several implementation choices. We chose to calculate the significance of the 
+SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation (ref) and multi sample-splitting (ref) are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
+data. Also, when analysing the (sub)samples, calculating a regularisation method's entire solution path is avoided.  Instead,  analyses are 
+performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation. 
 
 
 
 
-Stability selection is not the only empirical approach. Permutation 
 
-However, there are other empirical approaches.  Permutation
-
-
-The primary purpose of a GWAS is to identify the genomic regions housing genes that are influencing a heritable trait. 
-This is why extra computational effort is devoted to calculating the significance of the SNP effects in the regularisation methods bigRR, LMM-Lasso, and 
-glmnet.  
-
-
-
-
-Much of the computational cost for the regularisation methods bigRR, LMM-Lasso, and glmnet, comes from the empirical calculation of the 
-significance of a SNP. 
 
 
 
