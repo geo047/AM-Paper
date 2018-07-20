@@ -501,43 +501,30 @@ In our simulation study, we compared the performance of Eagle against six multip
 However, we are cognisant that our deductions are contingent on several implementation choices. We chose to calculate the significance of the 
 SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation (ref) and multi sample-splitting (ref) are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
 data. Also, when analysing the (sub)samples, calculating a regularisation method's entire solution path is avoided.  Instead,  analyses are 
-performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation. 
+performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation required. For r2VIM, an R package 
+implementing random forests, we had to decide on the  minimum size of a terminal node, the number of trees, and number of potential variables. 
+The setting of these parameters greatly affects performance.  We  acknowledge that in the hands of an expert,
+ given our resource constraints, the right balance between 
+computational and statistical performance could be reached. 
+We would like to think that the parameter settings used here are defensible since they match the values used in the original r2VIM publication. 
+
+Eagle's computational speed does come at a cost. It is a weakness shared by all of the methods considered here.  
+Eagle cannot handle extra random effects which are sometimes needed when more advanced study designs are employed. One solution 
+is to adopt a two-stage analysis procedure. In the first stage, a single linear mixed model is fitted to the data. Much of the modelling complexity, 
+including the extra random effects, is 
+captured in this first-stage model. In the second stage, Eagle is run not on the original but adjusted trait data which were obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
+Although not specifically designed for association mapping,
+WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. Here, the difficulty is that for large datasets, 
+run time and memory usage become limiting factors for analysis. 
+
+Over the past decade, GWASs have undergone great change. They have gone from being misunderstood and distrusted to garnering 
+wide acceptance.  Much of this acceptance has been earned through the generation of many new and reproducible discoveries. 
+However, it is this coming decade that we are most excited about. Whole-genome sequencing is already a reality and poised to become 
+affordable on a large scale. Our depth of understanding of the genome and its function is growing daily.  We already have huge data repositories 
+containing vast amounts of GWAS  and omics data inviting new ways of analysis. These all present new 
+methodological and computational challenges but they also hold great opportunity. 
 
 
-
-
-
-
-
-
-How to deal with more complex models. 
-
-Comment on cloud based FaST-LMM
-
-Performance could change with changes to default values. 
-
-Much of the computational cost for bigRR, lmmlasso, ,,,, lies not in the analysis but in calculating the significance of the effects. We used 
-stability selection that involved 100 further analyses, though these analyses were based on only 50\% of the original data. 
-These methods give parameter estimates efficiently.  
-
-Since we consider the goal of associaiton mapping is to identify those genomic regions housing genes that are influencing a trait, then 
-
-======
-
-General introductory para - gwas growing in size. 
-
-Epistatic effects
-
-More complex models
-
-Last paragraph
-==============
-We see what we are presented here as the first step in the development of Eagle. GWAS are only growing in size, both in terms of number of 
-samples and number of genotypes. Our goal here was to develop the methods and implement those methods in package that could be run on a desktop. 
-However, the computational power of desktop will not suffice for datasets where there are hundreds of thousands of samples and millions of loci. 
-Here, computer clusters will be needed to meet the computational challenges and we have written the Eagle package with this in mind. We do not 
-keep the marker data in memory. Also, we perform block multiplication of matrices that would otherwise be too large to fit into memory. These are all 
-preemptive steps to make the porting of Eagle onto a cluster environment easier. 
 
 
 
