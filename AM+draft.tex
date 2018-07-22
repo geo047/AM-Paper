@@ -480,9 +480,21 @@ Eagle is available for download from the CRAN website.
   
 \section{Discussion}
 
+Eagle is a new method for multple-locus association mapping. 
 
-Eagle is a new method (and R package) for multiple-locus association mapping. It differs from other multiple-locus methods. Its results are 
-immediately interpretable,  it can handle much larger datasets due to dimension reduction, and it treats association mapping as a model selection instead of a variable selection problem which avoids multiple testing issues. As we saw in the simulation study, Eagle has considerably higher power than single-locus methods and is comparable in run time. However, the true worth of Eagle is apparent from the analyses of the mouse data. It  found 
+
+
+Eagle is a new method (and R package) for multiple-locus association mapping. It advances the state of multiple-locus association mapping 
+in several ways. First, the results from Eagle are immediately interpretable. They are the set of SNPs in strongest association with the trait where 
+each SNP identifies a separate genomic region of interest. Second, Eagle treats association mapping as a model selection instead of a 
+variable selection problem. We do not have to content with thresholds and multiple testing issues. 
+
+
+
+
+
+ It differs from other multiple-locus methods. Its results are 
+immediately interpretable,  it can handle much larger datasets due to dimension reduction, and it treats association mapping as a model selection instead of a variable selection problem avoiding threshold and  multiple testing issues. As we saw in the simulation study, Eagle has considerably higher power than single-locus methods but is comparable in run time. The true worth of Eagle is apparent from the analyses of the mouse data. It  found 
 more than double the SNP-trait associations than with single-locus association mapping, the method of choice. Furthermore, these extra results 
 were not false positives but true verifiable results.  Eagle was built to make multiple-locus association mapping an attractive alternative 
 to single-locus association mapping.  
@@ -516,6 +528,17 @@ captured in this first-stage model. In the second stage, Eagle is run not on the
 Although not specifically designed for association mapping,
 WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. Here, the difficulty is that for large datasets, 
 run time and memory usage become limiting factors for analysis. 
+
+
+Over the past decade, GWASs have undergone great change. From their humble beginnings, GWASs are now widely accepted, having 
+generated many new and reproducible discoveries. 
+
+
+What began as a fledgling and poorly understood platform 
+
+
+They have gone from a fledging, poorly understood 
+
 
 Over the past decade, GWASs have undergone great change. They have gone from being misunderstood and distrusted to garnering 
 wide acceptance.  Much of this acceptance has been earned through the generation of many new and reproducible discoveries. 
