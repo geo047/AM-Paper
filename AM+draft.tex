@@ -479,25 +479,51 @@ Eagle is available for download from the CRAN website.
   
   
 \section{Discussion}
+Eagle is a new linear mixed model based method (and R package) for multiple-locus association mapping. It advances the state of association mapping in several ways. 
+First, its computational footprint is much smaller than other multiple-locus implementations. Eagle makes multiple-locus analysis 
+practical, even when the datasets are large. Second, the results from
+ Eagle are immediately interpretable. They are the set of SNPs in strongest association with the trait where 
+each SNP identifies a separate genomic region of interest. Third, it treats association mapping as a model selection problem, avoiding 
+multiple testing issues and the need for significance thresholds. 
+ As we saw in the simulation study, Eagle has considerably higher power than single-locus methods but is comparable in run time.
+Also, when analysing the mouse data, Eagle found more than double the SNP-trait associations than 
+with single-locus association mapping, the method of choice. Furthermore, these extra findings were all true. 
 
-Eagle is a new method for multple-locus association mapping. 
+Eagle outperformed the other multiple-locus methods in our simulation study. However, we are aware/cognisant that we made several implementation 
+choices that impacts our conclusions.  For instance, we chose to calculate the significance of the 
+SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation (ref) and multi sample-splitting (ref) are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
+data. Also, when analysing the (sub)samples, it was not necessary to calculate the entire solution path for a method. 
+ Instead,  analyses are 
+performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation required. For r2VIM, an R package 
+implementing random forests, we had to decide on the  minimum size of a terminal node, the number of trees, and number of potential variables. 
+The setting of these parameters greatly affects performance.  We  acknowledge that in the hands of an expert, 
+r2VIM could of been fine-tuned for a better balance of computational and statistical performance because random forests are highly adjustable. 
+However, we would like to think that the parameter settings we used are sensible since they match the values in the original r2VIM publication (ref). 
+
+Eagle's computational speed does come at a cost. It is a weakness shared by all of the methods considered here, although in different ways. 
+Eagle cannot handle extra random effects which are sometimes needed when more advanced study designs are employed. One solution 
+is to adopt a two-stage analysis procedure. In the first stage, a single linear mixed model is fitted to the data. Much of the modelling complexity, 
+including the extra random effects, is 
+captured in this first-stage model. In the second stage, Eagle is run not on the original but adjusted trait data which were obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
+Although not specifically designed for association mapping,
+WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. Here, the difficulty is that for large datasets and/or complex 
+models,  run time and memory usage can become limiting factors for analysis. 
+
+
+Over the coming years, computationally, the demand placed on association mapping methods is going to increase. 
+High-throughput array-based technologies continue to decrease the cost of genotyping, permitting ever larger GWASs to be performed. 
+Whole-genome sequencing is also now a reality. Already sequence across entire genomes are being collected for GWASs (refs), 
+culminating in data on millions of SNPs. It is because of this growing demand that 
+we have purposely structured the Eagle package for continued development. We are already experimenting with a GPU-based version of Eagle. 
+Early results suggest that for small to moderate sized datasets (<10,000 samples), there is little improvement in performance over CPU-based 
+computation.  However, for larger study sizes, we are seeing up to a 40\% decrease in run times.  
+We also have plans for Eagle to run on computer clusters. Structuring Eagle for larger-than-memory calculations was a 
+preemptive step in this direction. GWASs have changed significantly in the past decade but the size and complexity of GWASs is expected 
+to change even more in the coming decade. 
 
 
 
-Eagle is a new method (and R package) for multiple-locus association mapping. It advances the state of multiple-locus association mapping 
-in several ways. First, the results from Eagle are immediately interpretable. They are the set of SNPs in strongest association with the trait where 
-each SNP identifies a separate genomic region of interest. Second, Eagle treats association mapping as a model selection instead of a 
-variable selection problem. We do not have to content with thresholds and multiple testing issues. 
 
-
-
-
-
- It differs from other multiple-locus methods. Its results are 
-immediately interpretable,  it can handle much larger datasets due to dimension reduction, and it treats association mapping as a model selection instead of a variable selection problem avoiding threshold and  multiple testing issues. As we saw in the simulation study, Eagle has considerably higher power than single-locus methods but is comparable in run time. The true worth of Eagle is apparent from the analyses of the mouse data. It  found 
-more than double the SNP-trait associations than with single-locus association mapping, the method of choice. Furthermore, these extra results 
-were not false positives but true verifiable results.  Eagle was built to make multiple-locus association mapping an attractive alternative 
-to single-locus association mapping.  
 
 High-throughput array-based technologies 
 continue to drive down the cost of collecting SNP data. Also, access to whole-genome sequence is no longer a distant reality. The cost is still 
@@ -508,27 +534,6 @@ Early results suggest that for small to moderate sized datasets (<10,000 samples
 computation.  However, for larger study sizes, we are seeing up to a 40\% decrease in run times which is encouraging for prototype code. 
 We also have plans for Eagle to run on computer clusters. Structuring Eagle for larger-than-memory calculations was a 
 preemptive step on our part in this direction. 
-
-In our simulation study, we compared the performance of Eagle against six multiple-locus methods.  We found that Eagle outperforms these methods. 
-However, we are cognisant that our deductions are contingent on several implementation choices. We chose to calculate the significance of the 
-SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation (ref) and multi sample-splitting (ref) are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
-data. Also, when analysing the (sub)samples, calculating a regularisation method's entire solution path is avoided.  Instead,  analyses are 
-performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation required. For r2VIM, an R package 
-implementing random forests, we had to decide on the  minimum size of a terminal node, the number of trees, and number of potential variables. 
-The setting of these parameters greatly affects performance.  We  acknowledge that in the hands of an expert,
- given our resource constraints, the right balance between 
-computational and statistical performance could be reached. 
-We would like to think that the parameter settings used here are defensible since they match the values used in the original r2VIM publication. 
-
-Eagle's computational speed does come at a cost. It is a weakness shared by all of the methods considered here.  
-Eagle cannot handle extra random effects which are sometimes needed when more advanced study designs are employed. One solution 
-is to adopt a two-stage analysis procedure. In the first stage, a single linear mixed model is fitted to the data. Much of the modelling complexity, 
-including the extra random effects, is 
-captured in this first-stage model. In the second stage, Eagle is run not on the original but adjusted trait data which were obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
-Although not specifically designed for association mapping,
-WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. Here, the difficulty is that for large datasets, 
-run time and memory usage become limiting factors for analysis. 
-
 
 Over the past decade, GWASs have undergone great change. From their humble beginnings, GWASs are now widely accepted, having 
 generated many new and reproducible discoveries. 
