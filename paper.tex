@@ -35,25 +35,25 @@
 
 Methods for genome-wide association mapping have become progressively more sophisticated, statistically and computationally. Yet a well know limitation has persisted, the strength of association between a locus and trait is assessed only on a locus-by-locus basis. Statistically superior multiple-locus methods that detect multiple SNP-trait associations, simultaneously, have been available for some time but they have failed to become the method-of-choice. 
 Here, we present Eagle for multiple-locus association mapping. Our goal was to develop a method that shifts mainstream association mapping from being single-locus to multiple-locus. We will show through the analysis of simulated and mouse data that Eagle finds true and avoids false 
-associations better than completing single- and multiple-locus methods and does it faster. Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users unfamiliar with R.
+associations better than completing single- and multiple-locus methods and does it faster. Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users whom may be unfamiliar with R.
 \end{abstract}
 
 
-Over the past decade,  genome-wide association studies have changed considerably in both their analysis and design. Early studies
+Over the past decade,  genome-wide association studies (GWASs) have changed considerably in both their analysis and design. Early studies
  followed a case-control design. Association mapping methods were no more complicated than contingency table tests or simple 
-linear regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine.
+linear regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the tdt test and its variants (refs). Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification (refs). This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine (refs).
 
 What has not changed is that it remains common practice to analyse genome-wide association study (GWAS) data on a locus-by-locus basis. This is despite there being several significant problems with analysing data in this way. 
 First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. 
 The identification of these regions from these analyses is not always straightforward. GWAS results are reported, typically, via Manhattan plots 
-that plot the -log$_{10}$ of the P value for each locus against the map position of the locus. The P value is obtained by testing the statistical 
+that plot the -log$_{10}$ of the $p$ value for each locus against the map position of the locus. The $p$ valueue is obtained by testing the statistical 
 significance of a SNP when treated as an effect in an appropriate model. 
 The location of peaks in this plot identify genomic 
-regions of interest. Inferring the exact number of regions though can be difficult if the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome-wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple SNPs in linkage disequilibrium with genes that influence the trait. Yet, a locus-by-locus mapping approach only assesses the evidence for association between a single marker locus and trait.
+regions of interest. Inferring the exact number of regions though can be difficult if the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a result (type 1 error) is inflated. This is known as the multiple testing problem (refs). Many different solutions have been offered (refs). Yet, there is still no well accepted way of correcting for multiple testing in the context of genome-wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple SNPs in linkage disequilibrium with genes that are influencing the trait. Yet, a locus-by-locus mapping approach only assesses the evidence for association between a single marker locus and trait.
 
 It is somewhat surprising then that multiple-locus association mapping methods haven't attracted more attention. Methods based on 
-regularisation techniques, such as ridge regression and lasso, measure all locus-trait associations simultaneously. 
-Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, their results can be difficult to interpret. The strength of association is not measured by a P value but by the size of the regression coefficient for the SNP in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). A multiple-locus method that does show promise is the multiple-locus linear mixed model method (ref). The best multiple-locus model is built with simple forward selection. Results are immediately interpretable but here, computation can become challenging if the datasets become large.
+regularisation techniques, such as ridge regression (ref) and lasso (ref), measure all locus-trait associations simultaneously. 
+Here, multiple testing is not an issue. These techniques though are computationally demanding. Also, their results can be difficult to interpret. The strength of association is not measured by a $p$ value but by the size of the regression coefficient for the SNP in the model. More recently, associations have started to be mapped with random forests (refs). Similar to regularisation techniques though, it is not clear how to infer genomic regions of interest from their findings (refs). A multiple-locus method that does show promise is the multiple-locus linear mixed model method (ref). The best multiple-locus model is built with simple forward selection. Results are immediately interpretable but here, computation becomes challenging for large datasets. 
 
 In this paper, we present our new multiple-locus method for genome-wide association mapping, which we are calling Eagle. 
 Eagle combines the strength of regularisation techniques (being able to fit all SNP-trait associations jointly), with forward selection giving easy-to-interpret threshold-free results.   We are able to achieve a computational performance similar to the fastest single-locus linear mixed model implementations 
@@ -62,7 +62,7 @@ Our aim was to make multiple-locus association mapping on a genome-wide scale ro
 within an R package of the same name. 
 Our package accepts marker data of different 
 formats,  can handle data larger than a computer's  memory capacity, and makes heavy use of 
-distributed computing for computation when available.  
+parallel computing for computation when available.  
 
 
 \section{Results}
@@ -75,50 +75,63 @@ GEMMA \cite{zhou2012genome}  and FaST-LMM \cite{lippert2011fast} because of thei
 For multiple-locus association mapping, we chose bigRR \cite{shen2013novel}, glmnet \cite{Friedman2010glmnet}, 
 LMM-Lasso \cite{rakitsch2013lasso}, MLMM \cite{segura2012efficient} , and r2VIM \cite{szymczak2016r2vim}.  
 Each takes a different approach to multiple-locus association mapping. A summary of the key attributes of the different computer programs/packages 
-is given in Supplementary Table \ref{suptabsummary}. 
-Further details about the methods being implemented in these computer programs/packages can be found in Methods.
-
+is given in Supplementary Table \ref{suptabsummary} (See Methods for further details). 
 
  
 
 \subsection{Simulation Study}
-We performed a large simulation study where we sought to  answer two questions. 
+A large simulation study was performed where we sought to  answer two questions. 
 First, how does Eagle compare, in terms of run time and memory usage, to 
 competing implementations? Second, how well does Eagle find true associations (power) and avoid 
-false associations (type 1 errors)? We generated data under five different scenarios; a study of size 150 individuals 
+false associations (type 1 errors)? Data were generated under five different scenarios; a study of size 150 individuals 
 and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 X 400K),  1,500 individuals and 
 50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
 1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
-We chose these scenarios to mirror some of the different sized GWAS being performed in animals, plants, and humans. 
+These scenarios reflect, at least in some cases, the sizes of study being performed in animals, plants, and humans.  
 
-For each scenario, we generated 100 replicates of data. A single replicate consists of SNP data and quantitative trait data. 
-To introduce some of the complexities of dealing with real genotypes into the study, we obtained the SNP genotypes from 
-the publicly available 1000 Genome Project, phase 3  \cite{10002010map}.  The quantitative trait data are generated 
-by selecting, randomly, a set of SNPs, assigning additive allelic effects to these loci, and then aggregating their effects for 
-each individual along with a random error.  
- The number of SNPs selected per replicate follows a Poisson distribution with mean 30. The sizes of the allelic effects 
- across the selected loci are equal.  A heritability of  50\% is assumed for the trait. 
+For each scenario, 100 replicates were generated. A single replicate consisted of SNP and quantitative trait data. 
+Extra realism was introduced into the simulation study through the drawing of the SNP genotypes from the 1000 Genome Project, phase 3  \cite{10002010map}.
+ The quantitative trait data were generated 
+by selecting, randomly, a set of SNPs and assigning these loci additive allelic effects.  Random errors were then drawn from a normal distribution 
+with variance set to give a heritability of 50\% for the trait. 
+For each individual, a quantitative trait value was obtained by summing its random error and additive allelic effects. 
+The number of randomly selected SNPs follows a Poisson distribution with mean 30. The size of the allelic effects 
+ across the selected loci are equal.  
+
  
- A replicate was analysed as follows. All programs/packages were run at their default settings. 
+ %%=== Tense/flow  ==>>
+ 
+ 
+ Analyses by the seven programs/packages of a replicate proceeded as follows. They were all run at their default settings. 
  Eagle and MLMM were the easiest of the programs/packages to implement. 
- Their results are immediately 
- interpretable. Their findings are the set of SNPs in strongest association with the trait. Each 
-SNP in this set identifies a separate genomic region of interest, whose position is given by the map location of the SNP.  
-The other programs/packages were not as easy to implement  BigRR, LMM-Lasso, and glmnet make use of regularlisation methods. 
-All SNPs are fitted simultaneously in a regression framework.  However, due to the adaptive nature of the estimation procedure, it is challenging, 
-analytically, to calculate P values for the effects in the model. 
-To solve this problem, at the cost of increased computation, we calculated the significance of a SNP empirically 
-via stability selection (see Methods).  R2VIM, a random forest approach, required three parameters to be specified. These are the
- minimum size of a terminal node, the number of trees, and number of potential variables 
-for building a tree.  It is not clear how "best" to set these parameters so we followed ref. The minimum size of a node was set to 10\% of the sample size. 
-The number of trees was set to 1000. The number of variables was set to 20\% of the number of SNP. A relative importance measure is calculated 
-for each SNP measuring the strength of association with the trait. 
-FaST-LMM and GEMMA implement single-locus association mapping. The P values of the SNP are reported as their results. 
+ The only parameters requiring specification were the amount of available memory and number of CPU for 
+ Eagle and the number of chunks for MLMM. 
+ Their results were also immediately 
+ interpretable. Their findings were the set of SNPs in strongest association with the trait. Each 
+SNP in this set identified a separate genomic region of interest, whose position was given by the map location of the SNP.  
+
+BigRR, LMM-Lasso, and glmnet were not as easy to implement. They are based on regularisation methods and as such, all the SNPs were fitted simultaneously in a regression 
+framework. The difficulty was in calculating the significance of the SNP effects. To do this analytically is challenging. We instead opted for stability selection (see Methods),  
+an empirical approach for calculating significance. 
+
+R2VIM is different from the rest in that it is a nonparametric approach for association mapping. It is based on random forests. Three important parameters needed to be  set. 
+These were the number of trees, the number of variables for building a tree, and the minimum size of a terminal node. Ideally, these parameters would be "tuned" on a replicate-by-replicate 
+basis (ref). However, this is not feasible here. We instead used the same settings as in \cite{szymczak2016r2vim} where 
+the number of trees was set to 1000, the number of variables was set to 20\% of the number of SNPs, and 
+  the minimum size of a node was set to 10\% of the sample size.
+A relative importance measure was calculated 
+for each SNP measuring its strength of association with the trait.
+
+FaST-LMM and GEMMA implement single-locus association mapping. The $p$ values of the SNP were reported as their results. 
+
+
 For all but Eagle and MLMM, the set of SNPs in strongest and significant association with the trait were found 
 by placing the SNP in map order, setting a threshold, identifying peak regions with 
 significance measures above the threshold, and recording the SNP with the largest significance measure in these peak regions. 
 
 
+ 
+ 
 
 
 
