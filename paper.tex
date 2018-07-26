@@ -198,27 +198,25 @@ correspond to the lowest run-time for a scenario.
 
 \subsection{Power and False Discovery Rates}
 
-
-We were interested in answering the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations.  To 
-answer this question, we calculated, empirically, 
-the statistical power and false discovery rates of Eagle and the other methods across the six scenarios
-For each replicate, we knew which SNPs  had been used to create the quantitative trait data. These SNPs are in true association with 
-the trait. By knowing these SNPs, we were able to assess the validity of a  method's findings.  
-
-The power (false discovery rate) of a method, under a particular scenario,  was calculated by taking the median of its power (false discovery rate) 
-values across the 100 replicates of the scenario. To calculate the power of a method from its analysis of a replicate, we divided the number of findings for that method that were true by the number of SNP in true association with the trait. To calculate the false discovery rate of a method from its analysis of a replicate, 
-we instead divided by the number of  findings for that method. 
-A finding was counted as true if the SNP was located within 40 kilobase pairs of a SNP in true 
-association with the trait. 
+We answer the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. We do this by estimating the 
+power and false discovery rates of Eagle and the other methods for the six scenarios.  Since, for a replicate, we knew which SNP were assigned additive effects in 
+creating its trait data, we knew the SNP that were in true association with the trait. This allowed us to assess if a method's findings were true or 
+false. A  finding was counted as true if it was positioned within 40 kilobase pairs of the location of a SNP in true association. 
+When a replicate was analysed, we obtained an estimate of power, the number of findings that were true for the method divided by the 
+number of SNPs in true association. We also obtained an estimate of the false discovery rate, the number of findings that were false for the method 
+divided by the number of (true and false) findings for the method.  Both these estimates varied with replicate. 
+The power (false discovery rate) of a method, for a scenario, was found by taking the median of the power (false discovery rate) estimates that were calculated from the analyses of 
+the 100 replicates. 
 
 
-The power and false discovery rate of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure \ref{figpowermultiple}.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
+
+The power and false discovery rates of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure \ref{figpowermultiple}.  We restricted our attention to these scenarios for the multiple-locus methods because for scenario 4000 x 1.5M, 
 the data could only be analysed by Eagle, MLMM, and r2VIM. For scenario 10000 x 1.5M, the data could only be analysed by Eagle. 
 The power and false discovery rate of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in
 Supplementary Figure \ref{supfigpowersingle}.  Each plot contains 
 single points and power curves. The single points are the power and false discovery rates for Eagle and MLMM.
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
-The power curves are for those methods that treat association mapping as a parameter estimation problem. Here, the 
+The power curves are for those methods that treat association mapping as a variable selection problem. Here, the 
 significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
 the false discovery rate as the significance threshold  is adjusted. 
 
