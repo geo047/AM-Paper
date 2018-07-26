@@ -83,7 +83,7 @@ is given in Supplementary Table \ref{suptabsummary} (See Methods for further det
 A large simulation study was performed where we sought to  answer two questions. 
 First, how does Eagle compare, in terms of run time and memory usage, to 
 competing implementations? Second, how well does Eagle find true associations (power) and avoid 
-false associations (type 1 errors)? Data were generated under five different scenarios; a study of size 150 individuals 
+false associations (type 1 errors)? Data were generated under six different scenarios; a study of size 150 individuals 
 and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 X 400K),  1,500 individuals and 
 50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
 1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
@@ -97,10 +97,6 @@ with variance set to give a heritability of 50\% for the trait.
 For each individual, a quantitative trait value was obtained by summing its random error and additive allelic effects. 
 The number of randomly selected SNPs follows a Poisson distribution with mean 30. The size of the allelic effects 
  across the selected loci are equal.  
-
- 
- %%=== Tense/flow  ==>>
- 
  
  Analyses by the seven programs/packages of a replicate proceeded as follows. They were all run at their default settings. 
  Eagle and MLMM were the easiest of the programs/packages to implement. 
@@ -110,56 +106,60 @@ The number of randomly selected SNPs follows a Poisson distribution with mean 30
  interpretable. Their findings were the set of SNPs in strongest association with the trait. Each 
 SNP in this set identified a separate genomic region of interest, whose position was given by the map location of the SNP.  
 
-BigRR, LMM-Lasso, and glmnet were not as easy to implement. They are based on regularisation methods and as such, all the SNPs were fitted simultaneously in a regression 
+BigRR, LMM-Lasso, and glmnet required more effort to implement. They are based on regularisation methods and as such, all the SNPs were fitted simultaneously in a regression 
 framework. The difficulty was in calculating the significance of the SNP effects. To do this analytically is challenging. We instead opted for stability selection (see Methods),  
 an empirical approach for calculating significance. 
 
 R2VIM is different from the rest in that it is a nonparametric approach for association mapping. It is based on random forests. Three important parameters needed to be  set. 
 These were the number of trees, the number of variables for building a tree, and the minimum size of a terminal node. Ideally, these parameters would be "tuned" on a replicate-by-replicate 
-basis (ref). However, this is not feasible here. We instead used the same settings as in \cite{szymczak2016r2vim} where 
+basis \cite{boulesteix2012overview}. However, this was not practical here. We instead used the same settings as in \cite{szymczak2016r2vim} where 
 the number of trees was set to 1000, the number of variables was set to 20\% of the number of SNPs, and 
   the minimum size of a node was set to 10\% of the sample size.
 A relative importance measure was calculated 
 for each SNP measuring its strength of association with the trait.
 
-FaST-LMM and GEMMA implement single-locus association mapping. The $p$ values of the SNP were reported as their results. 
+FaST-LMM and GEMMA implement single-locus association mapping. 
+FaST-LMM was run in two ways. One way was where a subset of the SNP data were used in calculating the similarity (or relationship) matrix. Here, FaST-LMM is 
+highly efficient, computationally. 
+The other was where calculation of the 
+similarity matrix was based on all the SNP data. 
+The $p$ values of the SNP were reported as their results. 
 
 
-For all but Eagle and MLMM, the set of SNPs in strongest and significant association with the trait were found 
-by placing the SNP in map order, setting a threshold, identifying peak regions with 
-significance measures above the threshold, and recording the SNP with the largest significance measure in these peak regions. 
+The results from all but Eagle and MLMM required post-processing before the findings were interpretable.  The SNPs were placed in map order, 
+a significance threshold was set, peak regions containing SNPs with significance measures above the threshold were identified, and the SNP with the largest 
+significance measure in each of the peak regions was recorded as a finding. 
 
 
- 
  
 
 
 
 \subsection{Memory Usage and Run Times}
 
-We analysed the simulated data with Eagle and the other computer programs, recording their memory usage and 
-run (or elapse) times. The analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the five scenarios could be analysed by all implementations. Memory usage 
-for many of the computer programs was the limiting factor (See {\bf Supplementary Figure \ref{supfigmem}}).  The single-locus program GEMMA was by 
+Memory usage and run (or elapse) times were recorded for Eagle and the other computer programs/packages across the simulation scenarios. 
+Analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the six scenarios could be analysed by all implementations. Memory usage 
+for many of the computer programs/packages was the limiting factor (See {\bf Supplementary Figure \ref{supfigmem}}).  The single-locus program GEMMA was by 
 far the most memory efficient. Not surprisingly, the multiple-locus programs were memory intensive. Most required in 
 excess of the 128 gigabytes of available RAM for the analysis of data generated under 4000 x 1.5M and 10000 x 1.5M.  
-Even FaST-LMM, a single-locus
-implementation, required more than 128 gigabytes of memory for the analysis of the larger data sets 
-when all the marker data was used to calculate the similarity matrix. Of the multiple-locus programs, only Eagle,  
+Even FaST-LMM, when all the SNP data were being used to calculate the similarity matrix, ran out of memory for the larger scenarios.
+Of the multiple-locus programs/packages, only Eagle,  
 with its ability to handle data larger than the memory capacity of the computer, was capable of producing findings 
 for data from our largest scenario, 10000 x 1.5M. 
 
 
 The median run times for Eagle and the other computer programs across the six scenarios are shown in Figure \ref{fig_time}. 
-The x- and y-axes are on a log scale.  This means a unit change on the x- or y-axis is equivalent to a change in the order of magnitude.  In answer to our question of how does Eagle compare in terms of run time to competing implementations, 
+The x- and y-axes are on a log scale.  A unit change on the x- or y-axis is equivalent to a change in the order of magnitude.  
+In answer to our question of how does Eagle compare in terms of run time to competing implementations, 
 Eagle was significantly faster, sometimes by orders of magnitude,  than the other multiple-locus
  implementations and is comparable to the single-locus implementations. For a simulation study with 150 individuals and 
- 5000 SNPs, Eagle produced results in seconds.  For the larger simulation scenarios 1500 x  50K and 350 x4 00K, 
+ 5000 SNPs, Eagle produced results in seconds.  For the larger simulation scenarios of 1500 x  50K and 350 x4 00K, 
  analyses with Eagle took under two minutes. Even for data from a couple of thousand individuals and half a million 
  SNPs (2000 x 500K), the median run time of Eagle was under 14 minutes. For our scenarios where there 
  were thousands of individuals and 1.5 million SNPs, Eagle took just over two hours for the analysis of data from 
  4000 x 1.5M and  12 hours for the analysis of data from 10000 x 1.5M. 
  Towards the final stages of writing this paper, 
- we gained access to a desktop computer with 14-core Xeon processors with 256 gigabytes of RAM. We reran Eagle on data from the largest
+ we gained access to a desktop computer with 14-core Xeon processors and 256 gigabytes of RAM. We reran Eagle on data from the largest
   scenario 10000 x 1.5M to measure the impact on run time. The median run time dropped by more than 70\% 
   from 12 hours to 3.31 hours. 
  
@@ -172,18 +172,18 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
 
  
 \begin{figure}
-\caption{Median run times, in minutes, for the analysis of association study data from the six simulation scenarios. 
-Eagle is compared against five other multiple-locus programs (top left plot) and two single-locus programs (top right plot). 
+\caption{Median run times, in minutes, for the analysis of simulation study data from the six scenarios. 
+Eagle is compared against five other multiple-locus programs (top left) and two single-locus programs (top right). 
 The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multiple-locus 
 programs, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
 The actual median run times for the programs across the scenarios are given in the table. The entries in a bold font 
 correspond to the lowest run-time for a scenario. 
- FaST-LMM$^{all}$ is where the single-locus results are based on all the available 
-SNP data. FaST-LMM$^{few}$ is where the single-locus results as based on a subset of the available SNP data. }
+ FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
+ FaST-LMM$^{few}$ is where calculation  the similarity matrix is based on a subset of the SNP data. }
 
 \label{fig_time}
 \begin{center}
-\includegraphics[width=18cm, height=14cm]{Figure2_time.jpg}
+\includegraphics[width=14cm, height=12cm]{Figure2_time.jpg}
 \end{center}
 
 \end{figure}
@@ -198,19 +198,17 @@ SNP data. FaST-LMM$^{few}$ is where the single-locus results as based on a subse
 
 \subsection{Power and False Discovery Rates}
 
-We calculated, empirically, the statistical power and false discovery rates of Eagle and the other methods across the six scenarios. 
-We were interested in answering the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. 
-For each replicate, we knew which SNPs had been used in creating the quantitative trait data. These SNPs are in true association with 
-the trait. It is the goal of the single- and multiple-locus association mapping methods to discover these SNPs. By knowing which SNPs are in true 
-association with the trait, we were able to assess the validity of a  method's findings.  
 
+We were interested in answering the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations.  To 
+answer this question, we calculated, empirically, 
+the statistical power and false discovery rates of Eagle and the other methods across the six scenarios
+For each replicate, we knew which SNPs  had been used to create the quantitative trait data. These SNPs are in true association with 
+the trait. By knowing these SNPs, we were able to assess the validity of a  method's findings.  
 
-To calculate the power of a method, for each replicate, we divided the number of true SNP findings by the number of SNP that had been used 
-in creating the trait data. We then averaged across the 100 replicates.  
-Similarly, to calculate the false discovery rate of a method, 
-for each replicate, 
-we divided the number of true SNP findings by the number of (true and false) SNP findings. We then averaged across the 100 replicates.  
-A finding was counted as true if the SNP is located within 40 kilobase pairs of a SNP in true 
+The power (false discovery rate) of a method, under a particular scenario,  was calculated by taking the median of its power (false discovery rate) 
+values across the 100 replicates of the scenario. To calculate the power of a method from its analysis of a replicate, we divided the number of findings for that method that were true by the number of SNP in true association with the trait. To calculate the false discovery rate of a method from its analysis of a replicate, 
+we instead divided by the number of  findings for that method. 
+A finding was counted as true if the SNP was located within 40 kilobase pairs of a SNP in true 
 association with the trait. 
 
 
