@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  26 JUL 2018 13:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  27 JUL 2018 14:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -169,10 +169,10 @@ i-a-tion map-ping meth-
 [2] [3]
 
 LaTeX Warning: Citation `boulesteix2012overview' on page 4 undefined on input l
-ine 119.
+ine 115.
 
 [4]
-Overfull \hbox (6.03087pt too wide) in paragraph at lines 125--131
+Overfull \hbox (6.03087pt too wide) in paragraph at lines 121--127
 []\OT1/cmr/m/n/10 FaST-LMM and GEMMA im-ple-ment single-locus as-so-ci-a-tion m
 ap-ping. FaST-
  []
@@ -180,43 +180,17 @@ ap-ping. FaST-
 [5] <Figure2_time.jpg, id=28, 1003.75pt x 752.8125pt>
 File: Figure2_time.jpg Graphic file (type jpg)
  <use Figure2_time.jpg>
-Package pdftex.def Info: Figure2_time.jpg used on input line 190.
+Package pdftex.def Info: Figure2_time.jpg used on input line 186.
 (pdftex.def)             Requested size: 398.3378pt x 341.43895pt.
 
-Overfull \hbox (53.3378pt too wide) in paragraph at lines 190--191
+Overfull \hbox (53.3378pt too wide) in paragraph at lines 186--187
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 0.9838pt on input line 193.
+LaTeX Warning: Float too large for page by 0.9838pt on input line 189.
 
 [6] [7 <./Figure2_time.jpg>]
-Package epstopdf Info: Source file: <mouseresults.eps>
-(epstopdf)                    date: 2018-06-28 16:40:56
-(epstopdf)                    size: 52351 bytes
-(epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 16:43:09
-(epstopdf)                    size: 15601 bytes
-(epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
--to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 247.
-Package epstopdf Info: Output file is already uptodate.
-
-<mouseresults-eps-converted-to.pdf, id=37, 561.09625pt x 722.7pt>
-File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
-
-<use mouseresults-eps-converted-to.pdf>
-Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 2
-47.
-(pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
-
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 247--248
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 39.54205pt on input line 250.
-
 Package epstopdf Info: Source file: <power1main.eps>
 (epstopdf)                    date: 2018-06-28 14:47:44
 (epstopdf)                    size: 89195 bytes
@@ -225,30 +199,60 @@ Package epstopdf Info: Source file: <power1main.eps>
 (epstopdf)                    size: 16875 bytes
 (epstopdf)             Command: <repstopdf --outfile=power1main-eps-converted-t
 o.pdf power1main.eps>
-(epstopdf)             \includegraphics on input line 275.
+(epstopdf)             \includegraphics on input line 227.
 Package epstopdf Info: Output file is already uptodate.
-<power1main-eps-converted-to.pdf, id=38, 561.09625pt x 722.7pt>
+
+<power1main-eps-converted-to.pdf, id=37, 561.09625pt x 722.7pt>
 File: power1main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power1main-eps-converted-to.pdf>
-Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 275
+Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 227
 .
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 275--276
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 227--228
  [] 
  []
 
-[8] [9 <./mouseresults-eps-converted-to.pdf>] [10 <./power1main-eps-converted-t
-o.pdf>] [11] [12]
-Overfull \hbox (9.76888pt too wide) in paragraph at lines 374--385
+
+LaTeX Warning: Float too large for page by 8.34198pt on input line 230.
+
+[8] [9 <./power1main-eps-converted-to.pdf>] [10]
+Package epstopdf Info: Source file: <mouseresults.eps>
+(epstopdf)                    date: 2018-06-28 16:40:56
+(epstopdf)                    size: 52351 bytes
+(epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-06-28 16:43:09
+(epstopdf)                    size: 15601 bytes
+(epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
+-to.pdf mouseresults.eps>
+(epstopdf)             \includegraphics on input line 293.
+Package epstopdf Info: Output file is already uptodate.
+
+<mouseresults-eps-converted-to.pdf, id=55, 561.09625pt x 722.7pt>
+File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
+
+<use mouseresults-eps-converted-to.pdf>
+Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 2
+93.
+(pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
+
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 293--294
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 39.54205pt on input line 296.
+
+[11] [12 <./mouseresults-eps-converted-to.pdf>]
+Overfull \hbox (9.76888pt too wide) in paragraph at lines 363--374
 \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 a[]$ \OT1/cmr/m/n/10 is a ran-dom ef-fect
  whose dis-tri-bu-tion is $\OML/cmm/m/it/10 a[] \OMS/cmsy/m/n/10 ^^X \OML/cmm/m
 /it/10 N\OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 ; ^^[[]I[]\OT1/cmr/m/n/10 )$.
  []
 
 [13] [14] [15] [16] [17] [18]
-Overfull \hbox (2.13956pt too wide) in paragraph at lines 562--572
+Overfull \hbox (2.13956pt too wide) in paragraph at lines 551--561
 []\OT1/cmr/m/n/10 Eagle out-per-formed the other multiple-locus meth-ods in our
  sim-u-la-tion study.
  []
@@ -256,9 +260,6 @@ Overfull \hbox (2.13956pt too wide) in paragraph at lines 562--572
 [19] [20] (./paper.bbl [21]) [22] (./paper.aux)
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
@@ -287,7 +288,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (22 pages, 411430 bytes).
+Output written on paper.pdf (22 pages, 410654 bytes).
 PDF statistics:
  167 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams
