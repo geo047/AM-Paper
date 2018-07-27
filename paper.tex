@@ -251,7 +251,6 @@ association with a trait while avoiding false associations (Supplementary Figure
 
 \subsection{Mouse Data Analysis}
 
-=====> Up to here ====>
 
 We were interested in comparing results from Eagle with those from single-locus association mapping for a real data set.
  We chose to focus on data from a large outbred mouse study \cite{nicod2016genome}. This study was a little unusual in that it collected and analysed SNP dosages (continuous values from zero to one of expected allele counts)  instead of the more common SNP genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power for the detection of genes that are influencing a trait  \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single-locus program FaST-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found SNP-trait associations not found with  FaST-LMM. However, we were 
@@ -274,20 +273,18 @@ Each plot contains the number of SNP-trait associations that were found and in a
 Neither method found SNPs that had not been first identified in the original mouse study so neither method found false positives. 
 As we saw in the simulation study, there was a notable difference between the two methods capacity to discover SNP-trait associations. Eagle$^{default}$, under its default settings, for two traits found fewer findings than FaST-LMM, for eight traits found the same number 
 of findings as FaST-LMM, and for 28 traits found more findings. Eagle$^{optimal}$, 
-with its regularisation parameter fine tuned to the trait, for seven traits found the same number of findings as FaST-LMM and for 32 traits 
-found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, snp-trait findings respectively. 
+with its regularisation parameter fine tuned to the trait data, for seven traits found the same number of findings as FaST-LMM and for 32 traits found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, snp-trait findings respectively. 
 Eagle$^{default}$ and Eagle$^{optimal}$ found two-and-a-half times and over three-and-a-half times, respectively, more SNP-trait 
-associations than what is the established way of analysing these data. Furthermore, these are all findings that were confirmed in the original study. 
-
+associations than what is the established way of analysing these data. Furthermore, these extra results found by Eagle were not 
+false positives but could be confirmed from the original study. 
 
 
 \begin{figure}
-\caption{Genome-wide association mapping results from the analysis of the mouse data for the single-locus method FaST-LMM and the 
+\caption{Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
 multiple-locus method
 Eagle. Eagle was run under two settings; its default setting (Eagle$^{default}$) and where the model selection criterion had been optimised 
 for a false discovery rate of 5\% (Eagle$^{optimal}$). 
-The number of SNP-trait associations found are reported. The bar plots with boxes around them are for those traits where using 
-Eagle$^{default}$ and Eagle$^{optimal}$ resulted in more findings than with single-locus analysis.} 
+The number of SNP-trait associations found are reported. The bar plots with boxes around them are for those traits where using Eagle (default and optimal)   resulted in more findings than with single-locus analysis.} 
 \label{figmouse}
 \begin{center}
 %% obtained from bracewell by running ResultsV2.R from /data/geo047/MWAM/Mouse/OutBred/RScripts/
@@ -304,14 +301,20 @@ Eagle$^{default}$ and Eagle$^{optimal}$ resulted in more findings than with sing
 
 \subsection{Mouse Data}
 
-The data were obtained from a large genome-wide association study which was performed in outbred mice \cite{nicod2016genome}. 
+The data were obtained from a large genome-wide association study that was performed in outbred mice \cite{nicod2016genome}. 
 Phenotypic and genotypic data were available on 1,887 adult mice. 
-The phenotypic data consisted of measurements from 200 behavioural, tissue, and physiological traits.  Of these traits, 
+The phenotypic data included raw and adjusted (for fixed effects) measurements from 200 behavioural, tissue, and physiological traits.  
+Of these traits, 
 43 yielded SNP-trait associations that could be corroborated through other independent published work. It was these 
-43 traits that were the focus of our real data analyses. Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
+43 traits that were the focus of our real data analyses. As in the original study  \cite{nicod2016genome}, our analyses 
+were based on the adjusted traits.
+Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
 form of marker dosages (expected allele counts that ranged from zero to one). All missing data had been imputed. 
 We converted the dosages into discrete genotypes 
-by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. 
+by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. We focused on autosomal SNPs.
+
+=====> Up to here ====>
+
 
 
 \subsection{Eagle Approach for Multiple-locus Association Mapping}
