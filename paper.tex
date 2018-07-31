@@ -4,6 +4,9 @@
 \renewcommand{\baselinestretch}{1.3} 
 \usepackage{graphicx}
 
+%% To Do
+%% 1. add bold font to matrices/vectors
+%% 2. change mouse results plot - use superscripts for traits of the same class to reduce space of titles. 
 
 
 %% external tex files
@@ -20,9 +23,6 @@
 
 \maketitle
 
-%% To Add
-%%-------------------------
-%% 1. how real data were analysed
 
 
 
@@ -273,7 +273,7 @@ Each plot contains the number of SNP-trait associations that were found and in a
 Neither method found SNPs that had not been first identified in the original mouse study so neither method found false positives. 
 As we saw in the simulation study, there was a notable difference between the two methods capacity to discover SNP-trait associations. Eagle$^{default}$, under its default settings, for two traits found fewer findings than FaST-LMM, for eight traits found the same number 
 of findings as FaST-LMM, and for 28 traits found more findings. Eagle$^{optimal}$, 
-with its regularisation parameter fine tuned to the trait data, for seven traits found the same number of findings as FaST-LMM and for 32 traits found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, snp-trait findings respectively. 
+with its regularisation parameter fine tuned to the trait data, for seven traits found the same number of findings as FaST-LMM and for 32 traits found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, SNP-trait findings respectively. 
 Eagle$^{default}$ and Eagle$^{optimal}$ found two-and-a-half times and over three-and-a-half times, respectively, more SNP-trait 
 associations than what is the established way of analysing these data. Furthermore, these extra results found by Eagle were not 
 false positives but could be confirmed from the original study. 
@@ -313,7 +313,6 @@ form of marker dosages (expected allele counts that ranged from zero to one). Al
 We converted the dosages into discrete genotypes 
 by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. We focused on autosomal SNPs.
 
-=====> Up to here ====>
 
 
 
@@ -321,15 +320,15 @@ by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and B
 
 Eagle is a method for multiple-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multiple-locus association mapping methods. Eagle treats association mapping as a model selection instead of variable selection problem. Consequently,  we do not have to contend with multiple testing issues or having to construct significance thresholds.  
 Eagle also 
-reports as its findings only those SNPs that are in strongest linkage disequilibrium, and hence closest, to the genes influencing a trait. 
+reports as its findings only those SNPs that are in strongest linkage disequilibrium, and hence closest to the genes influencing a trait. 
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
 quantitative trait loci in experimental crosses \cite{verbyla2007analysis} 
 
 
-Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of ordinal numbers where $S_k$ is the $S_k$th ordered SNP that was 
-selected in the $k$th iteration. Suppose three iterations of our model building procedure 
-have been performed and say the 500023rd, 15th, and 420th, 
-SNP were selected, then $S=\{500023, 15, 420\}$. 
+Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of $s$ ordinal numbers where $S_k$ is the $S_k$th ordered SNP that was 
+selected in the $k$th iteration of the model building process. Suppose three iterations  $(s=3)$
+have been performed and say the 500023rd, 15th, and 420th
+SNP were selected. Then $S=\{500023, 15, 420\}$. 
 Let $y^{(n \; \times \;1)}$ be a vector containing $n$ measurements of the quantitative trait. 
 Let $M^{(n_g \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
 from $L$ loci that span the genome on $n_g$ groups/lines/strains.  Here, $n \geq n_g$ meaning that a single or several trait measurements 
@@ -358,45 +357,46 @@ genetic effects. The vector of residuals is
 $e^{(n \; \times \;1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \; \times \; n)})$. 
 So far,  this model differs little from standard linear mixed models for association mapping (refs). 
 However, 
-it is how we specify $u_g$ that distinguishes our model from others. 
+it is how we specify $u_g$ that distinguishes our model from the others. 
 
 The genetic effects $u_g$ are modelled as 
 \begin{equation}
 \label{eq2}
 u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + M_{-S} a_{-S}
 \end{equation}
-where $m_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the $S_k$th SNP locus which is the $k$th selected SNP, 
-$a_{S_k}$ is the additive effect of the $S_k$th SNP locus, $M_{-S}^{(b \; \times \; L-s)}$ is the matrix of  SNP genotypes 
-with the data for the selected SNP in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
+where $m_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the  $k$th selected SNP, 
+$a_{S_k}$ is the additive effect of the $k$th selected SNP, $M_{-S}^{(b \; \times \; L-s)}$ is the matrix of  SNP genotypes 
+with the data for the SNP in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
 $a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
-The terms in the summation on the left hand side are fixed effects.  The other term is a random effect.  The terms 
-in the summation account 
-for the additive effects of the selected snp that are in linkage disequilibrium with genes that are influencing the trait. The other term models 
-snp-trait associations along the entire genome, simultaneously, except for those snp that have already been selected. 
+The terms in the summation on the left hand side are fixed effects.   They account 
+for the additive effects of those SNPs that have been found to be in association with the trait. The other term is a random effect. 
+It accounts for the joint effect of the yet-to-be-identified SNP that are in association with the trait. 
 This is a simple genetic model but it 
-is effective for discovering snp-trait associations. 
+is effective for discovering SNP-trait associations. 
 
 
-Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood estimation. 
+Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood.  For complex models, residual maximum likelihood
+can be computationally demanding. However, our model only contains a single random effect ($a_{-S}$). Here, highly efficient single-dimension 
+optimisation via spectral decomposition is possible (EMMA ref). 
 
-Third, we identify the $(s+1)$th snp that is in strongest association with the trait, based on the maximum score statistic
+Third, we identify the $(s+1)$th SNP that is in strongest association with the trait, based on the maximum score statistic
 $t_j^2 = \frac{ \widetilde{a} _j^2}{\textrm{var}(\widetilde{a}_j)}$ where $\widetilde{a}_j$ is the best linear unbiased predictor (BLUP), 
 and $\textrm{var}(\widetilde{a}_j)$ is its variance. This statistic is not only appealing intuitively, where we 
-identify a snp based on its (random) effect size and accuracy, but is theoretically justified.  It follows from outlier detection 
+identify a SNP based on its (random) effect size and accuracy, but is theoretically justified.  It follows from outlier detection 
 in linear and linear mixed models (ref). 
 
-Fourth, we determine the importance of the $(s+1)$th selected snp via a model selection strategy. 
-We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected snp.  We then fit this new model to the data
+Fourth, we determine the importance of the $(s+1)$th selected SNP via a model selection strategy. 
+We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected SNP.  We then fit this new model to the data
 via maximum likelihood and calculate its extended Bayesian information criteria (extBIC) \cite{chen2008extended}.  The 
 extBIC is a model selection measure that takes into account the number of unknown parameters and the complexity 
-of the model space.  It is especially well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. If this new model has a larger  than the current model, then the $s+1$th selected snp is added to 
+of the model space.  It is well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. If this new model has a larger extBIC than the current model, then the $s+1$th selected SNP is added to 
 the current model and the above process is repeated. If this new model has a smaller extBIC than the current model, then the 
-model building process is complete. The set of snp in strongest association with the trait is the $s$ snp previously identified. 
+model building process is complete. The set of SNP in strongest association with the trait is the $s$ SNPs previously identified. 
 
 \subsubsection{Reducing the dimension of the model}
 In practice, estimating the parameters of (\ref{eq2}) can be demanding, computationally. 
 The vector $a_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
-$L$, the number of snp, can be extremely large.  An alternative model is given by 
+$L$, the number of SNPs, can be extremely large.  An alternative model is given by 
 Verbyla \cite{verbyla2012rwgaim,verbyla2014whole}. 
 They show how to reformulate (\ref{eq2}) to be a model with a random effect with only $n$ elements
 \begin{equation}
@@ -419,11 +419,11 @@ where its variance matrix is
 \label{eq4}
 \textrm{var}(\widetilde{a}) = M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \textrm{var}(\widetilde{a}^*) (M_{-S} M_{-S}^T)^{-1/2} M_{-S}
 \end{equation}
-These values are needed in order to calculate the score statistic $t_j^2$ for identifying the snp in strongest association with the trait. 
-Fortunately, when calculating $t_j^2$, only the diagonal elements of the variance matrix are needed which simplifies the  calculation. 
+These values are needed in order to calculate the score statistic $t_j^2$ for identifying the SNP in strongest association with the trait. 
+Fortunately, when calculating $t_j^2$, only the diagonal elements of the variance matrix are needed which simplifies the  calculation 
 of (\ref{eq4}). 
 
-
+\iffalse 
 
 \subsection{Comparison Methods}
 
@@ -431,39 +431,45 @@ of (\ref{eq4}).
 
 We compared the computational and statistical performance of Eagle against five other multiple-locus methods for 
 association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
-These five methods were selected because of their demonstrated value 
-for analysing genetic data, they reflect a range of different statistical methodologies for association mapping, and they are available as 
-either stand-alone computer programs or as  packages.
-
 BigRR, LMM-Lasso, and glmnet  implement three different regression-based regularisation methods; generalized ridge regression, 
 lasso, and elastic net, respectively. Regularisation methods can handle parameter estimation problems where the number of predictors is
  far greater than the number of  samples. This is made possible through a penalty function that balances bias against variance. 
-The application of regularisation methods to association mapping has appeal because it means that the snp effects across an 
-entire genome can be estimated, simultaneously. 
-All three methods are sophisticated pieces of statistical machinery but the significance of an effect, which 
-is needed in association mapping,  can not be calculated easily. Permutation has been suggest as an empirical solution to this 
-limitation \cite{shen2013novel} 
-but we have instead opted for stability selection (see below).
+The application of regularisation methods to association mapping has appeal because it means that the SNP effects across an 
+entire genome can be estimated, simultaneously.  The downside is that it is challenging, analytically, to calculate  
+the statistical significance of an SNP effect. We instead calculate significance, empirically, via stability selection (see below). 
+%% Permutation has been suggest as an empirical solution to this 
+%% limitation \cite{shen2013novel} 
+%% but we have instead opted for stability selection (see below).
 
-MLMM, of the five multiple-locus methods, is the closest in philosophy to Eagle. It too is based on  building the 
-best  linear mixed model via forward selection using the ExtBIC criterion. 
+
+Of the five multiple-locus methods, MLMM is the closest in philosophy to Eagle. It too is based on  building the 
+best  linear mixed model via forward selection using the extBIC criterion. 
 However, there are several differences between the two methods.
- MLMM does not make use of dimension reduction and they are implemented quite differently leading to substantial 
+ MLMM does not make use of dimension reduction, which gives it a larger  computational footprint than Eagle. 
+  It also builds its model differently to Eagle. Eagle uses a score statistic in which to identify SNPs to enter the model. 
+  MLMM uses the statistical significance of a SNP when it is treated as a fixed effect in the model. 
+ This necessitates fitting a separate linear mixed model for each unidentified SNP. Both are R packages but much of Eagle is written in 
+ C++ code. There are significant differences in run time and memory usage (see Results). 
+ 
+   
+ MLMM and Eagle are both R packages. However, much of Eagle is written in C++ code. 
+ 
+ and they are implemented quite differently leading to substantial 
  differences  in run time and memory usage (see Results).  Also, they differ in how a model is built. 
- Eagle uses a score statistic formed from parameter estimates of the random genetic effect in which to identify the next snp to enter 
- the model.  MLMM uses the statistical significance of a snp when it is treated as a fixed effect in the model. 
- This necessitates fitting a separate linear mixed model for each unidentified snp. Fortunately,  MLMM does do this 
+ Eagle uses a score statistic formed from parameter estimates of the random genetic effect in which to identify the next SNP to enter 
+ the model.  MLMM uses the statistical significance of a SNP when it is treated as a fixed effect in the model. 
+ This necessitates fitting a separate linear mixed model for each unidentified SNP. Fortunately,  MLMM does do this 
  efficiently.
  
 R2VIM is quite different to the other four methods. Here, a non-parametric model-free rather than model-based statistical approach is adopted. 
-R2VIM implements random forests and a new way of measuring the importance of a snp.  
+R2VIM implements random forests and a new way of measuring the importance of a SNP.  
 In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. 
-It is from these importance scores that snp can be ordered in terms of their strength of association with a trait. 
+It is from these importance scores that SNP can be ordered in terms of their strength of association with a trait. 
 The difficulty is in knowing what proportion of the 
-highest ordered snp are in true association. R2VIM addresses this by performing multiple parallel runs. Each run uses a different 
+highest ordered SNP are in true association. R2VIM addresses this by performing multiple parallel runs. Each run uses a different 
 random seed, giving slightly different results for the random forest analyses. Within a run, a relative importance score (f) is calculated for 
-each snp. The greater f is than one, the more evidence there is that the snp is in association with a trait.  A snp-trait association is 
-declared if f for the snp is above some threshold value across all parallel runs. The difficulty is that the relationship between 
+each SNP. The greater f is than one, the more evidence there is that the SNP is in association with a trait.  A SNP-trait association is 
+declared if f for the SNP is above some threshold value across all parallel runs. The difficulty is that the relationship between 
 this threshold value and the chance of finding false positives is unknown.  The threshold value could be found via permutation but 
 this would be computationally challenging for all but the smallest of association studies. 
 
@@ -475,19 +481,20 @@ We decided on GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. T
 restricted/residual maximum-likelihood (REML) 
 log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
 
+\fi
 
 \subsection{Stability Selection}
 When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
-BigRR has an approximate way of setting each snp's separate regularization parameter (ref). However, the optimal value of 
+BigRR has an approximate way of setting each SNP's separate regularization parameter (ref). However, the optimal value of 
 $\lambda$ must be found when using LMM-Lasso and glmnet. Also, 
-all three applications yield the effect sizes of the snp across the entire genome but not their statistical significance. To address 
+all three applications yield the effect sizes of the SNP across the entire genome but not their statistical significance. To address 
 these issues, we made use of stability selection \cite{meinshausen2010stability}. 
 Stability selection is a resampling strategy.  With stability selection, we were able to avoid having to optimise $\lambda$ while 
-still being able to calculate, empirically, the statistical significance of the snp effects.
+still being able to calculate, empirically, the statistical significance of the SNP effects.
 
 We performed stability selection as follows. For LMM-Lasso and glmnet, we performed a preliminary analysis to find an 
 appropriate value for the regularization parameter.  We adjusted $\lambda$ so that LMM-Lasso and glmnet yielded 
-between 10 to 30 snp with non-zero effects. Fortunately, with stability selection, the setting of $\lambda$ does not have to be exact 
+between 10 to 30 SNPs with non-zero effects. Fortunately, with stability selection, the setting of $\lambda$ does not have to be exact 
  We then repeatedly subsampled, 
 without replacement, the data. As recommended \cite{meinshausen2010stability}, we draw 100 subsamples of size $n/2$. We 
 analysed the subsample, with $\lambda$ fixed for LMM-Lasso and glmnet.  To calculate, empirically,  the statistical significance of each 

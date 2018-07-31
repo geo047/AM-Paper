@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  27 JUL 2018 14:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 JUL 2018 12:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -59,7 +59,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-Package xr Info: IMPORTING LABELS FROM supmaterials.aux on input line 14.
+Package xr Info: IMPORTING LABELS FROM supmaterials.aux on input line 17.
 
 
 LaTeX Warning: Label `suptabsummary' multiply defined.
@@ -67,18 +67,18 @@ LaTeX Warning: Label `suptabsummary' multiply defined.
 (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -142,11 +142,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 21.
+(Font)              <12> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 21.
+(Font)              <8> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 21.
+(Font)              <6> on input line 24.
 
 Overfull \hbox (6.48663pt too wide) in paragraph at lines 42--45
 []\OT1/cmr/m/n/10 Over the past decade, genome-wide as-so-ci-a-tion stud-ies (G
@@ -166,16 +166,53 @@ Overfull \hbox (0.44507pt too wide) in paragraph at lines 54--57
 i-a-tion map-ping meth-
  []
 
-[2] [3]
+[2]
+
+LaTeX Warning: Citation `zhou2012genome' on page 3 undefined on input line 74.
+
+
+LaTeX Warning: Citation `lippert2011fast' on page 3 undefined on input line 74.
+
+
+
+LaTeX Warning: Citation `shen2013novel' on page 3 undefined on input line 75.
+
+
+LaTeX Warning: Citation `Friedman2010glmnet' on page 3 undefined on input line 
+75.
+
+
+LaTeX Warning: Citation `rakitsch2013lasso' on page 3 undefined on input line 7
+6.
+
+
+LaTeX Warning: Citation `segura2012efficient' on page 3 undefined on input line
+ 76.
+
+
+LaTeX Warning: Citation `szymczak2016r2vim' on page 3 undefined on input line 7
+6.
+
+[3]
+
+LaTeX Warning: Citation `10002010map' on page 4 undefined on input line 93.
+
 
 LaTeX Warning: Citation `boulesteix2012overview' on page 4 undefined on input l
 ine 115.
+
+
+LaTeX Warning: Citation `szymczak2016r2vim' on page 4 undefined on input line 1
+15.
 
 [4]
 Overfull \hbox (6.03087pt too wide) in paragraph at lines 121--127
 []\OT1/cmr/m/n/10 FaST-LMM and GEMMA im-ple-ment single-locus as-so-ci-a-tion m
 ap-ping. FaST-
  []
+
+
+LaTeX Warning: Reference `fig_time' on page 5 undefined on input line 151.
 
 [5] <Figure2_time.jpg, id=28, 1003.75pt x 752.8125pt>
 File: Figure2_time.jpg Graphic file (type jpg)
@@ -189,6 +226,10 @@ Overfull \hbox (53.3378pt too wide) in paragraph at lines 186--187
 
 
 LaTeX Warning: Float too large for page by 0.9838pt on input line 189.
+
+
+LaTeX Warning: Reference `figpowermultiple' on page 6 undefined on input line 2
+07.
 
 [6] [7 <./Figure2_time.jpg>]
 Package epstopdf Info: Source file: <power1main.eps>
@@ -217,7 +258,31 @@ Overfull \hbox (81.7886pt too wide) in paragraph at lines 227--228
 
 LaTeX Warning: Float too large for page by 8.34198pt on input line 230.
 
-[8] [9 <./power1main-eps-converted-to.pdf>] [10]
+
+LaTeX Warning: Reference `figpowermultiple' on page 8 undefined on input line 2
+41.
+
+
+LaTeX Warning: Citation `nicod2016genome' on page 8 undefined on input line 256
+.
+
+
+LaTeX Warning: Citation `zheng2011comparison' on page 8 undefined on input line
+ 256.
+
+[8] [9 <./power1main-eps-converted-to.pdf>]
+
+LaTeX Warning: Citation `nicod2016genome' on page 10 undefined on input line 26
+0.
+
+
+LaTeX Warning: Citation `chen2008extended' on page 10 undefined on input line 2
+65.
+
+
+LaTeX Warning: Reference `figmouse' on page 10 undefined on input line 268.
+
+[10]
 Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    date: 2018-06-28 16:40:56
 (epstopdf)                    size: 52351 bytes
@@ -226,46 +291,121 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 15601 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 293.
+(epstopdf)             \includegraphics on input line 291.
 Package epstopdf Info: Output file is already uptodate.
-
-<mouseresults-eps-converted-to.pdf, id=55, 561.09625pt x 722.7pt>
+ <mouseresults-eps-converted-to.pdf, id=55, 561.09625pt x 722.7pt>
 File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 2
-93.
+91.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 293--294
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 291--292
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 39.54205pt on input line 296.
+LaTeX Warning: Float too large for page by 23.94202pt on input line 294.
 
-[11] [12 <./mouseresults-eps-converted-to.pdf>]
-Overfull \hbox (9.76888pt too wide) in paragraph at lines 363--374
-\OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 a[]$ \OT1/cmr/m/n/10 is a ran-dom ef-fect
- whose dis-tri-bu-tion is $\OML/cmm/m/it/10 a[] \OMS/cmsy/m/n/10 ^^X \OML/cmm/m
-/it/10 N\OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 ; ^^[[]I[]\OT1/cmr/m/n/10 )$.
- []
 
-[13] [14] [15] [16] [17] [18]
-Overfull \hbox (2.13956pt too wide) in paragraph at lines 551--561
+LaTeX Warning: Citation `nicod2016genome' on page 11 undefined on input line 30
+4.
+
+
+LaTeX Warning: Citation `nicod2016genome' on page 11 undefined on input line 30
+9.
+
+
+LaTeX Warning: Citation `verbyla2007analysis' on page 11 undefined on input lin
+e 325.
+
+[11] [12 <./mouseresults-eps-converted-to.pdf>] [13]
+
+LaTeX Warning: Reference `eq1' on page 14 undefined on input line 378.
+
+
+LaTeX Warning: Reference `eq2' on page 14 undefined on input line 378.
+
+
+LaTeX Warning: Reference `eq2' on page 14 undefined on input line 389.
+
+
+LaTeX Warning: Citation `chen2008extended' on page 14 undefined on input line 3
+90.
+
+
+LaTeX Warning: Citation `chen2008extended' on page 14 undefined on input line 3
+92.
+
+
+LaTeX Warning: Reference `eq2' on page 14 undefined on input line 397.
+
+
+LaTeX Warning: Citation `verbyla2012rwgaim' on page 14 undefined on input line 
+400.
+
+
+LaTeX Warning: Citation `verbyla2014whole' on page 14 undefined on input line 4
+00.
+
+
+LaTeX Warning: Reference `eq2' on page 14 undefined on input line 401.
+
+[14]
+
+LaTeX Warning: Reference `eq3' on page 15 undefined on input line 409.
+
+
+LaTeX Warning: Reference `eq2' on page 15 undefined on input line 410.
+
+
+LaTeX Warning: Reference `eq3' on page 15 undefined on input line 410.
+
+
+LaTeX Warning: Citation `verbyla2012rwgaim' on page 15 undefined on input line 
+413.
+
+
+LaTeX Warning: Citation `verbyla2014whole' on page 15 undefined on input line 4
+13.
+
+
+LaTeX Warning: Reference `eq3' on page 15 undefined on input line 413.
+
+
+LaTeX Warning: Reference `eq4' on page 15 undefined on input line 424.
+
+
+LaTeX Warning: Citation `meinshausen2010stability' on page 15 undefined on inpu
+t line 482.
+
+
+LaTeX Warning: Citation `meinshausen2010stability' on page 15 undefined on inpu
+t line 490.
+
+[15]
+
+LaTeX Warning: Citation `10002010map' on page 16 undefined on input line 512.
+
+[16]
+Overfull \hbox (2.13956pt too wide) in paragraph at lines 553--563
 []\OT1/cmr/m/n/10 Eagle out-per-formed the other multiple-locus meth-ods in our
  sim-u-la-tion study.
  []
 
-[19] [20] (./paper.bbl [21]) [22] (./paper.aux)
+[17] [18] (./paper.bbl [19]) [20] (./paper.aux)
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  1568 strings out of 493089
  22673 string characters out of 6134842
- 83626 words of memory out of 5000000
+ 83514 words of memory out of 5000000
  5047 multiletter control sequences out of 15000+600000
  9016 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -288,10 +428,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (22 pages, 410654 bytes).
+Output written on paper.pdf (20 pages, 405945 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 161 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
