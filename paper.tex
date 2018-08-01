@@ -440,30 +440,29 @@ A limitation of these methods though is that the statistical significance of the
  Due to the adaptive nature of the estimation procedures, to do this 
 analytically is challenging and is an area of active research \ref{lockhart2014significance}.
 
-
-
- 
-The application of regularisation methods to association mapping is appealing because the strength of association between all the SNPs and 
-trait can be measured simultaneously. 
- The downside is that it is challenging to calculate  
-the statistical significance of a SNP effect, analytically. We instead calculate significance, empirically, via stability selection (see below). 
-%% Permutation has been suggest as an empirical solution to this 
-%% limitation \cite{shen2013novel} 
-%% but we have instead opted for stability selection (see below).
-
-
-MLMM is close in philosophy to Eagle. It too is based on  building the 
-best  linear mixed model via forward selection using the extBIC criterion. 
-However, there are several differences between the two methods.
- MLMM does not make use of dimension reduction, which gives it a larger  computational footprint than Eagle. 
-  It also builds its model differently to Eagle. Eagle uses a score statistic in which to identify SNPs to enter the model. 
-  MLMM uses the statistical significance of a SNP when it is treated as a fixed effect in the model. 
- This necessitates fitting a separate linear mixed model for each unidentified SNP. Both are R packages but much of Eagle is written in 
- C++ code. There are significant differences in run time and memory usage (see Results). 
- 
+MLMM is closest in philosophy to Eagle. It too is based on building the best model via forward selection, 
+within  a linear mixed model framework, using the 
+extBIC. However, there are differences between the two methods.  MLMM does not make use of dimension reduction. Also, it builds its "best" 
+model differently to Eagle.  Eagle uses a score statistic in which to identify SNPs to enter the model.
+MLMM uses the statistical significance of the SNPs. This involves fitting a separate linear mixed model for each unidentified SNP. 
+Both are R packages but there is a significant difference in computational performance (see Results). 
+  
+  
   
 R2VIM is different to the other four methods in that it is a non-parametric model-free approach. It implements  
 random forests and a new way of measuring the importance of a SNP.  
+Here, multiple parallel runs are performed. Within a run, a relative importance score is calculated for each SNP and 
+calculated by dividing the importance score for a SNP by a run's minimum importance score. 
+Only those SNPs with relative importance scores above a certain threshold across all the runs are deemed to be significant. 
+The relationship between threshold value and false positive rate is unknown. The threshold could be found empirically via permutation 
+but the computation cost is high. 
+
+
+ The greater the score is than one, 
+the stronger the evidence is that the SNP is in association with the trait.  Only those SNPs with scores above a certain threshold are 
+deemed as being significant. The difficulty is that the relationship between this threshold and false positive rate is unknown. The threshold could be 
+found empirically, via permutation but this is computationally demanding.
+
 In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. 
 It is from these importance scores that SNPs can be ordered in terms of their strength of association with a trait. 
 The difficulty is in knowing what proportion of the 
