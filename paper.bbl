@@ -69,6 +69,15 @@
 \newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{467}},
   \bibinfo{pages}{1061} (\bibinfo{year}{2010}).
 
+\bibitem{boulesteix2012overview}
+\bibinfo{author}{Boulesteix, A.-L.}, \bibinfo{author}{Janitza, S.},
+  \bibinfo{author}{Kruppa, J.} \& \bibinfo{author}{K{\"o}nig, I.~R.}
+\newblock \bibinfo{title}{Overview of random forest methodology and practical
+  guidance with emphasis on computational biology and bioinformatics}.
+\newblock \emph{\bibinfo{journal}{Wiley Interdisciplinary Reviews: Data Mining
+  and Knowledge Discovery}} \textbf{\bibinfo{volume}{2}},
+  \bibinfo{pages}{493--507} (\bibinfo{year}{2012}).
+
 \bibitem{nicod2016genome}
 \bibinfo{author}{Nicod, J.} \emph{et~al.}
 \newblock \bibinfo{title}{Genome-wide association of multiple complex traits in

@@ -33,9 +33,17 @@
 
 \begin{abstract}
 
-Methods for genome-wide association mapping have become progressively more sophisticated, statistically and computationally. Yet a well know limitation has persisted, the strength of association between a locus and trait is assessed only on a locus-by-locus basis. Statistically superior multiple-locus methods that detect multiple SNP-trait associations, simultaneously, have been available for some time but they have failed to become the method-of-choice. 
-Here, we present Eagle for multiple-locus association mapping. Our goal was to develop a method that shifts mainstream association mapping from being single-locus to multiple-locus. We will show through the analysis of simulated and mouse data that Eagle finds true and avoids false 
-associations better than completing single- and multiple-locus methods and does it faster. Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users whom may be unfamiliar with R.
+
+We present Eagle, a new method for multiple-locus association mapping. The
+motivation for developing Eagle was to make multiple locus association mapping ?easy? and the method-of-choice. 
+Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. doesn?t suffer from multiple testing issues c. is threshold free d. gives results that are immediately interpretable and e. has a computational footprint comparable to single-locus association mapping. 
+By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and 
+multiple-locus methods. We also analyse data from a published mouse study. Eagle found over two times more validated findings than the state-of-the-art 
+single-locus method. 
+Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users less familiar with R.
+
+%% Old version of abstract
+%%Methods for genome-wide association mapping have become progressively more sophisticated, statistically and computationally. Yet a well know limitation has persisted, the strength of association between a locus and trait is assessed only on a locus-by-locus basis. Statistically superior multiple-locus methods that detect multiple SNP-trait associations, simultaneously, have been available for some time but they have failed to become the method-of-choice. Here, we present Eagle for multiple-locus association mapping. Our goal was to develop a method that shifts mainstream association mapping from being single-locus to multiple-locus. We will show through the analysis of simulated and mouse data that Eagle finds true and avoids false associations better than completing single- and multiple-locus methods and does it faster. Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users whom may be unfamiliar with R.
 \end{abstract}
 
 
@@ -118,12 +126,7 @@ the number of trees was set to 1000, the number of variables was set to 20\% of 
 A relative importance measure was calculated 
 for each SNP measuring its strength of association with the trait.
 
-FaST-LMM and GEMMA implement single-locus association mapping. 
-FaST-LMM was run in two ways. One way was where a subset of the SNP data were used in calculating the similarity (or relationship) matrix. Here, FaST-LMM is 
-highly efficient, computationally. 
-The other was where calculation of the 
-similarity matrix was based on all the SNP data. 
-The $p$ values of the SNP were reported as their results. 
+FaST-LMM and GEMMA implement single-locus association mapping. FaST-LMM was run in two ways. One way was where a subset of the SNP data were used in calculating the similarity (or relationship) matrix. Here, FaST-LMM is highly efficient, computationally. The other was where calculation of the similarity matrix was based on all the SNP data. The $p$ values of the SNP were reported as their results. 
 
 
 The results from all but Eagle and MLMM required post-processing before the findings were interpretable.  The SNPs were placed in map order, 
@@ -423,26 +426,33 @@ These values are needed in order to calculate the score statistic $t_j^2$ for id
 Fortunately, when calculating $t_j^2$, only the diagonal elements of the variance matrix are needed which simplifies the  calculation 
 of (\ref{eq4}). 
 
-\iffalse 
+%%\iffalse 
 
 \subsection{Comparison Methods}
 
 \subsubsection{Multiple-locus methods}
 
-We compared the computational and statistical performance of Eagle against five other multiple-locus methods for 
-association mapping  These were BigRR, LMM-Lasso, glmnet, MLMM  and, r2VIM. 
-BigRR, LMM-Lasso, and glmnet  implement three different regression-based regularisation methods; generalized ridge regression, 
-lasso, and elastic net, respectively. Regularisation methods can handle parameter estimation problems where the number of predictors is
- far greater than the number of  samples. This is made possible through a penalty function that balances bias against variance. 
-The application of regularisation methods to association mapping has appeal because it means that the SNP effects across an 
-entire genome can be estimated, simultaneously.  The downside is that it is challenging, analytically, to calculate  
-the statistical significance of an SNP effect. We instead calculate significance, empirically, via stability selection (see below). 
+We purposely chose  methods that differed from one another. BigRR, LMM-Lasso, and glmnet are all regression-based regularisation 
+methods. However, BiggRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
+Regularisation methods make parameter estimation possible in models  where the number of predictors is far greater than the number of samples. 
+They allow the strength of association between all the SNPs and trait to be measured within a single model, simultaneously. 
+A limitation of these methods though is that the statistical significance of the SNP effects cannot be easily determined. 
+ Due to the adaptive nature of the estimation procedures, to do this 
+analytically is challenging and is an area of active research \ref{lockhart2014significance}.
+
+
+
+ 
+The application of regularisation methods to association mapping is appealing because the strength of association between all the SNPs and 
+trait can be measured simultaneously. 
+ The downside is that it is challenging to calculate  
+the statistical significance of a SNP effect, analytically. We instead calculate significance, empirically, via stability selection (see below). 
 %% Permutation has been suggest as an empirical solution to this 
 %% limitation \cite{shen2013novel} 
 %% but we have instead opted for stability selection (see below).
 
 
-Of the five multiple-locus methods, MLMM is the closest in philosophy to Eagle. It too is based on  building the 
+MLMM is close in philosophy to Eagle. It too is based on  building the 
 best  linear mixed model via forward selection using the extBIC criterion. 
 However, there are several differences between the two methods.
  MLMM does not make use of dimension reduction, which gives it a larger  computational footprint than Eagle. 
@@ -451,37 +461,34 @@ However, there are several differences between the two methods.
  This necessitates fitting a separate linear mixed model for each unidentified SNP. Both are R packages but much of Eagle is written in 
  C++ code. There are significant differences in run time and memory usage (see Results). 
  
-   
- MLMM and Eagle are both R packages. However, much of Eagle is written in C++ code. 
- 
- and they are implemented quite differently leading to substantial 
- differences  in run time and memory usage (see Results).  Also, they differ in how a model is built. 
- Eagle uses a score statistic formed from parameter estimates of the random genetic effect in which to identify the next SNP to enter 
- the model.  MLMM uses the statistical significance of a SNP when it is treated as a fixed effect in the model. 
- This necessitates fitting a separate linear mixed model for each unidentified SNP. Fortunately,  MLMM does do this 
- efficiently.
- 
-R2VIM is quite different to the other four methods. Here, a non-parametric model-free rather than model-based statistical approach is adopted. 
-R2VIM implements random forests and a new way of measuring the importance of a SNP.  
+  
+R2VIM is different to the other four methods in that it is a non-parametric model-free approach. It implements  
+random forests and a new way of measuring the importance of a SNP.  
 In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. 
-It is from these importance scores that SNP can be ordered in terms of their strength of association with a trait. 
+It is from these importance scores that SNPs can be ordered in terms of their strength of association with a trait. 
 The difficulty is in knowing what proportion of the 
-highest ordered SNP are in true association. R2VIM addresses this by performing multiple parallel runs. Each run uses a different 
-random seed, giving slightly different results for the random forest analyses. Within a run, a relative importance score (f) is calculated for 
-each SNP. The greater f is than one, the more evidence there is that the SNP is in association with a trait.  A SNP-trait association is 
-declared if f for the SNP is above some threshold value across all parallel runs. The difficulty is that the relationship between 
+highest ordered SNPs are in true association. R2VIM addresses this by performing multiple parallel runs. Each run uses a different 
+random seed, giving slightly different results for the random forest analyses. Within a run, a relative importance score ($f$) is calculated for 
+each SNP. The greater $f$ is than one, the more evidence there is that the SNP is in association with the trait.  A SNP-trait association is 
+declared if $f$ for the SNP is above some threshold value across all parallel runs. The difficulty is that the relationship between 
 this threshold value and the chance of finding false positives is unknown.  The threshold value could be found via permutation but 
 this would be computationally challenging for all but the smallest of association studies. 
 
 
 \subsubsection{Single-locus methods}
 
-We were also interested in comparing Eagle to single-locus methods to measure the difference in run times and statistical power. Even by limiting our focus to LMM-based methods, there were a number of efficient applications to choose from. 
-We decided on GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. These two applications have the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally. They were developed at the same time, independently, but are similar theoretically. Both perform a single spectral decomposition of the relationship matrix $K$. Both use the eigenvector matrix to rotate the data. Both reformulate the log likelihood and 
-restricted/residual maximum-likelihood (REML) 
+
+GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast} are of  the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally.  Both perform a single spectral decomposition of the relationship matrix $K$, use  eigenvector matrix to rotate the data, 
+and reformulate the (reml) log likelihood for easier computation.  They differ though in their estimation procedure. 
+FaST-LMM implement's the Brent's algorithm. GEMMA instead implement's the Newton-Raphson algorithm. The  Newton-Raphson is more complicated  but has superior 
+convergence properties. 
+
+===>
+
+
 log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
 
-\fi
+%%\fi
 
 \subsection{Stability Selection}
 When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
