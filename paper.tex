@@ -432,13 +432,15 @@ of (\ref{eq4}).
 
 \subsubsection{Multiple-locus methods}
 
-We purposely chose  methods that differed from one another. BigRR, LMM-Lasso, and glmnet are all regression-based regularisation 
-methods. However, BiggRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
+We compared the computational and statistical performance of Eagle against five multiple-locus methods. 
+BigRR, LMM-Lasso, and glmnet are all regression-based regularisation 
+methods. BiggRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
 Regularisation methods make parameter estimation possible in models  where the number of predictors is far greater than the number of samples. 
 They allow the strength of association between all the SNPs and trait to be measured within a single model, simultaneously. 
 A limitation of these methods though is that the statistical significance of the SNP effects cannot be easily determined. 
  Due to the adaptive nature of the estimation procedures, to do this 
-analytically is challenging and is an area of active research \ref{lockhart2014significance}.
+analytically is challenging and is an area of active research \ref{lockhart2014significance}. Instead, we calculate significance empirically via 
+stability selection (see below). 
 
 MLMM is closest in philosophy to Eagle. It too is based on building the best model via forward selection, 
 within  a linear mixed model framework, using the 
@@ -447,47 +449,25 @@ model differently to Eagle.  Eagle uses a score statistic in which to identify S
 MLMM uses the statistical significance of the SNPs. This involves fitting a separate linear mixed model for each unidentified SNP. 
 Both are R packages but there is a significant difference in computational performance (see Results). 
   
-  
-  
-R2VIM is different to the other four methods in that it is a non-parametric model-free approach. It implements  
-random forests and a new way of measuring the importance of a SNP.  
-Here, multiple parallel runs are performed. Within a run, a relative importance score is calculated for each SNP and 
-calculated by dividing the importance score for a SNP by a run's minimum importance score. 
+R2VIM differs to the other four methods in that it is a non-parametric model-free approach. It implements  
+random forests but where multiple parallel runs are performed. Each run begins with a different random number seed, leading to 
+different random forests being formed.  A relative importance score is calculated, within a run,  for each SNP. This is done by dividing a SNP's 
+importance score by the minimum importance score observed across all the SNPs within a run. 
 Only those SNPs with relative importance scores above a certain threshold across all the runs are deemed to be significant. 
-The relationship between threshold value and false positive rate is unknown. The threshold could be found empirically via permutation 
-but the computation cost is high. 
+Unfortunately, the relationship between threshold value and false positive rate is unknown. The threshold could be found empirically via permutation 
+but the computational cost is high, restricting the size of data that can be analysed. 
 
-
- The greater the score is than one, 
-the stronger the evidence is that the SNP is in association with the trait.  Only those SNPs with scores above a certain threshold are 
-deemed as being significant. The difficulty is that the relationship between this threshold and false positive rate is unknown. The threshold could be 
-found empirically, via permutation but this is computationally demanding.
-
-In random forests, the worth of a predictor is measured, empirically, by calculating its importance score. 
-It is from these importance scores that SNPs can be ordered in terms of their strength of association with a trait. 
-The difficulty is in knowing what proportion of the 
-highest ordered SNPs are in true association. R2VIM addresses this by performing multiple parallel runs. Each run uses a different 
-random seed, giving slightly different results for the random forest analyses. Within a run, a relative importance score ($f$) is calculated for 
-each SNP. The greater $f$ is than one, the more evidence there is that the SNP is in association with the trait.  A SNP-trait association is 
-declared if $f$ for the SNP is above some threshold value across all parallel runs. The difficulty is that the relationship between 
-this threshold value and the chance of finding false positives is unknown.  The threshold value could be found via permutation but 
-this would be computationally challenging for all but the smallest of association studies. 
 
 
 \subsubsection{Single-locus methods}
 
 
 GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast} are of  the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally.  Both perform a single spectral decomposition of the relationship matrix $K$, use  eigenvector matrix to rotate the data, 
-and reformulate the (reml) log likelihood for easier computation.  They differ though in their estimation procedure. 
-FaST-LMM implement's the Brent's algorithm. GEMMA instead implement's the Newton-Raphson algorithm. The  Newton-Raphson is more complicated  but has superior 
-convergence properties. 
-
-===>
+and reformulate the (reml) log likelihood for easier computation.  They differ in their estimation procedure. 
+FaST-LMM implement's the Brent's algorithm. GEMMA instead implement's the Newton-Raphson algorithm. The  Newton-Raphson is more complicated  but has superior convergence properties to Brent's algorithm. 
+Both applications are stand-alone computer programs and in common use.
 
 
-log likelihood into a sum of $n$ terms that are easier to compute. The difference lies in their estimation procedure. FaST-LMM implement's the Brent's algorithm to optimise $\delta$. GEMMA instead implement's the Newton-Raphson algorithm. Newton-Raphson is more complicated in that it also requires the first and second derivatives of a function to be calculated. However, it is superior in terms of its convergence properties to the Brent algorithm.  Both applications are stand-alone computer programs, popular, and in common use.
-
-%%\fi
 
 \subsection{Stability Selection}
 When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
