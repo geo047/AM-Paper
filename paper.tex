@@ -378,7 +378,7 @@ This is a simple genetic model but it
 is effective for discovering SNP-trait associations. 
 
 
-Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood.  For complex models, residual maximum likelihood
+Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood (reml).  For complex models, residual maximum likelihood
 can be computationally demanding. However, our model only contains a single random effect ($a_{-S}$). Here, highly efficient single-dimension 
 optimisation via spectral decomposition is possible (EMMA ref). 
 
@@ -432,14 +432,15 @@ of (\ref{eq4}).
 
 \subsubsection{Multiple-locus methods}
 
-We compared the computational and statistical performance of Eagle against five multiple-locus methods. 
-BigRR, LMM-Lasso, and glmnet are all regression-based regularisation 
+We compare the computational and statistical performance of Eagle against five multiple-locus methods. They are BigRR, LMM-Lasso, glmnet, 
+MLMM, and r2VIM.  All but glmnet have been purposely designed for genome-wide association mapping. 
+BigRR, LMM-Lasso, and glmnet are regression-based regularisation 
 methods. BiggRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
 Regularisation methods make parameter estimation possible in models  where the number of predictors is far greater than the number of samples. 
 They allow the strength of association between all the SNPs and trait to be measured within a single model, simultaneously. 
 A limitation of these methods though is that the statistical significance of the SNP effects cannot be easily determined. 
  Due to the adaptive nature of the estimation procedures, to do this 
-analytically is challenging and is an area of active research \ref{lockhart2014significance}. Instead, we calculate significance empirically via 
+analytically is challenging and is an area of active research \cite{lockhart2014significance}. Instead, we calculate significance empirically via 
 stability selection (see below). 
 
 MLMM is closest in philosophy to Eagle. It too is based on building the best model via forward selection, 
@@ -450,8 +451,8 @@ MLMM uses the statistical significance of the SNPs. This involves fitting a sepa
 Both are R packages but there is a significant difference in computational performance (see Results). 
   
 R2VIM differs to the other four methods in that it is a non-parametric model-free approach. It implements  
-random forests but where multiple parallel runs are performed. Each run begins with a different random number seed, leading to 
-different random forests being formed.  A relative importance score is calculated, within a run,  for each SNP. This is done by dividing a SNP's 
+random forests but where multiple parallel runs are performed. Each run leads to 
+different random forests being created.  A relative importance score is calculated, within a run,  for each SNP. This is done by dividing a SNP's 
 importance score by the minimum importance score observed across all the SNPs within a run. 
 Only those SNPs with relative importance scores above a certain threshold across all the runs are deemed to be significant. 
 Unfortunately, the relationship between threshold value and false positive rate is unknown. The threshold could be found empirically via permutation 
@@ -461,15 +462,43 @@ but the computational cost is high, restricting the size of data that can be ana
 
 \subsubsection{Single-locus methods}
 
-
-GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast} are of  the same computational complexity \cite{zhou2012genome}, produce exact instead of approximate results, and are highly efficient computationally.  Both perform a single spectral decomposition of the relationship matrix $K$, use  eigenvector matrix to rotate the data, 
-and reformulate the (reml) log likelihood for easier computation.  They differ in their estimation procedure. 
-FaST-LMM implement's the Brent's algorithm. GEMMA instead implement's the Newton-Raphson algorithm. The  Newton-Raphson is more complicated  but has superior convergence properties to Brent's algorithm. 
-Both applications are stand-alone computer programs and in common use.
+We also compared the performance of Eagle against two single-locus methods, GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
+a single random effect to account for familial relatedness (or polygenic background), and an error. The significance of the SNP effect in the model 
+is a measure of the strength of association.  They are of the same computational complexity \cite{zhou2012genome}, and produce exact results.  
+Both perform a single spectral decomposition of the relationship (or similarity) matrix $K$, use  an eigenvector matrix to rotate the data, 
+and reformulate the (residual) log likelihood for easier computation. They do differ in their estimation procedure. GEMMA implements Newton-Raphson. 
+FaST-LMM implements Brent's algorithm. Newton-Raphson is more complicated but has better convergence properties than Brent's algorithm. 
+Both methods are state-of-the-art and have been implemented in highly efficient computer programs. 
 
 
 
 \subsection{Stability Selection}
+Stability selection is a subsampling strategy with a wide range of applications.  In the context of regularisation methods, it is a way of estimating, 
+empirically, the significance of the SNP effects. Compared to permutation the amount of computation is significantly less.  
+Analyses are based on only a fraction of the data  and the regularisation parameter need not be optimised.  
+
+
+
+. We use it for calculating, empirically,  the statistical significance of the SNP effects for the regularisation methods. Unlike permutation, only subsets of the data are drawn for (repeated) analysis. Also, here, 
+the regularisation parameter need not be optimised. Instead it can be fixed to a "suitable" value, greatly reducing the amount of computation. 
+
+We performed stability selection as follows. For LMM-Lasso and glmnet, we conducted a preliminary analysis to find an 
+appropriate value for the regularisation parameter.  We adjusted the parameter so that the analysis yielded 
+between 10 to 30 SNPs with non-zero effects. We knew for the simulated data that the number of SNPs in association with the trait followed 
+a Poisson distribution with mean 30. In practice, this is obviously unknown. However, stability selection is robust to the number of non-zero effects. 
+Any reasonable number here would suffice. 
+ We then repeatedly subsampled, without replacement, the data. As recommended \cite{meinshausen2010stability}, we draw 100 subsamples of size $n/2$. Each subsample was analysed with LMM-Lasso and glmnet, with their regularisation parameters fixed. 
+ 
+ We analysed a subsample, with the regularisation parameter  fixed for LMM-Lasso and glmnet.  
+ To calculate, empirically,  the statistical significance of each 
+SNP across the genome, we counted the number of times a SNP had a non-zero effect size over all the replicates. We then 
+divided this number by the number of replicates (which was 100) to form an empirical probability estimate of the significance of a SNP. 
+
+====>
+
+
+  
+
 When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
 BigRR has an approximate way of setting each SNP's separate regularization parameter (ref). However, the optimal value of 
 $\lambda$ must be found when using LMM-Lasso and glmnet. Also, 

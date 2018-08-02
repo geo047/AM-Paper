@@ -126,6 +126,13 @@
   \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{1569--1584}
   (\bibinfo{year}{2014}).
 
+\bibitem{lockhart2014significance}
+\bibinfo{author}{Lockhart, R.}, \bibinfo{author}{Taylor, J.},
+  \bibinfo{author}{Tibshirani, R.~J.} \& \bibinfo{author}{Tibshirani, R.}
+\newblock \bibinfo{title}{A significance test for the lasso}.
+\newblock \emph{\bibinfo{journal}{Annals of statistics}}
+  \textbf{\bibinfo{volume}{42}}, \bibinfo{pages}{413} (\bibinfo{year}{2014}).
+
 \bibitem{meinshausen2010stability}
 \bibinfo{author}{Meinshausen, N.} \& \bibinfo{author}{B{\"u}hlmann, P.}
 \newblock \bibinfo{title}{Stability selection}.
