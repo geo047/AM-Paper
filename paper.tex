@@ -474,22 +474,17 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 \subsection{Stability Selection}
 Stability selection is a subsampling strategy with a wide range of applications.  In the context of regularisation methods, it is a way of estimating, 
-empirically, the significance of the SNP effects. Compared to permutation the amount of computation is significantly less.  
+empirically, the significance of the effects. Compared to permutation, the amount of computation is significantly less.  
 Analyses are based on only a fraction of the data  and the regularisation parameter need not be optimised.  
+To perform stability selection, we did the following.  
+For LMM-Lasso and glmnet, the regularisation parameter was fixed to a "suitable" value. This was done  
+via a preliminary analysis of the data where we adjusted the regularisation parameter  to yield
+between 20 to 30 SNPs with non-zero effect sizes.  Here, the number of non-zero effects is rather arbitrary and any reasonable 
+number of non-zero effects would suffice. 
+ We then repeatedly subsampled, without replacement, the data. As recommended \cite{meinshausen2010stability}, we drew 100 subsamples of size $n/2$ from the data. Each subsample was analysed with LMM-Lasso and glmnet, with their regularisation parameters fixed. 
+A (probability) estimate of the statistical significance of a SNP effect is obtained by counting the 
+number of times the SNP had a non-zero effect size over all the replicates divided by the number of replicates (which was 100). 
 
-
-
-. We use it for calculating, empirically,  the statistical significance of the SNP effects for the regularisation methods. Unlike permutation, only subsets of the data are drawn for (repeated) analysis. Also, here, 
-the regularisation parameter need not be optimised. Instead it can be fixed to a "suitable" value, greatly reducing the amount of computation. 
-
-We performed stability selection as follows. For LMM-Lasso and glmnet, we conducted a preliminary analysis to find an 
-appropriate value for the regularisation parameter.  We adjusted the parameter so that the analysis yielded 
-between 10 to 30 SNPs with non-zero effects. We knew for the simulated data that the number of SNPs in association with the trait followed 
-a Poisson distribution with mean 30. In practice, this is obviously unknown. However, stability selection is robust to the number of non-zero effects. 
-Any reasonable number here would suffice. 
- We then repeatedly subsampled, without replacement, the data. As recommended \cite{meinshausen2010stability}, we draw 100 subsamples of size $n/2$. Each subsample was analysed with LMM-Lasso and glmnet, with their regularisation parameters fixed. 
- 
- We analysed a subsample, with the regularisation parameter  fixed for LMM-Lasso and glmnet.  
  To calculate, empirically,  the statistical significance of each 
 SNP across the genome, we counted the number of times a SNP had a non-zero effect size over all the replicates. We then 
 divided this number by the number of replicates (which was 100) to form an empirical probability estimate of the significance of a SNP. 
