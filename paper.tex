@@ -473,87 +473,27 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 
 \subsection{Stability Selection}
-Stability selection is a subsampling strategy with a range of applications, including the estimation of significance in regression models where 
-the number of parameters ($p$) is much larger than the number of samples ($n$). We chose stability selection over permutation and other 
-sampling procedures because of its low computational cost. 
-Stability selection proceeds as follows. For LMM-Lasso and 
-glmnet, we begin by performing a preliminary analysis of the data where  we set the  regularisation parameter to a value that yields 20 to 30 non-zero SNP effects. This was based on the number of SNP-trait associations we thought was realistic for the data. Fortunately, the significance estimates from 
-stablity selection are robust (ref) so any reasonable number here would suffice. 
+Stability selection \cite{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of significance in regression models where 
+the number of parameters ($p$) can be much larger than the number of samples ($n$). We chose stability selection over permutation and other sampling procedures because of its low computational cost. We employed stability selection to estimate, empirically, the significance of the SNP effects from the regularisation method's analyses of the simulated data.
 
- selection is a subsampling strategy with a wide range of applications,  one of which is estimating the 
-statistical significance of effects in a regression model. Stability selection only requires analyses to take place on a fraction of the data. 
-Also, for these analyses, there is no need to find the entire solution path for the regularisation method. Instead, the regularisation method 
-is run at a fixed value of the regularisation parameter. This gives stability selection a much lower computational cost than other 
-sampling approaches such as permutation and multi-sampling. 
-
-For the analysis of the simulated data, stability selection for LMM-Lasso and glmnet proceeds as follows. 
-We began by finding the value of the regularisation parameter 
-that gave 20 to 30 SNPs with non-zero effects.  This number was based on our a priori knowledge of the expected 
-number of SNPs in association with the (simulated) trait. Obviously, this is unknown when analysing real data. 
-
-
-Stability selection for LMM-Lasso and glmnet was performed as follows. We began by finding the value of the regularisation parameter 
-that gave 20 to 30 SNPs with non-zero effects. This number was based on our a priori belief of the number of SNPs in association with the trait. 
-
-
-
- of 20 to 30 was based upon the number of SNP-trait associations we thought could 
-be found from the data. 
-
-A preliminary analysis of the data was conducted to find the value 
-of the regularisation parameter that yields 20 to 30 SNPs with non-zero effect sizes. 
-
-
-To perform stability selection, we did the following.  
-We began by fixing the regularisation parameter  of LMM-Lasso and glment to a "suitable" value. Through preliminary analyses of the data, 
-we were able to adjust the regularisation parameter to yield 20 to 30 SNPs with non-zero effect sizes. This number of 20 to 30 was based on 
-the number of findings we were expecting from the analysis of the simulated data. Obviously, in practice, this is unknown. However,  the estimates 
-from stability selection are  robust (ref) so fixing the regularisation parameter to return any reasonable number of non-zero effect sizes would suffice. 
- We repeatedly subsampled, without replacement, the data. We drew 
- 100 subsamples of size $n/2$ from the data \cite{meinshausen2010stability}. Each subsample was analysed with LMM-Lasso and glmnet. 
- The analyses were performed with the regularisation parameter fixed to the value found from the preliminary analysis.
+To obtain significance estimates via stability selection, we did the following. For LMM-Lasso and glmnet, we began by performing a preliminary analysis of a replicate where  we tuned the  regularisation parameter to yield 20 to 30 non-zero SNP effects.
+This tuning of the regularisation parameter was done for data under each simulation scenario but it was not necessary to do it for every replicate within a scenario. It was sufficient to pick a single replicate at random upon which to tune the regularisation parameter. 
+Here, we had the luxury of knowing the genetic conditions 
+under which the simulated trait data were generated. We knew that 20 to 30 SNP-trait associations was a reasonable number of findings to expect. 
+ However, stability selection estimates are robust  \cite{meinshausen2010stability} 
+ and the regularisation parameter could have been tuned to any reasonable number of 
+ non-zero effects. We sampled repeatedly, without replacement, from the replicate. We drew 100 replicate subsets of size $n/2$.  
+Each replicate subset was then analysed with LMM-Lasso and glmnet, with their regularisation parameter set to the value found in the preliminary analysis. 
 A (probability) estimate of the statistical significance of a SNP effect is obtained by counting the 
 number of times the SNP had a non-zero effect size over all the replicates divided by the number of replicates (which was 100). 
 
-
-====>
-
-
-
-
- To calculate, empirically,  the statistical significance of each 
-SNP across the genome, we counted the number of times a SNP had a non-zero effect size over all the replicates. We then 
-divided this number by the number of replicates (which was 100) to form an empirical probability estimate of the significance of a SNP. 
-
-====>
-
-
-  
-
-When using BigRR, LMM-Lasso, and glmnet, the results are affected by the amount of regularization ($\lambda$). 
-BigRR has an approximate way of setting each SNP's separate regularization parameter (ref). However, the optimal value of 
-$\lambda$ must be found when using LMM-Lasso and glmnet. Also, 
-all three applications yield the effect sizes of the SNP across the entire genome but not their statistical significance. To address 
-these issues, we made use of stability selection \cite{meinshausen2010stability}. 
-Stability selection is a resampling strategy.  With stability selection, we were able to avoid having to optimise $\lambda$ while 
-still being able to calculate, empirically, the statistical significance of the SNP effects.
-
-We performed stability selection as follows. For LMM-Lasso and glmnet, we performed a preliminary analysis to find an 
-appropriate value for the regularization parameter.  We adjusted $\lambda$ so that LMM-Lasso and glmnet yielded 
-between 10 to 30 SNPs with non-zero effects. Fortunately, with stability selection, the setting of $\lambda$ does not have to be exact 
- We then repeatedly subsampled, 
-without replacement, the data. As recommended \cite{meinshausen2010stability}, we draw 100 subsamples of size $n/2$. We 
-analysed the subsample, with $\lambda$ fixed for LMM-Lasso and glmnet.  To calculate, empirically,  the statistical significance of each 
-SNP across the genome, we counted the number of times a SNP had a non-zero effect size over all the replicates. We then 
-divided this number by the number of replicates (which was 100) to form an empirical probability estimate of the significance of a SNP. 
-
-
 For BigRR, we modified our stability selection procedure slightly. 
-There was no need to find an appropriate value for the regularization 
-parameters as the BigRR package has an internal procedure for their 
-calculation. We draw subsamples as above and analyzed the data with BigRR. However, within an analysis, we ordered 
-the SNPs according to the absolute size of their SNP effects and recorded the top 20 SNPs. We then measured the significance 
-of the SNPs across the entire genome as above. 
+There was no need to tune the regularisation parameter for BigRR as an optimal value is found as part of its analysis. 
+As described above, we drew 100 replicate subsets of size $n/2$ and analysed these data with BigRR. We then ordered the 
+SNPs according to the absolute size of their SNP effects and recorded the top 20 SNPs. 
+A (probability)  estimate of the statistical significance of a SNP effect is then obtained by counting the 
+number of times the SNP was in the top 20 SNPs divided by the number of replicates. 
+
 
 
 
