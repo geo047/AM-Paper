@@ -35,8 +35,8 @@
 
 
 We present Eagle, a new method for multiple-locus association mapping. The
-motivation for developing Eagle was to make multiple locus association mapping ?easy? and the method-of-choice. 
-Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. doesn?t suffer from multiple testing issues c. is threshold free d. gives results that are immediately interpretable and e. has a computational footprint comparable to single-locus association mapping. 
+motivation for developing Eagle was to make multiple locus association mapping "easy" and the method-of-choice. 
+Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. doesn't suffer from multiple testing issues c. is threshold free d. gives results that are immediately interpretable and e. has a computational footprint comparable to single-locus association mapping. 
 By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and 
 multiple-locus methods. We also analyse data from a published mouse study. Eagle found over two times more validated findings than the state-of-the-art 
 single-locus method. 
@@ -473,7 +473,7 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 
 \subsection{Stability Selection}
-Stability selection \cite{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of significance in regression models where 
+Stability selection \cite{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of the significance of effects in regression models where 
 the number of parameters ($p$) can be much larger than the number of samples ($n$). We chose stability selection over permutation and other sampling procedures because of its low computational cost. We employed stability selection to estimate, empirically, the significance of the SNP effects from the regularisation method's analyses of the simulated data.
 
 To obtain significance estimates via stability selection, we did the following. For LMM-Lasso and glmnet, we began by performing a preliminary analysis of a replicate where  we tuned the  regularisation parameter to yield 20 to 30 non-zero SNP effects.
@@ -492,7 +492,7 @@ There was no need to tune the regularisation parameter for BigRR as an optimal v
 As described above, we drew 100 replicate subsets of size $n/2$ and analysed these data with BigRR. We then ordered the 
 SNPs according to the absolute size of their SNP effects and recorded the top 20 SNPs. 
 A (probability)  estimate of the statistical significance of a SNP effect is then obtained by counting the 
-number of times the SNP was in the top 20 SNPs divided by the number of replicates. 
+number of times the SNP was recorded divided by the number of replicates. 
 
 
 
@@ -507,30 +507,26 @@ quantitative trait data are simulated.
 according to the specifications of the scenario, from data collected from the 1000 Genome Project, version 3   \cite{10002010map}. 
 Across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. 
 
-To generate the trait data $y$, first, $q$, the number of SNP that are to be assigned a quantitative value is drawn from a Poisson distribution with 
-mean 30. Second, $q$ SNP are selected randomly. Third, we assume an additive model for the SNP. The SNP genotypes AA, AB, and BB 
+To generate the trait data $y$, first, $q$, the number of SNPs that are to be assigned a quantitative value is drawn from a Poisson distribution with 
+mean 30. Second, $q$ SNP are selected randomly. Third, we assume an additive model for the SNPs. The SNP genotypes AA, AB, and BB 
 are assigned the values -1, 0, and 1, respectively. Fourth, the SNP effects are summed across the $q$ selected loci, for each individual, to 
 generate a $g^{(n \times 1)}$ vector of genetic values where $n$ is the number of individuals. 
 Fifth, $e^{(n \times 1)}$, a vector of residuals, is drawn from a normal distribution where $e_i \sim N(0, \sigma^2_e)$ and $\sigma^2_e$ is 
 the residual variance that has been set to yield a trait with heritability 0.5. Sixth,  the trait data are formed as $y =  g + e$.  
 In forming $y$, we have purposely not included any other environmental variables such as age, sex, or experimental design effects. This is because 
 not all the methods were implemented to handle the inclusion of additional fixed effects. A two-stage modelling approach (ref) 
-is often adopted to deal with this situation, be we chose not to introduce this complexity to the analyses.  
-
-
-\subsection{Analyses of Mouse Data}
-
+is often adopted to deal with this situation, be we chose not to introduce this complexity into the analyses.  
 
 
 
 \subsection{Implementation}
 
-Eagle has been implemented as an R package of the same name. Much of the heavy computation though is performed outside of R 
-via C++ functions that utilise Eigen C++ routines. Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
+Eagle has been implemented as an R package of the same name. Much of the computation though is performed outside of R 
+via C++ functions that utilise Eigen C++ routines (ref). Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
 mathematical libraries common to most computer systems. By making use of multi-threaded  BLAS and LAPACK libraries, many of the 
 calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How-To guides, and 
 a link to our server for demonstrating Eagle on some test data are available on the Eagle website (ref).  
-Eagle is available for download from the CRAN website. 
+Eagle is available for download from the CRAN website (ref). 
 
   
   
@@ -545,8 +541,8 @@ multiple testing issues and the need for significance thresholds.
 Also, when analysing the mouse data, Eagle found more than double the SNP-trait associations than 
 with single-locus association mapping, the method of choice. Furthermore, these extra findings were all true. 
 
-Eagle outperformed the other multiple-locus methods in our simulation study. However, we are aware/cognisant that we made several implementation 
-choices that impacts our conclusions.  For instance, we chose to calculate the significance of the 
+Eagle outperformed the other multiple-locus methods in our simulation study. However, we are aware of the fact  that we made several implementation 
+choices that impact our conclusions.  For instance, we chose to calculate the significance of the 
 SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation (ref) and multi sample-splitting (ref) are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
 data. Also, when analysing the (sub)samples, it was not necessary to calculate the entire solution path for a method. 
  Instead,  analyses are 
@@ -560,9 +556,9 @@ Eagle's computational speed does come at a cost. It is a weakness shared by all 
 Eagle cannot handle extra random effects which are sometimes needed when more advanced study designs are employed. One solution 
 is to adopt a two-stage analysis procedure. In the first stage, a single linear mixed model is fitted to the data. Much of the modelling complexity, 
 including the extra random effects, is 
-captured in this first-stage model. In the second stage, Eagle is run not on the original but adjusted trait data which were obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
+captured in this first-stage model. In the second stage, Eagle is run not on the original trait data but adjusted trait data which were obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
 Although not specifically designed for association mapping,
-WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. Here, the difficulty is that for large datasets and/or complex 
+WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
 models,  run time and memory usage can become limiting factors for analysis. 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  2 AUG 2018 10:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  3 AUG 2018 12:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -241,12 +241,12 @@ LaTeX Warning: Float too large for page by 23.94202pt on input line 297.
 
 [11] [12 <./mouseresults-eps-converted-to.pdf>] [13] [14] [15] [16] [17]
 [18]
-Overfull \hbox (2.13956pt too wide) in paragraph at lines 568--578
+Overfull \hbox (2.13956pt too wide) in paragraph at lines 544--554
 []\OT1/cmr/m/n/10 Eagle out-per-formed the other multiple-locus meth-ods in our
  sim-u-la-tion study.
  []
 
-[19] [20] (./paper.bbl [21]) [22] (./paper.aux) ) 
+[19] (./paper.bbl [20] [21]) [22] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
  1569 strings out of 493089
  22699 string characters out of 6134842
@@ -274,7 +274,7 @@ fonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on paper.pdf (22 pages, 412502 bytes).
+Output written on paper.pdf (22 pages, 410815 bytes).
 PDF statistics:
  167 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams
