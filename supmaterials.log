@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  10 JUL 2018 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  4 AUG 2018 07:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -89,11 +89,7 @@ LaTeX Font Info:    Try loading font information for U+psy on input line 63.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
-(./supmaterials.aux
-
-LaTeX Warning: Label `suptabsummary' multiply defined.
-
-)
+(./supmaterials.aux)
 \openout1 = `supmaterials.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -108,7 +104,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
- (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
 \scratchdimen=\dimen105
@@ -181,29 +178,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (37.09154pt too wide) in paragraph at lines 41--87
+Overfull \hbox (37.09154pt too wide) in paragraph at lines 39--88
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--87
+Underfull \hbox (badness 10000) in paragraph at lines 39--88
 
  []
 
 
-LaTeX Warning: Float too large for page by 121.57047pt on input line 87.
+LaTeX Warning: Float too large for page by 177.57779pt on input line 88.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 104--125
-[][] $[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--125
-
- []
-
-[3]
 Package epstopdf Info: Source file: <mem.eps>
 (epstopdf)                    date: 2018-06-27 17:17:49
 (epstopdf)                    size: 27772 bytes
@@ -212,21 +199,21 @@ Package epstopdf Info: Source file: <mem.eps>
 (epstopdf)                    size: 15511 bytes
 (epstopdf)             Command: <repstopdf --outfile=mem-eps-converted-to.pdf m
 em.eps>
-(epstopdf)             \includegraphics on input line 146.
+(epstopdf)             \includegraphics on input line 113.
 Package epstopdf Info: Output file is already uptodate.
- <mem-eps-converted-to.pdf, id=20, 561.09625pt x 722.7pt>
+ <mem-eps-converted-to.pdf, id=17, 561.09625pt x 722.7pt>
 File: mem-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mem-eps-converted-to.pdf>
-Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 146.
+Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 113.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 146--147
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 113--114
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 59.29732pt on input line 148.
+LaTeX Warning: Float too large for page by 59.29732pt on input line 115.
 
 Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    date: 2018-06-28 14:47:44
@@ -236,51 +223,48 @@ Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    size: 16954 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
-(epstopdf)             \includegraphics on input line 161.
+(epstopdf)             \includegraphics on input line 128.
 Package epstopdf Info: Output file is already uptodate.
-<power2main-eps-converted-to.pdf, id=21, 561.09625pt x 722.7pt>
+<power2main-eps-converted-to.pdf, id=18, 561.09625pt x 722.7pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power2main-eps-converted-to.pdf>
-Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 161
+Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 128
 .
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 161--162
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 128--129
  [] 
  []
 
 
-Overfull \hbox (160.9526pt too wide) in paragraph at lines 170--183
+Overfull \hbox (160.9526pt too wide) in paragraph at lines 137--150
 [][] 
  []
 
-[4] [5 <./mem-eps-converted-to.pdf>] [6 <./power2main-eps-converted-to.pdf>]
-(./supmaterials.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[3] [4 <./mem-eps-converted-to.pdf>] [5 <./power2main-eps-converted-to.pdf>]
+(./supmaterials.aux) ) 
 Here is how much of TeX's memory you used:
  1736 strings out of 493089
  24911 string characters out of 6134842
- 90042 words of memory out of 5000000
+ 90003 words of memory out of 5000000
  5188 multiletter control sequences out of 15000+600000
  11627 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,9n,24p,895b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on supmaterials.pdf (6 pages, 143113 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
+0.pfb>
+Output written on supmaterials.pdf (5 pages, 137991 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

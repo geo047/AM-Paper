@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  3 AUG 2018 12:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  4 AUG 2018 07:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -60,9 +60,6 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@width=\dimen104
 )
 Package xr Info: IMPORTING LABELS FROM supmaterials.aux on input line 17.
-
-
-LaTeX Warning: Label `suptabsummary' multiply defined.
 
 (./paper.aux)
 \openout1 = `paper.aux'.
@@ -274,7 +271,7 @@ fonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on paper.pdf (22 pages, 410815 bytes).
+Output written on paper.pdf (22 pages, 410780 bytes).
 PDF statistics:
  167 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams

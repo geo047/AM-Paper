@@ -33,14 +33,12 @@
 \begin{landscape}
 
 \begin{table}
-\caption{{\bf Implementation and methodology attributes of eight computer programs/packages for genome-wide association mapping.} For the different types of model, 
-LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalised linear mixed model, and RF is random forests. 
-}
+\caption{Implementation and methodology attributes of eight computer programs/packages for genome-wide association mapping.  }
 \label{suptabsummary}
 \vspace{0.5cm}
 \begin{tabular}{lcccccccc} \hline
                                                    Attributes                  & {\bf Eagle}                                 & {\bf bigRR}             & {\bf glmnet}            & {\bf LMM-Lasso}                    & {\bf MLMM} & {\bf r2VIM}      & {\bf FaST-LMM} & {\bf GEMMA} \\  \hline
-{\em Implementation}    &         &            &             &                   &            &                &      &      \\ 
+{\em Implementation}    &         &            &             &                   &            &                &      &      \\ [0.35cm]
 \hspace{1mm}  Purpose built$^a$    &   Yes     &    Yes      &  No   &   Yes  &  Yes  &  Yes  & Yes  & Yes          \\ [0.35cm]
 
 
@@ -69,21 +67,24 @@ LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalise
 \hspace{1mm} than memory                                             &         &            &             &                   &            &                &      &      \\  [0.8cm]
 
 
-{\em Methodology}    &         &            &             &                   &            &                &      &      \\  
-\hspace{1mm}  Model                     & LMM   &   &  GLMM &   GLM  & LMM  & RF & LMM   & LMM \\ [0.15cm]
+{\em Methodology}    &         &            &             &                   &            &                &      &      \\  [0.35cm]
+\hspace{1mm}  Model $^d$                    & LMM   &   &  GLMM &   GLM  & LMM  & RF & LMM   & LMM \\ [0.15cm]
 
-\hspace{1mm} SNPs fitted       &    All/multiple      &    All       &   All        &      All          &  Multiple          &  Multiple              &   Single   &  Single   \\  [0.35cm]
+\hspace{1mm} SNPs fitted $^e$      &    All/multiple      &    All       &   All        &      All          &  Multiple          &  Multiple              &   Single   &  Single   \\  [0.35cm]
 
 
-\hspace{1mm}  Selection type              & Model   & Variable  &  Variable &  Variable  &  Model  &  Variable & Variable  & Variable \\  [0.35cm]
+\hspace{1mm}  Selection type             & Model   & Variable  &  Variable &  Variable  &  Model  &  Variable & Variable  & Variable \\  [0.35cm]
 
-\hspace{1mm} Threshold free$^5$        &    Yes     &  No    &  No         &    No               &     Yes       &  No              &  No   & No      \\  [0.15cm]  \hline
+\hspace{1mm} Threshold free      &    Yes     &  No    &  No         &    No               &     Yes       &  No              &  No   & No      \\  [0.15cm]  \hline
            
 
 \end{tabular}
 {$^a$ \scriptsize{Specifically created for the analysis of GWAS data.}}\\
 {$^b$ \scriptsize{Separate programs, one written in Python, the other C++}} \\
 {$^c$ \scriptsize{Capacity for additional fixed effects (such as  age, sex, and/or population structure effects) to be included directly in the model.}} \\
+{$^d$ \scriptsize{For the different types of model, 
+LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalised linear mixed model, and RF is random forests.}} \\
+{$^e$ \scriptsize{Association is assessed a SNP at a time (single), for multiple SNPs (multiple), or for all SNPs (all). Eagle fits all SNPs but also identifies multiple SNPs (All/multiple) in association with the trait.} } \\
 \end{table}
 
 
@@ -92,40 +93,6 @@ LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalise
 
 
 
-
-
-
-\begin{landscape}
-
-\begin{table}
-\caption{Some of the key features possessed by Eagle and the other seven computer programs/packages for association mapping}
-\label{suptabsummary}
-
-\begin{tabular}{lccccccccc} 
-                                &  \multicolumn{9}{c}{Computer Programs/Packages for Association Mapping} \\ \cline{2-10}
-                                 & \multicolumn{6}{c}{Multiple-locus}  & & \multicolumn{2}{c}{Single-locus} \\  \cline{2-7}   \cline{9-10}
- Features                 & Eagle  & bigRR & glmnet & LMM-Lasso & MLMM & r2VIM     & & FaST-LMM & GEMMA \\  \hline
-Purpose built$^1$    &   Yes     &    Yes      &  No   &  Yes  &  Yes  &  Yes && Yes & Yes           \\ [0.2cm]
-Well documented$^2$           & Yes &   No   & Yes   & No     &   Yes     & No          && Yes    &    Yes    \\  [0.2cm]
-Simultaneous   &    Yes     &    Yes        &   Yes          &      Yes             &  No          &  No              &&   No   &  No     \\  
-fitting of SNPs     &         &            &             &                   &            &                &&      &      \\  [0.2cm]
-Additional fixed effects$^3$          &   Yes   &      Yes      &     Yes    &  No                 &      Yes      &      Yes          &&      Yes & Yes     \\   [0.2cm]
-Data larger than RAM$^4$                   &   Yes    &      No      & No          &  No    &  No    &   No     && Yes      & No    \\  [0.2cm]
-Threshold free$^5$        &    Yes     &  No    &  No         &    No               &     Yes       &  No              &&  No   & No      \\  [0.2cm]
-Informative error checking           &  Yes      &     No        &      No     &           No        &      No       &         No       && Yes  & No \\ \hline
-
-\end{tabular}
-{$^1$ \scriptsize{Specifically created for the analysis of GWAS data.}}\\
-{$^2$ \scriptsize{More than just a readme file or comments in an example file. Programs/packages with a tick had a detailed user manual.}}\\
-{$^3$ \scriptsize{Ability to handle additional fixed effects such as  age, sex, and/or population structure effects.}} \\
-{$^4$ \scriptsize{Able to deal with data larger than the memory capacity of the computer.}} \\
-{$^5$ \scriptsize{Results reported as the set of SNP closest to the genes influencing a trait. No need to construct thresholds to determine 
-significance of the findings.}}\\
-{$^6$  \scriptsize{All the programs terminated on errors. However, not all the programs informed the user of the cause and how to fix the errors.}}\\
-\end{table}
-
-
-\end{landscape}
 
 
 
