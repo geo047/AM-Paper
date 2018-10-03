@@ -1,0 +1,28 @@
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   biblibrary.bib
+	modified:   paper.aux
+	modified:   paper.bbl
+	modified:   paper.blg
+	modified:   paper.dvi
+	modified:   paper.log
+	modified:   paper.pdf
+	modified:   paper.synctex.gz
+	modified:   paper.tex
+	modified:   supmaterials.aux
+	modified:   supmaterials.log
+	modified:   supmaterials.pdf
+	modified:   supmaterials.synctex.gz
+	modified:   supmaterials.tex
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	modified
+
+no changes added to commit (use "git add" and/or "git commit -a")

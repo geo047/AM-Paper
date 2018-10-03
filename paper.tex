@@ -23,6 +23,11 @@
 
 \maketitle
 
+%%      To Do
+%%    1. is tense correct in methods - multiple and single locus mehtods
+%%    2. add bold font to matrices and vectors
+%%    3. change plot titles to be more condense
+%%    4. fix box bounding problem with figure 1. 
 
 
 
@@ -49,7 +54,8 @@ Eagle has been implemented as an R package, with a web-based Graphical User Inte
 
 Over the past decade,  genome-wide association studies (GWASs) have changed considerably in both their analysis and design. Early studies
  followed a case-control design. Association mapping methods were no more complicated than contingency table tests or simple 
-linear regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification. This prompted a shift towards family-based designs and score tests, such as the transmission/disequilibrium test (TDT)  and its variants \cite{spielman1996tdt}. Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification \cite{price2010new}. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine \cite{purcell2007plink, bradbury2007tassel}.
+linear regression. These designs though had a tendency to yield spurious findings if there was unrecognised population stratification 
+\cite{cardon2003population}. This prompted a shift towards family-based designs and score tests, such as the transmission/disequilibrium test (TDT)  and its variants \cite{spielman1996tdt}. Today, instead of by design, it is through statistical modelling that we account for the effects of population stratification \cite{price2010new}. This has meant that data can be collected from general populations, even if these populations are highly structured. Analysis via sophisticated association mapping methods, such as linear mixed model based approaches,  is now almost routine \cite{purcell2007plink, bradbury2007tassel}.
 
 What has not changed is that it remains common practice to analyse genome-wide association study (GWAS) data on a locus-by-locus basis. This is despite there being several significant problems with analysing data in this way. 
 First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. 
@@ -107,7 +113,7 @@ For each individual, a quantitative trait value was obtained by summing its rand
 The number of randomly selected SNPs follows a Poisson distribution with mean 30. The size of the allelic effects 
  across the selected loci are equal.  
  
- Analyses by the seven programs/packages of a replicate proceeded as follows. They were all run at their default settings. 
+ Analyses by the eight programs/packages of a replicate proceeded as follows. They were all run at their default settings. 
  Eagle and MLMM were the easiest of the programs/packages to implement. 
  The only parameters requiring specification were the amount of available memory and number of CPU for 
  Eagle and the number of chunks for MLMM. 
@@ -152,7 +158,8 @@ with its ability to handle data larger than the memory capacity of the computer,
 for data from our largest scenario, 10000 x 1.5M. 
 
 
-The median run times for Eagle and the other computer programs across the six scenarios are shown in Figure \ref{fig_time}. 
+
+The median run times for Eagle and the other computer programs/packages across the six scenarios are shown in Figure \ref{fig_time}. 
 The x- and y-axes are on a log scale.  A unit change on the x- or y-axis is equivalent to a change in the order of magnitude.  
 In answer to our question of how does Eagle compare in terms of run time to competing implementations, 
 Eagle was significantly faster, sometimes by orders of magnitude,  than the other multiple-locus
@@ -177,13 +184,13 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
  
 \begin{figure}
 \caption{Median run times, in minutes, for the analysis of simulation study data from the six scenarios. 
-Eagle is compared against five other multiple-locus programs (top left) and two single-locus programs (top right). 
+Eagle is compared against five other multiple-locus programs/packages (top left) and two single-locus programs (top right). 
 The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multiple-locus 
-programs, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
-The actual median run times for the programs across the scenarios are given in the table. The entries in a bold font 
+programs/packages, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
+The actual median run times for the programs/packages across the scenarios are given in the table. The entries in a bold font 
 correspond to the lowest run-time for a scenario. 
  FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
- FaST-LMM$^{few}$ is where calculation  the similarity matrix is based on a subset of the SNP data. }
+ FaST-LMM$^{few}$ is where calculation  of the similarity matrix is based on a subset of the SNP data. }
 
 \label{fig_time}
 \begin{center}
@@ -209,7 +216,7 @@ The power (false discovery rate) of a method, for a scenario, was found by takin
 
 
 The power and false discovery rates of Eagle and the other multiple-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure \ref{figpowermultiple}.  We restricted our attention to these scenarios because not all 
-multiple-locus methods could handle the size of data in the other scenarios. 
+multiple-locus methods could cope with the size of data in the other scenarios. 
   Each plot contains 
 single points and power curves. The single points are the power and false discovery rates for Eagle and MLMM.
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
@@ -273,11 +280,11 @@ The genome wide results from the analyses of the mouse data are shown in Figure 
 measurements on 200 traits. When these traits were first analysed in the original study, findings for 45 of these traits were able to be 
 corroborated by prior published evidence. We focused our analyses here on these same 45 traits. For 39 traits, SNP-trait associations 
 were found. For the other six, neither FaST-LMM nor Eagle found any associations. 
-Each plot contains the number of SNP-trait associations that were found and in agreement with the original findings. 
+Each plot in Figure  \ref{figmouse} contains the number of SNP-trait associations that were found and in agreement with the original findings. 
 Neither method found SNPs that had not been first identified in the original mouse study so neither method found false positives. 
 As we saw in the simulation study, there was a notable difference between the two methods capacity to discover SNP-trait associations. Eagle$^{default}$, under its default settings, for two traits found fewer findings than FaST-LMM, for eight traits found the same number 
 of findings as FaST-LMM, and for 28 traits found more findings. Eagle$^{optimal}$, 
-with its regularisation parameter fine tuned to the trait data, for seven traits found the same number of findings as FaST-LMM and for 32 traits found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, SNP-trait findings respectively. 
+with its regularisation parameter fine tuned to the trait data, for seven traits found the same number of findings as FaST-LMM and for 32 traits found more findings. Overall, FaST-LMM, Eagle$^{default}$, and Eagle$^{optimal}$ found 26, 65, and 95, SNP-trait findings, respectively. 
 Eagle$^{default}$ and Eagle$^{optimal}$ found two-and-a-half times and over three-and-a-half times, respectively, more SNP-trait 
 associations than what is the established way of analysing these data. Furthermore, these extra results found by Eagle were not 
 false positives but could be confirmed from the original study. 
@@ -315,7 +322,8 @@ were based on the adjusted traits.
 Genotypic data were available on 359, 559 (353,697 autosomal) SNPs in the 
 form of marker dosages (expected allele counts that ranged from zero to one). All missing data had been imputed. 
 We converted the dosages into discrete genotypes 
-by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. We focused on autosomal SNPs.
+by clustering around 0, 0.5, and 1, corresponding to SNP genotypes AA, AB, and BB, respectively. 
+We focused our analyses on the autosomal SNPs.
 
 
 
@@ -326,7 +334,7 @@ Eagle is a method for multiple-locus association mapping on a genome-wide scale.
 Eagle also 
 reports as its findings only those SNPs that are in strongest linkage disequilibrium, and hence closest to the genes influencing a trait. 
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
-quantitative trait loci in experimental crosses \cite{verbyla2007analysis} 
+quantitative trait loci in experimental crosses \cite{verbyla2007analysis}.
 
 
 Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of $s$ ordinal numbers where $S_k$ is the $S_k$th ordered SNP that was 
@@ -359,7 +367,7 @@ $\tau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters including the inter
 $u_g^{(n_g \; \times \; 1)}$ contains the 
 genetic effects. The vector of residuals is 
 $e^{(n \; \times \;1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \; \times \; n)})$. 
-So far,  this model differs little from standard linear mixed models for association mapping (refs). 
+So far,  this model differs little from standard linear mixed models for association mapping \cite{yu2006unified,zhao2007arabidopsis} 
 However, 
 it is how we specify $u_g$ that distinguishes our model from the others. 
 
@@ -379,15 +387,14 @@ This is a simple genetic model but it
 is effective for discovering SNP-trait associations. 
 
 
-Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood (reml).  For complex models, residual maximum likelihood
+Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood (REML).  For complex models, REML
 can be computationally demanding. However, our model only contains a single random effect ($a_{-S}$). Here, highly efficient single-dimension 
-optimisation via spectral decomposition is possible (EMMA ref). 
+optimisation via spectral decomposition is possible \cite{kang2008efficient}. 
 
 Third, we identify the $(s+1)$th SNP that is in strongest association with the trait, based on the maximum score statistic
 $t_j^2 = \frac{ \widetilde{a} _j^2}{\textrm{var}(\widetilde{a}_j)}$ where $\widetilde{a}_j$ is the best linear unbiased predictor (BLUP), 
 and $\textrm{var}(\widetilde{a}_j)$ is its variance. This statistic is not only appealing intuitively, where we 
-identify a SNP based on its (random) effect size and accuracy, but is theoretically justified.  It follows from outlier detection 
-in linear and linear mixed models (ref). 
+identify a SNP based on its (random) effect size and accuracy, but is theoretically justified \cite{verbyla2012rwgaim}.
 
 Fourth, we determine the importance of the $(s+1)$th selected SNP via a model selection strategy. 
 We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected SNP.  We then fit this new model to the data
@@ -408,7 +415,7 @@ They show how to reformulate (\ref{eq2}) to be a model with a random effect with
 u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + (M_{-S} M_{-S}^T)^{1/2} a^*_{-S}
 \end{equation}
 where $a^* \sim N(0, \sigma_a^2 I^{(n_g \; \times \;  n_g)})$, and 
-$(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via single value decomposition (ref).  
+$(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via singular value decomposition \cite{golub2012matrix}.  
 Although it may not be obvious, the two models are equivalent, 
 having identical variance structures. Yet, the computational cost of model (\ref{eq3}) compared to 
 model (\ref{eq2}) is much less, due to the random term in model (\ref{eq3}) having only $n$ instead of $L-s$ 

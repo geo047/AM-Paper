@@ -38,42 +38,41 @@
 \vspace{0.5cm}
 \begin{tabular}{lcccccccc} \hline
                                                    Attributes                  & {\bf Eagle}                                 & {\bf bigRR}             & {\bf glmnet}            & {\bf LMM-Lasso}                    & {\bf MLMM} & {\bf r2VIM}      & {\bf FaST-LMM} & {\bf GEMMA} \\  \hline
-{\em Implementation}    &         &            &             &                   &            &                &      &      \\ [0.35cm]
-\hspace{1mm}  Purpose built$^a$    &   Yes     &    Yes      &  No   &   Yes  &  Yes  &  Yes  & Yes  & Yes          \\ [0.35cm]
+{\bf {\em Implementation}}    &         &            &             &                   &            &                &      &      \\ [0.15cm]
+\hspace{1mm}  Purpose built$^a$    &   Yes     &    Yes      &  No   &   Yes  &  Yes  &  Yes  & Yes  & Yes          \\ [0.15cm]
 
 
 \hspace{1mm}  Language                 &  R/C++       &    R        &      R       &     Python     &  R          &    R         &  C++ and     &   C++   \\  
-                                                          &         &            &             &                   &            &                                     &   Python$^b$       &      \\  [0.35cm]
+                                                          &         &            &             &                   &            &                                     &   Python$^b$       &      \\  [0.15cm]
 
-\hspace{1mm} GUI                            & Yes &    No      & No          &  No    &  No    &   No     & No     & No    \\  [0.35cm]
-
-
+\hspace{1mm} GUI                            & Yes &    No      & No          &  No    &  No    &   No     & No     & No    \\  [0.15cm]
 
 
-\hspace{1mm} Documentation        &  Videos,                &    R help       &  Vignettes,    &   Readme.txt,       &   Vignette,          &     R help           &   Videos,              &  User-manual,     \\  
-                                                        &   user-manuals,    &                      &  R help         &    test script           &  R help              &                           &    user-manuals,  &   website  \\
-                                                        &   website,    R help          &                      &                     &                              &                           &                           &    website            &    \\   [0.35cm]
 
-                                                                         
-\hspace{1mm} Additional fixed        &   Yes   &      Yes      &     Yes    &  No                 &      Yes      &      Yes          &      Yes & Yes     \\  
-\hspace{1mm} effects$^c$               &           &                   &                 &                   &                   &                     &              &   adsf    \\  [0.35cm]
 
-\hspace{1mm} Types of  &  Cont.      &   Cont.,          &   Cont.,           &   Cont.                 &   Cont.          &     Cont.           &   Cont.   &  Cont.    \\  
-\hspace{1mm} trait data  &                &    binary,      &      binary,         &                   &            &                &      &      \\  
-                                      &                &   count         &       count          &                   &            &                &      &      \\  [0.35cm]
+\hspace{1mm} Documentation        &  Videos,  user-manuals,              &    R help       &  Vignettes,    &   Readme.txt,       &   Vignette,          &     R help           &   Videos, website             &  User-manual,     \\  
+                                                        &  website,    R help     &                      &  R help         &    test script           &  R help              &                           &    user-manuals,  &   website  \\ [0.15cm]
+                                                                                         
+\hspace{1mm} Additional fixed        &   Yes   &      Yes      &     Yes    &  No                 &      Yes      &      No          &      Yes & Yes     \\  
+\hspace{1mm} effects$^c$               &           &                   &                 &                   &                   &                     &              &      \\  [0.15cm]
+
+\hspace{1mm} Types of  &  Cont.      &   Cont.,          &   Cont.,           &   Cont.                 &   Cont.          &     Cont.,          &   Cont.   &  Cont.,    \\  
+\hspace{1mm} trait data  &                &    binary,      &      binary,         &                   &            &     binary           &      &   binary    \\  
+                                      &                &   count         &       count          &                   &            &                &      &      \\  [0.15cm]
 
 
 \hspace{1mm} Data larger                   &   Yes    &      No      & No          &  No    &  No    &   No     & Yes      & No    \\  
 \hspace{1mm} than memory                                             &         &            &             &                   &            &                &      &      \\  [0.8cm]
 
 
-{\em Methodology}    &         &            &             &                   &            &                &      &      \\  [0.35cm]
-\hspace{1mm}  Model $^d$                    & LMM   &   &  GLMM &   GLM  & LMM  & RF & LMM   & LMM \\ [0.15cm]
+{\bf {\em Methodology} }   &         &            &             &                   &            &                &      &      \\  [0.15cm]
+\hspace{1mm}  Model $^d$                    & LMM   & HEM  &  GLMM &   LMM  & LMM  & RF & LMM   & LMM, mvLMM\\ 
+                      					    &             &   &              &             &          &        &           &   Bayesian Sparse LMM      \\  [0.15cm]
+					    
+\hspace{1mm} SNPs fitted $^e$      &    All/multiple      &    All       &   All        &      All          &  Multiple          &  Multiple              &   Single   &  Single   \\  [0.15cm]
 
-\hspace{1mm} SNPs fitted $^e$      &    All/multiple      &    All       &   All        &      All          &  Multiple          &  Multiple              &   Single   &  Single   \\  [0.35cm]
 
-
-\hspace{1mm}  Selection type             & Model   & Variable  &  Variable &  Variable  &  Model  &  Variable & Variable  & Variable \\  [0.35cm]
+\hspace{1mm}  Selection type             & Model   & Variable  &  Variable &  Variable  &  Model  &  Variable & Variable  & Variable \\  [0.15cm]
 
 \hspace{1mm} Threshold free      &    Yes     &  No    &  No         &    No               &     Yes       &  No              &  No   & No      \\  [0.15cm]  \hline
            
@@ -98,7 +97,7 @@ LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalise
 
 
 \begin{figure}
-\caption{Memory usage (in gigabytes) of Eagle and the other association mapping programs across 
+\caption{Memory usage (in gigabytes) of Eagle and the other association mapping programs/packages across 
 the six simulation scenarios. The maximum amount of memory on the computer is 128 gigabytes. 
 The x-axis is on the log scale. GEMMA, a single-locus implementation, had the lowest memory usage. 
 Of the multiple-locus implementations, Eagle had the lowest memory usage. Also, it 
@@ -131,24 +130,25 @@ estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially hig
 \end{figure}
 
 
-
-\begin{table}
-\caption{The median run times (in minutes) of Eagle and the other association mapping programs across the six simulation scenarios. }
-\begin{tabular}{llcccccc}
-              &           &  \multicolumn{6}{c}{Simulation Scenarios} \\ \cline{3-8}
- Method & Name & 150 x 5K & 1500 x 50K & 350 x 400K & 2000 x 500K & 4000 x 1.5M & 10000 x 1.5M \\ \hline
-  Multiple & Eagle 	&	   0.08  &   1.62   &  \bf{2.7}1  &   \bf{13.65}   & \bf{127.63}  &   699.55  \\
-               & MLMM 	&	   0.15    &  2.91    & 19.04  &  143.01  &  870.84  &     \\
-               & glmnet 	&	  0.11     & 3.95    & 14.06    & 74.03    &        &    \\
-               & r2VIM 	&	   0.09    &  3.66    &  5.51    & 50.59    & 380.52  &   \\ 
-               & bigRR 	&	    1.01   & 113.35   &  54.99   & 1030.61  &        &     \\
-               & LMM-Lasso 	&     0.57  &   52.08 &    92.20  & 1031.85 &           &     \\ \\
-Single     &  GEMMA 	&      0.02  &   5.02   &   6.17  &   84.83   & 723.33  & 4071.60 \\
-               & FaST-LMM$^{few}$ 	&    \bf{0.01}   &  \bf{0.80}   &   7.07   &  20.16   & 193.90   & \bf{346.19} \\ 
-               & FaST-LMM$^{all}$   	&   0.03   & 2.96  &    7.90   &  41.27  &            &   \\ \hline
-\end{tabular}
-
-\end{table}
+%% This table appears in Figure 1 in paper. It's included here in case I need to regenerate the table. 
+%%
+%%\begin{table}
+%%\caption{The median run times (in minutes) of Eagle and the other association mapping programs across the six simulation scenarios. }
+%%\begin{tabular}{llcccccc}
+%%              &           &  \multicolumn{6}{c}{Simulation Scenarios} \\ \cline{3-8}
+%% Method & Name & 150 x 5K & 1500 x 50K & 350 x 400K & 2000 x 500K & 4000 x 1.5M & 10000 x 1.5M \\ \hline
+%% Multiple & Eagle 	&	   0.08  &   1.62   &  \bf{2.7}1  &   \bf{13.65}   & \bf{127.63}  &   699.55  \\
+%%               & MLMM 	&	   0.15    &  2.91    & 19.04  &  143.01  &  870.84  &     \\
+%%              & glmnet 	&	  0.11     & 3.95    & 14.06    & 74.03    &        &    \\
+%%               & r2VIM 	&	   0.09    &  3.66    &  5.51    & 50.59    & 380.52  &   \\ 
+%%               & bigRR 	&	    1.01   & 113.35   &  54.99   & 1030.61  &        &     \\
+%%               & LMM-Lasso 	&     0.57  &   52.08 &    92.20  & 1031.85 &           &     \\ \\
+%%Single     &  GEMMA 	&      0.02  &   5.02   &   6.17  &   84.83   & 723.33  & 4071.60 \\
+%%               & FaST-LMM$^{few}$ 	&    \bf{0.01}   &  \bf{0.80}   &   7.07   &  20.16   & 193.90   & \bf{346.19} \\ 
+%%               & FaST-LMM$^{all}$   	&   0.03   & 2.96  &    7.90   &  41.27  &            &   \\ \hline
+%%\end{tabular}
+%%
+%%\end{table}
 
 
 \end{document}

@@ -5,6 +5,96 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
+\bibitem{cardon2003population}
+\bibinfo{author}{Cardon, L.~R.} \& \bibinfo{author}{Palmer, L.~J.}
+\newblock \bibinfo{title}{Population stratification and spurious allelic
+  association}.
+\newblock \emph{\bibinfo{journal}{The Lancet}} \textbf{\bibinfo{volume}{361}},
+  \bibinfo{pages}{598--604} (\bibinfo{year}{2003}).
+
+\bibitem{spielman1996tdt}
+\bibinfo{author}{Spielman, R.~S.} \& \bibinfo{author}{Ewens, W.~J.}
+\newblock \bibinfo{title}{The tdt and other family-based tests for linkage
+  disequilibrium and association.}
+\newblock \emph{\bibinfo{journal}{American journal of human genetics}}
+  \textbf{\bibinfo{volume}{59}}, \bibinfo{pages}{983} (\bibinfo{year}{1996}).
+
+\bibitem{price2010new}
+\bibinfo{author}{Price, A.~L.}, \bibinfo{author}{Zaitlen, N.~A.},
+  \bibinfo{author}{Reich, D.} \& \bibinfo{author}{Patterson, N.}
+\newblock \bibinfo{title}{New approaches to population stratification in
+  genome-wide association studies}.
+\newblock \emph{\bibinfo{journal}{Nature Reviews Genetics}}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{459} (\bibinfo{year}{2010}).
+
+\bibitem{purcell2007plink}
+\bibinfo{author}{Purcell, S.} \emph{et~al.}
+\newblock \bibinfo{title}{Plink: a tool set for whole-genome association and
+  population-based linkage analyses}.
+\newblock \emph{\bibinfo{journal}{The American Journal of Human Genetics}}
+  \textbf{\bibinfo{volume}{81}}, \bibinfo{pages}{559--575}
+  (\bibinfo{year}{2007}).
+
+\bibitem{bradbury2007tassel}
+\bibinfo{author}{Bradbury, P.~J.} \emph{et~al.}
+\newblock \bibinfo{title}{Tassel: software for association mapping of complex
+  traits in diverse samples}.
+\newblock \emph{\bibinfo{journal}{Bioinformatics}}
+  \textbf{\bibinfo{volume}{23}}, \bibinfo{pages}{2633--2635}
+  (\bibinfo{year}{2007}).
+
+\bibitem{storey2003statistical}
+\bibinfo{author}{Storey, J.~D.} \& \bibinfo{author}{Tibshirani, R.}
+\newblock \bibinfo{title}{Statistical significance for genomewide studies}.
+\newblock \emph{\bibinfo{journal}{Proceedings of the National Academy of
+  Sciences}} \textbf{\bibinfo{volume}{100}}, \bibinfo{pages}{9440--9445}
+  (\bibinfo{year}{2003}).
+
+\bibitem{li2005adjusting}
+\bibinfo{author}{Li, J.} \& \bibinfo{author}{Ji, L.}
+\newblock \bibinfo{title}{Adjusting multiple testing in multilocus analyses
+  using the eigenvalues of a correlation matrix}.
+\newblock \emph{\bibinfo{journal}{Heredity}} \textbf{\bibinfo{volume}{95}},
+  \bibinfo{pages}{221} (\bibinfo{year}{2005}).
+
+\bibitem{de2005efficiency}
+\bibinfo{author}{de~Bakker, P.~I.} \emph{et~al.}
+\newblock \bibinfo{title}{Efficiency and power in genetic association studies}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{37}}, \bibinfo{pages}{1217} (\bibinfo{year}{2005}).
+
+\bibitem{shen2013novel}
+\bibinfo{author}{Shen, X.}, \bibinfo{author}{Alam, M.}, \bibinfo{author}{Fikse,
+  F.} \& \bibinfo{author}{R{\"o}nneg{\aa}rd, L.}
+\newblock \bibinfo{title}{A novel generalized ridge regression method for
+  quantitative genetics}.
+\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{193}},
+  \bibinfo{pages}{1255--1268} (\bibinfo{year}{2013}).
+
+\bibitem{rakitsch2013lasso}
+\bibinfo{author}{Rakitsch, B.}, \bibinfo{author}{Lippert, C.},
+  \bibinfo{author}{Stegle, O.} \& \bibinfo{author}{Borgwardt, K.}
+\newblock \bibinfo{title}{A lasso multi-marker mixed model for association
+  mapping with population structure correction}.
+\newblock \emph{\bibinfo{journal}{Bioinformatics}}
+  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{206--214}
+  (\bibinfo{year}{2013}).
+
+\bibitem{szymczak2016r2vim}
+\bibinfo{author}{Szymczak, S.} \emph{et~al.}
+\newblock \bibinfo{title}{r2vim: A new variable selection method for random
+  forests in genome-wide association studies}.
+\newblock \emph{\bibinfo{journal}{BioData mining}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
+
+\bibitem{segura2012efficient}
+\bibinfo{author}{Segura, V.} \emph{et~al.}
+\newblock \bibinfo{title}{An efficient multi-locus mixed-model approach for
+  genome-wide association studies in structured populations}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{825--830}
+  (\bibinfo{year}{2012}).
+
 \bibitem{zhou2012genome}
 \bibinfo{author}{Zhou, X.} \& \bibinfo{author}{Stephens, M.}
 \newblock \bibinfo{title}{Genome-wide efficient mixed-model analysis for
@@ -21,14 +111,6 @@
   \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{833--835}
   (\bibinfo{year}{2011}).
 
-\bibitem{shen2013novel}
-\bibinfo{author}{Shen, X.}, \bibinfo{author}{Alam, M.}, \bibinfo{author}{Fikse,
-  F.} \& \bibinfo{author}{R{\"o}nneg{\aa}rd, L.}
-\newblock \bibinfo{title}{A novel generalized ridge regression method for
-  quantitative genetics}.
-\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{193}},
-  \bibinfo{pages}{1255--1268} (\bibinfo{year}{2013}).
-
 \bibitem{Friedman2010glmnet}
 \bibinfo{author}{Friedman, J.}, \bibinfo{author}{Hastie, T.} \&
   \bibinfo{author}{Tibshirani, R.}
@@ -37,30 +119,6 @@
 \newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
   \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{1--22} (\bibinfo{year}{2010}).
 \newblock \urlprefix\url{http://www.jstatsoft.org/v33/i01/}.
-
-\bibitem{rakitsch2013lasso}
-\bibinfo{author}{Rakitsch, B.}, \bibinfo{author}{Lippert, C.},
-  \bibinfo{author}{Stegle, O.} \& \bibinfo{author}{Borgwardt, K.}
-\newblock \bibinfo{title}{A lasso multi-marker mixed model for association
-  mapping with population structure correction}.
-\newblock \emph{\bibinfo{journal}{Bioinformatics}}
-  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{206--214}
-  (\bibinfo{year}{2013}).
-
-\bibitem{segura2012efficient}
-\bibinfo{author}{Segura, V.} \emph{et~al.}
-\newblock \bibinfo{title}{An efficient multi-locus mixed-model approach for
-  genome-wide association studies in structured populations}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
-  \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{825--830}
-  (\bibinfo{year}{2012}).
-
-\bibitem{szymczak2016r2vim}
-\bibinfo{author}{Szymczak, S.} \emph{et~al.}
-\newblock \bibinfo{title}{r2vim: A new variable selection method for random
-  forests in genome-wide association studies}.
-\newblock \emph{\bibinfo{journal}{BioData mining}}
-  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
 
 \bibitem{10002010map}
 \bibinfo{author}{Consortium, . G.~P.} \emph{et~al.}
@@ -108,6 +166,27 @@
 \newblock \emph{\bibinfo{journal}{Theoretical and Applied Genetics}}
   \textbf{\bibinfo{volume}{116}}, \bibinfo{pages}{95} (\bibinfo{year}{2007}).
 
+\bibitem{yu2006unified}
+\bibinfo{author}{Yu, J.} \emph{et~al.}
+\newblock \bibinfo{title}{A unified mixed-model method for association mapping
+  that accounts for multiple levels of relatedness}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{38}}, \bibinfo{pages}{203} (\bibinfo{year}{2006}).
+
+\bibitem{zhao2007arabidopsis}
+\bibinfo{author}{Zhao, K.} \emph{et~al.}
+\newblock \bibinfo{title}{An arabidopsis example of association mapping in
+  structured samples}.
+\newblock \emph{\bibinfo{journal}{PLoS genetics}} \textbf{\bibinfo{volume}{3}},
+  \bibinfo{pages}{e4} (\bibinfo{year}{2007}).
+
+\bibitem{kang2008efficient}
+\bibinfo{author}{Kang, H.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Efficient control of population structure in model
+  organism association mapping}.
+\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{178}},
+  \bibinfo{pages}{1709--1723} (\bibinfo{year}{2008}).
+
 \bibitem{verbyla2012rwgaim}
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Taylor, J.~D.} \&
   \bibinfo{author}{Verbyla, K.~L.}
@@ -125,6 +204,11 @@
 \newblock \emph{\bibinfo{journal}{G3: Genes, Genomes, Genetics}}
   \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{1569--1584}
   (\bibinfo{year}{2014}).
+
+\bibitem{golub2012matrix}
+\bibinfo{author}{Golub, G.~H.} \& \bibinfo{author}{Van~Loan, C.~F.}
+\newblock \emph{\bibinfo{title}{Matrix computations}}, vol.~\bibinfo{volume}{3}
+  (\bibinfo{publisher}{JHU Press}, \bibinfo{year}{2012}).
 
 \bibitem{lockhart2014significance}
 \bibinfo{author}{Lockhart, R.}, \bibinfo{author}{Taylor, J.},
