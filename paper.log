@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  3 OCT 2018 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  4 OCT 2018 09:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -145,7 +145,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 24.
 
-Overfull \hbox (6.48663pt too wide) in paragraph at lines 50--54
+Overfull \hbox (6.48663pt too wide) in paragraph at lines 55--59
 []\OT1/cmr/m/n/10 Over the past decade, genome-wide as-so-ci-a-tion stud-ies (G
 WASs) have changed
  []
@@ -154,17 +154,17 @@ WASs) have changed
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 58.
+(Font)              <7> on input line 63.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 58.
+(Font)              <5> on input line 63.
 
-Overfull \hbox (0.44507pt too wide) in paragraph at lines 64--67
+Overfull \hbox (0.44507pt too wide) in paragraph at lines 69--72
 []\OT1/cmr/m/n/10 It is some-what sur-pris-ing then that multiple-locus as-so-c
 i-a-tion map-ping meth-
  []
 
 [2] [3] [4]
-Overfull \hbox (6.03087pt too wide) in paragraph at lines 131--132
+Overfull \hbox (6.03087pt too wide) in paragraph at lines 136--137
 []\OT1/cmr/m/n/10 FaST-LMM and GEMMA im-ple-ment single-locus as-so-ci-a-tion m
 ap-ping. FaST-
  []
@@ -172,15 +172,15 @@ ap-ping. FaST-
 [5] <Figure2_time.jpg, id=28, 1003.75pt x 752.8125pt>
 File: Figure2_time.jpg Graphic file (type jpg)
  <use Figure2_time.jpg>
-Package pdftex.def Info: Figure2_time.jpg used on input line 192.
+Package pdftex.def Info: Figure2_time.jpg used on input line 197.
 (pdftex.def)             Requested size: 398.3378pt x 341.43895pt.
 
-Overfull \hbox (53.3378pt too wide) in paragraph at lines 192--193
+Overfull \hbox (53.3378pt too wide) in paragraph at lines 197--198
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 0.9838pt on input line 195.
+LaTeX Warning: Float too large for page by 0.9838pt on input line 200.
 
 [6] [7 <./Figure2_time.jpg>]
 Package epstopdf Info: Source file: <power1main.eps>
@@ -191,23 +191,23 @@ Package epstopdf Info: Source file: <power1main.eps>
 (epstopdf)                    size: 16875 bytes
 (epstopdf)             Command: <repstopdf --outfile=power1main-eps-converted-t
 o.pdf power1main.eps>
-(epstopdf)             \includegraphics on input line 233.
+(epstopdf)             \includegraphics on input line 238.
 Package epstopdf Info: Output file is already uptodate.
 
 <power1main-eps-converted-to.pdf, id=37, 561.09625pt x 722.7pt>
 File: power1main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power1main-eps-converted-to.pdf>
-Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 233
+Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 238
 .
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 233--234
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 238--239
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 8.34198pt on input line 236.
+LaTeX Warning: Float too large for page by 8.34198pt on input line 241.
 
 [8] [9 <./power1main-eps-converted-to.pdf>] [10]
 Package epstopdf Info: Source file: <mouseresults.eps>
@@ -218,27 +218,27 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 15601 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 297.
+(epstopdf)             \includegraphics on input line 302.
 Package epstopdf Info: Output file is already uptodate.
 
 <mouseresults-eps-converted-to.pdf, id=55, 561.09625pt x 722.7pt>
 File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
-Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 2
-97.
+Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 3
+02.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 297--298
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 302--303
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 23.94202pt on input line 300.
+LaTeX Warning: Float too large for page by 23.94202pt on input line 305.
 
 [11] [12 <./mouseresults-eps-converted-to.pdf>] [13] [14] [15] [16] [17]
 [18]
-Overfull \hbox (2.13956pt too wide) in paragraph at lines 547--557
+Overfull \hbox (2.13956pt too wide) in paragraph at lines 553--563
 []\OT1/cmr/m/n/10 Eagle out-per-formed the other multiple-locus meth-ods in our
  sim-u-la-tion study.
  []
@@ -271,7 +271,7 @@ c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (23 pages, 414482 bytes).
+Output written on paper.pdf (23 pages, 414459 bytes).
 PDF statistics:
  170 PDF objects out of 1000 (max. 8388607)
  118 compressed objects within 2 object streams

@@ -440,10 +440,10 @@ of (\ref{eq4}).
 
 \subsubsection{Multiple-locus methods}
 
-We compare the computational and statistical performance of Eagle against five multiple-locus methods. They are BigRR, LMM-Lasso, glmnet, 
+We compare the computational and statistical performance of Eagle against five multiple-locus methods. They are bigRR, LMM-Lasso, glmnet, 
 MLMM, and r2VIM.  All but glmnet have been purposely designed for genome-wide association mapping. 
 BigRR, LMM-Lasso, and glmnet are regression-based regularisation 
-methods. BiggRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
+methods. BigRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
 Regularisation methods make parameter estimation possible in models  where the number of predictors is far greater than the number of samples. 
 They allow the strength of association between all the SNPs and trait to be measured within a single model, simultaneously. 
 A limitation of these methods though is that the statistical significance of the SNP effects cannot be easily determined. 
@@ -470,7 +470,7 @@ but the computational cost is high, restricting the size of data that can be ana
 
 \subsubsection{Single-locus methods}
 
-We also compared the performance of Eagle against two single-locus methods, GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
+We also compare the performance of Eagle against two single-locus methods, GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
 a single random effect to account for familial relatedness (or polygenic background), and an error. The significance of the SNP effect in the model 
 is a measure of the strength of association.  They are of the same computational complexity \cite{zhou2012genome}, and produce exact results.  
 Both perform a single spectral decomposition of the relationship (or similarity) matrix $K$, use  an eigenvector matrix to rotate the data, 
@@ -482,36 +482,37 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 \subsection{Stability Selection}
 Stability selection \cite{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of the significance of effects in regression models where 
-the number of parameters ($p$) can be much larger than the number of samples ($n$). We chose stability selection over permutation and other sampling procedures because of its low computational cost. We employed stability selection to estimate, empirically, the significance of the SNP effects from the regularisation method's analyses of the simulated data.
+the number of parameters ($p$) can be much larger than the number of samples ($n$). We chose stability selection over permutation and other sampling procedures because of its low computational cost. We employe stability selection to estimate, empirically, the significance of the SNP effects from the regularisation method's analyses of the simulated data.
 
-To obtain significance estimates via stability selection, we did the following. For LMM-Lasso and glmnet, we began by performing a preliminary analysis of a replicate where  we tuned the  regularisation parameter to yield 20 to 30 non-zero SNP effects.
-This tuning of the regularisation parameter was done for data under each simulation scenario but it was not necessary to do it for every replicate within a scenario. It was sufficient to pick a single replicate at random upon which to tune the regularisation parameter. 
-Here, we had the luxury of knowing the genetic conditions 
-under which the simulated trait data were generated. We knew that 20 to 30 SNP-trait associations was a reasonable number of findings to expect. 
+To obtain significance estimates via stability selection, we do the following. For LMM-Lasso and glmnet, we begin
+ by performing a preliminary analysis of a replicate where  we tune the  regularisation parameter to yield 20 to 30 non-zero SNP effects.
+This tuning of the regularisation parameter is done for data under each simulation scenario but it is not necessary to do it for every replicate within a scenario. It is sufficient to pick a single replicate at random upon which to tune the regularisation parameter. 
+Here, we have the luxury of knowing the genetic conditions 
+under which the simulated trait data are generated. We know that 20 to 30 SNP-trait associations is a reasonable number of findings to expect. 
  However, stability selection estimates are robust  \cite{meinshausen2010stability} 
- and the regularisation parameter could have been tuned to any reasonable number of 
- non-zero effects. We sampled repeatedly, without replacement, from the replicate. We drew 100 replicate subsets of size $n/2$.  
-Each replicate subset was then analysed with LMM-Lasso and glmnet, with their regularisation parameter set to the value found in the preliminary analysis. 
+ and the regularisation parameter can be tuned to any reasonable number of 
+ non-zero effects. We sample repeatedly, without replacement, from the replicate. We draw 100 replicate subsets of size $n/2$.  
+Each replicate subset is then analysed with LMM-Lasso and glmnet, with their regularisation parameter set to the value found in the preliminary analysis. 
 A (probability) estimate of the statistical significance of a SNP effect is obtained by counting the 
-number of times the SNP had a non-zero effect size over all the replicates divided by the number of replicates (which was 100). 
+number of times the SNP have a non-zero effect size over all the replicates divided by the number of replicates (which was 100). 
 
-For BigRR, we modified our stability selection procedure slightly. 
-There was no need to tune the regularisation parameter for BigRR as an optimal value is found as part of its analysis. 
-As described above, we drew 100 replicate subsets of size $n/2$ and analysed these data with BigRR. We then ordered the 
-SNPs according to the absolute size of their SNP effects and recorded the top 20 SNPs. 
+For bigRR, we modify our stability selection procedure slightly. 
+There is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis. 
+As described above, we draw 100 replicate subsets of size $n/2$ and analyse these data with bigRR. We then order the 
+SNPs according to the absolute size of their SNP effects and record the top 20 SNPs. 
 A (probability)  estimate of the statistical significance of a SNP effect is then obtained by counting the 
-number of times the SNP was recorded divided by the number of replicates. 
+number of times the SNP is recorded divided by the number of replicates. 
 
 
 
 
 \subsection{Generation of Simulation Data}
 
-The data were generated via data perturbation (Zhao et al. 2007). Data perturbation amalgamates real with simulated data to generate replicates. 
+The data are generated via data perturbation (Zhao et al. 2007). Data perturbation amalgamates real with simulated data to generate replicates. 
 It is a way of introducing greater realism into a simulation study. 
  Here, the genotype data are real, the 
 quantitative trait data are simulated. 
- The SNP genotypes were drawn, 
+ The SNP genotypes are drawn, 
 according to the specifications of the scenario, from data collected from the 1000 Genome Project, version 3   \cite{10002010map}. 
 Across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. 
 
@@ -522,8 +523,8 @@ generate a $g^{(n \times 1)}$ vector of genetic values where $n$ is the number o
 Fifth, $e^{(n \times 1)}$, a vector of residuals, is drawn from a normal distribution where $e_i \sim N(0, \sigma^2_e)$ and $\sigma^2_e$ is 
 the residual variance that has been set to yield a trait with heritability 0.5. Sixth,  the trait data are formed as $y =  g + e$.  
 In forming $y$, we have purposely not included any other environmental variables such as age, sex, or experimental design effects. This is because 
-not all the methods were implemented to handle the inclusion of additional fixed effects. A two-stage modelling approach (ref) 
-is often adopted to deal with this situation, be we chose not to introduce this complexity into the analyses.  
+not all the methods were implemented to handle the inclusion of additional fixed effects. A two-stage modelling approach 
+is often adopted to deal with this situation, but we chose not to introduce this complexity into the analyses.  
 
 
 
@@ -533,8 +534,8 @@ Eagle has been implemented as an R package of the same name. Much of the computa
 via C++ functions that utilise Eigen C++ routines (ref). Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
 mathematical libraries common to most computer systems. By making use of multi-threaded  BLAS and LAPACK libraries, many of the 
 calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How-To guides, and 
-a link to our server for demonstrating Eagle on some test data are available on the Eagle website (ref).  
-Eagle is available for download from the CRAN website (ref). 
+a link to our server for demonstrating Eagle on some test data are available on the Eagle website (http://eagle.r-forge.r-project.org).  
+Eagle is available for download from the CRAN website (https://cran.r-project.org). 
 
   
   
@@ -549,30 +550,33 @@ multiple testing issues and the need for significance thresholds.
 Also, when analysing the mouse data, Eagle found more than double the SNP-trait associations than 
 with single-locus association mapping, the method of choice. Furthermore, these extra findings were all true. 
 
-Eagle outperformed the other multiple-locus methods in our simulation study. However, we are aware of the fact  that we made several implementation 
+Eagle outperformed the other multiple-locus methods in our simulation study. However, we are cognizant of the fact  that we made several implementation 
 choices that impact our conclusions.  For instance, we chose to calculate the significance of the 
-SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation (ref) and multi sample-splitting (ref) are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
+SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation and its variants \cite{ browning2008presto, pahl2010permory  } are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
 data. Also, when analysing the (sub)samples, it was not necessary to calculate the entire solution path for a method. 
  Instead,  analyses are 
 performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation required. For r2VIM, an R package 
 implementing random forests, we had to decide on the  minimum size of a terminal node, the number of trees, and number of potential variables. 
 The setting of these parameters greatly affects performance.  We  acknowledge that in the hands of an expert, 
-r2VIM could of been fine-tuned for a better balance of computational and statistical performance because random forests are highly adjustable. 
-However, we would like to think that the parameter settings we used are sensible since they match the values in the original r2VIM publication (ref). 
+r2VIM could be fine-tuned for a better balance of computational and statistical performance. 
+However, we would like to think that the parameter settings we used are sensible 
+since they match the values in the original r2VIM publication \cite{szymczak2016r2vim}.
+
+
 
 Eagle's computational speed does come at a cost. It is a weakness shared by all of the methods considered here, although in different ways. 
 Eagle cannot handle extra random effects which are sometimes needed when more advanced study designs are employed. One solution 
 is to adopt a two-stage analysis procedure. In the first stage, a single linear mixed model is fitted to the data. Much of the modelling complexity, 
 including the extra random effects, is 
-captured in this first-stage model. In the second stage, Eagle is run not on the original trait data but adjusted trait data which were obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
+captured in this first-stage model. In the second stage, Eagle is run not on the original trait data but adjusted trait data which are obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
 Although not specifically designed for association mapping,
-WGAIM, upon which Eagle is based, and RRGAIM are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
+WGAIM \cite{verbyla2007analysis}, upon which Eagle is based, and RRGAIM \cite{verbyla2012rwgaim}  are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
 models,  run time and memory usage can become limiting factors for analysis. 
 
 
-Over the coming years, computationally, the demand placed on association mapping methods is going to increase. 
+Over the coming years, computationally, the demand placed upon association mapping methods is going to increase. 
 High-throughput array-based technologies continue to decrease the cost of genotyping, permitting ever larger GWASs to be performed. 
-Whole-genome sequencing is also now a reality. Already sequence across entire genomes are being collected for GWASs (refs), 
+Whole-genome sequencing is also now a reality. Already sequence across entire genomes are being collected for GWASs \cite{gudbjartsson2015large, long2017whole}
 culminating in data on millions of SNPs. It is because of this growing demand that 
 we have purposely structured the Eagle package for continued development. We are already experimenting with a GPU-based version of Eagle. 
 Early results suggest that for small to moderate sized datasets (<10,000 samples), there is little improvement in performance over CPU-based 
