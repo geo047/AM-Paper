@@ -224,4 +224,34 @@
   Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{72}},
   \bibinfo{pages}{417--473} (\bibinfo{year}{2010}).
 
+\bibitem{browning2008presto}
+\bibinfo{author}{Browning, B.~L.}
+\newblock \bibinfo{title}{Presto: rapid calculation of order statistic
+  distributions and multiple-testing adjusted p-values via permutation for one
+  and two-stage genetic association studies}.
+\newblock \emph{\bibinfo{journal}{BMC bioinformatics}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{309} (\bibinfo{year}{2008}).
+
+\bibitem{pahl2010permory}
+\bibinfo{author}{Pahl, R.} \& \bibinfo{author}{Schafer, H.}
+\newblock \bibinfo{title}{Permory: an ld-exploiting permutation test algorithm
+  for powerful genome-wide association testing}.
+\newblock \emph{\bibinfo{journal}{Bioinformatics}}
+  \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{2093--2100}
+  (\bibinfo{year}{2010}).
+
+\bibitem{gudbjartsson2015large}
+\bibinfo{author}{Gudbjartsson, D.~F.} \emph{et~al.}
+\newblock \bibinfo{title}{Large-scale whole-genome sequencing of the icelandic
+  population}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{47}}, \bibinfo{pages}{435} (\bibinfo{year}{2015}).
+
+\bibitem{long2017whole}
+\bibinfo{author}{Long, T.} \emph{et~al.}
+\newblock \bibinfo{title}{Whole-genome sequencing identifies common-to-rare
+  variants associated with human blood metabolites}.
+\newblock \emph{\bibinfo{journal}{Nature genetics}}
+  \textbf{\bibinfo{volume}{49}}, \bibinfo{pages}{568} (\bibinfo{year}{2017}).
+
 \end{thebibliography}

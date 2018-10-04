@@ -3,6 +3,7 @@
 \bibliographystyle{naturemag}
 \renewcommand{\baselinestretch}{1.3} 
 \usepackage{graphicx}
+\usepackage{bm}
 
 %% To Do
 %% 1. add bold font to matrices/vectors
@@ -24,11 +25,33 @@
 \maketitle
 
 %%      To Do
-%%    1. is tense correct in methods - multiple and single locus mehtods
+%%   1. make ARi's changes to paper
 %%    2. add bold font to matrices and vectors
 %%    3. change plot titles to be more condense
-%%    4. fix box bounding problem with figure 1. 
+%%    4.tidy up doc - reformat - remove comments make nice
+%%    5 write cover letter
+%%    6 send cover letter to dan
+%%    7 send paper to Josh
+%%    8 find reviewer 
 
+
+
+\newcommand{\bwidetildea}{\widetilde{\bm{a}}}
+
+
+\newcommand{\bu}{\bm{u}}
+\newcommand{\be}{\bm{e}}
+\newcommand{\btau}{\bm{\tau}}
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bzero}{\bm{0}}
+\newcommand{\bI}{\bm{I}}
+
+
+\newcommand{\bX}{\bm{X}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bZ}{\bm{Z}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bmm}{\bm{m}}
 
 
 %%\begin{affiliations}
@@ -37,7 +60,6 @@
 %%\end{affiliations}
 
 \begin{abstract}
-
 
 We present Eagle, a new method for multiple-locus association mapping. The
 motivation for developing Eagle was to make multiple locus association mapping "easy" and the method-of-choice. 
@@ -99,7 +121,7 @@ A large simulation study was performed where we sought to  answer two questions.
 First, how does Eagle compare, in terms of run time and memory usage, to 
 competing implementations? Second, how well does Eagle find true associations (power) and avoid 
 false associations (type 1 errors)? Data were generated under six different scenarios; a study of size 150 individuals 
-and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 X 400K),  1,500 individuals and 
+and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 x 400K),  1,500 individuals and 
 50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
 1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
 These scenarios reflect, at least in some cases, the sizes of study being performed in animals, plants, and humans.  
@@ -149,7 +171,7 @@ significance measure in each of the peak regions was recorded as a finding.
 
 Memory usage and run (or elapse) times were recorded for Eagle and the other computer programs/packages across the simulation scenarios. 
 Analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the six scenarios could be analysed by all implementations. Memory usage 
-for many of the computer programs/packages was the limiting factor (See {\bf Supplementary Figure \ref{supfigmem}}).  The single-locus program GEMMA was by 
+for many of the computer programs/packages was the limiting factor (See Supplementary Figure \ref{supfigmem}).  The single-locus program GEMMA was by 
 far the most memory efficient. Not surprisingly, the multiple-locus programs were memory intensive. Most required in 
 excess of the 128 gigabytes of available RAM for the analysis of data generated under 4000 x 1.5M and 10000 x 1.5M.  
 Even FaST-LMM, when all the SNP data were being used to calculate the similarity matrix, ran out of memory for the larger scenarios.
@@ -192,11 +214,10 @@ correspond to the lowest run-time for a scenario.
  FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
  FaST-LMM$^{few}$ is where calculation  of the similarity matrix is based on a subset of the SNP data. }
 
-\label{fig_time}
-\begin{center}
-\includegraphics[width=14cm, height=12cm]{Figure2_time.jpg}
-\end{center}
 
+\label{fig_time}
+\centering
+    \includegraphics[width=1.0\textwidth,natwidth=610,natheight=642]{Figure2_time.jpg}
 \end{figure}
 
  
@@ -341,12 +362,12 @@ Let $S = \{ S_1, S_2, \ldots, S_s\}$ be a set of $s$ ordinal numbers where $S_k$
 selected in the $k$th iteration of the model building process. Suppose three iterations  $(s=3)$
 have been performed and say the 500023rd, 15th, and 420th
 SNP were selected. Then $S=\{500023, 15, 420\}$. 
-Let $y^{(n \; \times \;1)}$ be a vector containing $n$ measurements of the quantitative trait. 
-Let $M^{(n_g \; \times \; L)} = [m_1 m_2 \ldots m_L]$ be a matrix containing the genotype data which have been collected 
+Let $\by^{(n \; \times \;1)}$ be a vector containing $n$ measurements of the quantitative trait. 
+Let $\bM^{(n_g \; \times \; L)} = [\bmm_1 \bmm_2 \ldots \bmm_L]$ be a matrix containing the genotype data which have been collected 
 from $L$ loci that span the genome on $n_g$ groups/lines/strains.  Here, $n \geq n_g$ meaning that a single or several trait measurements 
 may be taken of the same group/line/strain. 
- It is common for the columns of $M$ to be in map order but this is not a requirement. 
-The vector $m_j^{(n_g \; \times \; 1)}$ contains the genotypes for the $j$th SNP. 
+ It is common for the columns of $\bM$ to be in map order but this is not a requirement. 
+The vector $\bmm_j^{(n_g \; \times \; 1)}$ contains the genotypes for the $j$th SNP. 
 The genotypes are coded as -1, 0, and 1 corresponding to SNP genotypes AA, AB, and BB, respectively. 
 
 The specifics of the Eagle method are as follows. 
@@ -357,29 +378,29 @@ To perform the $s+1$th  iteration, we first fit the current model to the data.
 The (current) model is of the form 
 \begin{equation}
 \label{eq1}
-y = X \tau + Z u_g + e
+\by = \bX \btau + \bZ \bu_g + \be
 \end{equation}
 where 
-$X^{(n \; \times \; p)}$ and $Z^{( n \; \times \; n_g)}$ are known design matrices with $X$ being of full rank and $Z$ 
+$\bX^{(n \; \times \; p)}$ and $\bZ^{( n \; \times \; n_g)}$ are known design matrices with $\bX$ being of full rank and $\bZ$ 
 containing zeros and ones that assign the appropriate genetic effect to each measurement. 
 The vector 
-$\tau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters including the intercept. The vector 
-$u_g^{(n_g \; \times \; 1)}$ contains the 
+$\btau^{(p \; \times \; 1)}$ has $p$ fixed effects parameters including the intercept. The vector 
+$\bu_g^{(n_g \; \times \; 1)}$ contains the 
 genetic effects. The vector of residuals is 
-$e^{(n \; \times \;1)}$ whose distribution is assumed to follow $N(0, \sigma^2_e I^{(n \; \times \; n)})$. 
+$\be^{(n \; \times \;1)}$ whose distribution is assumed to follow $N(\bzero, \sigma^2_e \bI^{(n \; \times \; n)})$. 
 So far,  this model differs little from standard linear mixed models for association mapping \cite{yu2006unified,zhao2007arabidopsis} 
 However, 
-it is how we specify $u_g$ that distinguishes our model from the others. 
+it is how we specify $\bu_g$ that distinguishes our model from the others. 
 
-The genetic effects $u_g$ are modelled as 
+The genetic effects $\bu_g$ are modelled as 
 \begin{equation}
 \label{eq2}
-u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + M_{-S} a_{-S}
+\bu_g = \sum_{k=1}^s  \bmm_{S_k} a_{S_k} +\bM_{-S} \ba_{-S}
 \end{equation}
-where $m_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the  $k$th selected SNP, 
-$a_{S_k}$ is the additive effect of the $k$th selected SNP, $M_{-S}^{(b \; \times \; L-s)}$ is the matrix of  SNP genotypes 
-with the data for the SNP in $S$ removed,  and $a_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
-$a_{-S} \sim N(0, \sigma_a^2 I^{(L-s \; \times \;  L-s)})$. 
+where $\bmm_{S_k}^{(n_g \; \times \; 1)}$ is the vector of genotypes for the  $k$th selected SNP, 
+$a_{S_k}$ is the additive effect of the $k$th selected SNP, $\bM_{-S}^{(b \; \times \; L-s)}$ is the matrix of  SNP genotypes 
+with the data for the SNP in $S$ removed,  and $\ba_{-S}^{(L-s \; \times  \; 1)}$ is a random effect whose distribution is 
+$\ba_{-S} \sim N(\bzero, \sigma_a^2 \bI^{(L-s \; \times \;  L-s)})$. 
 The terms in the summation on the left hand side are fixed effects.   They account 
 for the additive effects of those SNPs that have been found to be in association with the trait. The other term is a random effect. 
 It accounts for the joint effect of the yet-to-be-identified SNP that are in association with the trait. 
@@ -388,7 +409,7 @@ is effective for discovering SNP-trait associations.
 
 
 Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood (REML).  For complex models, REML
-can be computationally demanding. However, our model only contains a single random effect ($a_{-S}$). Here, highly efficient single-dimension 
+can be computationally demanding. However, our model only contains a single random effect ($\ba_{-S}$). Here, highly efficient single-dimension 
 optimisation via spectral decomposition is possible \cite{kang2008efficient}. 
 
 Third, we identify the $(s+1)$th SNP that is in strongest association with the trait, based on the maximum score statistic
@@ -406,29 +427,29 @@ model building process is complete. The set of SNP in strongest association with
 
 \subsubsection{Reducing the dimension of the model}
 In practice, estimating the parameters of (\ref{eq2}) can be demanding, computationally. 
-The vector $a_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
+The vector $\ba_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
 $L$, the number of SNPs, can be extremely large.  An alternative model is given by 
 Verbyla \cite{verbyla2012rwgaim,verbyla2014whole}. 
 They show how to reformulate (\ref{eq2}) to be a model with a random effect with only $n$ elements
 \begin{equation}
 \label{eq3}
-u_g = \sum_{k=1}^s  m_{S_k} a_{S_k} + (M_{-S} M_{-S}^T)^{1/2} a^*_{-S}
+\bu_g = \sum_{k=1}^s  \bmm_{S_k} a_{S_k} + (\bM_{-S} \bM_{-S}^T)^{1/2} \ba^*_{-S}
 \end{equation}
-where $a^* \sim N(0, \sigma_a^2 I^{(n_g \; \times \;  n_g)})$, and 
-$(M_{-S} M_{-S}^T)^{1/2}$ can be calculated via singular value decomposition \cite{golub2012matrix}.  
+where $\ba^* \sim N(\bzero, \sigma_a^2 \bI^{(n_g \; \times \;  n_g)})$, and 
+$(\bM_{-S} \bM_{-S}^T)^{1/2}$ can be calculated via singular value decomposition \cite{golub2012matrix}.  
 Although it may not be obvious, the two models are equivalent, 
 having identical variance structures. Yet, the computational cost of model (\ref{eq3}) compared to 
 model (\ref{eq2}) is much less, due to the random term in model (\ref{eq3}) having only $n$ instead of $L-s$ 
 effects needing estimating. 
 
-Verbyla \cite{verbyla2012rwgaim,verbyla2014whole} go on to show how to recover $\widetilde{a}$ from estimates from model  (\ref{eq3})  with 
+Verbyla \cite{verbyla2012rwgaim,verbyla2014whole} go on to show how to recover $\bwidetildea$ from estimates from model  (\ref{eq3})  with 
 \begin{equation}
-\widetilde{a} = \left [ M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \right ] \widetilde{a}^*
+\bwidetildea = \left [ \bM_{-S}^T (\bM_{-S} \bM_{-S}^T)^{-1/2} \right ] \bwidetildea^*
 \end{equation}
 where its variance matrix is
 \begin{equation}
 \label{eq4}
-\textrm{var}(\widetilde{a}) = M_{-S}^T (M_{-S} M_{-S}^T)^{-1/2} \textrm{var}(\widetilde{a}^*) (M_{-S} M_{-S}^T)^{-1/2} M_{-S}
+\textrm{var}(\bwidetildea) = \bM_{-S}^T (\bM_{-S} \bM_{-S}^T)^{-1/2} \textrm{var}(\bwidetildea^*) (\bM_{-S} \bM_{-S}^T)^{-1/2} \bM_{-S}
 \end{equation}
 These values are needed in order to calculate the score statistic $t_j^2$ for identifying the SNP in strongest association with the trait. 
 Fortunately, when calculating $t_j^2$, only the diagonal elements of the variance matrix are needed which simplifies the  calculation 
@@ -508,7 +529,8 @@ number of times the SNP is recorded divided by the number of replicates.
 
 \subsection{Generation of Simulation Data}
 
-The data are generated via data perturbation (Zhao et al. 2007). Data perturbation amalgamates real with simulated data to generate replicates. 
+The data are generated via data perturbation \cite{zhao2007arabidopsis}. 
+Data perturbation amalgamates real with simulated data to generate replicates. 
 It is a way of introducing greater realism into a simulation study. 
  Here, the genotype data are real, the 
 quantitative trait data are simulated. 
@@ -516,13 +538,13 @@ quantitative trait data are simulated.
 according to the specifications of the scenario, from data collected from the 1000 Genome Project, version 3   \cite{10002010map}. 
 Across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. 
 
-To generate the trait data $y$, first, $q$, the number of SNPs that are to be assigned a quantitative value is drawn from a Poisson distribution with 
+To generate the trait data $\by$, first, $q$, the number of SNPs that are to be assigned a quantitative value is drawn from a Poisson distribution with 
 mean 30. Second, $q$ SNP are selected randomly. Third, we assume an additive model for the SNPs. The SNP genotypes AA, AB, and BB 
 are assigned the values -1, 0, and 1, respectively. Fourth, the SNP effects are summed across the $q$ selected loci, for each individual, to 
-generate a $g^{(n \times 1)}$ vector of genetic values where $n$ is the number of individuals. 
-Fifth, $e^{(n \times 1)}$, a vector of residuals, is drawn from a normal distribution where $e_i \sim N(0, \sigma^2_e)$ and $\sigma^2_e$ is 
-the residual variance that has been set to yield a trait with heritability 0.5. Sixth,  the trait data are formed as $y =  g + e$.  
-In forming $y$, we have purposely not included any other environmental variables such as age, sex, or experimental design effects. This is because 
+generate a $\bm{g}^{(n \times 1)}$ vector of genetic values where $n$ is the number of individuals. 
+Fifth, $\bm{e}^{(n \times 1)}$, a vector of residuals, is drawn from a normal distribution where $e_i \sim N(0, \sigma^2_e)$ and $\sigma^2_e$ is 
+the residual variance that has been set to yield a trait with heritability 0.5. Sixth,  the trait data are formed as $\by =  \bm{g} + \bm{e}$.  
+In forming $\by$, we have purposely not included any other environmental variables such as age, sex, or experimental design effects. This is because 
 not all the methods were implemented to handle the inclusion of additional fixed effects. A two-stage modelling approach 
 is often adopted to deal with this situation, but we chose not to introduce this complexity into the analyses.  
 
@@ -531,7 +553,7 @@ is often adopted to deal with this situation, but we chose not to introduce this
 \subsection{Implementation}
 
 Eagle has been implemented as an R package of the same name. Much of the computation though is performed outside of R 
-via C++ functions that utilise Eigen C++ routines (ref). Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
+via C++ functions that utilise Eigen C++ routines. Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
 mathematical libraries common to most computer systems. By making use of multi-threaded  BLAS and LAPACK libraries, many of the 
 calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How-To guides, and 
 a link to our server for demonstrating Eagle on some test data are available on the Eagle website (http://eagle.r-forge.r-project.org).  
@@ -552,7 +574,7 @@ with single-locus association mapping, the method of choice. Furthermore, these 
 
 Eagle outperformed the other multiple-locus methods in our simulation study. However, we are cognizant of the fact  that we made several implementation 
 choices that impact our conclusions.  For instance, we chose to calculate the significance of the 
-SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation and its variants \cite{ browning2008presto, pahl2010permory  } are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
+SNP effects from bigRR, LMM-Lasso, and glmnet via stability selection.  Permutation and its variants \cite{ browning2008presto,pahl2010permory} are also equally valid empirical approaches. Stability selection though has the advantage of being based on repeated sampling of only a proportion (50\% in our case) of the 
 data. Also, when analysing the (sub)samples, it was not necessary to calculate the entire solution path for a method. 
  Instead,  analyses are 
 performed for a fixed value of the regularisation parameter, greatly reducing the amount of computation required. For r2VIM, an R package 
@@ -570,7 +592,7 @@ is to adopt a two-stage analysis procedure. In the first stage, a single linear 
 including the extra random effects, is 
 captured in this first-stage model. In the second stage, Eagle is run not on the original trait data but adjusted trait data which are obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
 Although not specifically designed for association mapping,
-WGAIM \cite{verbyla2007analysis}, upon which Eagle is based, and RRGAIM \cite{verbyla2012rwgaim}  are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
+WGAIM \cite{verbyla2007analysis}, upon which Eagle is based, and RWGAIM \cite{verbyla2012rwgaim}  are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
 models,  run time and memory usage can become limiting factors for analysis. 
 
 
