@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  4 OCT 2018 15:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  8 OCT 2018 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -211,11 +211,11 @@ LaTeX Warning: Float too large for page by 8.34198pt on input line 262.
 
 [8] [9 <./power1main-eps-converted-to.pdf>] [10]
 Package epstopdf Info: Source file: <mouseresults.eps>
-(epstopdf)                    date: 2018-06-28 16:40:56
-(epstopdf)                    size: 52351 bytes
+(epstopdf)                    date: 2018-10-06 16:33:43
+(epstopdf)                    size: 52511 bytes
 (epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 16:43:09
-(epstopdf)                    size: 15601 bytes
+(epstopdf)                    date: 2018-10-06 16:37:41
+(epstopdf)                    size: 15698 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
 (epstopdf)             \includegraphics on input line 323.
@@ -238,17 +238,17 @@ LaTeX Warning: Float too large for page by 23.94202pt on input line 326.
 
 [11] [12 <./mouseresults-eps-converted-to.pdf>] [13] [14] [15] [16] [17]
 [18]
-Overfull \hbox (2.13956pt too wide) in paragraph at lines 575--586
+Overfull \hbox (2.13956pt too wide) in paragraph at lines 577--588
 []\OT1/cmr/m/n/10 Eagle out-per-formed the other multiple-locus meth-ods in our
  sim-u-la-tion study.
  []
 
 [19] (./paper.bbl [20] [21] [22]) [23] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 1698 strings out of 493089
- 24090 string characters out of 6134842
- 84940 words of memory out of 5000000
- 5160 multiletter control sequences out of 15000+600000
+ 1699 strings out of 493089
+ 24111 string characters out of 6134842
+ 84944 words of memory out of 5000000
+ 5161 multiletter control sequences out of 15000+600000
  13927 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,7n,23p,979b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -272,7 +272,7 @@ c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (23 pages, 422355 bytes).
+Output written on paper.pdf (23 pages, 422729 bytes).
 PDF statistics:
  174 PDF objects out of 1000 (max. 8388607)
  121 compressed objects within 2 object streams

@@ -1,0 +1,11 @@
+biblibrary.bib
+mouseresults-eps-converted-to.pdf
+mouseresults.eps
+paper.aux
+paper.bbl
+paper.blg
+paper.dvi
+paper.log
+paper.pdf
+paper.synctex.gz
+paper.tex

@@ -26,7 +26,7 @@
 
 %%      To Do
 %%   1. make ARi's changes to paper
-%%    2. add bold font to matrices and vectors
+%%    X 2. add bold font to matrices and vectors
 %%    3. change plot titles to be more condense
 %%    4.tidy up doc - reformat - remove comments make nice
 %%    5 write cover letter
@@ -83,10 +83,10 @@ What has not changed is that it remains common practice to analyse genome-wide a
 First, the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. 
 The identification of these regions from these analyses is not always straightforward. GWAS results are reported, typically, via Manhattan plots 
 that plot the -log$_{10}$ of the $p$ value for each locus against the map position of the locus. The $p$ value is obtained by testing the statistical 
-significance of a SNP when treated as an effect in an appropriate model. 
+significance of a single nucleotide polymorphisms (SNP) when treated as an effect in an appropriate model. 
 The location of peaks in this plot identify genomic 
 regions of interest. Inferring the exact number of regions though can be difficult if the peaks are not well separated. Second, when multiple statistical tests are performed, the probability of wrongly accepting a result (type 1 error) is inflated. This is known as the multiple testing problem. 
-Many different solutions have been offered \cite{storey2003statistical, li2005adjusting, de2005efficiency}. Yet, there is still no well accepted way of correcting for multiple testing in the context of genome-wide association mapping. Third, many of the traits whose genetic secretes we are trying to discover are complex. There will be multiple SNPs in linkage disequilibrium with genes that are influencing the trait. Yet, a locus-by-locus mapping approach only assesses the evidence for association between a single marker locus and trait.
+Many different solutions have been offered \cite{storey2003statistical, li2005adjusting, de2005efficiency}. Yet, there is still no well accepted way of correcting for multiple testing in the context of genome-wide association mapping. Third, many of the traits whose genetic secrets we are trying to discover are complex. There will be multiple SNPs in linkage disequilibrium with genes that are influencing the trait. Yet, a locus-by-locus mapping approach only assesses the evidence for association between a single marker locus and trait.
 
 It is somewhat surprising then that multiple-locus association mapping methods haven't attracted more attention. Methods based on 
 regularisation techniques, such as ridge regression \cite{shen2013novel}  and lasso \cite{rakitsch2013lasso}, measure all locus-trait associations simultaneously. 
@@ -121,7 +121,7 @@ A large simulation study was performed where we sought to  answer two questions.
 First, how does Eagle compare, in terms of run time and memory usage, to 
 competing implementations? Second, how well does Eagle find true associations (power) and avoid 
 false associations (type 1 errors)? Data were generated under six different scenarios; a study of size 150 individuals 
-and 5,000 single nucleotide polymorphisms (SNPs) (150 x 5K),  350 individuals and 400,000 SNPs (350 x 400K),  1,500 individuals and 
+and 5,000 single SNPs (150 x 5K),  350 individuals and 400,000 SNPs (350 x 400K),  1,500 individuals and 
 50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
 1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
 These scenarios reflect, at least in some cases, the sizes of study being performed in animals, plants, and humans.  
@@ -415,13 +415,15 @@ optimisation via spectral decomposition is possible \cite{kang2008efficient}.
 Third, we identify the $(s+1)$th SNP that is in strongest association with the trait, based on the maximum score statistic
 $t_j^2 = \frac{ \widetilde{a} _j^2}{\textrm{var}(\widetilde{a}_j)}$ where $\widetilde{a}_j$ is the best linear unbiased predictor (BLUP), 
 and $\textrm{var}(\widetilde{a}_j)$ is its variance. This statistic is not only appealing intuitively, where we 
-identify a SNP based on its (random) effect size and accuracy, but is theoretically justified \cite{verbyla2012rwgaim}.
+identify a SNP based on its (random) effect size and accuracy, but is justifiable, theoretically \cite{verbyla2012rwgaim}.
 
-Fourth, we determine the importance of the $(s+1)$th selected SNP via a model selection strategy. 
+Fourth, we determine the importance of the $(s+1)$th selected SNP via a model selection strategy  \cite{verbyla2007analysis}. 
 We begin by reforming (\ref{eq2}) where $S$ now contains the $s + 1$ selected SNP.  We then fit this new model to the data
 via maximum likelihood and calculate its extended Bayesian information criteria (extBIC) \cite{chen2008extended}.  The 
 extBIC is a model selection measure that takes into account the number of unknown parameters and the complexity 
-of the model space.  It is well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. If this new model has a larger extBIC than the current model, then the $s+1$th selected SNP is added to 
+of the model space.  It is well suited to the model selection problem in genome-wide association studies \cite{chen2008extended}. 
+It is different to the model selection measure used in  \cite{verbyla2007analysis}.
+If this new model has a larger extBIC than the current model, then the $s+1$th selected SNP is added to 
 the current model and the above process is repeated. If this new model has a smaller extBIC than the current model, then the 
 model building process is complete. The set of SNP in strongest association with the trait is the $s$ SNPs previously identified. 
 
@@ -590,7 +592,7 @@ Eagle's computational speed does come at a cost. It is a weakness shared by all 
 Eagle cannot handle extra random effects which are sometimes needed when more advanced study designs are employed. One solution 
 is to adopt a two-stage analysis procedure. In the first stage, a single linear mixed model is fitted to the data. Much of the modelling complexity, 
 including the extra random effects, is 
-captured in this first-stage model. In the second stage, Eagle is run not on the original trait data but adjusted trait data which are obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate (ref).  A better solution is to fit a single model to the data. 
+captured in this first-stage model. In the second stage, Eagle is run not on the original trait data but adjusted trait data which are obtained from the first stage analysis. Even though this is a well accepted practice, it is approximate \cite{gogel2018comparison}.  A better solution is to fit a single model to the data. 
 Although not specifically designed for association mapping,
 WGAIM \cite{verbyla2007analysis}, upon which Eagle is based, and RWGAIM \cite{verbyla2012rwgaim}  are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
 models,  run time and memory usage can become limiting factors for analysis. 
