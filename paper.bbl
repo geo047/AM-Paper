@@ -16,7 +16,7 @@
 \bibinfo{author}{Spielman, R.~S.} \& \bibinfo{author}{Ewens, W.~J.}
 \newblock \bibinfo{title}{The tdt and other family-based tests for linkage
   disequilibrium and association.}
-\newblock \emph{\bibinfo{journal}{American journal of human genetics}}
+\newblock \emph{\bibinfo{journal}{American Journal of Human Genetics}}
   \textbf{\bibinfo{volume}{59}}, \bibinfo{pages}{983} (\bibinfo{year}{1996}).
 
 \bibitem{price2010new}
@@ -60,7 +60,7 @@
 \bibitem{de2005efficiency}
 \bibinfo{author}{de~Bakker, P.~I.} \emph{et~al.}
 \newblock \bibinfo{title}{Efficiency and power in genetic association studies}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
   \textbf{\bibinfo{volume}{37}}, \bibinfo{pages}{1217} (\bibinfo{year}{2005}).
 
 \bibitem{shen2013novel}
@@ -84,14 +84,14 @@
 \bibinfo{author}{Szymczak, S.} \emph{et~al.}
 \newblock \bibinfo{title}{r2vim: A new variable selection method for random
   forests in genome-wide association studies}.
-\newblock \emph{\bibinfo{journal}{BioData mining}}
+\newblock \emph{\bibinfo{journal}{BioData Mining}}
   \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
 
 \bibitem{segura2012efficient}
 \bibinfo{author}{Segura, V.} \emph{et~al.}
 \newblock \bibinfo{title}{An efficient multi-locus mixed-model approach for
   genome-wide association studies in structured populations}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
   \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{825--830}
   (\bibinfo{year}{2012}).
 
@@ -99,7 +99,7 @@
 \bibinfo{author}{Zhou, X.} \& \bibinfo{author}{Stephens, M.}
 \newblock \bibinfo{title}{Genome-wide efficient mixed-model analysis for
   association studies}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
   \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{821--824}
   (\bibinfo{year}{2012}).
 
@@ -107,7 +107,7 @@
 \bibinfo{author}{Lippert, C.} \emph{et~al.}
 \newblock \bibinfo{title}{Fast linear mixed models for genome-wide association
   studies}.
-\newblock \emph{\bibinfo{journal}{Nature methods}}
+\newblock \emph{\bibinfo{journal}{Nature Methods}}
   \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{833--835}
   (\bibinfo{year}{2011}).
 
@@ -140,14 +140,14 @@
 \bibinfo{author}{Nicod, J.} \emph{et~al.}
 \newblock \bibinfo{title}{Genome-wide association of multiple complex traits in
   outbred mice by ultra-low-coverage sequencing}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}  (\bibinfo{year}{2016}).
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}  (\bibinfo{year}{2016}).
 
 \bibitem{zheng2011comparison}
 \bibinfo{author}{Zheng, J.}, \bibinfo{author}{Li, Y.},
   \bibinfo{author}{Abecasis, G.~R.} \& \bibinfo{author}{Scheet, P.}
 \newblock \bibinfo{title}{A comparison of approaches to account for uncertainty
   in analysis of imputed genotypes}.
-\newblock \emph{\bibinfo{journal}{Genetic epidemiology}}
+\newblock \emph{\bibinfo{journal}{Genetic Epidemiology}}
   \textbf{\bibinfo{volume}{35}}, \bibinfo{pages}{102--110}
   (\bibinfo{year}{2011}).
 
@@ -158,6 +158,30 @@
 \newblock \emph{\bibinfo{journal}{Biometrika}} \textbf{\bibinfo{volume}{95}},
   \bibinfo{pages}{759--771} (\bibinfo{year}{2008}).
 
+\bibitem{browning2008presto}
+\bibinfo{author}{Browning, B.~L.}
+\newblock \bibinfo{title}{Presto: rapid calculation of order statistic
+  distributions and multiple-testing adjusted p-values via permutation for one
+  and two-stage genetic association studies}.
+\newblock \emph{\bibinfo{journal}{BMC Bioinformatics}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{309} (\bibinfo{year}{2008}).
+
+\bibitem{pahl2010permory}
+\bibinfo{author}{Pahl, R.} \& \bibinfo{author}{Schafer, H.}
+\newblock \bibinfo{title}{Permory: an ld-exploiting permutation test algorithm
+  for powerful genome-wide association testing}.
+\newblock \emph{\bibinfo{journal}{Bioinformatics}}
+  \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{2093--2100}
+  (\bibinfo{year}{2010}).
+
+\bibitem{gogel2018comparison}
+\bibinfo{author}{Gogel, B.}, \bibinfo{author}{Smith, A.} \&
+  \bibinfo{author}{Cullis, B.}
+\newblock \bibinfo{title}{Comparison of a one-and two-stage mixed model
+  analysis of australia's national variety trial southern region wheat data}.
+\newblock \emph{\bibinfo{journal}{Euphytica}} \textbf{\bibinfo{volume}{214}},
+  \bibinfo{pages}{44} (\bibinfo{year}{2018}).
+
 \bibitem{verbyla2007analysis}
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Cullis, B.~R.} \&
   \bibinfo{author}{Thompson, R.}
@@ -165,27 +189,6 @@
   linkage map}.
 \newblock \emph{\bibinfo{journal}{Theoretical and Applied Genetics}}
   \textbf{\bibinfo{volume}{116}}, \bibinfo{pages}{95} (\bibinfo{year}{2007}).
-
-\bibitem{yu2006unified}
-\bibinfo{author}{Yu, J.} \emph{et~al.}
-\newblock \bibinfo{title}{A unified mixed-model method for association mapping
-  that accounts for multiple levels of relatedness}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
-  \textbf{\bibinfo{volume}{38}}, \bibinfo{pages}{203} (\bibinfo{year}{2006}).
-
-\bibitem{zhao2007arabidopsis}
-\bibinfo{author}{Zhao, K.} \emph{et~al.}
-\newblock \bibinfo{title}{An arabidopsis example of association mapping in
-  structured samples}.
-\newblock \emph{\bibinfo{journal}{PLoS genetics}} \textbf{\bibinfo{volume}{3}},
-  \bibinfo{pages}{e4} (\bibinfo{year}{2007}).
-
-\bibitem{kang2008efficient}
-\bibinfo{author}{Kang, H.~M.} \emph{et~al.}
-\newblock \bibinfo{title}{Efficient control of population structure in model
-  organism association mapping}.
-\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{178}},
-  \bibinfo{pages}{1709--1723} (\bibinfo{year}{2008}).
 
 \bibitem{verbyla2012rwgaim}
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Taylor, J.~D.} \&
@@ -195,6 +198,41 @@
 \newblock \emph{\bibinfo{journal}{Genetics Research}}
   \textbf{\bibinfo{volume}{94}}, \bibinfo{pages}{291--306}
   (\bibinfo{year}{2012}).
+
+\bibitem{gudbjartsson2015large}
+\bibinfo{author}{Gudbjartsson, D.~F.} \emph{et~al.}
+\newblock \bibinfo{title}{Large-scale whole-genome sequencing of the icelandic
+  population}.
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
+  \textbf{\bibinfo{volume}{47}}, \bibinfo{pages}{435} (\bibinfo{year}{2015}).
+
+\bibitem{long2017whole}
+\bibinfo{author}{Long, T.} \emph{et~al.}
+\newblock \bibinfo{title}{Whole-genome sequencing identifies common-to-rare
+  variants associated with human blood metabolites}.
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
+  \textbf{\bibinfo{volume}{49}}, \bibinfo{pages}{568} (\bibinfo{year}{2017}).
+
+\bibitem{yu2006unified}
+\bibinfo{author}{Yu, J.} \emph{et~al.}
+\newblock \bibinfo{title}{A unified mixed-model method for association mapping
+  that accounts for multiple levels of relatedness}.
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
+  \textbf{\bibinfo{volume}{38}}, \bibinfo{pages}{203} (\bibinfo{year}{2006}).
+
+\bibitem{zhao2007arabidopsis}
+\bibinfo{author}{Zhao, K.} \emph{et~al.}
+\newblock \bibinfo{title}{An arabidopsis example of association mapping in
+  structured samples}.
+\newblock \emph{\bibinfo{journal}{PLoS Genetics}} \textbf{\bibinfo{volume}{3}},
+  \bibinfo{pages}{e4} (\bibinfo{year}{2007}).
+
+\bibitem{kang2008efficient}
+\bibinfo{author}{Kang, H.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Efficient control of population structure in model
+  organism association mapping}.
+\newblock \emph{\bibinfo{journal}{Genetics}} \textbf{\bibinfo{volume}{178}},
+  \bibinfo{pages}{1709--1723} (\bibinfo{year}{2008}).
 
 \bibitem{verbyla2014whole}
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Cavanagh, C.~R.} \&
@@ -214,7 +252,7 @@
 \bibinfo{author}{Lockhart, R.}, \bibinfo{author}{Taylor, J.},
   \bibinfo{author}{Tibshirani, R.~J.} \& \bibinfo{author}{Tibshirani, R.}
 \newblock \bibinfo{title}{A significance test for the lasso}.
-\newblock \emph{\bibinfo{journal}{Annals of statistics}}
+\newblock \emph{\bibinfo{journal}{Annals of Statistics}}
   \textbf{\bibinfo{volume}{42}}, \bibinfo{pages}{413} (\bibinfo{year}{2014}).
 
 \bibitem{meinshausen2010stability}
@@ -223,43 +261,5 @@
 \newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
   Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{72}},
   \bibinfo{pages}{417--473} (\bibinfo{year}{2010}).
-
-\bibitem{browning2008presto}
-\bibinfo{author}{Browning, B.~L.}
-\newblock \bibinfo{title}{Presto: rapid calculation of order statistic
-  distributions and multiple-testing adjusted p-values via permutation for one
-  and two-stage genetic association studies}.
-\newblock \emph{\bibinfo{journal}{BMC bioinformatics}}
-  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{309} (\bibinfo{year}{2008}).
-
-\bibitem{pahl2010permory}
-\bibinfo{author}{Pahl, R.} \& \bibinfo{author}{Schafer, H.}
-\newblock \bibinfo{title}{Permory: an ld-exploiting permutation test algorithm
-  for powerful genome-wide association testing}.
-\newblock \emph{\bibinfo{journal}{Bioinformatics}}
-  \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{2093--2100}
-  (\bibinfo{year}{2010}).
-
-\bibitem{gogel2018comparison}
-\bibinfo{author}{Gogel, B.}, \bibinfo{author}{Smith, A.} \&
-  \bibinfo{author}{Cullis, B.}
-\newblock \bibinfo{title}{Comparison of a one-and two-stage mixed model
-  analysis of australia's national variety trial southern region wheat data}.
-\newblock \emph{\bibinfo{journal}{Euphytica}} \textbf{\bibinfo{volume}{214}},
-  \bibinfo{pages}{44} (\bibinfo{year}{2018}).
-
-\bibitem{gudbjartsson2015large}
-\bibinfo{author}{Gudbjartsson, D.~F.} \emph{et~al.}
-\newblock \bibinfo{title}{Large-scale whole-genome sequencing of the icelandic
-  population}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
-  \textbf{\bibinfo{volume}{47}}, \bibinfo{pages}{435} (\bibinfo{year}{2015}).
-
-\bibitem{long2017whole}
-\bibinfo{author}{Long, T.} \emph{et~al.}
-\newblock \bibinfo{title}{Whole-genome sequencing identifies common-to-rare
-  variants associated with human blood metabolites}.
-\newblock \emph{\bibinfo{journal}{Nature genetics}}
-  \textbf{\bibinfo{volume}{49}}, \bibinfo{pages}{568} (\bibinfo{year}{2017}).
 
 \end{thebibliography}

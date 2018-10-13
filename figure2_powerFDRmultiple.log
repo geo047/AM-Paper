@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  28 JUN 2018 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  13 OCT 2018 11:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -159,27 +159,22 @@ Package epstopdf Info: Source file: <power1main.eps>
 (epstopdf)                    date: 2018-06-28 14:47:44
 (epstopdf)                    size: 89195 bytes
 (epstopdf)             Output file: <power1main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 14:46:11
-(epstopdf)                    size: 16750 bytes
+(epstopdf)                    date: 2018-06-28 14:59:33
+(epstopdf)                    size: 16875 bytes
 (epstopdf)             Command: <repstopdf --outfile=power1main-eps-converted-t
 o.pdf power1main.eps>
-(epstopdf)             \includegraphics on input line 27.
-runsystem(repstopdf --outfile=power1main-eps-converted-to.pdf power1main.eps)..
-.executed safely (allowed).
-
-Package epstopdf Info: Result file: <power1main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 14:59:33
-(epstopdf)                    size: 16875 bytes.
+(epstopdf)             \includegraphics on input line 28.
+Package epstopdf Info: Output file is already uptodate.
 
 <power1main-eps-converted-to.pdf, id=1, 561.09625pt x 722.7pt>
 File: power1main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power1main-eps-converted-to.pdf>
-Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 27.
+Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 28.
 
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (10.65672pt too wide) in paragraph at lines 27--28
+Overfull \hbox (10.65672pt too wide) in paragraph at lines 28--29
  [] 
  []
 
@@ -192,10 +187,10 @@ Here is how much of TeX's memory you used:
  5069 multiletter control sequences out of 15000+600000
  4330 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,5n,24p,395b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,5n,24p,514b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on figure2_powerFDRmultiple.pdf (1 page, 30644 bytes).
+Output written on figure2_powerFDRmultiple.pdf (1 page, 32586 bytes).
 PDF statistics:
  21 PDF objects out of 1000 (max. 8388607)
  13 compressed objects within 1 object stream

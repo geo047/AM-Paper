@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 JUN 2018 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  13 OCT 2018 11:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -155,25 +155,25 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+LaTeX Font Info:    Try loading font information for U+msa on input line 26.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+LaTeX Font Info:    Try loading font information for U+msb on input line 26.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package epstopdf Info: Source file: <mouseresults.eps>
-(epstopdf)                    date: 2018-06-28 16:40:56
-(epstopdf)                    size: 52351 bytes
+(epstopdf)                    date: 2018-10-06 16:33:43
+(epstopdf)                    size: 52511 bytes
 (epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 16:43:09
-(epstopdf)                    size: 15601 bytes
+(epstopdf)                    date: 2018-10-06 16:37:41
+(epstopdf)                    size: 15698 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 31.
+(epstopdf)             \includegraphics on input line 30.
 Package epstopdf Info: Output file is already uptodate.
 
 <mouseresults-eps-converted-to.pdf, id=1, 561.09625pt x 722.7pt>
@@ -181,10 +181,10 @@ File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 3
-1.
+0.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (10.65672pt too wide) in paragraph at lines 31--32
+Overfull \hbox (10.65672pt too wide) in paragraph at lines 30--31
  [] 
  []
 
@@ -197,11 +197,11 @@ Here is how much of TeX's memory you used:
  5083 multiletter control sequences out of 15000+600000
  6029 words of font info for 24 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,5n,24p,681b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,5n,24p,658b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on figure3_mouse.pdf (1 page, 41681 bytes).
+Output written on figure3_mouse.pdf (1 page, 41739 bytes).
 PDF statistics:
  25 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream
