@@ -14,7 +14,7 @@
 
 \bibitem{spielman1996tdt}
 \bibinfo{author}{Spielman, R.~S.} \& \bibinfo{author}{Ewens, W.~J.}
-\newblock \bibinfo{title}{The tdt and other family-based tests for linkage
+\newblock \bibinfo{title}{The {TDT} and other family-based tests for linkage
   disequilibrium and association.}
 \newblock \emph{\bibinfo{journal}{American Journal of Human Genetics}}
   \textbf{\bibinfo{volume}{59}}, \bibinfo{pages}{983} (\bibinfo{year}{1996}).
@@ -29,7 +29,7 @@
 
 \bibitem{purcell2007plink}
 \bibinfo{author}{Purcell, S.} \emph{et~al.}
-\newblock \bibinfo{title}{Plink: a tool set for whole-genome association and
+\newblock \bibinfo{title}{{PLINK}: a tool set for whole-genome association and
   population-based linkage analyses}.
 \newblock \emph{\bibinfo{journal}{The American Journal of Human Genetics}}
   \textbf{\bibinfo{volume}{81}}, \bibinfo{pages}{559--575}
@@ -37,7 +37,7 @@
 
 \bibitem{bradbury2007tassel}
 \bibinfo{author}{Bradbury, P.~J.} \emph{et~al.}
-\newblock \bibinfo{title}{Tassel: software for association mapping of complex
+\newblock \bibinfo{title}{{TASSEL}: software for association mapping of complex
   traits in diverse samples}.
 \newblock \emph{\bibinfo{journal}{Bioinformatics}}
   \textbf{\bibinfo{volume}{23}}, \bibinfo{pages}{2633--2635}
@@ -74,7 +74,7 @@
 \bibitem{rakitsch2013lasso}
 \bibinfo{author}{Rakitsch, B.}, \bibinfo{author}{Lippert, C.},
   \bibinfo{author}{Stegle, O.} \& \bibinfo{author}{Borgwardt, K.}
-\newblock \bibinfo{title}{A lasso multi-marker mixed model for association
+\newblock \bibinfo{title}{A {L}asso multi-marker mixed model for association
   mapping with population structure correction}.
 \newblock \emph{\bibinfo{journal}{Bioinformatics}}
   \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{206--214}
@@ -82,7 +82,7 @@
 
 \bibitem{szymczak2016r2vim}
 \bibinfo{author}{Szymczak, S.} \emph{et~al.}
-\newblock \bibinfo{title}{r2vim: A new variable selection method for random
+\newblock \bibinfo{title}{{r2VIM}: A new variable selection method for random
   forests in genome-wide association studies}.
 \newblock \emph{\bibinfo{journal}{BioData Mining}}
   \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{7} (\bibinfo{year}{2016}).
@@ -105,8 +105,8 @@
 
 \bibitem{lippert2011fast}
 \bibinfo{author}{Lippert, C.} \emph{et~al.}
-\newblock \bibinfo{title}{Fast linear mixed models for genome-wide association
-  studies}.
+\newblock \bibinfo{title}{{FaST} linear mixed models for genome-wide
+  association studies}.
 \newblock \emph{\bibinfo{journal}{Nature Methods}}
   \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{833--835}
   (\bibinfo{year}{2011}).
@@ -114,8 +114,8 @@
 \bibitem{Friedman2010glmnet}
 \bibinfo{author}{Friedman, J.}, \bibinfo{author}{Hastie, T.} \&
   \bibinfo{author}{Tibshirani, R.}
-\newblock \bibinfo{title}{Regularization paths for generalized linear models
-  via coordinate descent}.
+\newblock \bibinfo{title}{Regularization {P}aths for {G}eneralized {L}inear
+  {M}odels via {C}oordinate {D}escent}.
 \newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
   \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{1--22} (\bibinfo{year}{2010}).
 \newblock \urlprefix\url{http://www.jstatsoft.org/v33/i01/}.
@@ -153,23 +153,23 @@
 
 \bibitem{chen2008extended}
 \bibinfo{author}{Chen, J.} \& \bibinfo{author}{Chen, Z.}
-\newblock \bibinfo{title}{Extended bayesian information criteria for model
+\newblock \bibinfo{title}{Extended {B}ayesian information criteria for model
   selection with large model spaces}.
 \newblock \emph{\bibinfo{journal}{Biometrika}} \textbf{\bibinfo{volume}{95}},
   \bibinfo{pages}{759--771} (\bibinfo{year}{2008}).
 
 \bibitem{browning2008presto}
 \bibinfo{author}{Browning, B.~L.}
-\newblock \bibinfo{title}{Presto: rapid calculation of order statistic
-  distributions and multiple-testing adjusted p-values via permutation for one
-  and two-stage genetic association studies}.
+\newblock \bibinfo{title}{{PRESTO}: rapid calculation of order statistic
+  distributions and multiple-testing adjusted {P}-values via permutation for
+  one and two-stage genetic association studies}.
 \newblock \emph{\bibinfo{journal}{BMC Bioinformatics}}
   \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{309} (\bibinfo{year}{2008}).
 
 \bibitem{pahl2010permory}
 \bibinfo{author}{Pahl, R.} \& \bibinfo{author}{Schafer, H.}
-\newblock \bibinfo{title}{Permory: an ld-exploiting permutation test algorithm
-  for powerful genome-wide association testing}.
+\newblock \bibinfo{title}{{PERMORY}: an {LD}-exploiting permutation test
+  algorithm for powerful genome-wide association testing}.
 \newblock \emph{\bibinfo{journal}{Bioinformatics}}
   \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{2093--2100}
   (\bibinfo{year}{2010}).
@@ -178,14 +178,15 @@
 \bibinfo{author}{Gogel, B.}, \bibinfo{author}{Smith, A.} \&
   \bibinfo{author}{Cullis, B.}
 \newblock \bibinfo{title}{Comparison of a one-and two-stage mixed model
-  analysis of australia's national variety trial southern region wheat data}.
+  analysis of {A}ustralia's {N}ational {V}ariety {T}rial {S}outhern {R}egion
+  wheat data}.
 \newblock \emph{\bibinfo{journal}{Euphytica}} \textbf{\bibinfo{volume}{214}},
   \bibinfo{pages}{44} (\bibinfo{year}{2018}).
 
 \bibitem{verbyla2007analysis}
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Cullis, B.~R.} \&
   \bibinfo{author}{Thompson, R.}
-\newblock \bibinfo{title}{The analysis of qtl by simultaneous use of the full
+\newblock \bibinfo{title}{The analysis of {QTL} by simultaneous use of the full
   linkage map}.
 \newblock \emph{\bibinfo{journal}{Theoretical and Applied Genetics}}
   \textbf{\bibinfo{volume}{116}}, \bibinfo{pages}{95} (\bibinfo{year}{2007}).
@@ -193,16 +194,16 @@
 \bibitem{verbyla2012rwgaim}
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Taylor, J.~D.} \&
   \bibinfo{author}{Verbyla, K.~L.}
-\newblock \bibinfo{title}{Rwgaim: an efficient high-dimensional random whole
-  genome average (qtl) interval mapping approach}.
+\newblock \bibinfo{title}{{RWGAIM}: an efficient high-dimensional random whole
+  genome average ({QTL}) interval mapping approach}.
 \newblock \emph{\bibinfo{journal}{Genetics Research}}
   \textbf{\bibinfo{volume}{94}}, \bibinfo{pages}{291--306}
   (\bibinfo{year}{2012}).
 
 \bibitem{gudbjartsson2015large}
 \bibinfo{author}{Gudbjartsson, D.~F.} \emph{et~al.}
-\newblock \bibinfo{title}{Large-scale whole-genome sequencing of the icelandic
-  population}.
+\newblock \bibinfo{title}{Large-scale whole-genome sequencing of the
+  {I}celandic population}.
 \newblock \emph{\bibinfo{journal}{Nature Genetics}}
   \textbf{\bibinfo{volume}{47}}, \bibinfo{pages}{435} (\bibinfo{year}{2015}).
 
@@ -222,7 +223,7 @@
 
 \bibitem{zhao2007arabidopsis}
 \bibinfo{author}{Zhao, K.} \emph{et~al.}
-\newblock \bibinfo{title}{An arabidopsis example of association mapping in
+\newblock \bibinfo{title}{An {A}rabidopsis example of association mapping in
   structured samples}.
 \newblock \emph{\bibinfo{journal}{PLoS Genetics}} \textbf{\bibinfo{volume}{3}},
   \bibinfo{pages}{e4} (\bibinfo{year}{2007}).
@@ -238,26 +239,27 @@
 \bibinfo{author}{Verbyla, A.~P.}, \bibinfo{author}{Cavanagh, C.~R.} \&
   \bibinfo{author}{Verbyla, K.~L.}
 \newblock \bibinfo{title}{Whole-genome analysis of multienvironment or
-  multitrait qtl in magic}.
+  multitrait {QTL} in {MAGIC}}.
 \newblock \emph{\bibinfo{journal}{G3: Genes, Genomes, Genetics}}
   \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{1569--1584}
   (\bibinfo{year}{2014}).
 
 \bibitem{golub2012matrix}
 \bibinfo{author}{Golub, G.~H.} \& \bibinfo{author}{Van~Loan, C.~F.}
-\newblock \emph{\bibinfo{title}{Matrix computations}}, vol.~\bibinfo{volume}{3}
-  (\bibinfo{publisher}{JHU Press}, \bibinfo{year}{2012}).
+\newblock \emph{\bibinfo{title}{Matrix {C}omputations}},
+  vol.~\bibinfo{volume}{3} (\bibinfo{publisher}{JHU Press},
+  \bibinfo{year}{2012}).
 
 \bibitem{lockhart2014significance}
 \bibinfo{author}{Lockhart, R.}, \bibinfo{author}{Taylor, J.},
   \bibinfo{author}{Tibshirani, R.~J.} \& \bibinfo{author}{Tibshirani, R.}
-\newblock \bibinfo{title}{A significance test for the lasso}.
+\newblock \bibinfo{title}{A significance test for the {L}asso}.
 \newblock \emph{\bibinfo{journal}{Annals of Statistics}}
   \textbf{\bibinfo{volume}{42}}, \bibinfo{pages}{413} (\bibinfo{year}{2014}).
 
 \bibitem{meinshausen2010stability}
 \bibinfo{author}{Meinshausen, N.} \& \bibinfo{author}{B{\"u}hlmann, P.}
-\newblock \bibinfo{title}{Stability selection}.
+\newblock \bibinfo{title}{Stability {S}election}.
 \newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
   Series B (Statistical Methodology)}} \textbf{\bibinfo{volume}{72}},
   \bibinfo{pages}{417--473} (\bibinfo{year}{2010}).
