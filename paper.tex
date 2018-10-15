@@ -9,16 +9,16 @@
 
 
 %% external tex files
-\externaldocument{figure1_runtimes}
-\externaldocument{figure2_powerFDRmultiple}
-\externaldocument{figure3_mouse}
+%%\externaldocument{figure1_runtimes}
+%%\externaldocument{figure2_powerFDRmultiple}
+%%\externaldocument{figure3_mouse}
 
 \externaldocument{supmaterials}
 
 \begin{document}
 
 \title{Eagle: Making multiple-locus association mapping on a genome-wide scale routine}
-\author{Andrew W. George$^1$, Arunas Verbyla$^1$, Joshua Bowden$^2$}
+\author{Andrew W. George$^{1,*}$, Arunas Verbyla$^1$, Joshua Bowden$^2$}
 
 \maketitle
 
@@ -119,7 +119,7 @@ The number of randomly selected SNPs follows a Poisson distribution with mean 30
  
  Analyses by the eight programs/packages of a replicate proceeded as follows. They were all run at their default settings. 
  Eagle and MLMM were the easiest of the programs/packages to implement. 
- The only parameters requiring specification were the amount of available memory and number of CPU for 
+ The only parameters requiring specification were the amount of available memory and number of CPUs for 
  Eagle and the number of chunks for MLMM. 
  Their results were also immediately 
  interpretable. Their findings were the set of SNPs in strongest association with the trait. Each 
@@ -174,12 +174,30 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
  were thousands of individuals and 1.5 million SNPs, Eagle took just over two hours for the analysis of data from 
  4000 x 1.5M and  12 hours for the analysis of data from 10000 x 1.5M. 
  Towards the final stages of writing this paper, 
- we gained access to a desktop computer with 14-core Xeon processors and 256 gigabytes of RAM. We reran Eagle on data from the largest
+ we gained access to a high-end sever with 14-core Xeon processors and 256 gigabytes of RAM. We reran Eagle on data from the largest
   scenario 10000 x 1.5M to measure the impact on run time. The median run time dropped by more than 70\% 
   from 12 hours to 3.31 hours. 
  
- {\em Figure \ref{fig_time} goes around here}
+ 
+\begin{figure}
+\caption{Median run times, in minutes, for the analysis of simulation study data from the six scenarios. 
+Eagle is compared against five other multiple-locus programs/packages (top left) and two single-locus programs (top right). 
+The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multiple-locus 
+programs/packages, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
+The median run times for the programs/packages across the scenarios are given in the table. The entries in a bold font 
+correspond to the lowest run-time for a scenario. 
+ FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
+ FaST-LMM$^{few}$ is where calculation  of the similarity matrix is based on a subset of the SNP data. }
 
+%% plot formed via PowerPoint - ~/AM-Paper/Figure_power.pptx
+%% script on mac
+%% ~/AM-Paper/AM+/Plots_for_Paper/time_and_memory_plot_for_paper.R
+\label{fig_time}
+\centering
+    \includegraphics[width=1.0\textwidth,natwidth=610,natheight=642]{Figure2_time.jpg}
+\end{figure}
+
+ 
 
 
 
@@ -203,7 +221,22 @@ The power and false discovery rate of Eagle and the two single-locus methods, GE
 Supplementary Figure \ref{supfigpowersingle}. 
 
 
-{\em Figure \ref{figpowermultiple} goes here}
+\begin{figure}
+\caption{Power verse false discovery rates for Eagle and the multiple-locus methods. Plots for only those simulation 
+scenarios where all multiple-locus methods could be implemented are shown.  Eagle has the highest power across the four 
+scenarios but MLMM also performs well. A false discovery rate of greater than 10\% is typically not employed in GWASs so the 
+upper limit of the x-axis is 0.1.}
+\label{figpowermultiple}
+\begin{center}
+\includegraphics[width=15cm, height=15cm]{power1main.eps}
+\end{center}
+
+\end{figure}
+
+
+
+
+
 
 
 In answer to the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations, it does extremely 
@@ -223,7 +256,7 @@ We were interested in comparing results from Eagle with those from single-locus 
  able to confirm the validity of these new findings as they matched what was found in the original study. Having the ability to confirm new findings  in a real study was 
  one of the primary motivators for choosing these data for analysis. 
 
-We repeated the single-locus analyses, as first performed  \cite{nicod2016genome}, except 
+We repeated the single-locus analyses, as first performed in \cite{nicod2016genome}, except 
 that we focused on autosomal SNP and our analyses were based on SNP genotype  rather than SNP dosage. 
 In the original analysis, a genome-wide threshold that gave a false discovery rate of 5\%, was found via permutation. We followed the 
 same empirical procedure but had to increase the number of permutations from 100 to 500. 
@@ -244,7 +277,20 @@ Eagle$^{default}$ and Eagle$^{optimal}$ found two-and-a-half times and over thre
 associations than what is the established way of analysing these data. Furthermore, these extra results found by Eagle were not 
 false positives but could be confirmed from the original study. 
 
-{\em Figure \ref{figmouse} goes here}
+
+\begin{figure}
+\caption{Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
+multiple-locus method
+Eagle. Eagle was run under two settings; its default setting (Eagle$^{default}$) and where the model selection criterion had been optimised 
+for a false discovery rate of 5\% (Eagle$^{optimal}$). 
+The number of SNP-trait associations found are reported. The bar plots framed by boxes are for those traits where using Eagle (default and optimal)   resulted in more findings than with single-locus analysis.} 
+\label{figmouse}
+\begin{center}
+%% obtained from bracewell by running ResultsV2.R from /data/geo047/MWAM/Mouse/OutBred/RScripts/
+\includegraphics[width=15cm, height=15cm]{mouseresults.eps}
+\end{center}
+
+\end{figure}
 
 
 
@@ -548,25 +594,33 @@ Eagle has been implemented as an R package of the same name. Much of the computa
 via C++ functions that utilise Eigen C++ routines. Eagle has been purpose built to rely heavily on calls to BLAS and LAPACK, 
 mathematical libraries common to most computer systems. By making use of multi-threaded  BLAS and LAPACK libraries, many of the 
 calculations in Eagle are parallelised. We have gone to great lengths to make Eagle easy-to-use. Tutorials, videos, How-To guides, and 
-a link to our server for demonstrating Eagle on some test data are available on the Eagle website (http://eagle.r-forge.r-project.org).  
-Eagle is available for download from the CRAN website (https://cran.r-project.org). 
+a link to our server for demonstrating Eagle on some test data are available on the Eagle website. Eagle is available for download from the CRAN website. 
 
   
  
+\section*{Data Availability}
+The input files for Eagle containing the mouse GWAS data are available for download from 
+https://doi.org/10.25919/5bc08287717dd. The original data were obtained from the Heterogeneous Stock Mice website 
+http://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-stock-mice/.  
+
 
 
 
 %%\bibliographystyle{naturemag}
+\section*{References}
 \bibliography{biblibrary}
 
 
-%%\begin{addendum}
-%% \item Put acknowledgements here.
-%% \item[Competing Interests] The authors declare that they have no
-%%competing financial interests.
-%% \item[Correspondence] Correspondence and requests for materials
-%%should be addressed to A.B.C.~(email: myaddress@nowhere.edu).
-%%\end{addendum}
+\begin{addendum}
+ \item We would like to thank the IM\&T Scientific Computing group at the Commonwealth Scientific and Industrial Research Organisation (CSIRO) for providing access and support to the CSIRO Accelerator Cluster upon which all computation was performed. 
+\item[Competing Interests] The authors declare that they have no
+competing financial interests.
+ \item[Correspondence] Correspondence and requests for materials
+should be addressed to Andrew George ~(email: andrew.george@csiro.au).
+\item[URLs]  Eagle website http://eagle.r-forge.r-project.org;   
+CRAN website https://cran.r-project.org. 
+
+\end{addendum}
 
 
 

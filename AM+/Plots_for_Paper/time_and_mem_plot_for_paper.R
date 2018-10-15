@@ -174,6 +174,10 @@ p <- p + theme(legend.position = c(0.82, 0.8),
  p <- p + theme(plot.margin = grid::unit(c(1,5,1,1), "lines"))
  
 
+## increase font size of labels
+ p <- p +theme(axis.title.y=element_text(size=16),
+          axis.title.x=element_text(size=16))
+ 
 p_time <- p
 
 p_time
@@ -308,11 +312,19 @@ p_time
   p <- p + theme(plot.margin = grid::unit(c(1,5,1,1), "lines"))
   
    
+  ## increase font size of labels
+  p <- p +theme(axis.title.y=element_text(size=16),
+                axis.title.x=element_text(size=16))
+  
+  
   p_abstime <- p
   
   p_abstime
 
-
+  
+stop()
+  
+  
 ##-----------------------------
 ## Multiple plots on single page
 ##------------------------------
