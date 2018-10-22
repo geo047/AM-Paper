@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  3 OCT 2018 13:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  16 OCT 2018 14:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -192,10 +192,10 @@ LaTeX Warning: Float too large for page by 120.66876pt on input line 87.
 
 [2]
 Package epstopdf Info: Source file: <mem.eps>
-(epstopdf)                    date: 2018-06-27 17:17:49
+(epstopdf)                    date: 2018-10-15 15:05:52
 (epstopdf)                    size: 27772 bytes
 (epstopdf)             Output file: <mem-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-27 18:38:00
+(epstopdf)                    date: 2018-10-16 14:56:58
 (epstopdf)                    size: 15511 bytes
 (epstopdf)             Command: <repstopdf --outfile=mem-eps-converted-to.pdf m
 em.eps>
@@ -216,10 +216,10 @@ Overfull \hbox (81.7886pt too wide) in paragraph at lines 112--113
 LaTeX Warning: Float too large for page by 59.29732pt on input line 114.
 
 Package epstopdf Info: Source file: <power2main.eps>
-(epstopdf)                    date: 2018-06-28 14:47:44
+(epstopdf)                    date: 2018-10-15 14:51:52
 (epstopdf)                    size: 37544 bytes
 (epstopdf)             Output file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-28 15:22:19
+(epstopdf)                    date: 2018-10-16 14:56:58
 (epstopdf)                    size: 16954 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
@@ -246,7 +246,7 @@ Here is how much of TeX's memory you used:
  5188 multiletter control sequences out of 15000+600000
  11640 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,24p,904b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,8n,24p,898b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbxti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
@@ -256,7 +256,7 @@ ts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr8.pfb>
-Output written on supmaterials.pdf (4 pages, 133965 bytes).
+Output written on supmaterials.pdf (4 pages, 133771 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream
