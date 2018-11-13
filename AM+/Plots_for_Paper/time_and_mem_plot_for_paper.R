@@ -110,7 +110,8 @@ p  <- p + scale_x_continuous(trans="log10", limits=c(500000, 1e11),
 
 
 ##log tick marks
- p <- p +annotation_logticks(scale=TRUE, side="bl")
+ p <- p +annotation_logticks(scale=TRUE, side="bl", size=2, short=unit(0.3, "cm"),mid=unit(0.6, "cm"), 
+                             long=unit(0.9, "cm") )
 
 
 
@@ -126,8 +127,8 @@ p <- p  + ylab(bquote("Median of elapse times (in minutes)\n")) +
 
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
+#p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
+#p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
 
 # alter x and y axis labels 
 p <- p + 
@@ -149,16 +150,16 @@ p <- p +  annotate("text", x=pps, y=rep(9000,length(pps)), label= c("150 x 5K" ,
                                                                     "",  
                                                                     "4000 x 1.5M",  
                                                                     ""),
-                   size=4)
+                   size=11)
 
 
-p <- p +  annotate("text", x=pps, y=rep(6000,length(pps)), label= c("" , 
+p <- p +  annotate("text", x=pps, y=rep(5000,length(pps)), label= c("" , 
                                                                     "1500 x 50K",
                                                                     "" ,  
                                                                     "2000 x 500K", 
                                                                     "",  
                                                                     "10000 x 1.5M"),
-                   size=4)
+                   size=11)
 
 
 
@@ -171,18 +172,37 @@ p <- p + theme(legend.position = c(0.82, 0.8),
  #p <- p + theme(axis.text.x=element_blank(),axis.title.x=element_blank())
  
  ## putting some space around the plot
- p <- p + theme(plot.margin = grid::unit(c(1,5,1,1), "lines"))
+ p <- p + theme(plot.margin = grid::unit(c(1,5,2,1), "lines"))
  
 
 ## increase font size of labels
- p <- p +theme(axis.title.y=element_text(size=16),
-          axis.title.x=element_text(size=16))
+ p <- p +theme(axis.title.y=element_text(size=38),
+          axis.title.x=element_text(size=38))
+ 
+## increase width of axis lines
+p <-  p + theme(axis.line.x = element_line(size = 1.5),
+           axis.line.y = element_line(size = 1.5))
+ 
+
+## increase font of x and y tick labels
+p <-  p + theme(axis.text.x = element_text(size=38),
+                axis.text.y = element_text(size=38))
+
+
+## increase spacing between items in legend
+p <- p  + theme(legend.key.height=unit(4,"line"), legend.text = element_text(size=34))
+
+
+## increase font legened
+# p <- p + theme(legend.text = element_text(size=22))
+ 
+ 
  
 p_time <- p
 
 p_time
 
-
+## Export figure with specs : 1500 x 1000
 
 
 
@@ -244,6 +264,7 @@ p_time
     geom_segment(aes(x=1.5e10,y=0,xend=1.5e10,yend=4000), colour="grey", cex=0.5) 
   
   
+  
   ## log log scale
   p  <- p + scale_x_continuous(trans="log10", limits=c(500000, 1e11),
                                breaks = scales::trans_breaks("log10", function(x) 10^x),
@@ -255,7 +276,9 @@ p_time
   
   
   ##log tick marks
-  p <- p +annotation_logticks(scale=TRUE, side="bl")
+  
+  p <- p +annotation_logticks(scale=TRUE, side="bl", size=2, short=unit(0.3, "cm"),mid=unit(0.6, "cm"), 
+                              long=unit(0.9, "cm") )
   
   
   
@@ -265,15 +288,14 @@ p_time
   ## set theme
   p <-  p + theme_classic()
   
-  
   ## specify xlab and ylab
-  p <- p  + ylab(bquote("Median of elapse times (in minutes) \n")) + 
+  p <- p  + ylab(bquote("Median of elapse times (in minutes)\n")) + 
     xlab(bquote('Number of genotypes'))
   
   
   ##  change x and y labels size and bold
-  p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
-  p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
+  #p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
+  #p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
   
   # alter x and y axis labels 
   p <- p + 
@@ -287,40 +309,71 @@ p_time
   
   
   
+  
   ## add text to plots
-  p <- p +  annotate("text", x=pps, y=rep(9000,length(pps)), label= c("150x5K" , 
+  p <- p +  annotate("text", x=pps, y=rep(9000,length(pps)), label= c("150 x 5K" , 
                                                                       "",
-                                                                      "350x400K" , 
+                                                                      "350 x 400K" , 
                                                                       "",  
-                                                                      "4000x1.5M",  
+                                                                      "4000 x 1.5M",  
                                                                       ""),
-                     size=4)
+                     size=11)
   
   
-  p <- p +  annotate("text", x=pps, y=rep(6000,length(pps)), label= c("" , 
-                                                                     "1500x50K",
-                                                                     "" ,  
-                                                                     "2000x500K", 
-                                                                     "",  
-                                                                     "10000x1.5M"),
-                     size=4)
+  p <- p +  annotate("text", x=pps, y=rep(5000,length(pps)), label= c("" , 
+                                                                      "1500 x 50K",
+                                                                      "" ,  
+                                                                      "2000 x 500K", 
+                                                                      "",  
+                                                                      "10000 x 1.5M"),
+                     size=11)
+  
+  
+  
+  
   
   p <- p + theme(legend.position = c(0.82, 0.8), 
                  legend.justification = c(0, 1))
   
-  ## putting some space around the plot
-  p <- p + theme(plot.margin = grid::unit(c(1,5,1,1), "lines"))
+  # remove x axis labels
+  #p <- p + theme(axis.text.x=element_blank(),axis.title.x=element_blank())
   
-   
+  ## putting some space around the plot
+  p <- p + theme(plot.margin = grid::unit(c(1,5,2,1), "lines"))
+  
+  
   ## increase font size of labels
-  p <- p +theme(axis.title.y=element_text(size=16),
-                axis.title.x=element_text(size=16))
+  p <- p +theme(axis.title.y=element_text(size=38),
+                axis.title.x=element_text(size=38))
+  
+  ## increase width of axis lines
+  p <-  p + theme(axis.line.x = element_line(size = 1.5),
+                  axis.line.y = element_line(size = 1.5))
+  
+  
+  ## increase font of x and y tick labels
+  p <-  p + theme(axis.text.x = element_text(size=38),
+                  axis.text.y = element_text(size=38))
+  
+  
+  ## increase spacing between items in legend
+  p <- p  + theme(legend.key.height=unit(4,"line"), legend.text = element_text(size=34))
+  
+  
+  ## increase font legened
+  # p <- p + theme(legend.text = element_text(size=22))
+  
+  
+  
   
   
   p_abstime <- p
   
   p_abstime
 
+  ## Export figure : JPEG   dims 1700 x `1000`
+  # copy into powerpoint for figure for paper.
+  
   
 stop()
   

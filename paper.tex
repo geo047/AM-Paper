@@ -22,8 +22,6 @@
 
 \maketitle
 
-%%      To Do
-%%    4.tidy up doc - reformat - remove comments make nice
 
 %% New commands ... 
 \newcommand{\bwidetildea}{\widetilde{\bm{a}}}
@@ -46,13 +44,7 @@
 \end{affiliations}
 
 \begin{abstract}
-We present Eagle, a new method for multi-locus association mapping. The
-motivation for developing Eagle was to make multi-locus association mapping "easy" and the method-of-choice. 
-Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. doesn't suffer from multiple testing issues c. is threshold free d. gives results that are immediately interpretable and e. has a computational footprint comparable to single-locus association mapping. 
-By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and 
-multi-locus methods. We also analyse data from a published mouse study. Eagle found over two times more validated findings than the state-of-the-art 
-single-locus method. 
-Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users less familiar with R.
+We present Eagle, a new method for multi-locus association mapping. The motivation for developing Eagle was to make multi-locus association mapping "easy" and the method-of-choice. Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. doesn't suffer from multiple testing issues c. is threshold free d. gives results that are immediately interpretable and e. has a computational footprint comparable to single-locus association mapping. By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and multi-locus methods. We also analyse data from a published mouse study. Eagle found over two times more validated findings than the state-of-the-art single-locus method. Eagle has been implemented as an R package, with a web-based Graphical User Interface (GUI) for users less familiar with R.
 \end{abstract}
 
 
@@ -94,15 +86,15 @@ GEMMA \cite{zhou2012genome}  and FaST-LMM \cite{lippert2011fast} because of thei
 For multi-locus association mapping, we chose bigRR \cite{shen2013novel}, glmnet \cite{Friedman2010glmnet}, 
 LMM-Lasso \cite{rakitsch2013lasso}, MLMM \cite{segura2012efficient} , and r2VIM \cite{szymczak2016r2vim}.  
 Each takes a different approach to multi-locus association mapping. A summary of the key attributes of the different computer programs/packages 
-is given in Supplementary Table \ref{suptabsummary} (See Methods for further details). 
+is given in Supplementary Table \ref{suptabsummary} (see Methods for further details). 
 
  
 
 \subsection{Simulation Study}
 A large simulation study was performed where we sought to  answer two questions. 
-First, how does Eagle compare, in terms of run time and memory usage, to 
-competing implementations? Second, how well does Eagle find true associations (power) and avoid 
-false associations (type 1 errors)? Data were generated under six different scenarios; a study of size 150 individuals 
+First, how well does Eagle find true associations (power) and avoid 
+false associations (type 1 errors)? Second, how does Eagle compare, in terms of run time and memory usage, to 
+competing implementations? Data were generated under six different scenarios; a study of size 150 individuals 
 and 5,000 single SNPs (150 x 5K),  350 individuals and 400,000 SNPs (350 x 400K),  1,500 individuals and 
 50,000 SNPs (1500 x 50K), 2,000 individuals and 500,000 SNPs (2000 x 500K), 4,000 individuals and 
 1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
@@ -149,11 +141,59 @@ significance measure in each of the peak regions was recorded as a finding.
 
 
 
+\subsection{Power and False Discovery Rates}
+
+Here, we answer the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. We do this by estimating the power and false discovery rates of Eagle and the other methods for the six scenarios.  Since, for a replicate, we knew which SNPs were assigned additive effects, we knew the SNPs that were in true association with the trait. We will refer to these SNPs as being
+true SNPs. By knowing the true SNPS, we were able to assess the validity of a method's findings. A  finding was counted as true if it was positioned within 40 kilobase pairs of the location of a true SNP. When a replicate was analysed, we obtained an estimate of the power of the method by taking  the number of findings that were found to be  true and dividing by the 
+number of true SNPs. We also obtained an estimate of a method's false discovery rate. It is the number of findings that were found to be false divided by the number of (true and false) findings found by the method.  Both these estimates varied with replicate. 
+The power (false discovery rate) of a method, for a scenario, was found by taking the median of the power (false discovery rate) estimates over the 100 replicates. 
+
+
+The power and false discovery rates of Eagle and the other multi-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Supplementary Figure \ref{supfigpowermultiple}.  We restricted our attention to these scenarios because not all 
+multi-locus methods could cope with the size of data in the other scenarios. 
+  Each plot contains 
+single points and power curves. The single points are the power and false discovery rates for Eagle and MLMM.
+These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
+The power curves are for those methods that treat association mapping as a variable selection problem. Here, the 
+significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
+the false discovery rate as the significance threshold  is adjusted. 
+The power and false discovery rate of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in
+ Figure \ref{figpowersingle}. 
+
+
+
+\begin{figure}
+\caption{Power verse false discovery rates for Eagle and the single-locus methods GEMMA and FaST-LMM. 
+FaST-LMM was run where all the SNP data are used 
+to estimate the relationship matrix (FaST-LMM$^{all}$)   and where genotype data from every five-hundredth SNP are used to 
+estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially higher power than the single-locus methods.   }
+
+\label{figpowersingle}
+\begin{center}
+\includegraphics[width=15cm, height=20cm]{power2main.eps}
+\end{center}
+
+\end{figure}
+
+
+
+
+
+In answer to the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations, it does extremely 
+well.  Of the multi-locus methods, Eagle had the highest power
+while keeping its false discovery rate low (Supplementary Figure \ref{supfigpowermultiple}). MLMM also performed well. However, it was when Eagle was compared against single-locus methods 
+that the difference in power was most noticeable.  Eagle had much higher power than single-locus methods for finding SNP in true 
+association with a trait while avoiding false associations (Figure \ref{figpowersingle}). 
+
+
+
+
+
 \subsection{Memory Usage and Run Times}
 
 Memory usage and run (or elapse) times were recorded for Eagle and the other computer programs/packages across the simulation scenarios. 
 Analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the six scenarios could be analysed by all implementations. Memory usage 
-for many of the computer programs/packages was the limiting factor (See Supplementary Figure \ref{supfigmem}).  The single-locus program GEMMA was by 
+for many of the computer programs/packages was the limiting factor (see Supplementary Figure \ref{supfigmem}).  The single-locus program GEMMA was by 
 far the most memory efficient. Not surprisingly, the multi-locus programs were memory intensive. Most required in 
 excess of the 128 gigabytes of available RAM for the analysis of data generated under 4000 x 1.5M and 10000 x 1.5M.  
 Even FaST-LMM, when all the SNP data were being used to calculate the similarity matrix, ran out of memory for the larger scenarios.
@@ -200,50 +240,6 @@ correspond to the lowest run-time for a scenario.
  
 
 
-
-\subsection{Power and False Discovery Rates}
-
-Here, we answer the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. We do this by estimating the power and false discovery rates of Eagle and the other methods for the six scenarios.  Since, for a replicate, we knew which SNPs were assigned additive effects, we knew the SNPs that were in true association with the trait. We will refer to these SNPs as being
-true SNPs. By knowing the true SNPS, we were able to assess the validity of a method's findings. A  finding was counted as true if it was positioned within 40 kilobase pairs of the location of a true SNP. When a replicate was analysed, we obtained an estimate of the power of the method by taking  the number of findings that were found to be  true and dividing by the 
-number of true SNPs. We also obtained an estimate of a method's false discovery rate. It is the number of findings that were found to be false divided by the number of (true and false) findings found by the method.  Both these estimates varied with replicate. 
-The power (false discovery rate) of a method, for a scenario, was found by taking the median of the power (false discovery rate) estimates over the 100 replicates. 
-
-
-The power and false discovery rates of Eagle and the other multi-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Figure \ref{figpowermultiple}.  We restricted our attention to these scenarios because not all 
-multi-locus methods could cope with the size of data in the other scenarios. 
-  Each plot contains 
-single points and power curves. The single points are the power and false discovery rates for Eagle and MLMM.
-These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
-The power curves are for those methods that treat association mapping as a variable selection problem. Here, the 
-significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
-the false discovery rate as the significance threshold  is adjusted. 
-The power and false discovery rate of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in
-Supplementary Figure \ref{supfigpowersingle}. 
-
-
-\begin{figure}
-\caption{Power verse false discovery rates for Eagle and the multi-locus methods. Plots for only those simulation 
-scenarios where all multi-locus methods could be implemented are shown.  Eagle has the highest power across the four 
-scenarios but MLMM also performs well. A false discovery rate of greater than 10\% is typically not employed in GWASs so the 
-upper limit of the x-axis is 0.1.}
-\label{figpowermultiple}
-\begin{center}
-\includegraphics[width=15cm, height=15cm]{power1main.eps}
-\end{center}
-
-\end{figure}
-
-
-
-
-
-
-
-In answer to the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations, it does extremely 
-well.  Of the multi-locus methods, Eagle had the highest power
-while keeping its false discovery rate low (Figure \ref{figpowermultiple}). MLMM also performed well. However, it was when Eagle was compared against single-locus methods 
-that the difference in power was most noticeable.  Eagle had much higher power than single-locus methods for finding SNP in true 
-association with a trait while avoiding false associations (Supplementary Figure \ref{supfigpowersingle}). 
 
 
 
