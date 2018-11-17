@@ -186,17 +186,10 @@ library(RColorBrewer)
 #  theme(aspect.ratio = 1) # try with and without
 
 require(mgcv)
-p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1, se=FALSE, method="loess")  +
-  geom_point(data=df2, aes(FDR, recall), size=1.5) +
+p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.8, se=FALSE, method="loess")  +
+  geom_point(data=df2, aes(FDR, recall), size=4) +
   facet_wrap(~fam, ncol=2) + 
   theme(aspect.ratio = 1) # try with and without
-
-
-ggplot(data=df1, aes(FDR, recall, color=method)) + geom_line(size=1)  +
-  geom_point(data=df2, aes(FDR, recall), size=1.5) +
-  facet_wrap(~fam, ncol=2) + 
-  theme(aspect.ratio = 1) # try with and without
-
 
 
 p <- p + scale_color_manual(
@@ -209,37 +202,32 @@ guide = guide_legend(override.aes = list(
   linetype = c("blank", "blank", "solid", "solid", "solid", "solid"),
   shape=c(16, 16, NA, NA, NA, NA))))
 
-
-
-
-
-
                   
 ## set theme
 p <- p + theme_hc()
 
 ## increase spacing between facet plots
-p <- p + theme(panel.spacing = unit(3, "lines"))
+p <- p + theme(panel.spacing = unit(2, "lines"))
 
 ## specify xlab and ylab
 p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('False discovery rate'))
+  xlab(bquote('False Discovery Rate'))
 
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=14)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=14))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=24)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=24))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=11,  angle=0)) +
-  theme(axis.text.y=element_text(size=11, hjust=0.5)) +
-  theme(strip.text = element_text(size=14))
+  theme(axis.text.x = element_text(size=18,  angle=0)) +
+  theme(axis.text.y=element_text(size=20, hjust=0.5)) +
+  theme(strip.text = element_text(size=24))
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=12))
+p <- p +  theme(legend.text=element_text(size=22))
 p <- p +  theme(legend.title=element_blank())
-p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
+p <- p+ theme(legend.key.width=grid:::unit(2.5,"cm"))
 
 #p + theme_base()
 #p + theme_economist_white()
@@ -252,6 +240,11 @@ p <- p + coord_cartesian(xlim = c(0, 0.1), ylim=c(0, 1))
 scaleFUN <- function(x) sprintf("%.2f", x)
 p <- p + scale_x_continuous(labels=scaleFUN)
 
+# changing background color and text color of facet plots
+p <- p + theme(strip.background =element_rect(fill="skyblue3"))+
+  theme(strip.text = element_text(colour = 'white'))
+
+p
 
 
 #jpeg("/Users/geo047/Papers/AM-Paper/power1main.jpg", width=7, height=7, units="in", res=500)
@@ -288,7 +281,7 @@ insert_plot <- function(df1, df2, family){
 
    ## specify xlab and ylab 
    p <- p  + ylab(bquote("Power")) + 
-             xlab(bquote('False discovery rate'))
+             xlab(bquote('False Discovery Rate'))
 
    # set theme
    p <- p + theme_hc()+  theme(legend.position="none")
@@ -362,8 +355,8 @@ df2 <- subset(dfres, method=="AMplus")
 #  facet_wrap(~fam, ncol=3) + 
 #  theme(aspect.ratio = 1) # try with and without
 
-p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.5, se=FALSE, method="loess")  +
-  geom_point(data=df2, aes(FDR, recall), size=1.5) +
+p <- ggplot(data=df1, aes(FDR, recall, color=method)) + geom_smooth(size=1.8, se=FALSE, method="loess")  +
+  geom_point(data=df2, aes(FDR, recall), size=4) +
   facet_wrap(~fam, ncol=3) + 
   theme(aspect.ratio = 1) # try with and without
 
@@ -377,57 +370,62 @@ p <- p + scale_color_manual(
     shape=c(16, NA, NA, NA))))
 
 
+
 ## set theme
 p <- p + theme_hc()
 
 ## increase spacing between facet plots
-p <- p + theme(panel.spacing = unit(3, "lines"))
+p <- p + theme(panel.spacing = unit(2, "lines"))
 
 ## specify xlab and ylab
 p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('False discovery rate'))
-
+  xlab(bquote('False Discovery Rate'))
 
 
 ##  change x and y labels size and bold
-p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=12)) 
-p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=12))
+p <- p + theme(axis.title.x = element_text(angle=0, vjust=1, size=24)) 
+p <- p + theme(axis.title.y = element_text(angle=90, vjust=1, size=24))
 
 # alter x and y axis labels 
 p <- p + 
-  theme(axis.text.x = element_text(size=10,  angle=0)) +
-  theme(axis.text.y=element_text(size=10, hjust=0.5)) +
-  theme(strip.text = element_text(size=10))
+  theme(axis.text.x = element_text(size=13,  angle=0)) +
+  theme(axis.text.y=element_text(size=20, hjust=0.5)) +
+  theme(strip.text = element_text(size=24))
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=10))
+p <- p +  theme(legend.text=element_text(size=22))
 p <- p +  theme(legend.title=element_blank())
-p <- p+ theme(legend.key.width=grid:::unit(1.5,"cm"))
+p <- p+ theme(legend.key.width=grid:::unit(2.5,"cm"))
 
-
-
-
-
-## xlimit
-p <- p + coord_cartesian(xlim = c(0, 1), ylim=c(0, 1)) 
-
-
-## increase font of lengend + remove legend title
-#p <- p +  theme(legend.position="none")
+#p + theme_base()
+#p + theme_economist_white()
+#p + theme_few()
 
 ## xlimit
-p <- p + coord_cartesian(xlim = c(0, 0.1), ylim=c(0, 1) ) 
-
-p <- p + theme(panel.background = element_rect(fill="white"))
+p <- p + coord_cartesian(xlim = c(0, 0.1), ylim=c(0, 1)) 
 
 # change number of digits in labels on x-axis
 scaleFUN <- function(x) sprintf("%.2f", x)
 p <- p + scale_x_continuous(labels=scaleFUN)
 
+# changing background color and text color of facet plots
+p <- p + theme(strip.background =element_rect(fill="skyblue3"))+
+  theme(strip.text = element_text(colour = 'white'))
+
+p
 
 
 
-postscript("~/Papers/AM-Paper/power2main.eps", width=10, height=10,  fonts=c("sans"),
+
+
+
+
+
+
+
+
+
+postscript("~/Papers/AM-Paper/power2main.eps", width=15, height=20,  fonts=c("sans"),
            horizontal=FALSE)
 # square plot
 print(p)
@@ -477,7 +475,7 @@ insert_plot <- function(df1, df2, family){
   
   ## specify xlab and ylab
   p <- p  + ylab(bquote("Power")) + 
-    xlab(bquote('False discovery rate'))
+    xlab(bquote('False Discovery Rate'))
   
   
   
