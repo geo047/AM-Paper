@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  15 NOV 2018 16:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 NOV 2018 21:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -212,17 +212,12 @@ Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    date: 2018-11-15 16:09:30
 (epstopdf)                    size: 36916 bytes
 (epstopdf)             Output file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-11-15 15:44:06
+(epstopdf)                    date: 2018-11-15 16:09:37
 (epstopdf)                    size: 16856 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
 (epstopdf)             \includegraphics on input line 173.
-runsystem(repstopdf --outfile=power2main-eps-converted-to.pdf power2main.eps)..
-.executed safely (allowed).
-
-Package epstopdf Info: Result file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-11-15 16:09:37
-(epstopdf)                    size: 16856 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <power2main-eps-converted-to.pdf, id=24, 561.09625pt x 809.0225pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
@@ -244,22 +239,22 @@ Package pdftex.def Info: Figure2_time.jpg used on input line 237.
 
 [7] [8 <./Figure2_time.jpg>] [9]
 Package epstopdf Info: Source file: <mouseresults.eps>
-(epstopdf)                    date: 2018-10-26 18:12:49
-(epstopdf)                    size: 23977 bytes
+(epstopdf)                    date: 2018-11-29 12:29:51
+(epstopdf)                    size: 26900 bytes
 (epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-11-15 12:30:48
-(epstopdf)                    size: 13772 bytes
+(epstopdf)                    date: 2018-11-29 12:30:03
+(epstopdf)                    size: 13982 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 286.
+(epstopdf)             \includegraphics on input line 296.
 Package epstopdf Info: Output file is already uptodate.
 
-<mouseresults-eps-converted-to.pdf, id=50, 561.09625pt x 722.7pt>
+<mouseresults-eps-converted-to.pdf, id=53, 561.09625pt x 722.7pt>
 File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 2
-86.
+96.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
  [10] [11 <./mouseresults-eps-converted-to.pdf>] [12] [13] [14] [15] [16] [17] 
 [18] (./paper.bbl [19]
@@ -270,19 +265,19 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 121.
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [20] [21])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 611.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 621.
 
-Overfull \hbox (7.63788pt too wide) in paragraph at lines 614--616
+Overfull \hbox (7.63788pt too wide) in paragraph at lines 624--626
 []\OT1/ptm/m/n/10.95 Correspondence and re-quests for ma-te-ri-als should be ad
 -dressed to An-drew George  (email:
  []
 
 [22] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 2203 strings out of 493089
- 31404 string characters out of 6134842
- 90110 words of memory out of 5000000
- 5631 multiletter control sequences out of 15000+600000
+ 2204 strings out of 493089
+ 31415 string characters out of 6134842
+ 90118 words of memory out of 5000000
+ 5632 multiletter control sequences out of 15000+600000
  26724 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,5n,23p,941b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -305,7 +300,7 @@ mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on paper.pdf (22 pages, 505942 bytes).
+Output written on paper.pdf (22 pages, 507310 bytes).
 PDF statistics:
  168 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams
