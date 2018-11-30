@@ -97,6 +97,15 @@
     {\bfseries}*%
     }
 
+
+
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{2}{0pt}%
+    {-0pt}{-0.5em}%
+    {\textit}*%
+    }
+
+
+
 %% Define the methods environment.  Use \subsection to separate.
 \newenvironment{methods}{%
     \section*{Methods}%

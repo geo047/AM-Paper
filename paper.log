@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 NOV 2018 21:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 NOV 2018 11:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -238,6 +238,11 @@ Package pdftex.def Info: Figure2_time.jpg used on input line 237.
 (pdftex.def)             Requested size: 469.75502pt x 352.31139pt.
 
 [7] [8 <./Figure2_time.jpg>] [9]
+Overfull \hbox (14.1377pt too wide) in paragraph at lines 281--284
+[]\OT1/ptm/m/n/12 In the sim-u-la-tion study, Ea-gle out-per-forms single-locus
+ as-so-ci-a-tion map-ping. Here, Eagle$[]$,
+ []
+
 Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    date: 2018-11-29 12:29:51
 (epstopdf)                    size: 26900 bytes
@@ -246,15 +251,14 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 13982 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 296.
+(epstopdf)             \includegraphics on input line 300.
 Package epstopdf Info: Output file is already uptodate.
-
 <mouseresults-eps-converted-to.pdf, id=53, 561.09625pt x 722.7pt>
 File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
-Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 2
-96.
+Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 3
+00.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
  [10] [11 <./mouseresults-eps-converted-to.pdf>] [12] [13] [14] [15] [16] [17] 
 [18] (./paper.bbl [19]
@@ -265,9 +269,9 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 121.
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [20] [21])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 621.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 618.
 
-Overfull \hbox (7.63788pt too wide) in paragraph at lines 624--626
+Overfull \hbox (7.63788pt too wide) in paragraph at lines 621--623
 []\OT1/ptm/m/n/10.95 Correspondence and re-quests for ma-te-ri-als should be ad
 -dressed to An-drew George  (email:
  []
@@ -276,7 +280,7 @@ Overfull \hbox (7.63788pt too wide) in paragraph at lines 624--626
 Here is how much of TeX's memory you used:
  2204 strings out of 493089
  31415 string characters out of 6134842
- 90118 words of memory out of 5000000
+ 90099 words of memory out of 5000000
  5632 multiletter control sequences out of 15000+600000
  26724 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -300,7 +304,7 @@ mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on paper.pdf (22 pages, 507310 bytes).
+Output written on paper.pdf (22 pages, 507840 bytes).
 PDF statistics:
  168 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams

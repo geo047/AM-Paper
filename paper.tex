@@ -248,17 +248,18 @@ correspond to the lowest run-time for a scenario.
 
 
 We were interested in comparing results from Eagle with those from single-locus association mapping for a real data set.
- We chose to focus on data from a large outbred mouse study \cite{nicod2016genome}. This study was a little unusual in that it collected and analysed SNP dosages (continuous values from zero to one of expected allele counts)  instead of the more common SNP genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power for the detection of genes that are influencing a trait  \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single-locus program FaST-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagles increased power, we found SNP-trait associations not found with  FaST-LMM. However, we were 
+ We chose to focus on data from a large outbred mouse study \cite{nicod2016genome}. This study was unusual in that it collected and analysed SNP dosages (continuous values from zero to one of expected allele counts)  instead of the more common SNP genotypes. Analyses based on dosages rather than discrete genotypes have been shown to have greater power for the detection of genes that are influencing a trait  \cite{zheng2011comparison}. By converting the dosages into genotypes and analysing the data with the single-locus program FaST-LMM, we obtained a subset of those findings reported in the original study. We then analysed the data with Eagle. Due to Eagle's increased power, we found SNP-trait associations not found with  FaST-LMM. However, we were 
  able to confirm the validity of these new findings as they matched what was found in the original study. Having the ability to confirm new findings  in a real study was 
  one of the primary motivators for choosing these data for analysis. 
 
-We repeated the single-locus analyses, as first performed \cite{nicod2016genome}, except 
-that we focused on autosomal SNP and our analyses were based on SNP genotypes  rather than SNP dosages. 
+We repeated the single-locus analyses as first performed \cite{nicod2016genome}, except 
+that we focused on autosomal SNPs and our analyses were based on SNP genotypes  rather than SNP dosages. 
 In the original analysis, a genome-wide threshold that gave a false discovery rate of 5\%, was found via permutation. We followed the 
-same empirical procedure but increased the number of permutations from 100 to 250. 
+same empirical procedure but increased the number of permutations from 100 to 500 for more accurate thresholds.  
 
 
-Eagle was run in three ways.  Eagle chooses the best model via the extended Bayesian information criteria (extBIC) \cite{chen2008extended}. 
+We ran Eagle in three ways. 
+Eagle chooses the best model via the extended Bayesian information criteria (extBIC) \cite{chen2008extended}. 
   The conservativeness of the extBIC can be adjusted by a single regularisation parameter  $\gamma$ that ranges from zero to one. 
 In the simulation study, this parameter was set to one, its most conservative and default setting. The mouse data were also analysed 
 under this setting (Eagle$^{default}$).  An alternate  \cite{chen2008extended} , less conservative way of setting $\gamma$ is to  let $\gamma = 1 - \frac{1}{(2\kappa)}$ with $\kappa=\frac{log(L)}{log(n_g)}$ where 
@@ -277,8 +278,9 @@ on the SNP genotype data and the original study being based on SNP dosage data. 
 Eagle$^{optimal}$ found seven new findings (Supplementary Table \ref{suptabnew}).  These new findings all involved SNPs whose association had been confirmed for other related traits in the original 
 study. 
 
-It is worth noting that the mouse data is similar in size to data generated under the simulation scenario 2000x500K. In the simulation study, Eagle had 
-far greater power than the single-locus methods. Yet here, Eagle$^{default}$ found only 37 associations compared to 50 associations found by FaST-LMM.  The reason for the difference is due to Eagle, when run under its default setting, is far more conservative for the real data than the simulation data. Also, here FaST-LMM has been fine-tuned, through permutation,  to have a false discovery rate of 5\%. A fairer comparison is to compare Eagle$^{optimal}$ to FaST-LMM since they have similar false discovery rates. Here, Eagle clearly outperforms FaST-LMM. 
+In the simulation study, Eagle outperforms single-locus association mapping. Here, Eagle$^{default}$, where $\gamma=1$, finds less associations 
+than FaST-LMM. Why the discrepancy in performance?   The answer lies in the conservativeness of Eagle.  With the added genetic complexity implicit within the mouse data, Eagle is more conservative when $\gamma$ is set to one than in the simulation study.  However, the relative results of the simulation study remain true. For similar false discover rates, Eagle is superior to single-locus association mapping. As a case in point, here FaST-LMM found 50 SNP-trait associations with a false discovery rate of 5\%. Eagle, with the same false discovery rate (Eagle$^{optimal}$) found 106 SNP-trait associations, more 
+than a 100\% increase in findings. 
 
 
 
@@ -344,7 +346,7 @@ High-throughput array-based technologies continue to decrease the cost of genoty
 Whole-genome sequencing is also now a reality. Already sequence across entire genomes are being collected for GWASs \cite{gudbjartsson2015large, long2017whole}
 culminating in data on millions of SNPs. It is because of this growing demand that 
 we have purposely structured the Eagle package for continued development. We are already experimenting with a GPU-based version of Eagle. 
-Early results suggest that for small to moderate sized datasets (<10,000 samples), there is little improvement in performance over CPU-based 
+Early results suggest that for small to moderate sized datasets ($<$10,000 samples), there is little improvement in performance over CPU-based 
 computation.  However, for larger study sizes, we are seeing up to a 40\% decrease in run times.  
 We also have plans for Eagle to run on computer clusters. Structuring Eagle for larger-than-memory calculations was a 
 preemptive step in this direction. GWASs have changed significantly in the past decade but the size and complexity of GWASs is expected 
@@ -368,12 +370,7 @@ to change even more in the coming decade.
 
 
 
-
-
-
-
 \section{Methods}
-
 
 \subsection{Mouse Data}
 
@@ -471,7 +468,8 @@ If this new model has a larger extBIC than the current model, then the $s+1$th s
 the current model and the above process is repeated. If this new model has a smaller extBIC than the current model, then the 
 model building process is complete. The set of SNP in strongest association with the trait is the $s$ SNPs previously identified. 
 
-\subsubsection*{Reducing the dimension of the model}
+\subsubsection {Reducing the dimension of the model:} 
+
 In practice, estimating the parameters of (\ref{eq2}) can be demanding, computationally. 
 The vector $\ba_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
 $L$, the number of SNPs, can be extremely large.  An alternative model is given by 
@@ -505,9 +503,7 @@ of (\ref{eq4}).
 
 \subsection{Comparison Methods}
 
-\subsubsection*{Multi-locus methods}
-
-We compare the computational and statistical performance of Eagle against five multi-locus methods. They are bigRR, LMM-Lasso, glmnet, 
+ \subsubsection{ Multi-locus methods:} We compare the computational and statistical performance of Eagle against five multi-locus methods. They are bigRR, LMM-Lasso, glmnet, 
 MLMM, and r2VIM.  All but glmnet have been purposely designed for genome-wide association mapping. 
 BigRR, LMM-Lasso, and glmnet are regression-based regularisation 
 methods. BigRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
@@ -535,9 +531,7 @@ but the computational cost is high, restricting the size of data that can be ana
 
 
 
-\subsubsection*{Single-locus methods}
-
-We also compare the performance of Eagle against two single-locus methods, GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
+\subsubsection{Single-locus methods:} We also compare the performance of Eagle against two single-locus methods, GEMMA \cite{zhou2012genome} and FaST-LMM \cite{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
 a single random effect to account for familial relatedness (or polygenic background), and an error. The significance of the SNP effect in the model 
 is a measure of the strength of association.  They are of the same computational complexity \cite{zhou2012genome}, and produce exact results.  
 Both perform a single spectral decomposition of the relationship (or similarity) matrix $K$, use  an eigenvector matrix to rotate the data, 
@@ -548,7 +542,8 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 
 \subsection{Stability Selection}
-Stability selection \cite{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of the significance of effects in regression models where 
+
+ Stability selection \cite{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of the significance of effects in regression models where 
 the number of parameters ($p$) can be much larger than the number of samples ($n$). We chose stability selection over permutation and other sampling procedures because of its low computational cost. We employe stability selection to estimate, empirically, the significance of the SNP effects from the regularisation method's analyses of the simulated data.
 
 To obtain significance estimates via stability selection, we do the following. For LMM-Lasso and glmnet, we begin

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 NOV 2018 15:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 NOV 2018 11:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -238,72 +238,72 @@ Overfull \hbox (81.7886pt too wide) in paragraph at lines 126--127
 LaTeX Warning: Float too large for page by 59.29732pt on input line 128.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--151
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--151
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--151
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
 []\OT1/cmr/m/n/7 BMC.Mean BMC.StdDev BMC.StdDev.N
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Overfull \hbox (74.90901pt too wide) in paragraph at lines 142--162
+Overfull \hbox (74.909pt too wide) in paragraph at lines 142--163
 [][] 
  []
 
@@ -330,7 +330,7 @@ ts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
 m/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb>
-Output written on supmaterials.pdf (5 pages, 148087 bytes).
+Output written on supmaterials.pdf (5 pages, 147874 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
