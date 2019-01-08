@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 NOV 2018 11:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  8 JAN 2019 12:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -196,6 +196,11 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
+
+Underfull \hbox (badness 2689) in paragraph at lines 23--23
+\OT1/phv/b/n/17.28 Eagle makes multi-locus as-so-ci-a-tion map-ping on a
+ []
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 23.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -204,22 +209,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 23.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
- [1
+[1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4]
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3] [4]
 Package epstopdf Info: Source file: <power2main.eps>
-(epstopdf)                    date: 2018-11-15 16:09:30
-(epstopdf)                    size: 36916 bytes
+(epstopdf)                    date: 2019-01-08 12:13:41
+(epstopdf)                    size: 36978 bytes
 (epstopdf)             Output file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-11-15 16:09:37
-(epstopdf)                    size: 16856 bytes
+(epstopdf)                    date: 2019-01-08 12:13:56
+(epstopdf)                    size: 17038 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
 (epstopdf)             \includegraphics on input line 173.
 Package epstopdf Info: Output file is already uptodate.
-
-<power2main-eps-converted-to.pdf, id=24, 561.09625pt x 809.0225pt>
+ <power2main-eps-converted-to.pdf, id=24, 561.09625pt x 809.0225pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power2main-eps-converted-to.pdf>
@@ -304,7 +308,7 @@ mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on paper.pdf (22 pages, 507840 bytes).
+Output written on paper.pdf (22 pages, 507855 bytes).
 PDF statistics:
  168 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams

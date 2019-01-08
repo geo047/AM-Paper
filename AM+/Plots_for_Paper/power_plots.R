@@ -252,6 +252,7 @@ p
 #dev.off()
 
 
+
 postscript("~/Papers/AM-Paper/power1main.eps", width=10, height=10, fonts=c("sans"),
            horizontal=FALSE)
 # square plot
@@ -393,9 +394,9 @@ p <- p +
   theme(strip.text = element_text(size=24))
 
 ## increase font of lengend + remove legend title
-p <- p +  theme(legend.text=element_text(size=22))
+p <- p +  theme(legend.text=element_text(size=18))
 p <- p +  theme(legend.title=element_blank())
-p <- p+ theme(legend.key.width=grid:::unit(2.5,"cm"))
+p <- p+ theme(legend.key.width=grid:::unit(1,"cm"))
 
 #p + theme_base()
 #p + theme_economist_white()
@@ -424,13 +425,13 @@ p
 
 
 
-
-postscript("~/Papers/AM-Paper/power2main.eps", width=15, height=20,  fonts=c("sans"),
+postscript("~/Papers/AM-Paper/power2main.eps", width=20, height=20,  fonts=c("sans"),
            horizontal=FALSE)
 # square plot
 print(p)
 dev.off()
 
+stop()
 
 
 ##----------- Subplots -- insets  ----------  ##
