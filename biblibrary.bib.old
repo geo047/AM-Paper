@@ -115,9 +115,12 @@
 
 @article{cardon2003population,
 	Author = {Cardon, Lon R and Palmer, Lyle J},
+	Date-Added = {2018-10-03 08:02:31 +1000},
+	Date-Modified = {2018-10-03 08:02:31 +1000},
 	Journal = {The Lancet},
 	Number = {9357},
 	Pages = {598--604},
+	Publisher = {Elsevier},
 	Title = {Population stratification and spurious allelic association},
 	Volume = {361},
 	Year = {2003}}

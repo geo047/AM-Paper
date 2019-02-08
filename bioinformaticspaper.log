@@ -1,21 +1,16 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  7 FEB 2019 10:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  8 FEB 2019 11:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**paper.tex
-(./paper.tex
+**bioinformaticspaper.tex
+(./bioinformaticspaper.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
-(./nature.cls
-Document Class: nature 24/2/2004 v1.0
-A class for writing preprints for the journal Nature
-Written by Peter Czoschke
- 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -29,21 +24,6 @@ File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 332.
-Package: cite 2015/02/27  v 5.5
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/preprint/fullpage.sty
-Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip43
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 1994/05/28 v5.02 eXternal References (DPC)
 )
@@ -104,40 +84,53 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \bframesep=\dimen109
 \bframebox=\box26
 LaTeX Info: Redefining \\ on input line 3056.
+) (./natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count95
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
 )
-Package xr Info: IMPORTING LABELS FROM supmaterials.aux on input line 16.
- (./paper.aux)
-\openout1 = `paper.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 18.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/preprint/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip45
+\@affilsep=\skip46
+\c@Maxaffil=\count96
+\c@authors=\count97
+\c@affil=\count98
 )
+Package xr Info: IMPORTING LABELS FROM supmaterials.aux on input line 21.
+
+(./bioinformaticspaper.aux)
+\openout1 = `bioinformaticspaper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count95
+\scratchcounter=\count99
 \scratchdimen=\dimen110
 \scratchbox=\box27
-\nofMPsegments=\count96
-\nofMParguments=\count97
+\nofMPsegments=\count100
+\nofMParguments=\count101
 \everyMPshowfont=\toks16
-\MPscratchCnt=\count98
+\MPscratchCnt=\count102
 \MPscratchDim=\dimen111
-\MPnumerator=\count99
-\makeMPintoPDFobject=\count100
+\MPnumerator=\count103
+\makeMPintoPDFobject=\count104
 \everyMPtoPDFconversion=\toks17
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -187,32 +180,33 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 23.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 35.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 35.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 35.
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1phv.fd
-File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
-)
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
-
-Underfull \hbox (badness 2689) in paragraph at lines 23--23
-\OT1/phv/b/n/17.28 Eagle makes multi-locus as-so-ci-a-tion map-ping on a
+Overfull \hbox (7.93024pt too wide) in paragraph at lines 54--61
+\OT1/cmr/m/n/9 fa-mil-iar with R. It is freely avail-able via the CRAN web-site
+ at https://cran.r-
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 23.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 23.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 23.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 75.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 75.
+
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+Overfull \hbox (6.03087pt too wide) in paragraph at lines 388--389
+[]\OT1/cmr/m/n/10 FaST-LMM and GEMMA im-ple-ment single-locus as-so-ci-a-tion m
+ap-ping. FaST-
+ []
+
+[14]
 Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    date: 2019-01-08 12:13:41
 (epstopdf)                    size: 36978 bytes
@@ -221,32 +215,35 @@ Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    size: 17038 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
-(epstopdf)             \includegraphics on input line 173.
+(epstopdf)             \includegraphics on input line 432.
 Package epstopdf Info: Output file is already uptodate.
- <power2main-eps-converted-to.pdf, id=24, 561.09625pt x 809.0225pt>
+ <power2main-eps-converted-to.pdf, id=66, 561.09625pt x 809.0225pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power2main-eps-converted-to.pdf>
-Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 173
+Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 432
 .
 (pdftex.def)             Requested size: 426.7886pt x 569.06476pt.
 
-
-LaTeX Warning: Float too large for page by 71.81665pt on input line 176.
-
-[5] [6 <./power2main-eps-converted-to.pdf>]
-<Figure2_time.jpg, id=39, 1505.625pt x 1129.21875pt>
-File: Figure2_time.jpg Graphic file (type jpg)
- <use Figure2_time.jpg>
-Package pdftex.def Info: Figure2_time.jpg used on input line 237.
-(pdftex.def)             Requested size: 469.75502pt x 352.31139pt.
-
-[7] [8 <./Figure2_time.jpg>] [9]
-Overfull \hbox (14.1377pt too wide) in paragraph at lines 281--284
-[]\OT1/ptm/m/n/12 In the sim-u-la-tion study, Ea-gle out-per-forms single-locus
- as-so-ci-a-tion map-ping. Here, Eagle$[]$,
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 432--434
+[][] 
  []
 
+
+LaTeX Warning: Float too large for page by 47.6513pt on input line 435.
+
+[15] [16 <./power2main-eps-converted-to.pdf>]
+<Figure2_time.jpg, id=81, 1505.625pt x 1129.21875pt>
+File: Figure2_time.jpg Graphic file (type jpg)
+ <use Figure2_time.jpg>
+Package pdftex.def Info: Figure2_time.jpg used on input line 499.
+(pdftex.def)             Requested size: 413.99895pt x 310.49304pt.
+
+Overfull \hbox (68.99895pt too wide) in paragraph at lines 499--500
+ [][] 
+ []
+
+[17] [18 <./Figure2_time.jpg>] [19]
 Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    date: 2018-11-29 12:29:51
 (epstopdf)                    size: 26900 bytes
@@ -255,63 +252,63 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 13982 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 565.
 Package epstopdf Info: Output file is already uptodate.
-<mouseresults-eps-converted-to.pdf, id=53, 561.09625pt x 722.7pt>
+
+<mouseresults-eps-converted-to.pdf, id=92, 561.09625pt x 722.7pt>
 File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
-Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 3
-00.
+Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 5
+65.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
- [10] [11 <./mouseresults-eps-converted-to.pdf>] [12] [13] [14] [15] [16] [17] 
-[18] (./paper.bbl [19]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 121.
 
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [20] [21])
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 618.
-
-Overfull \hbox (7.63788pt too wide) in paragraph at lines 621--623
-[]\OT1/ptm/m/n/10.95 Correspondence and re-quests for ma-te-ri-als should be ad
--dressed to An-drew George  (email:
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 565--566
+ [] 
  []
 
-[22] (./paper.aux) ) 
+
+LaTeX Warning: Float too large for page by 41.9422pt on input line 568.
+
+[20] [21 <./mouseresults-eps-converted-to.pdf>] [22]
+Overfull \hbox (129.80637pt too wide) in paragraph at lines 625--628
+\OT1/cmr/m/n/10 were ob-tained from the Het-ero-ge-neous Stock Mice web-site ht
+tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
+ []
+
+[23] (./bioinformaticspaper.bbl [24] [25] [26]) [27] (./bioinformaticspaper.aux
+) ) 
 Here is how much of TeX's memory you used:
- 2204 strings out of 493089
- 31415 string characters out of 6134842
- 90099 words of memory out of 5000000
- 5632 multiletter control sequences out of 15000+600000
- 26724 words of font info for 57 fonts, out of 8000000 for 9000
+ 2407 strings out of 493089
+ 34470 string characters out of 6134842
+ 97599 words of memory out of 5000000
+ 5854 multiletter control sequences out of 15000+600000
+ 14059 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,5n,23p,937b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r
-.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/tim
-es/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a
-.pfb>
-Output written on paper.pdf (22 pages, 508883 bytes).
+ 38i,5n,24p,1387b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on bioinformaticspaper.pdf (27 pages, 562151 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
+ 187 PDF objects out of 1000 (max. 8388607)
+ 130 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
