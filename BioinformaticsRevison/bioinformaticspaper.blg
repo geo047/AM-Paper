@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: bioinformaticspaper.aux
 The style file: natbib.bst
 Database file #1: biblibrary.bib
-You've used 33 entries,
+You've used 36 entries,
             2378 wiz_defined-function locations,
-            738 strings with 11432 characters,
-and the built_in function-call counts, 18006 in all, are:
-= -- 1586
-> -- 1284
-< -- 12
-+ -- 405
-- -- 385
-* -- 1877
-:= -- 3176
-add.period$ -- 167
-call.type$ -- 33
-change.case$ -- 206
-chr.to.int$ -- 33
-cite$ -- 33
-duplicate$ -- 662
-empty$ -- 1055
-format.name$ -- 437
-if$ -- 3456
+            755 strings with 12007 characters,
+and the built_in function-call counts, 19556 in all, are:
+= -- 1740
+> -- 1363
+< -- 14
++ -- 430
+- -- 408
+* -- 2026
+:= -- 3439
+add.period$ -- 180
+call.type$ -- 36
+change.case$ -- 225
+chr.to.int$ -- 36
+cite$ -- 36
+duplicate$ -- 718
+empty$ -- 1159
+format.name$ -- 465
+if$ -- 3760
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 34
-newline$ -- 168
-num.names$ -- 132
-pop$ -- 192
+missing$ -- 37
+newline$ -- 183
+num.names$ -- 144
+pop$ -- 207
 preamble$ -- 1
-purify$ -- 207
+purify$ -- 226
 quote$ -- 0
-skip$ -- 417
+skip$ -- 455
 stack$ -- 0
-substring$ -- 1043
-swap$ -- 133
+substring$ -- 1172
+swap$ -- 143
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 294
+type$ -- 321
 warning$ -- 0
-while$ -- 146
+while$ -- 161
 width$ -- 0
-write$ -- 430
+write$ -- 469

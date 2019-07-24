@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Ball(2001)Ball]{ball2001bayesian}
+Ball, R.~D. (2001).
+\newblock Bayesian methods for quantitative trait loci mapping based on model
+  selection: approximate analysis using the bayesian information criterion.
+\newblock {\em Genetics\/}, {\bf 159}(3), 1351--1364.
+
 \bibitem[Boulesteix {\em et~al.}(2012)Boulesteix, Janitza, Kruppa, and
   K{\"o}nig]{boulesteix2012overview}
 Boulesteix, A.-L., Janitza, S., Kruppa, J., and K{\"o}nig, I.~R. (2012).
@@ -7,6 +13,13 @@ Boulesteix, A.-L., Janitza, S., Kruppa, J., and K{\"o}nig, I.~R. (2012).
   emphasis on computational biology and bioinformatics.
 \newblock {\em Wiley Interdisciplinary Reviews: Data Mining and Knowledge
   Discovery\/}, {\bf 2}(6), 493--507.
+
+\bibitem[Broman and Speed(2002)Broman and Speed]{broman2002model}
+Broman, K.~W. and Speed, T.~P. (2002).
+\newblock A model selection approach for the identification of quantitative
+  trait loci in experimental crosses.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/}, {\bf 64}(4), 641--656.
 
 \bibitem[Browning(2008)Browning]{browning2008presto}
 Browning, B.~L. (2008).
@@ -199,6 +212,14 @@ Verbyla, A.~P., Cavanagh, C.~R., and Verbyla, K.~L. (2014).
 \newblock Whole-genome analysis of multienvironment or multitrait {QTL} in
   {MAGIC}.
 \newblock {\em G3: Genes, Genomes, Genetics\/}, {\bf 4}(9), 1569--1584.
+
+\bibitem[Yi {\em et~al.}(2005)Yi, Yandell, Churchill, Allison, Eisen, and
+  Pomp]{yi2005bayesian}
+Yi, N., Yandell, B.~S., Churchill, G.~A., Allison, D.~B., Eisen, E.~J., and
+  Pomp, D. (2005).
+\newblock Bayesian model selection for genome-wide epistatic quantitative trait
+  loci analysis.
+\newblock {\em Genetics\/}, {\bf 170}(3), 1333--1344.
 
 \bibitem[Yu {\em et~al.}(2006)Yu, Pressoir, Briggs, Bi, Yamasaki, Doebley,
   McMullen, Gaut, Nielsen, Holland, {\em et~al.}]{yu2006unified}

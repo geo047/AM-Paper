@@ -78,12 +78,12 @@ The alternative is that the SNP is in association with the trait. It is straight
 hypothesis (or making a type 1 error) if only a single hypothesis test is being performed. However, the analysis of GWAS data 
 with locus-by-locus methods necessitates  conducting a large number of correlated hypothesis tests, simultaneously. 
  This leads to an increased risk of type 1 errors.  To deal with this challenge, many different solutions have been offered 
- \citep{storey2003statistical, li2005adjusting, de2005efficiency}}.  Second, 
+ \citep{storey2003statistical, li2005adjusting, de2005efficiency}.  Second, 
 the aim of association mapping is to identify regions of the genome that house genes that are influencing a trait. 
 The identification of these regions from these analyses is not always straightforward. GWAS results are reported, typically, via Manhattan plots 
 that plot the -log$_{10}$ of the $p$ value for each locus against the map position of the locus. The $p$ value is obtained from the hypothesis test. 
 The location of peaks in this plot identify genomic 
-regions of interest. Inferring the exact number of regions though can be difficult if the peaks are not well separated. 
+regions of interest. Inferring the exact number of regions though can be difficult if the peaks are not well separated. }
  Third, many of the traits whose genetic secrets we are trying to discover are complex. There will be multiple SNPs in linkage disequilibrium with genes that are influencing the trait. Yet, a locus-by-locus mapping approach only assesses the evidence for association between a single marker locus and trait.
 
 It is somewhat surprising then that multi-locus association mapping methods haven't attracted more attention. Methods based on 
@@ -132,13 +132,15 @@ We focused our analyses on the autosomal SNPs.
 
 \subsection{Eagle Approach for Multi-locus Association Mapping}
 
-Eagle is a method for multi-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multi-locus association mapping methods in that Eagle treats association mapping as a model selection problem (ball2001bayesian,broman2002model,yi2005bayesian). 
+\textcolor{red}{
+Eagle is a method for multi-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multi-locus association mapping methods in that Eagle treats association mapping as a model selection problem \citep{ball2001bayesian,broman2002model,yi2005bayesian}. 
 The "best" model is found via forward selection. It makes use of a modified form of the Bayesian information criterion, BIC, for model selection.
-
-Eagle does not suffer from multiple testing issues. A "best" model is built iteratively. At each iteration, a hypothesis test is performed. 
-Only a small number of iterations are needed in building the "best" model.  In contrast,  for single-locus methods, multiple testing is an 
-issue because each SNP is assessed separately, culminating in a large number of hypothesis tests being performed. 
-Eagle also 
+A "best" model is built iteratively. At each iteration, a hypothesis test is performed. 
+Only a small number of iterations are needed in building the "best" model.  Consequently, 
+Eagle does not suffer from multiple testing issues.
+In contrast,  for single-locus methods, multiple testing is an 
+issue because each SNP is assessed separately, culminating in the need for a large number of hypothesis tests to be  performed. }
+Eagle 
 reports as its findings only those SNPs that are in strongest linkage disequilibrium with  the genes influencing a trait. 
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
 quantitative trait loci in experimental crosses \citep{verbyla2007analysis}.
@@ -592,7 +594,7 @@ First, its computational footprint is much smaller than other multi-locus implem
 practical, even when the datasets are large. Second, the results from
  Eagle are immediately interpretable. They are the set of SNPs in strongest association with the trait where 
 each SNP identifies a separate genomic region of interest. Third, it treats association mapping as a model selection problem, avoiding 
- the need for significance thresholds. 
+ multiple testing issues. 
  As we saw in the simulation study, Eagle has considerably higher power than single-locus methods but is comparable in run time.
 Also, when analysing the mouse data, Eagle found more than double the SNP-trait associations than 
 with single-locus association mapping, the method of choice. Furthermore, these extra findings were all true. 
