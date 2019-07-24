@@ -139,9 +139,9 @@ A "best" model is built iteratively. At each iteration, a hypothesis test is per
 Only a small number of iterations are needed in building the "best" model.  Consequently, 
 Eagle does not suffer from multiple testing issues.
 In contrast,  for single-locus methods, multiple testing is an 
-issue because each SNP is assessed separately, culminating in the need for a large number of hypothesis tests to be  performed. }
+issue because each SNP is assessed separately, culminating in the need for a large number of hypothesis tests to be  performed. 
 Eagle 
-reports as its findings only those SNPs that are in strongest linkage disequilibrium with  the genes influencing a trait. 
+reports as its findings only those SNPs that are in strongest linkage disequilibrium with  the genes influencing a trait. }
 The methodological foundation for Eagle comes from a whole-genome linkage analysis method that was developed for mapping 
 quantitative trait loci in experimental crosses \citep{verbyla2007analysis}.
 
@@ -196,7 +196,7 @@ This is a simple genetic model but it
 is effective for discovering SNP-trait associations. 
 
 
-Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via residual maximum likelihood (REML).  For complex models, REML
+Second, we estimate the parameters of (\ref{eq1}) and (\ref{eq2}) via \textcolor{red}{restricted} maximum likelihood (REML).  For complex models, REML
 can be computationally demanding. However, our model only contains a single random effect ($\ba_{-S}$). Here, highly efficient single-dimension 
 optimisation via spectral decomposition is possible \citep{kang2008efficient}. 
 
@@ -250,8 +250,8 @@ of (\ref{eq4}).
 
 \subsection{Comparison Methods}
 
- \subsubsection{ Multi-locus methods:} We compare the computational and statistical performance of Eagle against five multi-locus methods. They are bigRR, LMM-Lasso, glmnet, 
-MLMM, and r2VIM.  All but glmnet have been purposely designed for genome-wide association mapping. 
+ \subsubsection{ Multi-locus methods:} We compare the computational and statistical performance of Eagle against five multi-locus methods. \textcolor{red}{They are bigRR  \citep{shen2013novel}, LMM-Lasso \citep{rakitsch2013lasso}, glmnet \citep{Friedman2010glmnet}, 
+MLMM \citep{segura2012efficient}, and r2VIM \citep{szymczak2016r2vim}}.  All but glmnet have been purposely designed for genome-wide association mapping. 
 BigRR, LMM-Lasso, and glmnet are regression-based regularisation 
 methods. BigRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
 Regularisation methods make parameter estimation possible in models  where the number of predictors is far greater than the number of samples. 
@@ -261,12 +261,21 @@ A limitation of these methods though is that the statistical significance of the
 analytically is challenging and is an area of active research \citep{lockhart2014significance}. Instead, we calculate significance empirically via 
 stability selection (see below). 
 
-MLMM is closest in philosophy to Eagle. It too is based on building the best model via forward selection, 
+MLMM is closest in philosophy to Eagle. It too is based on building the best model via \textcolor{red}{stepwise} selection, 
 within  a linear mixed model framework, using the 
-extBIC. However, there are differences between the two methods.  MLMM does not make use of dimension reduction. Also, it builds its "best" 
-model differently to Eagle.  Eagle uses a score statistic in which to identify SNPs to enter the model.
-MLMM uses the statistical significance of the SNPs. This involves fitting a separate linear mixed model for each unidentified SNP. 
+extBIC as one of its model selection criterion. However, there are differences between the two methods.  MLMM does not make use of dimension reduction. Also, it builds its "best" 
+model differently to Eagle.  Eagle chooses a SNP to enter the model by finding the SNP with the largest score statistic. 
+This score statistic has been used, typically, to detect outliers  but we are using it here to identify SNP with 
+unusually large random effect sizes. 
+MLMM uses the statistical significance of the SNPs,  when treated as a fixed effect in the model. This involves fitting a separate linear mixed model for each unidentified SNP, a 
+potentially computationally expensive exercise. However, MLMM does this in a clever and efficient way via the Gram-Schmit process. 
+Note, even though a hypothesis test is being performed for each SNP by MLMM, it does not suffer from multiple testing issues. 
+Neither the null nor the alternative hypothesis is being accepted or rejected. Only the hypothesis yielding the most significant association is 
+of interest. 
 Both are R packages but there is a significant difference in computational performance (see Results). 
+
+
+
   
 R2VIM differs to the other four methods in that it is a non-parametric model-free approach. It implements  
 random forests but where multiple parallel runs are performed. Each run leads to 
@@ -355,9 +364,9 @@ a link to our server for demonstrating Eagle on some test data are available on 
 
 We compared Eagle, in terms of computational and statistical performance, against seven other association mapping methods. 
 We chose methods that almost all had been purpose built for genome-wide analysis, that could handle data from quantitative traits, and where the methods had been implemented in freely available computer programs or packages. Two of the methods are based on single-locus (or locus-by-locus) models and five are based on multi-locus models. Of the many ways of performing single-locus association mapping, we chose 
-GEMMA \citep{zhou2012genome}  and FaST-LMM \citep{lippert2011fast} because of their popularity and computational speed. 
-For multi-locus association mapping, we chose bigRR \citep{shen2013novel}, glmnet \citep{Friedman2010glmnet}, 
-LMM-Lasso \citep{rakitsch2013lasso}, MLMM \citep{segura2012efficient} , and r2VIM \citep{szymczak2016r2vim}.  
+GEMMA and FaST-LMM  because of their popularity and computational speed. 
+For multi-locus association mapping, we chose bigRR, glmnet, 
+LMM-Lasso, MLMM, and r2VIM.  
 Each takes a different approach to multi-locus association mapping. A summary of the key attributes of the different computer programs/packages 
 is given in Supplementary Table \ref{suptabsummary} (see Methods for further details). 
 
