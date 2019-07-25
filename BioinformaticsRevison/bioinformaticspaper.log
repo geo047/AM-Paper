@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  24 JUL 2019 16:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  25 JUL 2019 09:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -219,13 +219,13 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 86.
 
-[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12]
-Overfull \hbox (6.03087pt too wide) in paragraph at lines 405--406
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+Overfull \hbox (6.03087pt too wide) in paragraph at lines 422--423
 []\OT1/cmr/m/n/10 FaST-LMM and GEMMA im-ple-ment single-locus as-so-ci-a-tion m
 ap-ping. FaST-
  []
 
-[13] [14]
+[14]
 Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    date: 2019-01-08 12:13:41
 (epstopdf)                    size: 36978 bytes
@@ -234,35 +234,35 @@ Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    size: 17038 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
-(epstopdf)             \includegraphics on input line 449.
+(epstopdf)             \includegraphics on input line 466.
 Package epstopdf Info: Output file is already uptodate.
  <power2main-eps-converted-to.pdf, id=66, 561.09625pt x 809.0225pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power2main-eps-converted-to.pdf>
-Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 449
+Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 466
 .
 (pdftex.def)             Requested size: 426.7886pt x 569.06476pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 449--451
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 466--468
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 47.6513pt on input line 452.
+LaTeX Warning: Float too large for page by 47.6513pt on input line 469.
 
-[15] [16 <./power2main-eps-converted-to.pdf>]
-<Figure2_time.jpg, id=81, 1505.625pt x 1129.21875pt>
+[15] [16 <./power2main-eps-converted-to.pdf>] [17]
+<Figure2_time.jpg, id=84, 1505.625pt x 1129.21875pt>
 File: Figure2_time.jpg Graphic file (type jpg)
  <use Figure2_time.jpg>
-Package pdftex.def Info: Figure2_time.jpg used on input line 516.
+Package pdftex.def Info: Figure2_time.jpg used on input line 533.
 (pdftex.def)             Requested size: 413.99895pt x 310.49304pt.
 
-Overfull \hbox (68.99895pt too wide) in paragraph at lines 516--517
+Overfull \hbox (68.99895pt too wide) in paragraph at lines 533--534
  [][] 
  []
 
-[17] [18 <./Figure2_time.jpg>] [19]
+[18] [19 <./Figure2_time.jpg>]
 Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    date: 2018-11-29 12:29:51
 (epstopdf)                    size: 26900 bytes
@@ -271,7 +271,7 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 13982 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 582.
+(epstopdf)             \includegraphics on input line 599.
 Package epstopdf Info: Output file is already uptodate.
 
 <mouseresults-eps-converted-to.pdf, id=92, 561.09625pt x 722.7pt>
@@ -279,55 +279,59 @@ File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 5
-82.
+99.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 582--583
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 599--600
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 41.9422pt on input line 585.
+LaTeX Warning: Float too large for page by 41.9422pt on input line 602.
 
 [20] [21 <./mouseresults-eps-converted-to.pdf>] [22]
-Overfull \hbox (129.80637pt too wide) in paragraph at lines 642--645
+Overfull \hbox (129.80637pt too wide) in paragraph at lines 659--662
 \OT1/cmr/m/n/10 were ob-tained from the Het-ero-ge-neous Stock Mice web-site ht
 tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
  []
 
-[23] (./bioinformaticspaper.bbl [24] [25] [26]) [27] (./bioinformaticspaper.aux
-) ) 
+[23] (./bioinformaticspaper.bbl [24] [25] [26] [27]) [28]
+(./bioinformaticspaper.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2879 strings out of 493089
- 40020 string characters out of 6134842
- 107777 words of memory out of 5000000
- 6318 multiletter control sequences out of 15000+600000
+ 2880 strings out of 493089
+ 40038 string characters out of 6134842
+ 107787 words of memory out of 5000000
+ 6319 multiletter control sequences out of 15000+600000
  14059 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,35p,1387b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bioinformaticspaper.pdf (27 pages, 564153 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on bioinformaticspaper.pdf (28 pages, 565187 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 190 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

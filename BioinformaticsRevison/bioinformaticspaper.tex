@@ -131,6 +131,7 @@ We focused our analyses on the autosomal SNPs.
 
 
 \subsection{Eagle Approach for Multi-locus Association Mapping}
+\label{subsection:Eagle}
 
 \textcolor{red}{
 Eagle is a method for multi-locus association mapping on a genome-wide scale. It is based on linear mixed models. It differs from most other single- and multi-locus association mapping methods in that Eagle treats association mapping as a model selection problem \citep{ball2001bayesian,broman2002model,yi2005bayesian}. 
@@ -262,17 +263,19 @@ analytically is challenging and is an area of active research \citep{lockhart201
 stability selection (see below). 
 
 MLMM is closest in philosophy to Eagle. It too is based on building the best model via \textcolor{red}{stepwise} selection, 
-within  a linear mixed model framework, using the 
-extBIC as one of its model selection criterion. However, there are differences between the two methods.  MLMM does not make use of dimension reduction. Also, it builds its "best" 
-model differently to Eagle.  Eagle chooses a SNP to enter the model by finding the SNP with the largest score statistic. 
-This score statistic has been used, typically, to detect outliers  but we are using it here to identify SNP with 
-unusually large random effect sizes. 
-MLMM uses the statistical significance of the SNPs,  when treated as a fixed effect in the model. This involves fitting a separate linear mixed model for each unidentified SNP, a 
-potentially computationally expensive exercise. However, MLMM does this in a clever and efficient way via the Gram-Schmit process. 
+within  a linear mixed model framework, and uses the 
+extBIC as one of its model selection criterion. However, there are differences between the two methods. 
+MLMM does not make use of dimension reduction. \textcolor{red}{Also, how SNP are selected to enter the model differs between the 
+two methods. 
+Eagle identifies a SNP of interest from its score statistic (see Section \ref{subsection:Eagle} for details).  This score statistic was originally developed for 
+outlier detection in linear (mixed) models but it is being used by Eagle to identify 
+SNP with unusually large random effects. MLMM instead uses 
+the statistical significance of a SNP,  when treated as a fixed effect in the model. This involves fitting a separate linear mixed model for each candidate SNP, a potentially
+computationally expensive exercise. However, MLMM does this in a clever and efficient way via the Gram-Schmidt process. 
+Both are R packages but there is a significant difference in computational performance (see Results). 
 Note, even though a hypothesis test is being performed for each SNP by MLMM, it does not suffer from multiple testing issues. 
 Neither the null nor the alternative hypothesis is being accepted or rejected. Only the hypothesis yielding the most significant association is 
-of interest. 
-Both are R packages but there is a significant difference in computational performance (see Results). 
+of interest. }
 
 
 
@@ -297,33 +300,6 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 
 
-\subsection{Stability Selection}
-
- Stability selection \citep{meinshausen2010stability}  is a subsampling strategy with a range of applications, including the estimation of the significance of effects in regression models where 
-the number of parameters ($p$) can be much larger than the number of samples ($n$). We chose stability selection over permutation and other sampling procedures because of its low computational cost. We employe stability selection to estimate, empirically, the significance of the SNP effects from the regularisation method's analyses of the simulated data.
-
-To obtain significance estimates via stability selection, we do the following. For LMM-Lasso and glmnet, we begin
- by performing a preliminary analysis of a replicate where  we tune the  regularisation parameter to yield 20 to 30 non-zero SNP effects.
-This tuning of the regularisation parameter is done for data under each simulation scenario but it is not necessary to do it for every replicate within a scenario. It is sufficient to pick a single replicate at random upon which to tune the regularisation parameter. 
-Here, we have the luxury of knowing the genetic conditions 
-under which the simulated trait data are generated. We know that 20 to 30 SNP-trait associations is a reasonable number of findings to expect. 
- However, stability selection estimates are robust  \citep{meinshausen2010stability} 
- and the regularisation parameter can be tuned to any reasonable number of 
- non-zero effects. We sample repeatedly, without replacement, from the replicate. We draw 100 replicate subsets of size $n/2$.  
-Each replicate subset is then analysed with LMM-Lasso and glmnet, with their regularisation parameter set to the value found in the preliminary analysis. 
-A (probability) estimate of the statistical significance of a SNP effect is obtained by counting the 
-number of times the SNP have a non-zero effect size over all the replicates divided by the number of replicates (which was 100). 
-
-For bigRR, we modify our stability selection procedure slightly. 
-There is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis. 
-As described above, we draw 100 replicate subsets of size $n/2$ and analyse these data with bigRR. We then order the 
-SNPs according to the absolute size of their SNP effects and record the top 20 SNPs. 
-A (probability)  estimate of the statistical significance of a SNP effect is then obtained by counting the 
-number of times the SNP is recorded divided by the number of replicates. 
-
-
-
-
 \subsection{Generation of Simulation Data}
 
 The data are generated via data perturbation \citep{zhao2007arabidopsis}. 
@@ -332,8 +308,8 @@ It is a way of introducing greater realism into a simulation study.
  Here, the genotype data are real, the 
 quantitative trait data are simulated. 
  The SNP genotypes are drawn, 
-according to the specifications of the scenario, from data collected from the 1000 Genome Project, version 3   \citep{10002010map}. 
-Across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. 
+according to the specifications of the scenario , from data collected from the 1000 Genome Project, version 3   \citep{10002010map}. 
+Across scenarios (see Results for details), the SNP data differs. Across replicates within a scenario, the SNP data are the same. For each scenario, 100 replicates are generated. 
 
 To generate the trait data $\by$, first, $q$, the number of SNPs that are to be assigned a quantitative value is drawn from a Poisson distribution with 
 mean 30. Second, $q$ SNP are selected randomly. Third, we assume an additive model for the SNPs. The SNP genotypes AA, AB, and BB 
@@ -344,6 +320,113 @@ the residual variance that has been set to yield a trait with heritability 0.5. 
 In forming $\by$, we have purposely not included any other environmental variables such as age, sex, or experimental design effects. This is because 
 not all the methods were implemented to handle the inclusion of additional fixed effects. A two-stage modelling approach 
 is often adopted to deal with this situation, but we chose not to introduce this complexity into the analyses.  
+
+
+
+
+\subsection{Stability Selection}
+
+ 
+ 
+ Stability selection \citep{meinshausen2010stability}  is a subsampling strategy with a range of applications. 
+ It is used here to assign statistical significance to the regression coefficient estimates of
+ LMM-Lasso, glmnet, and bigRR.   LMM-Lasso, glmnet, and bigRR are regularisation 
+ methods. As such,  the size of a SNP effect in the model is estimated but not its significance.  
+ Stability selection was chosen over permutation and other sampling procedures because of its reduced computational cost. 
+ 
+The Stability selection procedure for LMM-Lasso and glmnet is as follows. Remembering that for each simulation scenario we generate 100 
+replicates of data under that scenario, we begin by choosing one of these replicates at random. 
+We then analyse these data with LMM-Lasso (glmnet) with different values of its  regularisation parameter. 
+Our goal is to find the parameter value that  yields 20 to 30 non-zero SNP effects. 
+This can be done via a simple binary search approach. 
+ Then, for each replicate, we subsampled repeatedly, 100 subsets of size $n/2$.  A replicate is subsampled without replacement.  
+ These subsets are then analysed with LMM-Lasso (glmnet) with its regularisation parameter fixed to the value found previously. 
+A binary vector, of length the number of SNP, is recorded as the result. A one (zero) means the SNP had a non-zero (zero) effect size. 
+Calculating a SNP's statistical significance is now a simple task. We take the vector sum of the binary vectors over all 100 subsets. 
+This vector sum will contain elements in the range of 0 to 100. By dividing each element in this vector sum by the number of 
+subsets upon which the sum was calculated, we obtain empirical probabilities.  
+ These 
+probabilities measure the strength of evidence for the SNPs to be in association with the trait. 
+
+
+By taking the vector sum over all 100 subsets and dividing each element in the sum by 100, we obtain the probability 
+estimates of the significance of the SNPs. 
+
+A probability estimate of the significance of a SNP is now just a simple vector sum, over the 100 subsets,  of the binary vectors 
+
+By taking the vector sum over all 100 subsets, for a particular replicate, and dividing each element sum by 100, we obtain a probability 
+estimate of significance.  
+
+
+Now, for a replicate,  to calculate the statistical significance of the coefficient estimates obtained with LMM-Lasso (glmnet),  
+
+
+
+
+
+estimate the statistical significance of a SNP, for a particular replicate, is obtained by taking the 
+
+Now, for a particular replicate, we count the number of times LMM-Lasso (glmnet) gave a non-zero 
+
+
+Now, for a particular replicate which was analysed with LMM-Lasso (glmnet), 
+we count the number of times 
+
+we calculate the statistical significance of a SNP by counting the number of times its 
+coefficient was non-zero in the LMM-Lasso (glmnet) analyses of the 100 subsets of data.  A probability estimate of significance is obtained 
+by dividing this count by the number of subsetted analyses, which was 100.  Note that it is not 
+necessary to tune the regularisation   parameter on every replicate within a scenario because the replicates are generated under the same conditions within a scenario. Also, 
+we have the luxury of knowing the genetic conditions 
+under which the simulated trait data are generated. we know that 20 to 30 SNP-trait associations is a reasonable number of findings to expect. 
+ However, stability selection is a subsampling procedure that is robust to parameter misspecification \citep{meinshausen2010stability}. 
+ The regularisation parameter can be tuned to any reasonable number of 
+ non-zero effects. 
+
+
+
+
+Then, for the LMM-Lasso (glmnet) analysis of a given replicate, to estimate the statistical significance of a SNP effect, we count 
+the number of times the SNP effect has non-zero effect size across the 100 subset LMM-Lasso (glmnet) analyses.  This number is then 
+divided by the number of subsets (which is 100 for the replicate) 
+
+
+ to estimate the statistical significance of the SNP effects for a given replicate, the number of times 
+
+For a replicate, a (probability) estimate of the statistical significance of a SNP effect is obtained by counting the 
+number of times a SNP has a non-zero effect size over all the subsets divided by the number of subsets (which was 100). 
+
+
+Here, the link between 
+trait and genotype is preserved, with only the sample size being reduced. 
+ 
+ 
+
+\textcolor{red}{
+To obtain significance estimates via stability selection, we do the following. For LMM-Lasso and glmnet, for a given scenario, 
+we begin by performing a preliminary analysis of a randomly chosen  replicate (i.e. trait and SNP genotype data)  from the 
+ 100 available replicates for that scenario.  Our goal is to find a value of the regularisation parameter used by LMM-Lasso and glmnet 
+ that yields 20 to 30 non-zero SNP effects. It is not necessary to tune the regularisation 
+  parameter on every replicate within a scenario because the replicates are generated under the same conditions within a scenario. 
+  Since we have the luxury of knowing the genetic conditions 
+under which the simulated trait data are generated, we know that 20 to 30 SNP-trait associations is a reasonable number of findings to expect. 
+ However, stability selection is a subsampling procedure that is robust to misspecification of parameters  \citep{meinshausen2010stability}. 
+ The regularisation parameter can be tuned to any reasonable number of 
+ non-zero effects.  Once we have a value for the regularisation parameter, 
+ 
+ 
+ We subsample repeatedly, without replacement, from a replicate. We draw 100 subsets of size $n/2$.  
+Each subset is then analysed with LMM-Lasso and glmnet, with their regularisation parameter set to the value found in the preliminary analysis. 
+A (probability) estimate of the statistical significance of a SNP effect is obtained by counting the 
+number of times the SNP have a non-zero effect size over all the replicates divided by the number of subsets (which was 100). }
+
+For bigRR, we modify our stability selection procedure slightly. 
+There is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis. 
+As described above, we draw 100 replicate subsets of size $n/2$ and analyse these data with bigRR. We then order the 
+SNPs according to the absolute size of their SNP effects and record the top 20 SNPs. 
+A (probability)  estimate of the statistical significance of a SNP effect is then obtained by counting the 
+number of times the SNP is recorded divided by the number of replicates. 
+
+
 
 
 
