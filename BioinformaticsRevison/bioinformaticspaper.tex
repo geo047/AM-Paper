@@ -329,56 +329,41 @@ is often adopted to deal with this situation, but we chose not to introduce this
  
  
  Stability selection \citep{meinshausen2010stability}  is a subsampling strategy with a range of applications. 
- It is used here to estimate, empirically, the statistical significance of the results from LMM-Lasso, glment, and bigRR 
- of the simulated data. These three regularisation methods give the effect sizes of the SNPs, but not their significance, as their 
+ It is used here to estimate, empirically, the statistical significance of the results from LMM-Lasso, glment, and bigRR analyses 
+ of the simulated data. These three regularisation methods give the effect sizes of the SNPs, but not their significance as their 
  results.   Stability selection was chosen over permutation and other sampling procedures because of its reduced computational cost. 
  
-The Stability selection procedure for LMM-Lasso and glmnet is as follows. 
-For a particular scenario, we begin by finding the value of the regularisation parameter that yields 20 to 30 non-zero SNP effects. 
+The stability selection procedure for LMM-Lasso and glmnet is as follows. 
+For a particular scenario, we begin by finding, via a binary search,  
+the value of the regularisation parameter that yields 20 to 30 non-zero SNP effects. 
 We know that 20 to 30 SNP-trait associations is a reasonable number of findings to expect from the analysis of a replicate in the simulation study.  The regularisation parameter though could have been tuned to give any reasonable number of non-zero SNP effects. 
  This tuning was done for each of the six scenarios 
- but only for a single replicate within a scenario. It is not necessary to tune the regularisation parameter on every replicate 
+ but only for a single replicate, selected at random,  from within a scenario. It is not necessary to tune the regularisation parameter on every replicate 
  when replicates are generated under the same (trait, sample size, and number of SNP) conditions within a scenario. 
  
- 
-
-
-We did this for each  scenarios but not for every replicate within a scenario. It is unnecessary to set the regularisation parameter 
-for every replicate when replicates within a scenario are generated under the same conditions. 
-For a given scenario, we chose a replicate at random.  We then used a binary search procedure to set the regularisation parameter. 
-Then, for a replicate, we subsample repeatedly, 100 subsets of size $n/2$. These subsamples are drawn without replacement.  
-Here, the matching of trait to genotype is preserved in the subsamples. A subsample differs to the replicate in size only. 
-
-
-
-
-Remembering that for each simulation scenario we generate 100 
-replicates of data under that scenario, we begin by choosing one of these replicates at random. 
-We then analyse this replicate with LMM-Lasso (glmnet) with different values of its  regularisation parameter. 
-Our goal is to find the parameter value that  yields 20 to 30 non-zero SNP effects. 
-This can be done via a simple binary search approach. 
- Then, for each replicate, we subsampled repeatedly, 100 subsets of size $n/2$.  A replicate is subsampled without replacement.  
- These subsets are then analysed with LMM-Lasso (glmnet) with its regularisation parameter fixed to the value found previously. 
-A binary vector, of length the number of SNP, is recorded as the result. 
-A one (zero) means the SNP had a non-zero (zero) effect size. 
-Calculating a SNP's statistical significance is now a simple task. We take the vector sum of the binary vectors over all 100 subsets. 
+ Once a suitable value for the regularisation parameter had been found, for the replicate  whose 
+ SNP results are to be assigned statistical significance, we subsample repeatedly, 100 data sets of size $n/2$. A larger number of 
+ data sets  and/or larger sized data sets could have been chosen here but we found these changes to have 
+ little impact on the final significance estimates. The subsamples are drawn without replacement. Also, 
+ the matching of trait to genotype is preserved in the subsamples. A subsample differs to the replicate in size only. 
+ The subsamples are analysed with LMM-Lasso (glmnet) with its regularisation parameter fixed to the tuned value found previously. 
+From the analysis of a subsample, a binary vector, of length the number of SNP, is recorded as the result where a one (zero) means the SNP had a non-zero (zero) effect size. 
+Calculating a SNP's statistical significance is now a simple task. We calculate the vector sum of the binary vectors over all 100 subsamples. 
 This vector sum will contain elements in the range of 0 to 100. By dividing each element in this vector sum by the number of 
-subsets upon which the sum was calculated, we obtain empirical probabilities.  
+subsamples upon which the sum is calculated (which is 100), we obtain empirical probabilities.  
  These 
 probabilities measure the strength of evidence for the SNPs to be in association with the trait. 
- Note that it is not 
-necessary to tune the regularisation   parameter on every replicate within a scenario because the replicates are generated under the same conditions within a scenario. Also, 
-we have the luxury of knowing the genetic conditions 
-under which the simulated trait data are generated. we know that 20 to 30 SNP-trait associations is a reasonable number of findings to expect. 
- However, stability selection is a subsampling procedure that is robust to parameter misspecification \citep{meinshausen2010stability}. 
- The regularisation parameter can be tuned to any reasonable number of 
- non-zero effects. 
+
+
+For bigRR, we implement stability selection in a different way. Unlike LMM-Lasso and glmnet, bigRR yields non-zero SNP effects 
+for all the SNPs. Also, there is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis 
+procedure. We still draw 100 subsamples of size $n/2$, without replacement and each subsample is analysed with bigRR. 
+However, from each analysis, we order the SNPs according to the absolute size of their SNP effect estimates from bigRR. 
+ A binary vector, of length the number of SNPs is then formed 
+where a one (zero) means the SNP is (not) in the top 20 ordered SNPs.  Calculating the significance of the SNPs then proceeds as described 
+above. 
 
  
-For bigRR, we modify our stability selection procedure slightly.  Where LMM-Lasso and glmnet shrink non-important effects to zero, 
-bigRR is a ridge regression method where all SNP are given an effect size.  XXXXX expand on this. ... 
-
-
 
 There is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis. 
 As described above, we draw 100 replicate subsets of size $n/2$ and analyse these data with bigRR. We then order the 
