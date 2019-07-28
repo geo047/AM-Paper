@@ -308,8 +308,8 @@ It is a way of introducing greater realism into a simulation study.
  Here, the genotype data are real, the 
 quantitative trait data are simulated. 
  The SNP genotypes are drawn, 
-according to the specifications of the scenario , from data collected from the 1000 Genome Project, version 3   \citep{10002010map}. 
-Across scenarios (see Results for details), the SNP data differs. Across replicates within a scenario, the SNP data are the same. For each scenario, 100 replicates are generated. 
+according to the specifications of a particular simulation scenario , from data collected from the 1000 Genome Project, version 3   \citep{10002010map}. Six different scenarios are considered. These scenarios differ in  their sample size and number of 
+SNPs (see Results for details).  Here, across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. For each scenario, 100 replicates are generated. 
 
 To generate the trait data $\by$, first, $q$, the number of SNPs that are to be assigned a quantitative value is drawn from a Poisson distribution with 
 mean 30. Second, $q$ SNP are selected randomly. Third, we assume an additive model for the SNPs. The SNP genotypes AA, AB, and BB 
@@ -364,14 +364,6 @@ where a one (zero) means the SNP is (not) in the top 20 ordered SNPs.  Calculati
 above. 
 
  
-
-There is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis. 
-As described above, we draw 100 replicate subsets of size $n/2$ and analyse these data with bigRR. We then order the 
-SNPs according to the absolute size of their SNP effects and record the top 20 SNPs. 
-A (probability)  estimate of the statistical significance of a SNP effect is then obtained by counting the 
-number of times the SNP is recorded divided by the number of replicates. 
-
-
 
 
 
