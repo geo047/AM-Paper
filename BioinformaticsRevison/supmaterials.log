@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  22 JUL 2019 12:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 JUL 2019 15:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -179,17 +179,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (115.4232pt too wide) in paragraph at lines 41--89
+Overfull \hbox (115.4232pt too wide) in paragraph at lines 42--90
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--89
+Underfull \hbox (badness 10000) in paragraph at lines 42--90
 
  []
 
 
-LaTeX Warning: Float too large for page by 120.66876pt on input line 89.
+LaTeX Warning: Float too large for page by 120.66876pt on input line 90.
 
 [2]
 Package epstopdf Info: Source file: <power1main.eps>
@@ -200,17 +200,17 @@ Package epstopdf Info: Source file: <power1main.eps>
 (epstopdf)                    size: 16861 bytes
 (epstopdf)             Command: <repstopdf --outfile=power1main-eps-converted-t
 o.pdf power1main.eps>
-(epstopdf)             \includegraphics on input line 106.
+(epstopdf)             \includegraphics on input line 107.
 Package epstopdf Info: Output file is already uptodate.
  <power1main-eps-converted-to.pdf, id=17, 561.09625pt x 722.7pt>
 File: power1main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power1main-eps-converted-to.pdf>
-Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 106
+Package pdftex.def Info: power1main-eps-converted-to.pdf used on input line 107
 .
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 106--107
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 107--108
  [] 
  []
 
@@ -218,129 +218,143 @@ Package epstopdf Info: Source file: <mem.eps>
 (epstopdf)                    date: 2018-10-15 15:05:52
 (epstopdf)                    size: 27772 bytes
 (epstopdf)             Output file: <mem-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-22 12:14:42
+(epstopdf)                    size: 15511 bytes
 (epstopdf)             Command: <repstopdf --outfile=mem-eps-converted-to.pdf m
 em.eps>
-(epstopdf)             \includegraphics on input line 128.
-runsystem(repstopdf --outfile=mem-eps-converted-to.pdf mem.eps)...executed safe
-ly (allowed).
-
-Package epstopdf Info: Result file: <mem-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-07-22 12:14:42
-(epstopdf)                    size: 15511 bytes.
+(epstopdf)             \includegraphics on input line 129.
+Package epstopdf Info: Output file is already uptodate.
 <mem-eps-converted-to.pdf, id=18, 561.09625pt x 722.7pt>
 File: mem-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mem-eps-converted-to.pdf>
-Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 128.
+Package pdftex.def Info: mem-eps-converted-to.pdf used on input line 129.
 (pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
 
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 128--129
+Overfull \hbox (81.7886pt too wide) in paragraph at lines 129--130
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 59.29732pt on input line 130.
+LaTeX Warning: Float too large for page by 59.29732pt on input line 131.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 []\OT1/cmr/m/n/7 BMC.Mean BMC.StdDev BMC.StdDev.N
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 []\OT1/cmr/m/n/7 Muscles.Sol.g Mus-cles.TA.g Mus-cles.Plant.g
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 \OT1/cmr/m/n/7 Mus-cles.EDL.g Mus-cles.Gast.g SPPI.ln.pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 \OT1/cmr/m/n/7 Bioch.Calcium Bioch.Tot.Cholesterol
  []
 
 
-Overfull \hbox (74.909pt too wide) in paragraph at lines 144--165
+Overfull \hbox (74.909pt too wide) in paragraph at lines 145--166
 [][] 
+ []
+
+<1.jpeg, id=19, 5018.75pt x 5018.75pt>
+File: 1.jpeg Graphic file (type jpg)
+ <use 1.jpeg>
+Package pdftex.def Info: 1.jpeg used on input line 211.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 211--212
+ [] 
+ []
+
+<5.jpeg, id=20, 5018.75pt x 5018.75pt>
+File: 5.jpeg Graphic file (type jpg)
+ <use 5.jpeg>
+Package pdftex.def Info: 5.jpeg used on input line 220.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 220--221
+ [] 
  []
 
 [3
 
 
 ] [4 <./power1main-eps-converted-to.pdf>] [5 <./mem-eps-converted-to.pdf>]
-(./supmaterials.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[6 <./1.jpeg>] [7 <./5.jpeg>] (./supmaterials.aux) ) 
 Here is how much of TeX's memory you used:
- 1737 strings out of 493089
- 25135 string characters out of 6134842
- 89965 words of memory out of 5000000
- 5189 multiletter control sequences out of 15000+600000
+ 1748 strings out of 493089
+ 25236 string characters out of 6134842
+ 89997 words of memory out of 5000000
+ 5197 multiletter control sequences out of 15000+600000
  11640 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,9n,24p,898b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on supmaterials.pdf (5 pages, 147119 bytes).
+</usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on supmaterials.pdf (7 pages, 3351295 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 84 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

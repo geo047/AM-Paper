@@ -301,6 +301,7 @@ Both methods are state-of-the-art and have been implemented in highly efficient 
 
 
 \subsection{Generation of Simulation Data}
+\label{subsection:simdata}
 
 The data are generated via data perturbation \citep{zhao2007arabidopsis}. 
 Data perturbation amalgamates real with simulated data to generate replicates. 
@@ -308,7 +309,7 @@ It is a way of introducing greater realism into a simulation study.
  Here, the genotype data are real, the 
 quantitative trait data are simulated. 
  The SNP genotypes are drawn, 
-according to the specifications of a particular simulation scenario , from data collected from the 1000 Genome Project, version 3   \citep{10002010map}. Six different scenarios are considered. These scenarios differ in  their sample size and number of 
+according to the specifications of a particular simulation scenario, from data collected from the 1000 Genome Project, version 3   \citep{10002010map}. Six different scenarios are considered. These scenarios differ in  their sample size and number of 
 SNPs (see Results for details).  Here, across scenarios, the SNP data differs. Across replicates within a scenario, the SNP data are the same. For each scenario, 100 replicates are generated. 
 
 To generate the trait data $\by$, first, $q$, the number of SNPs that are to be assigned a quantitative value is drawn from a Poisson distribution with 
@@ -327,12 +328,13 @@ is often adopted to deal with this situation, but we chose not to introduce this
 \subsection{Stability Selection}
 
  
- 
- Stability selection \citep{meinshausen2010stability}  is a subsampling strategy with a range of applications. 
+ \textcolor{red}{Stability selection  \citep{meinshausen2010stability}  is a subsampling strategy with a range of applications. 
  It is used here to estimate, empirically, the statistical significance of the results from LMM-Lasso, glment, and bigRR analyses 
  of the simulated data. These three regularisation methods give the effect sizes of the SNPs, but not their significance as their 
  results.   Stability selection was chosen over permutation and other sampling procedures because of its reduced computational cost. 
+ }
  
+ \textcolor{red}{
 The stability selection procedure for LMM-Lasso and glmnet is as follows. 
 For a particular scenario, we begin by finding, via a binary search,  
 the value of the regularisation parameter that yields 20 to 30 non-zero SNP effects. 
@@ -340,7 +342,9 @@ We know that 20 to 30 SNP-trait associations is a reasonable number of findings 
  This tuning was done for each of the six scenarios 
  but only for a single replicate, selected at random,  from within a scenario. It is not necessary to tune the regularisation parameter on every replicate 
  when replicates are generated under the same (trait, sample size, and number of SNP) conditions within a scenario. 
+ }
  
+ \textcolor{red}{
  Once a suitable value for the regularisation parameter had been found, for the replicate  whose 
  SNP results are to be assigned statistical significance, we subsample repeatedly, 100 data sets of size $n/2$. A larger number of 
  data sets  and/or larger sized data sets could have been chosen here but we found these changes to have 
@@ -353,16 +357,17 @@ This vector sum will contain elements in the range of 0 to 100. By dividing each
 subsamples upon which the sum is calculated (which is 100), we obtain empirical probabilities.  
  These 
 probabilities measure the strength of evidence for the SNPs to be in association with the trait. 
+}
 
-
-For bigRR, we implement stability selection in a different way. Unlike LMM-Lasso and glmnet, bigRR yields non-zero SNP effects 
+\textcolor{red}{
+For bigRR, stability selection is implemented in a different way. Unlike LMM-Lasso and glmnet, bigRR yields non-zero SNP effects 
 for all the SNPs. Also, there is no need to tune the regularisation parameter for bigRR as an optimal value is found as part of its analysis 
-procedure. We still draw 100 subsamples of size $n/2$, without replacement and each subsample is analysed with bigRR. 
+procedure. We still draw 100 subsamples of size $n/2$, without replacement, and each subsample is analysed with bigRR. 
 However, from each analysis, we order the SNPs according to the absolute size of their SNP effect estimates from bigRR. 
  A binary vector, of length the number of SNPs is then formed 
 where a one (zero) means the SNP is (not) in the top 20 ordered SNPs.  Calculating the significance of the SNPs then proceeds as described 
 above. 
-
+}
  
 
 
@@ -402,20 +407,25 @@ and 5,000 single SNPs (150 x 5K),  350 individuals and 400,000 SNPs (350 x 400K)
 1,500,000 SNPs (4000 x 1.5M), and 10,000 individuals and 1,500,000 SNPs (10000 x 1.5M).   
 These scenarios reflect, at least in some cases, the sizes of study being performed in animals, plants, and humans.  
 
-For each scenario, 100 replicates were generated. A single replicate consisted of SNP and quantitative trait data. 
+For each scenario, 100 replicates were generated. A single replicate consisted of SNP and quantitative trait data \textcolor{red}{(see Section 
+\ref{subsection:simdata})}. 
 Extra realism was introduced into the simulation study through the drawing of the SNP genotypes from the 1000 Genome Project, phase 3  \citep{10002010map}.
  The quantitative trait data were generated 
 by selecting, randomly, a set of SNPs and assigning these loci additive allelic effects.  Random errors were then drawn from a normal distribution 
 with variance set to give a heritability of 50\% for the trait. 
 For each individual, a quantitative trait value was obtained by summing its random error and additive allelic effects. 
 The number of randomly selected SNPs follows a Poisson distribution with mean 30. The size of the allelic effects 
- across the selected loci are equal.  
+ across the selected loci are equal, \textcolor{red}{because the SNP genotypes AA, AB, and BB 
+are assigned the values -1, 0, and 1, respectively (Section \ref{subsection:simdata})} . 
+ 
+  
  
  Analyses by the eight programs/packages of a replicate proceeded as follows. They were all run at their default settings. 
  Eagle and MLMM were the easiest of the programs/packages to implement. 
  The only parameters requiring specification were the amount of available memory and number of CPUs for 
- Eagle and the number of chunks for MLMM. 
- Their results were also immediately 
+ Eagle and the number of chunks for MLMM.  \textcolor{red}{MLMM breaks its matrices into blocks or chunks, 
+ reducing its memory 
+ footprint but at the cost of increased computation}.  Their results were also immediately 
  interpretable. Their findings were the set of SNPs in strongest association with the trait. Each 
 SNP in this set identified a separate genomic region of interest, whose position was given by the map location of the SNP.  
 
@@ -446,7 +456,10 @@ significance measure in each of the peak regions was recorded as a finding.
 \subsection{Power and False Discovery Rates}
 
 Here, we answer the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. We do this by estimating the power and false discovery rates of Eagle and the other methods for the six scenarios.  Since, for a replicate, we knew which SNPs were assigned additive effects, we knew the SNPs that were in true association with the trait. We will refer to these SNPs as being
-true SNPs. By knowing the true SNPS, we were able to assess the validity of a method's findings. A  finding was counted as true if it was positioned within 40 kilobase pairs of the location of a true SNP. When a replicate was analysed, we obtained an estimate of the power of the method by taking  the number of findings that were found to be  true and dividing by the 
+true SNPs. By knowing the true SNPS, we were able to assess the validity of a method's findings. A  finding was counted as true if it was positioned within 40 kilobase pairs of the location of a true SNP.  \textcolor{red}{This was the average (confidence interval) distance used by
+\cite{nicod2016genome} for determining if their findings were close to candidate genes and whose mouse data we analyse below}. 
+
+When a replicate was analysed, we obtained an estimate of the power of the method by taking  the number of findings that were found to be  true and dividing by the 
 number of true SNPs. We also obtained an estimate of a method's false discovery rate. It is the number of findings that were found to be false divided by the number of (true and false) findings found by the method.  Both these estimates varied with replicate. 
 The power (false discovery rate) of a method, for a scenario, was found by taking the median of the power (false discovery rate) estimates over the 100 replicates. 
 
@@ -562,7 +575,8 @@ We were interested in comparing results from Eagle with those from single-locus 
 
 We repeated the single-locus analyses as first performed \citep{nicod2016genome}, except 
 that we focused on autosomal SNPs and our analyses were based on SNP genotypes  rather than SNP dosages. 
-In the original analysis, a genome-wide threshold that gave a false discovery rate of 5\%, was found via permutation. We followed the 
+In the original analysis, a genome-wide threshold that gave a false discovery rate of 5\%, was found via permutation  
+\textcolor{red}{\citep{nicod2016genome}} . We followed the 
 same empirical procedure but increased the number of permutations from 100 to 500 for more accurate thresholds.  
 
 
