@@ -59,6 +59,12 @@ de~Bakker, P.~I., Yelensky, R., Pe'er, I., Gabriel, S.~B., Daly, M.~J., and
 \newblock Efficiency and power in genetic association studies.
 \newblock {\em Nature Genetics\/}, {\bf 37}(11), 1217.
 
+\bibitem[Doerge and Churchill(1996)Doerge and Churchill]{doerge1996permutation}
+Doerge, R.~W. and Churchill, G.~A. (1996).
+\newblock Permutation tests for multiple loci affecting a quantitative
+  character.
+\newblock {\em Genetics\/}, {\bf 142}(1), 285--294.
+
 \bibitem[Friedman {\em et~al.}(2010)Friedman, Hastie, and
   Tibshirani]{Friedman2010glmnet}
 Friedman, J., Hastie, T., and Tibshirani, R. (2010).

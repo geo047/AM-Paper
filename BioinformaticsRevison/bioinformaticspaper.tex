@@ -118,8 +118,8 @@ The data were obtained from a large genome-wide association study that was perfo
 Phenotypic and genotypic data were available on 1,887 adult mice. 
 The phenotypic data included raw and adjusted (for fixed effects) measurements from 200 behavioural, tissue, and physiological traits.  
 Of these traits, 
-43 yielded SNP-trait associations that could be corroborated through other independent published work. It was these 
-43 traits that were the focus of our real data analyses. As in the original study  \citep{nicod2016genome}, our analyses 
+45 yielded SNP-trait associations that could be corroborated through other independent published work. It was these 
+45 traits that were the focus of our real data analyses. As in the original study  \citep{nicod2016genome}, our analyses 
 were based on the adjusted traits.
 Genotypic data were available on \textcolor{red}{359,559} (353,697 autosomal) SNPs in the 
 form of marker dosages (expected allele counts that ranged from zero to one). All missing data had been imputed. 
@@ -453,26 +453,26 @@ significance measure in each of the peak regions was recorded as a finding.
 
 
 
-\subsection{Power and False Discovery Rates}
+\subsection{Power and False Positive Rates}
 
-Here, we answer the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. We do this by estimating the power and false discovery rates of Eagle and the other methods for the six scenarios.  Since, for a replicate, we knew which SNPs were assigned additive effects, we knew the SNPs that were in true association with the trait. We will refer to these SNPs as being
+Here, we answer the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations. We do this by estimating the power and false positve rates of Eagle and the other methods for the six scenarios.  Since, for a replicate, we knew which SNPs were assigned additive effects, we knew the SNPs that were in true association with the trait. We will refer to these SNPs as being
 true SNPs. By knowing the true SNPS, we were able to assess the validity of a method's findings. A  finding was counted as true if it was positioned within 40 kilobase pairs of the location of a true SNP.  \textcolor{red}{This was the average (confidence interval) distance used by
 \cite{nicod2016genome} for determining if their findings were close to candidate genes and whose mouse data we analyse below}. 
 
 When a replicate was analysed, we obtained an estimate of the power of the method by taking  the number of findings that were found to be  true and dividing by the 
-number of true SNPs. We also obtained an estimate of a method's false discovery rate. It is the number of findings that were found to be false divided by the number of (true and false) findings found by the method.  Both these estimates varied with replicate. 
-The power (false discovery rate) of a method, for a scenario, was found by taking the median of the power (false discovery rate) estimates over the 100 replicates. 
+number of true SNPs. We also obtained an estimate of a method's false positive rate. It is the number of findings that were found to be false divided by the number of true SNPs.  Both these estimates varied with replicate. 
+The power (false positive rate) of a method, for a scenario, was found by taking the median of the power (false positive rate) estimates over the 100 replicates. 
 
 
-The power and false discovery rates of Eagle and the other multi-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Supplementary Figure \ref{supfigpowermultiple}.  We restricted our attention to these scenarios because not all 
+The power and false positive rates of Eagle and the other multi-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Supplementary Figure \ref{supfigpowermultiple}.  We restricted our attention to these scenarios because not all 
 multi-locus methods could cope with the size of data in the other scenarios. 
   Each plot contains 
-single points and power curves. The single points are the power and false discovery rates for Eagle and MLMM.
+single points and power curves. The single points are the power and false positive rates for Eagle and MLMM.
 These two methods treat association mapping as a model selection problem. Their are no significance thresholds to be set. 
 The power curves are for those methods that treat association mapping as a variable selection problem. Here, the 
 significance of the findings are assessed against a significance threshold. The power curves in the plot show how power changes with 
-the false discovery rate as the significance threshold  is adjusted. 
-The power and false discovery rate of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in
+the false positive rate as the significance threshold  is adjusted. 
+The power and false positive rate of Eagle and the two single-locus methods, GEMMA and FaST-LMM,  are shown in
  Figure \ref{figpowersingle}. 
 
 
@@ -480,7 +480,7 @@ The power and false discovery rate of Eagle and the two single-locus methods, GE
 \begin{figure}
 \caption{
 \setstretch{1.6}{
-Power verse false discovery rates for Eagle and the single-locus methods GEMMA and FaST-LMM. 
+Power verse false positive rates for Eagle and the single-locus methods GEMMA and FaST-LMM. 
 FaST-LMM was run where all the SNP data are used 
 to estimate the relationship matrix (FaST-LMM$^{all}$)   and where genotype data from every five-hundredth SNP are used to 
 estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially higher power than the single-locus methods.   }
@@ -499,7 +499,7 @@ estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially hig
 
 In answer to the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations, it does extremely 
 well.  Of the multi-locus methods, Eagle had the highest power
-while keeping its false discovery rate low (Supplementary Figure \ref{supfigpowermultiple}). MLMM also performed well. However, it was when Eagle was compared against single-locus methods 
+while keeping its false positive rate low (Supplementary Figure \ref{supfigpowermultiple}). MLMM also performed well. However, it was when Eagle was compared against single-locus methods 
 that the difference in power was most noticeable.  Eagle had much higher power than single-locus methods for finding SNP in true 
 association with a trait while avoiding false associations (Figure \ref{figpowersingle}). 
 
@@ -573,11 +573,10 @@ We were interested in comparing results from Eagle with those from single-locus 
  able to confirm the validity of these new findings as they matched what was found in the original study. Having the ability to confirm new findings  in a real study was 
  one of the primary motivators for choosing these data for analysis. 
 
-We repeated the single-locus analyses as first performed \citep{nicod2016genome}, except 
-that we focused on autosomal SNPs and our analyses were based on SNP genotypes  rather than SNP dosages. 
-In the original analysis, a genome-wide threshold that gave a false discovery rate of 5\%, was found via permutation  
-\textcolor{red}{\citep{nicod2016genome}} . We followed the 
-same empirical procedure but increased the number of permutations from 100 to 500 for more accurate thresholds.  
+We repeated the single-locus analyses as first performed \citep{nicod2016genome} but with a few exceptions. We 
+focused on autosomal SNPs, our analyses were based on SNP genotypes  rather than SNP dosages, 
+we sought to control the false positive rate not false discovery rate of the methods, and significance thresholds were 
+found empirically via permutation \citep{doerge1996permutation}.
 
 
 We ran Eagle in three ways. 
@@ -594,14 +593,14 @@ under this setting (Eagle$^{default}$).  An alternate  \citep{chen2008extended} 
   
 The genome wide results from the analyses of the mouse data are shown in Figure  \ref{figmouse}. The mouse study recorded
 measurements on 200 traits. Of these, in the original study, 45 were able to have their findings  corroborated by previously published work. We focused 
-our analyses here on these same 45 traits. Overall,  FaST-LMM, Eagle$^{default}$, Eagle$^{alt}$, and Eagle$^{optimal}$ found 50, 37, 67, and 106, SNP-trait findings, respectively, across 39 traits. No associations were found by FaST-LMM and Eagle for the other six traits. 
+our analyses here on these same 45 traits. Overall,  FaST-LMM$^{Bonf}$,  FaST-LMM$^{perm}$, Eagle$^{default}$, Eagle$^{alt}$, and Eagle$^{optimal}$ found 50, 37, 67, and 106, SNP-trait findings, respectively, across 39 traits. No associations were found by FaST-LMM and Eagle for the other six traits. 
 Eagle$^{alt}$ and Eagle$^{optimal}$ also found SNP-trait associations not found in the original study. This is despite their analyses being based 
 on the SNP genotype data and the original study being based on SNP dosage data. Eagle$^{alt}$ found two  and 
 Eagle$^{optimal}$ found seven new findings (Supplementary Table \ref{suptabnew}).  These new findings all involved SNPs whose association had been confirmed for other related traits in the original 
 study. 
 
 In the simulation study, Eagle outperforms single-locus association mapping. Here, Eagle$^{default}$, where $\gamma=1$, finds less associations 
-than FaST-LMM. Why the discrepancy in performance?   The answer lies in the conservativeness of Eagle.  With the added genetic complexity implicit within the mouse data, Eagle is more conservative when $\gamma$ is set to one than in the simulation study.  However, the relative results of the simulation study remain true. For similar false discover rates, Eagle is superior to single-locus association mapping. As a case in point, here FaST-LMM found 50 SNP-trait associations with a false discovery rate of 5\%. Eagle, with the same false discovery rate (Eagle$^{optimal}$) found 106 SNP-trait associations, more 
+than FaST-LMM. Why the discrepancy in performance?   The answer lies in the conservativeness of Eagle.  With the added genetic complexity implicit within the mouse data, Eagle is more conservative when $\gamma$ is set to one than in the simulation study.  However, the relative results of the simulation study remain true. For similar false positve rates, Eagle is superior to single-locus association mapping. As a case in point, here FaST-LMM found 50 SNP-trait associations with a false positive rate of 5\%. Eagle, with the same false positive rate (Eagle$^{optimal}$) found 106 SNP-trait associations, more 
 than a 100\% increase in findings. 
 
 
@@ -612,17 +611,18 @@ than a 100\% increase in findings.
 
 \begin{figure}
 \caption{
-\setstretch{1.6}{
+\setstretch{1.1}{
 Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
-multi-locus method
-Eagle. Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on 
+multi-locus method Eagle. Genome-wide significance thresholds for FaST-LMM were calculated via the Bonferroni correction 
+(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$). 
+Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on 
 the number of SNPs and sample size (Eagle$^{alt}$), and where the model selection had been optimised for a false positive rate 
-of 5\% (Eagle$^{optimal}$).  The number of SNP-trait associations found are reported in the cells. }
+of 5\% (Eagle$^{optimal}$).   The number of SNP-trait associations found are reported in the cells. }
 }
 \label{figmouse}
 \begin{center}
 %% obtained from bracewell by running ResultsV2.R from /data/geo047/MWAM/Mouse/OutBred/RScripts/
-\includegraphics[width=15cm, height=15cm]{mouseresults.eps}
+\includegraphics[width=12cm, height=12cm]{mouseresults.eps}
 \end{center}
 
 \end{figure}

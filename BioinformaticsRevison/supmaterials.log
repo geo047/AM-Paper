@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  30 JUL 2019 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  1 AUG 2019 14:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -321,10 +321,110 @@ Overfull \hbox (81.77956pt too wide) in paragraph at lines 211--212
 <5.jpeg, id=20, 5018.75pt x 5018.75pt>
 File: 5.jpeg Graphic file (type jpg)
  <use 5.jpeg>
-Package pdftex.def Info: 5.jpeg used on input line 220.
+Package pdftex.def Info: 5.jpeg used on input line 218.
 (pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
 
-Overfull \hbox (81.77956pt too wide) in paragraph at lines 220--221
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 218--219
+ [] 
+ []
+
+<9.jpeg, id=21, 5018.75pt x 5018.75pt>
+File: 9.jpeg Graphic file (type jpg)
+ <use 9.jpeg>
+Package pdftex.def Info: 9.jpeg used on input line 225.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 225--226
+ [] 
+ []
+
+<13.jpeg, id=22, 5018.75pt x 5018.75pt>
+File: 13.jpeg Graphic file (type jpg)
+ <use 13.jpeg>
+Package pdftex.def Info: 13.jpeg used on input line 232.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 232--233
+ [] 
+ []
+
+<17.jpeg, id=23, 5018.75pt x 5018.75pt>
+File: 17.jpeg Graphic file (type jpg)
+ <use 17.jpeg>
+Package pdftex.def Info: 17.jpeg used on input line 239.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 239--240
+ [] 
+ []
+
+<21.jpeg, id=24, 5018.75pt x 5018.75pt>
+File: 21.jpeg Graphic file (type jpg)
+ <use 21.jpeg>
+Package pdftex.def Info: 21.jpeg used on input line 246.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 246--247
+ [] 
+ []
+
+<25.jpeg, id=25, 5018.75pt x 5018.75pt>
+File: 25.jpeg Graphic file (type jpg)
+ <use 25.jpeg>
+Package pdftex.def Info: 25.jpeg used on input line 253.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 253--254
+ [] 
+ []
+
+<29.jpeg, id=26, 5018.75pt x 5018.75pt>
+File: 29.jpeg Graphic file (type jpg)
+ <use 29.jpeg>
+Package pdftex.def Info: 29.jpeg used on input line 260.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 260--261
+ [] 
+ []
+
+<33.jpeg, id=27, 5018.75pt x 5018.75pt>
+File: 33.jpeg Graphic file (type jpg)
+ <use 33.jpeg>
+Package pdftex.def Info: 33.jpeg used on input line 267.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 267--268
+ [] 
+ []
+
+<37.jpeg, id=28, 5018.75pt x 5018.75pt>
+File: 37.jpeg Graphic file (type jpg)
+ <use 37.jpeg>
+Package pdftex.def Info: 37.jpeg used on input line 274.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 274--275
+ [] 
+ []
+
+<41.jpeg, id=29, 5018.75pt x 5018.75pt>
+File: 41.jpeg Graphic file (type jpg)
+ <use 41.jpeg>
+Package pdftex.def Info: 41.jpeg used on input line 281.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 281--282
+ [] 
+ []
+
+<45.jpeg, id=30, 5018.75pt x 5018.75pt>
+File: 45.jpeg Graphic file (type jpg)
+ <use 45.jpeg>
+Package pdftex.def Info: 45.jpeg used on input line 288.
+(pdftex.def)             Requested size: 426.77956pt x 426.77956pt.
+
+Overfull \hbox (81.77956pt too wide) in paragraph at lines 288--289
  [] 
  []
 
@@ -332,29 +432,31 @@ Overfull \hbox (81.77956pt too wide) in paragraph at lines 220--221
 
 
 ] [4 <./power1main-eps-converted-to.pdf>] [5 <./mem-eps-converted-to.pdf>]
-[6 <./1.jpeg>] [7 <./5.jpeg>] (./supmaterials.aux) ) 
+[6 <./1.jpeg>] [7 <./5.jpeg>] [8 <./9.jpeg>] [9 <./13.jpeg>] [10 <./17.jpeg>]
+[11 <./21.jpeg>] [12 <./25.jpeg>] [13 <./29.jpeg>] [14 <./33.jpeg>] [15 <./37.j
+peg>] [16 <./41.jpeg>] [17 <./45.jpeg>] (./supmaterials.aux) ) 
 Here is how much of TeX's memory you used:
- 1748 strings out of 493089
- 25236 string characters out of 6134842
- 89997 words of memory out of 5000000
- 5197 multiletter control sequences out of 15000+600000
+ 1798 strings out of 493089
+ 25761 string characters out of 6134842
+ 90997 words of memory out of 5000000
+ 5237 multiletter control sequences out of 15000+600000
  11640 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,9n,24p,898b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on supmaterials.pdf (7 pages, 3351295 bytes).
+</usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on supmaterials.pdf (17 pages, 20917760 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 125 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

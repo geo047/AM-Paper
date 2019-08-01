@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  29 JUL 2019 15:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  1 AUG 2019 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -264,11 +264,11 @@ Overfull \hbox (68.99895pt too wide) in paragraph at lines 558--559
 
 [18] [19 <./Figure2_time.jpg>] [20]
 Package epstopdf Info: Source file: <mouseresults.eps>
-(epstopdf)                    date: 2018-11-29 12:29:51
-(epstopdf)                    size: 26900 bytes
+(epstopdf)                    date: 2019-08-01 15:34:31
+(epstopdf)                    size: 31139 bytes
 (epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-07-22 12:18:54
-(epstopdf)                    size: 13982 bytes
+(epstopdf)                    date: 2019-08-01 15:34:37
+(epstopdf)                    size: 14302 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
 (epstopdf)             \includegraphics on input line 625.
@@ -280,16 +280,8 @@ File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 6
 25.
-(pdftex.def)             Requested size: 426.7886pt x 426.79732pt.
-
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 625--626
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 41.9422pt on input line 628.
-
-[21] [22 <./mouseresults-eps-converted-to.pdf>] [23]
+(pdftex.def)             Requested size: 341.42917pt x 341.43344pt.
+ [21] [22 <./mouseresults-eps-converted-to.pdf>] [23]
 Overfull \hbox (129.80637pt too wide) in paragraph at lines 685--688
 \OT1/cmr/m/n/10 were ob-tained from the Het-ero-ge-neous Stock Mice web-site ht
 tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
@@ -298,10 +290,10 @@ tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
 (./bioinformaticspaper.bbl [24] [25] [26] [27]) [28] (./bioinformaticspaper.aux
 ) ) 
 Here is how much of TeX's memory you used:
- 2881 strings out of 493089
- 40058 string characters out of 6134842
- 107798 words of memory out of 5000000
- 6320 multiletter control sequences out of 15000+600000
+ 2884 strings out of 493089
+ 40145 string characters out of 6134842
+ 107858 words of memory out of 5000000
+ 6323 multiletter control sequences out of 15000+600000
  14059 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,35p,1387b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -324,7 +316,7 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bioinformaticspaper.pdf (28 pages, 566609 bytes).
+Output written on bioinformaticspaper.pdf (28 pages, 567540 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  132 compressed objects within 2 object streams
