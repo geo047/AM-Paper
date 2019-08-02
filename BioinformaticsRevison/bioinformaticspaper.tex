@@ -488,7 +488,7 @@ estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially hig
 \vspace{-3cm}
 \label{figpowersingle}
 %%\begin{center}
-\includegraphics[width=15cm, height=20cm]{power2main.eps}
+\includegraphics[width=10cm, height=15cm]{power2main.eps}
 %%\end{center}
 
 \end{figure}
@@ -573,7 +573,7 @@ We were interested in comparing results from Eagle with those from single-locus 
  able to confirm the validity of these new findings as they matched what was found in the original study. Having the ability to confirm new findings  in a real study was 
  one of the primary motivators for choosing these data for analysis. 
 
-We repeated the single-locus analyses as first performed \citep{nicod2016genome} but with a few exceptions. We 
+We repeated the single-locus analyses as first performed \citep{nicod2016genome} but some exceptions. We 
 focused on autosomal SNPs, our analyses were based on SNP genotypes  rather than SNP dosages, 
 we sought to control the false positive rate not false discovery rate of the methods, and significance thresholds were 
 found empirically via permutation \citep{doerge1996permutation}.
@@ -583,7 +583,7 @@ We ran Eagle in three ways.
 Eagle chooses the best model via the extended Bayesian information criteria (extBIC) \citep{chen2008extended}. 
   The conservativeness of the extBIC can be adjusted by a single regularisation parameter  $\gamma$ that ranges from zero to one. 
 In the simulation study, this parameter was set to one, its most conservative and default setting. The mouse data were also analysed 
-under this setting (Eagle$^{default}$).  An alternate  \citep{chen2008extended} , less conservative way of setting $\gamma$ is to  let $\gamma = 1 - \frac{1}{(2\kappa)}$ with $\kappa=\frac{log(L)}{log(n_g)}$ where 
+under this setting (Eagle$^{default}$).  An alternate  \citep{chen2008extended}, less conservative way of setting $\gamma$ is to  let $\gamma = 1 - \frac{1}{(2\kappa)}$ with $\kappa=\frac{log(L)}{log(n_g)}$ where 
  $L$ is the number of loci that span the genome, and $n_g$ is the number of individuals/groups/lines/strains in the study
   (Eagle$^{alt}$). However, our preferred way is to set the $\gamma$ parameter for each trait via permutation (Eagle$^{optimal}$).  We used 100 permutations to set $\gamma$ to give a false  positive rate of 5\%.  This only took six times as long as a single analysis of the data. This is because the marker data need only be read  once, 
  and only the trait data changes across permutations leading to other computational efficiencies.  
@@ -591,17 +591,21 @@ under this setting (Eagle$^{default}$).  An alternate  \citep{chen2008extended} 
  Eagle package. 
   
   
-The genome wide results from the analyses of the mouse data are shown in Figure  \ref{figmouse}. The mouse study recorded
+The genome wide results from the analyses of the mouse data are shown in Figure  \ref{figmouse}, 
+\textcolor{red}{
+with the Manhattan plots of the 
+single-locus analysis shown in Supplementary Figure \ref{supmanhattan}.} 
+The mouse study recorded
 measurements on 200 traits. Of these, in the original study, 45 were able to have their findings  corroborated by previously published work. We focused 
-our analyses here on these same 45 traits. Overall,  FaST-LMM$^{Bonf}$,  FaST-LMM$^{perm}$, Eagle$^{default}$, Eagle$^{alt}$, and Eagle$^{optimal}$ found 50, 37, 67, and 106, SNP-trait findings, respectively, across 39 traits. No associations were found by FaST-LMM and Eagle for the other six traits. 
+our analyses here on these same 45 traits. Overall,  FaST-LMM$^{Bonf}$,  FaST-LMM$^{perm}$, Eagle$^{default}$, Eagle$^{alt}$, and Eagle$^{optimal}$ found 47, 68, 37, 67, 106, SNP-trait findings, respectively, across 39 traits. No associations were found by FaST-LMM and Eagle for the other six traits. 
 Eagle$^{alt}$ and Eagle$^{optimal}$ also found SNP-trait associations not found in the original study. This is despite their analyses being based 
 on the SNP genotype data and the original study being based on SNP dosage data. Eagle$^{alt}$ found two  and 
 Eagle$^{optimal}$ found seven new findings (Supplementary Table \ref{suptabnew}).  These new findings all involved SNPs whose association had been confirmed for other related traits in the original 
 study. 
 
 In the simulation study, Eagle outperforms single-locus association mapping. Here, Eagle$^{default}$, where $\gamma=1$, finds less associations 
-than FaST-LMM. Why the discrepancy in performance?   The answer lies in the conservativeness of Eagle.  With the added genetic complexity implicit within the mouse data, Eagle is more conservative when $\gamma$ is set to one than in the simulation study.  However, the relative results of the simulation study remain true. For similar false positve rates, Eagle is superior to single-locus association mapping. As a case in point, here FaST-LMM found 50 SNP-trait associations with a false positive rate of 5\%. Eagle, with the same false positive rate (Eagle$^{optimal}$) found 106 SNP-trait associations, more 
-than a 100\% increase in findings. 
+than FaST-LMM. Why the discrepancy in performance?   The answer lies in the conservativeness of Eagle.  With the added genetic complexity implicit within the mouse data, Eagle is more conservative when $\gamma$ is set to one than in the simulation study.  However, the relative results of the simulation study remain true. For similar false positve rates, Eagle is superior to single-locus association mapping. As a case in point, here FaST-LMM$^{perm}$ found 68 SNP-trait associations with a false positive rate of 5\%. Eagle, with the same false positive rate (Eagle$^{optimal}$) found 106 SNP-trait associations, more 
+than a 50\% increase in findings. 
 
 
 
@@ -613,8 +617,8 @@ than a 100\% increase in findings.
 \caption{
 \setstretch{1.1}{
 Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
-multi-locus method Eagle. Genome-wide significance thresholds for FaST-LMM were calculated via the Bonferroni correction 
-(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$). 
+multi-locus method Eagle. Genome-wide significance thresholds for FaST-LMM were calculated, via the Bonferroni correction 
+(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$), at the 5\% significance level. 
 Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on 
 the number of SNPs and sample size (Eagle$^{alt}$), and where the model selection had been optimised for a false positive rate 
 of 5\% (Eagle$^{optimal}$).   The number of SNP-trait associations found are reported in the cells. }
@@ -640,7 +644,9 @@ each SNP identifies a separate genomic region of interest. Third, it treats asso
  multiple testing issues. 
  As we saw in the simulation study, Eagle has considerably higher power than single-locus methods but is comparable in run time.
 Also, when analysing the mouse data, Eagle found more than double the SNP-trait associations than 
-with single-locus association mapping, the method of choice. Furthermore, these extra findings were all true. 
+with single-locus association mapping, the method of choice. \textcolor{red}{Furthermore, because we converted the SNP dosages of the 
+original study into genotypes and focusing our analyses on these data, the validity of the extra findings can be confirmed 
+against the original findings}. These extra findings were all true. 
 
 Eagle outperformed the other multi-locus methods in our simulation study. However, we are cognisant of the fact  that we made several implementation 
 choices that impact our conclusions.  For instance, we chose to calculate the significance of the 
@@ -690,7 +696,7 @@ http://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-stock-mice/.
 
 \section*{Acknowledgements}
 We would like to thank the IM\&T Scientific Computing group at the Commonwealth Scientific and Industrial Research Organisation (CSIRO) for providing access and support to the CSIRO Accelerator Cluster upon which all computation was performed. 
-
+We also gratefully acknowledge the comments of two anonymous reviewers whose suggestions have helped "polish" this paper. 
 
 
 \section*{Funding}

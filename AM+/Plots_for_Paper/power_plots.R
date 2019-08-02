@@ -211,7 +211,7 @@ p <- p + theme(panel.spacing = unit(2, "lines"))
 
 ## specify xlab and ylab
 p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('False Discovery Rate'))
+  xlab(bquote('False Positive Rate'))
 
 
 ##  change x and y labels size and bold
@@ -380,7 +380,7 @@ p <- p + theme(panel.spacing = unit(2, "lines"))
 
 ## specify xlab and ylab
 p <- p  + ylab(bquote("Power")) + 
-  xlab(bquote('False Discovery Rate'))
+  xlab(bquote('False Positive Rate'))
 
 
 ##  change x and y labels size and bold

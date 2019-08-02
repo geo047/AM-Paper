@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  1 AUG 2019 15:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  2 AUG 2019 14:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -227,11 +227,11 @@ ap-ping. FaST-
 
 [14] [15]
 Package epstopdf Info: Source file: <power2main.eps>
-(epstopdf)                    date: 2019-01-08 12:13:41
-(epstopdf)                    size: 36978 bytes
+(epstopdf)                    date: 2019-08-01 15:53:07
+(epstopdf)                    size: 36965 bytes
 (epstopdf)             Output file: <power2main-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-07-22 12:10:28
-(epstopdf)                    size: 17038 bytes
+(epstopdf)                    date: 2019-08-01 15:53:47
+(epstopdf)                    size: 16828 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
 (epstopdf)             \includegraphics on input line 491.
@@ -242,19 +242,12 @@ File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 <use power2main-eps-converted-to.pdf>
 Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 491
 .
-(pdftex.def)             Requested size: 426.7886pt x 569.06476pt.
-
-Overfull \hbox (81.7886pt too wide) in paragraph at lines 491--493
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 47.6513pt on input line 494.
-
-[16] [17 <./power2main-eps-converted-to.pdf>]
-<Figure2_time.jpg, id=84, 1505.625pt x 1129.21875pt>
+(pdftex.def)             Requested size: 284.52003pt x 426.7924pt.
+ [16] [17 <./power2main-eps-converted-to.pdf>] <Figure2_time.jpg, id=84, 1505.6
+25pt x 1129.21875pt>
 File: Figure2_time.jpg Graphic file (type jpg)
- <use Figure2_time.jpg>
+
+<use Figure2_time.jpg>
 Package pdftex.def Info: Figure2_time.jpg used on input line 558.
 (pdftex.def)             Requested size: 413.99895pt x 310.49304pt.
 
@@ -271,7 +264,7 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 14302 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 625.
+(epstopdf)             \includegraphics on input line 629.
 Package epstopdf Info: Output file is already uptodate.
 
 <mouseresults-eps-converted-to.pdf, id=95, 561.09625pt x 722.7pt>
@@ -279,10 +272,10 @@ File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 6
-25.
+29.
 (pdftex.def)             Requested size: 341.42917pt x 341.43344pt.
  [21] [22 <./mouseresults-eps-converted-to.pdf>] [23]
-Overfull \hbox (129.80637pt too wide) in paragraph at lines 685--688
+Overfull \hbox (129.80637pt too wide) in paragraph at lines 691--694
 \OT1/cmr/m/n/10 were ob-tained from the Het-ero-ge-neous Stock Mice web-site ht
 tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
  []
@@ -290,10 +283,10 @@ tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
 (./bioinformaticspaper.bbl [24] [25] [26] [27]) [28] (./bioinformaticspaper.aux
 ) ) 
 Here is how much of TeX's memory you used:
- 2884 strings out of 493089
- 40145 string characters out of 6134842
- 107858 words of memory out of 5000000
- 6323 multiletter control sequences out of 15000+600000
+ 2885 strings out of 493089
+ 40159 string characters out of 6134842
+ 107866 words of memory out of 5000000
+ 6324 multiletter control sequences out of 15000+600000
  14059 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,35p,1387b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -316,7 +309,7 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bioinformaticspaper.pdf (28 pages, 567540 bytes).
+Output written on bioinformaticspaper.pdf (28 pages, 567724 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  132 compressed objects within 2 object streams
