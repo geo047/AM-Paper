@@ -671,6 +671,96 @@ Although not specifically designed for association mapping,
 WGAIM \citep{verbyla2007analysis}, upon which Eagle is based, and RWGAIM \citep{verbyla2012rwgaim}  are two R packages where this is possible. The difficulty is that for large datasets and/or complex 
 models,  run time and memory usage can become limiting factors for analysis. 
 
+FarmCPU (ref) is a multi-locus association mapping method that was brought to our attention 
+by a reviewer.  Unlike other LMM-based methods, it makes use of  two separate models for analysis, a fixed effect model and 
+a random effect model.  The fixed effect model measures the strength of association between the SNPs and trait. 
+This is done on a locus-by-locus basis but the model includes psuedo quantitative trait nucleotides (QTN), making it a multi-locus model. 
+The random effect model is used to search for the optimal number and  size of "bins".  By "binning" the SNP data and identifying the 
+SNP within a bin with the highest p-value (which is obtained from the fixed effect model), psuedo QTN are identified and feed back into the fixed effect model. The procedure stops 
+once the number and size of the bins stabilises. 
+
+We analysed the mouse data with FarmCPU. 
+
+
+
+
+By "binning" the SNP data based on map location, 
+
+The 
+random effect model identifies the optimal set of psuedo quantitiative trait nucleotides. The method is cyclic. Findings from the fixed effect model 
+
+This is done on a locus-by-locus basis but the model includes psuedo quantitative trait nucleotides, making it a multi-locus model. 
+The random effect model contains a random effect and residual. The covariance matrix for the random effect is formed from 
+
+
+
+
+
+
+
+
+
+
+After completing our analyses, a new and different multi-locus method became available, FarmCPU (ref). 
+FarmCPU is an iterative procedure, built around the repeated fitting of two models, a fixed effect model and a random effect model. 
+
+
+
+The fixed effect model measures the strength of association of a SNP with a trait, on a locus by locus basis. It controls for false positives 
+by including QTNs as additional fixed effects.  The random effects model 
+
+
+is then used to optimize the binning of the genome 
+
+
+One a p value has been obtained for the SNPs, 
+
+
+The fixed effect model measures the statistical significance of the association between a SNP and trait. 
+ It does this on a locus-by-locus basis.  Based on the SNPs significance and genome LD structure , 
+
+The fixed effect model is fitted on a locus-by-locus basis. It contains the SNP effect and any identified QTNs. 
+
+
+The fixed effect model contains any identified QTNs 
+
+
+It is an iterative approach. At each iteration, a fixed effect and random effect model are fitted. The fixed effect model is fitted on a 
+locus-by-locus basis. This can be done efficiently because the model only contains fixed effects. 
+
+
+ It is based on the fitting of two models, a fixed effect model and a random effect model. 
+The fixed effect model is used to identify SNP in association with the trait. The random effect model is used to fine-tune the 
+number of QTN. 
+
+The fixed effect model is fitted on a locus-by-locus basis. It contains quantitative trait nucleotides (QTNs) and 
+
+
+
+ It is build around two models, a fixed effect model and a random effect model. 
+
+
+
+
+FarmCPU is an iterative algorithm where for each iteration, both a fixed effect and random effect model are fitted. 
+Single marker tests are performed with the fixed effect model.  
+
+The fixed effect model 
+
+
+
+While preparing our manuscript, a promising new multi-locus association mapping method became available, FarmCPU (ref). 
+
+
+
+During the course of preparing our manscript, three new multi-locus associaiton mapping methods became available. These are
+
+
+While preparing our manuscript, three new multi-locus association mapping methods became available. These are 
+mrMLM, FarmCPU, and BLINK.  mrMLM is an R package and available from CRAN, FarmCPU is written in R but is not in package form,  and 
+BLINK is available in R or as stand alone C code. 
+
+
 
 Over the coming years, computationally, the demand placed upon association mapping methods is going to increase. 
 High-throughput array-based technologies continue to decrease the cost of genotyping, permitting ever larger GWASs to be performed. 
