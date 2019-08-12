@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  12 AUG 2019 10:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  12 AUG 2019 13:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -257,7 +257,7 @@ Overfull \hbox (68.99895pt too wide) in paragraph at lines 558--559
 
 [18] [19 <./Figure2_time.jpg>] [20]
 Package epstopdf Info: Source file: <mouseresults.eps>
-(epstopdf)                    date: 2019-08-10 17:56:45
+(epstopdf)                    date: 2019-08-12 13:06:54
 (epstopdf)                    size: 30059 bytes
 (epstopdf)             Output file: <mouseresults-eps-converted-to.pdf>
 (epstopdf)                    date: 2019-08-12 09:50:09
@@ -265,7 +265,12 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
 (epstopdf)             \includegraphics on input line 629.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=mouseresults-eps-converted-to.pdf mouseresults.ep
+s)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <mouseresults-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-08-12 13:07:07
+(epstopdf)                    size: 14135 bytes.
 
 <mouseresults-eps-converted-to.pdf, id=95, 561.09625pt x 722.7pt>
 File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
@@ -309,7 +314,7 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bioinformaticspaper.pdf (29 pages, 569517 bytes).
+Output written on bioinformaticspaper.pdf (29 pages, 569526 bytes).
 PDF statistics:
  192 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
