@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  15 AUG 2019 11:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  16 AUG 2019 07:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -277,7 +277,7 @@ Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 6
  [21] [22 <./mouseresults-eps-converted-to.pdf>]
 Missing character: There is no ß in font cmr10!
  [23]
-Overfull \hbox (129.80637pt too wide) in paragraph at lines 708--711
+Overfull \hbox (129.80637pt too wide) in paragraph at lines 709--712
 \OT1/cmr/m/n/10 were ob-tained from the Het-ero-ge-neous Stock Mice web-site ht
 tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
  []
@@ -311,7 +311,7 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bioinformaticspaper.pdf (29 pages, 569856 bytes).
+Output written on bioinformaticspaper.pdf (29 pages, 569853 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams

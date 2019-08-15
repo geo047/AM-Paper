@@ -1,0 +1,266 @@
+\begin{thebibliography}{}
+
+\bibitem[Ball(2001)Ball]{ball2001bayesian}
+Ball, R.~D. (2001).
+\newblock Bayesian methods for quantitative trait loci mapping based on model
+  selection: approximate analysis using the bayesian information criterion.
+\newblock {\em Genetics\/}, {\bf 159}(3), 1351--1364.
+
+\bibitem[Boulesteix {\em et~al.}(2012)Boulesteix, Janitza, Kruppa, and
+  K{\"o}nig]{boulesteix2012overview}
+Boulesteix, A.-L., Janitza, S., Kruppa, J., and K{\"o}nig, I.~R. (2012).
+\newblock Overview of random forest methodology and practical guidance with
+  emphasis on computational biology and bioinformatics.
+\newblock {\em Wiley Interdisciplinary Reviews: Data Mining and Knowledge
+  Discovery\/}, {\bf 2}(6), 493--507.
+
+\bibitem[Broman and Speed(2002)Broman and Speed]{broman2002model}
+Broman, K.~W. and Speed, T.~P. (2002).
+\newblock A model selection approach for the identification of quantitative
+  trait loci in experimental crosses.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/}, {\bf 64}(4), 641--656.
+
+\bibitem[Browning(2008)Browning]{browning2008presto}
+Browning, B.~L. (2008).
+\newblock {PRESTO}: rapid calculation of order statistic distributions and
+  multiple-testing adjusted {P}-values via permutation for one and two-stage
+  genetic association studies.
+\newblock {\em BMC Bioinformatics\/}, {\bf 9}(1), 309.
+
+\bibitem[Cardon and Palmer(2003)Cardon and Palmer]{cardon2003population}
+Cardon, L.~R. and Palmer, L.~J. (2003).
+\newblock Population stratification and spurious allelic association.
+\newblock {\em The Lancet\/}, {\bf 361}(9357), 598--604.
+
+\bibitem[Chen and Chen(2008)Chen and Chen]{chen2008extended}
+Chen, J. and Chen, Z. (2008).
+\newblock Extended {B}ayesian information criteria for model selection with
+  large model spaces.
+\newblock {\em Biometrika\/}, {\bf 95}(3), 759--771.
+
+\bibitem[Cho {\em et~al.}(2010)Cho, Kim, Kim, Lee, Cho, Lee, Han, Kim, Ott, and
+  Park]{cho2010joint}
+Cho, S., Kim, K., Kim, Y.~J., Lee, J.-K., Cho, Y.~S., Lee, J.-Y., Han, B.-G.,
+  Kim, H., Ott, J., and Park, T. (2010).
+\newblock Joint identification of multiple genetic variants via elastic-net
+  variable selection in a genome-wide association analysis.
+\newblock {\em Annals of Human Genetics\/}, {\bf 74}(5), 416--428.
+
+\bibitem[Consortium {\em et~al.}(2010)Consortium {\em et~al.}]{10002010map}
+Consortium, . G.~P. {\em et~al.} (2010).
+\newblock A map of human genome variation from population-scale sequencing.
+\newblock {\em Nature\/}, {\bf 467}(7319), 1061.
+
+\bibitem[de~Bakker {\em et~al.}(2005)de~Bakker, Yelensky, Pe'er, Gabriel, Daly,
+  and Altshuler]{de2005efficiency}
+de~Bakker, P.~I., Yelensky, R., Pe'er, I., Gabriel, S.~B., Daly, M.~J., and
+  Altshuler, D. (2005).
+\newblock Efficiency and power in genetic association studies.
+\newblock {\em Nature Genetics\/}, {\bf 37}(11), 1217.
+
+\bibitem[Doerge and Churchill(1996)Doerge and Churchill]{doerge1996permutation}
+Doerge, R.~W. and Churchill, G.~A. (1996).
+\newblock Permutation tests for multiple loci affecting a quantitative
+  character.
+\newblock {\em Genetics\/}, {\bf 142}(1), 285--294.
+
+\bibitem[Friedman {\em et~al.}(2010)Friedman, Hastie, and
+  Tibshirani]{Friedman2010glmnet}
+Friedman, J., Hastie, T., and Tibshirani, R. (2010).
+\newblock Regularization {P}aths for {G}eneralized {L}inear {M}odels via
+  {C}oordinate {D}escent.
+\newblock {\em Journal of Statistical Software\/}, {\bf 33}(1), 1--22.
+
+\bibitem[Gogel {\em et~al.}(2018)Gogel, Smith, and Cullis]{gogel2018comparison}
+Gogel, B., Smith, A., and Cullis, B. (2018).
+\newblock Comparison of a one-and two-stage mixed model analysis of
+  {A}ustralia's {N}ational {V}ariety {T}rial {S}outhern {R}egion wheat data.
+\newblock {\em Euphytica\/}, {\bf 214}(2), 44.
+
+\bibitem[Golub and Van~Loan(2012)Golub and Van~Loan]{golub2012matrix}
+Golub, G.~H. and Van~Loan, C.~F. (2012).
+\newblock {\em Matrix {C}omputations\/}, volume~3.
+\newblock JHU Press.
+
+\bibitem[Gudbjartsson {\em et~al.}(2015)Gudbjartsson, Helgason, Gudjonsson,
+  Zink, Oddson, Gylfason, Besenbacher, Magnusson, Halldorsson, Hjartarson, {\em
+  et~al.}]{gudbjartsson2015large}
+Gudbjartsson, D.~F., Helgason, H., Gudjonsson, S.~A., Zink, F., Oddson, A.,
+  Gylfason, A., Besenbacher, S., Magnusson, G., Halldorsson, B.~V., Hjartarson,
+  E., {\em et~al.} (2015).
+\newblock Large-scale whole-genome sequencing of the {I}celandic population.
+\newblock {\em Nature Genetics\/}, {\bf 47}(5), 435.
+
+\bibitem[Kang {\em et~al.}(2008)Kang, Zaitlen, Wade, Kirby, Heckerman, Daly,
+  and Eskin]{kang2008efficient}
+Kang, H.~M., Zaitlen, N.~A., Wade, C.~M., Kirby, A., Heckerman, D., Daly,
+  M.~J., and Eskin, E. (2008).
+\newblock Efficient control of population structure in model organism
+  association mapping.
+\newblock {\em Genetics\/}, {\bf 178}(3), 1709--1723.
+
+\bibitem[Li and Ji(2005)Li and Ji]{li2005adjusting}
+Li, J. and Ji, L. (2005).
+\newblock Adjusting multiple testing in multilocus analyses using the
+  eigenvalues of a correlation matrix.
+\newblock {\em Heredity\/}, {\bf 95}(3), 221.
+
+\bibitem[Lippert {\em et~al.}(2011)Lippert, Listgarten, Liu, Kadie, Davidson,
+  and Heckerman]{lippert2011fast}
+Lippert, C., Listgarten, J., Liu, Y., Kadie, C.~M., Davidson, R.~I., and
+  Heckerman, D. (2011).
+\newblock {FaST} linear mixed models for genome-wide association studies.
+\newblock {\em Nature Methods\/}, {\bf 8}(10), 833--835.
+
+\bibitem[Liu {\em et~al.}(2016)Liu, Huang, Fan, Buckler, and
+  Zhang]{liu2016iterative}
+Liu, X., Huang, M., Fan, B., Buckler, E.~S., and Zhang, Z. (2016).
+\newblock Iterative usage of fixed and random effect models for powerful and
+  efficient genome-wide association studies.
+\newblock {\em PLoS genetics\/}, {\bf 12}(2), e1005767.
+
+\bibitem[Lockhart {\em et~al.}(2014)Lockhart, Taylor, Tibshirani, and
+  Tibshirani]{lockhart2014significance}
+Lockhart, R., Taylor, J., Tibshirani, R.~J., and Tibshirani, R. (2014).
+\newblock A significance test for the {L}asso.
+\newblock {\em Annals of Statistics\/}, {\bf 42}(2), 413.
+
+\bibitem[Long {\em et~al.}(2017)Long, Hicks, Yu, Biggs, Kirkness, Menni,
+  Zierer, Small, Mangino, Messier, {\em et~al.}]{long2017whole}
+Long, T., Hicks, M., Yu, H.-C., Biggs, W.~H., Kirkness, E.~F., Menni, C.,
+  Zierer, J., Small, K.~S., Mangino, M., Messier, H., {\em et~al.} (2017).
+\newblock Whole-genome sequencing identifies common-to-rare variants associated
+  with human blood metabolites.
+\newblock {\em Nature Genetics\/}, {\bf 49}(4), 568.
+
+\bibitem[Meinshausen and B{\"u}hlmann(2010)Meinshausen and
+  B{\"u}hlmann]{meinshausen2010stability}
+Meinshausen, N. and B{\"u}hlmann, P. (2010).
+\newblock Stability {S}election.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/}, {\bf 72}(4), 417--473.
+
+\bibitem[Nicod {\em et~al.}(2016)Nicod, Davies, Cai, Hassett, Goodstadt,
+  Cosgrove, Yee, Lionikaite, McIntyre, Remme, {\em et~al.}]{nicod2016genome}
+Nicod, J., Davies, R.~W., Cai, N., Hassett, C., Goodstadt, L., Cosgrove, C.,
+  Yee, B.~K., Lionikaite, V., McIntyre, R.~E., Remme, C.~A., {\em et~al.}
+  (2016).
+\newblock Genome-wide association of multiple complex traits in outbred mice by
+  ultra-low-coverage sequencing.
+\newblock {\em Nature Genetics\/}.
+
+\bibitem[Pahl and Schafer(2010)Pahl and Schafer]{pahl2010permory}
+Pahl, R. and Schafer, H. (2010).
+\newblock {PERMORY}: an {LD}-exploiting permutation test algorithm for powerful
+  genome-wide association testing.
+\newblock {\em Bioinformatics\/}, {\bf 26}(17), 2093--2100.
+
+\bibitem[Price {\em et~al.}(2010)Price, Zaitlen, Reich, and
+  Patterson]{price2010new}
+Price, A.~L., Zaitlen, N.~A., Reich, D., and Patterson, N. (2010).
+\newblock New approaches to population stratification in genome-wide
+  association studies.
+\newblock {\em Nature Reviews Genetics\/}, {\bf 11}(7), 459.
+
+\bibitem[Rakitsch {\em et~al.}(2013)Rakitsch, Lippert, Stegle, and
+  Borgwardt]{rakitsch2013lasso}
+Rakitsch, B., Lippert, C., Stegle, O., and Borgwardt, K. (2013).
+\newblock A {L}asso multi-marker mixed model for association mapping with
+  population structure correction.
+\newblock {\em Bioinformatics\/}, {\bf 29}(2), 206--214.
+
+\bibitem[Segura {\em et~al.}(2012)Segura, Vilhj{\'a}lmsson, Platt, Korte,
+  Seren, Long, and Nordborg]{segura2012efficient}
+Segura, V., Vilhj{\'a}lmsson, B.~J., Platt, A., Korte, A., Seren, {\"U}., Long,
+  Q., and Nordborg, M. (2012).
+\newblock An efficient multi-locus mixed-model approach for genome-wide
+  association studies in structured populations.
+\newblock {\em Nature Genetics\/}, {\bf 44}(7), 825--830.
+
+\bibitem[Shen {\em et~al.}(2013)Shen, Alam, Fikse, and
+  R{\"o}nneg{\aa}rd]{shen2013novel}
+Shen, X., Alam, M., Fikse, F., and R{\"o}nneg{\aa}rd, L. (2013).
+\newblock A novel generalized ridge regression method for quantitative
+  genetics.
+\newblock {\em Genetics\/}, {\bf 193}(4), 1255--1268.
+
+\bibitem[Spielman and Ewens(1996)Spielman and Ewens]{spielman1996tdt}
+Spielman, R.~S. and Ewens, W.~J. (1996).
+\newblock The {TDT} and other family-based tests for linkage disequilibrium and
+  association.
+\newblock {\em American Journal of Human Genetics\/}, {\bf 59}(5), 983.
+
+\bibitem[Storey and Tibshirani(2003)Storey and
+  Tibshirani]{storey2003statistical}
+Storey, J.~D. and Tibshirani, R. (2003).
+\newblock Statistical significance for genomewide studies.
+\newblock {\em Proceedings of the National Academy of Sciences\/}, {\bf
+  100}(16), 9440--9445.
+
+\bibitem[Szymczak {\em et~al.}(2016)Szymczak, Holzinger, Dasgupta, Malley,
+  Molloy, Mills, Brody, Stambolian, and Bailey-Wilson]{szymczak2016r2vim}
+Szymczak, S., Holzinger, E., Dasgupta, A., Malley, J.~D., Molloy, A.~M., Mills,
+  J.~L., Brody, L.~C., Stambolian, D., and Bailey-Wilson, J.~E. (2016).
+\newblock {r2VIM}: A new variable selection method for random forests in
+  genome-wide association studies.
+\newblock {\em BioData Mining\/}, {\bf 9}(1), 7.
+
+\bibitem[Verbyla {\em et~al.}(2007)Verbyla, Cullis, and
+  Thompson]{verbyla2007analysis}
+Verbyla, A.~P., Cullis, B.~R., and Thompson, R. (2007).
+\newblock The analysis of {QTL} by simultaneous use of the full linkage map.
+\newblock {\em Theoretical and Applied Genetics\/}, {\bf 116}(1), 95.
+
+\bibitem[Verbyla {\em et~al.}(2012)Verbyla, Taylor, and
+  Verbyla]{verbyla2012rwgaim}
+Verbyla, A.~P., Taylor, J.~D., and Verbyla, K.~L. (2012).
+\newblock {RWGAIM}: an efficient high-dimensional random whole genome average
+  ({QTL}) interval mapping approach.
+\newblock {\em Genetics Research\/}, {\bf 94}(6), 291--306.
+
+\bibitem[Verbyla {\em et~al.}(2014)Verbyla, Cavanagh, and
+  Verbyla]{verbyla2014whole}
+Verbyla, A.~P., Cavanagh, C.~R., and Verbyla, K.~L. (2014).
+\newblock Whole-genome analysis of multienvironment or multitrait {QTL} in
+  {MAGIC}.
+\newblock {\em G3: Genes, Genomes, Genetics\/}, {\bf 4}(9), 1569--1584.
+
+\bibitem[Yi {\em et~al.}(2005)Yi, Yandell, Churchill, Allison, Eisen, and
+  Pomp]{yi2005bayesian}
+Yi, N., Yandell, B.~S., Churchill, G.~A., Allison, D.~B., Eisen, E.~J., and
+  Pomp, D. (2005).
+\newblock Bayesian model selection for genome-wide epistatic quantitative trait
+  loci analysis.
+\newblock {\em Genetics\/}, {\bf 170}(3), 1333--1344.
+
+\bibitem[Yu {\em et~al.}(2006)Yu, Pressoir, Briggs, Bi, Yamasaki, Doebley,
+  McMullen, Gaut, Nielsen, Holland, {\em et~al.}]{yu2006unified}
+Yu, J., Pressoir, G., Briggs, W.~H., Bi, I.~V., Yamasaki, M., Doebley, J.~F.,
+  McMullen, M.~D., Gaut, B.~S., Nielsen, D.~M., Holland, J.~B., {\em et~al.}
+  (2006).
+\newblock A unified mixed-model method for association mapping that accounts
+  for multiple levels of relatedness.
+\newblock {\em Nature Genetics\/}, {\bf 38}(2), 203.
+
+\bibitem[Zhao {\em et~al.}(2007)Zhao, Aranzana, Kim, Lister, Shindo, Tang,
+  Toomajian, Zheng, Dean, Marjoram, {\em et~al.}]{zhao2007arabidopsis}
+Zhao, K., Aranzana, M.~J., Kim, S., Lister, C., Shindo, C., Tang, C.,
+  Toomajian, C., Zheng, H., Dean, C., Marjoram, P., {\em et~al.} (2007).
+\newblock An {A}rabidopsis example of association mapping in structured
+  samples.
+\newblock {\em PLoS Genetics\/}, {\bf 3}(1), e4.
+
+\bibitem[Zheng {\em et~al.}(2011)Zheng, Li, Abecasis, and
+  Scheet]{zheng2011comparison}
+Zheng, J., Li, Y., Abecasis, G.~R., and Scheet, P. (2011).
+\newblock A comparison of approaches to account for uncertainty in analysis of
+  imputed genotypes.
+\newblock {\em Genetic Epidemiology\/}, {\bf 35}(2), 102--110.
+
+\bibitem[Zhou and Stephens(2012)Zhou and Stephens]{zhou2012genome}
+Zhou, X. and Stephens, M. (2012).
+\newblock Genome-wide efficient mixed-model analysis for association studies.
+\newblock {\em Nature Genetics\/}, {\bf 44}(7), 821--824.
+
+\end{thebibliography}
