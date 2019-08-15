@@ -672,8 +672,8 @@ WGAIM \citep{verbyla2007analysis}, upon which Eagle is based, and RWGAIM \citep{
 models,  run time and memory usage can become limiting factors for analysis. 
 
 \textcolor{red}{
-Upon submitting our paper for review, a more recent multi-locus association mapping method, FarmCPU(), was brought to our attention. 
-It is an unorthodox approach. Instead of working with a single model, results are passed back and forth between two models, 
+Upon submitting our paper for review, a more recent multi-locus association mapping method, FarmCPU \citep{liu2016iterative}, was brought to our attention. 
+It is an unorthoﬂdox approach. Instead of working with a single model, results are passed back and forth between two models, 
 a fixed effects model and a random effects model. Measures of association are obtained from the fixed effect model, which in turn 
 help define pseudo-QTN from the random effects model. Conversely, pseudo-QTN found from the random effects model are passed 
 back to the fixed effect model to better refine the measures of association.  The method involves multiple rounds of genome-wide 
@@ -681,9 +681,9 @@ testing. Out of interest, we reanalysed the mouse data with FarmCPU.  Runtimes w
 Eagle.  Interestingly, FarmCPU found the same number of associations, 106,  as Eagle$^{optimal}$, but the findings were only the 
 same for 11 of the traits.  For 14 (14) traits, Eagle (FarmCPU) found more associations.  Where the new findings from Eagle could 
 be confirmed, of the 18 new associations found by FarmCPU, we were unable to confirm 10 using the results from the original study. 
-The two methods differ significantly in their implementation. FarmCPU is not an R package but a set of R scripts. We had 
+Also, the two methods differ significantly in their implementation. FarmCPU is not an R package but a set of R scripts. We had 
 no problem in using the scripts but this may not be true for non-R users. In contrast, Eagle has been developed for ease-of-use.
-Eagle is an R package but its browser-based GUI makes it accessible to all.
+Its browser-based GUI makes it accessible to all.
 }
 
 

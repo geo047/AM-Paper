@@ -95,9 +95,9 @@ LMM is linear mixed model.  GLM is generalised linear model., GLMM is generalise
 
 
 \begin{figure}
-\caption{Power verse false discovery rates for Eagle and the multi-locus methods. Plots for only those simulation 
+\caption{Power verse false positive rates for Eagle and the multi-locus methods. Plots for only those simulation 
 scenarios where all multi-locus methods could be implemented are shown.  Eagle has the highest power across the four 
-scenarios but MLMM also performs well. A false discovery rate of greater than 10\% is typically not employed in GWASs so the 
+scenarios but MLMM also performs well. A false posirive rate of greater than 10\% is typically not employed in GWASs so the 
 upper limit of the x-axis is 0.1.}
 \label{supfigpowermultiple}
 \begin{center}
@@ -147,7 +147,7 @@ Eagle$^{alt}$  & Bioch.HDL   & 6   & 17.53         & Muscles.Sol.g Muscles.TA.g 
                        & Bioch.LDL   & 6    &  17.53        & Muscles.Sol.g Muscles.TA.g Muscles.Plant.g Muscles.EDL.g  Muscles.Gast.g SPPI.ln.pa Bioch.Calcium  Bioch.Tot.Cholesterol Bioch.Tot.Protein Bioch.Albumin \\  
  Eagle$^{optimal}$  &        Bioch.Tot.Cholesterol  & 4      &  134.58  & FACS.CD3posCD44posCD4CD8Ratio  \\
                         & Bioch.HDL                  & 4      &  134.58  & FACS.CD3posCD44posCD4CD8Ratio   \\
-                        &                                    & 6      &    17.53   & Muscles.Sol.g Muscles.TA.g Muscles.Plant.g Muscles.EDL.g  Muscles.Gast.g 
+                        & Bioch.HDL                                   & 6      &    17.53   & Muscles.Sol.g Muscles.TA.g Muscles.Plant.g Muscles.EDL.g  Muscles.Gast.g 
      SPPI.ln.pa Bioch.Calcium    Bioch.Tot.Cholesterol Bioch.Tot.Protein Bioch.Albumin  \\
                         & BMC.Mean                 & 15    &     86.57  & BMC.Median \\
                         & BMC.Mean.N             &  5     &     24.64   &  BMC.Mean BMC.StdDev BMC.StdDev.N  BMC.Max.N  BMC.Median BMC.Kurt
@@ -205,7 +205,7 @@ Eagle$^{alt}$  & Bioch.HDL   & 6   & 17.53         & Muscles.Sol.g Muscles.TA.g 
 \begin{figure}
 \caption{Manhattan plots of the single-locus analysis of the mouse data with FaST-LMM. 
 Genome-wide significance thresholds for FaST-LMM were calculated, via the Bonferroni correction 
-(pink horizontal line) and permutation (blue horizontal line), at a 5\% significance level. 
+(pink horizontal line) and permutation (purple horizontal line), at a 5\% significance level. 
 }
 \label{supmanhattan}
 \begin{center}

@@ -113,6 +113,13 @@ Lippert, C., Listgarten, J., Liu, Y., Kadie, C.~M., Davidson, R.~I., and
 \newblock {FaST} linear mixed models for genome-wide association studies.
 \newblock {\em Nature Methods\/}, {\bf 8}(10), 833--835.
 
+\bibitem[Liu {\em et~al.}(2016)Liu, Huang, Fan, Buckler, and
+  Zhang]{liu2016iterative}
+Liu, X., Huang, M., Fan, B., Buckler, E.~S., and Zhang, Z. (2016).
+\newblock Iterative usage of fixed and random effect models for powerful and
+  efficient genome-wide association studies.
+\newblock {\em PLoS genetics\/}, {\bf 12}(2), e1005767.
+
 \bibitem[Lockhart {\em et~al.}(2014)Lockhart, Taylor, Tibshirani, and
   Tibshirani]{lockhart2014significance}
 Lockhart, R., Taylor, J., Tibshirani, R.~J., and Tibshirani, R. (2014).
