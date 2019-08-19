@@ -1,7 +1,7 @@
 %%\documentclass{nature}
 \documentclass{article}
 \usepackage{xr}
-\bibliographystyle{natbib}
+
 \renewcommand{\baselinestretch}{1.4} 
 \usepackage{graphicx}
 \usepackage{bm}
@@ -14,12 +14,6 @@
 \linenumbers
 
 
-%% external tex files
-%%\externaldocument{figure1_runtimes}
-%%\externaldocument{figure2_powerFDRmultiple}
-%%\externaldocument{figure3_mouse}
-
-\externaldocument{supmaterials}
 
 \begin{document}
 
@@ -55,7 +49,7 @@
 \begin{abstract} \noindent
 \setstretch{1.6}{
 {\bf Motivation:} We present Eagle, a new method for multi-locus association mapping. The motivation for developing Eagle was to make multi-locus association mapping "easy" and the method-of-choice. Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. does not suffer from multiple testing issues c. gives results that are immediately interpretable and d. has a computational footprint comparable to single-locus association mapping. \\
-{\bf Results:} By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and multi-locus methods. We also analyse data from a published mouse study. Eagle found over 100\% more validated findings than the state-of-the-art single-locus method.  \\
+{\bf Results:} By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and multi-locus methods. We also analyse data from a published mouse study. Eagle found over 50\% more validated findings than the state-of-the-art single-locus method.  \\
 {\bf Availability and Implementation:} Eagle has been implemented as an R package, with a browser-based Graphical User Interface (GUI) for users less familiar with R. It is freely available via the CRAN website  at https://cran.r-project.org. Videos, Quick Start guides, FAQs, and Demos are available via the Eagle website http://eagle.r-forge.r-project.org \\
 {\bf Contact:} andrew.george@csiro.au
 }
@@ -393,7 +387,7 @@ GEMMA and FaST-LMM  because of their popularity and computational speed.
 For multi-locus association mapping, we chose bigRR, glmnet, 
 LMM-Lasso, MLMM, and r2VIM.  
 Each takes a different approach to multi-locus association mapping. A summary of the key attributes of the different computer programs/packages 
-is given in Supplementary Table \ref{suptabsummary} (see Methods for further details). 
+is given in Supplementary Table 1 (see Methods for further details). 
 
  
 
@@ -464,7 +458,7 @@ number of true SNPs. We also obtained an estimate of a method's false positive r
 The power (false positive rate) of a method, for a scenario, was found by taking the median of the power (false positive rate) estimates over the 100 replicates. 
 
 
-The power and false positive rates of Eagle and the other multi-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Supplementary Figure \ref{supfigpowermultiple}.  We restricted our attention to these scenarios because not all 
+The power and false positive rates of Eagle and the other multi-locus methods across the scenarios 150 x 5K, 350 x 500K, 1500 x 50K, and 2000 x 500K are shown in Supplementary Figure 1.  We restricted our attention to these scenarios because not all 
 multi-locus methods could cope with the size of data in the other scenarios. 
   Each plot contains 
 single points and power curves. The single points are the power and false positive rates for Eagle and MLMM.
@@ -499,7 +493,7 @@ estimate the relationship matrix (FaST-LMM$^{few}$). Eagle has substantially hig
 
 In answer to the question of how well Eagle finds true SNP-trait associations and avoids false SNP-trait associations, it does extremely 
 well.  Of the multi-locus methods, Eagle had the highest power
-while keeping its false positive rate low (Supplementary Figure \ref{supfigpowermultiple}). MLMM also performed well. However, it was when Eagle was compared against single-locus methods 
+while keeping its false positive rate low (Supplementary Figure 1). MLMM also performed well. However, it was when Eagle was compared against single-locus methods 
 that the difference in power was most noticeable.  Eagle had much higher power than single-locus methods for finding SNP in true 
 association with a trait while avoiding false associations (Figure \ref{figpowersingle}). 
 
@@ -511,7 +505,7 @@ association with a trait while avoiding false associations (Figure \ref{figpower
 
 Memory usage and run (or elapse) times were recorded for Eagle and the other computer programs/packages across the simulation scenarios. 
 Analyses were performed on a high-end desktop computer with dual 8-core Xeon processors and 128 gigabytes of RAM. Not all data generated under the six scenarios could be analysed by all implementations. Memory usage 
-for many of the computer programs/packages was the limiting factor (see Supplementary Figure \ref{supfigmem}).  The single-locus program GEMMA was by 
+for many of the computer programs/packages was the limiting factor (see Supplementary Figure 2).  The single-locus program GEMMA was by 
 far the most memory efficient. Not surprisingly, the multi-locus programs were memory intensive. Most required in 
 excess of the 128 gigabytes of available RAM for the analysis of data generated under 4000 x 1.5M and 10000 x 1.5M.  
 Even FaST-LMM, when all the SNP data were being used to calculate the similarity matrix, ran out of memory for the larger scenarios.
@@ -540,13 +534,7 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
 \begin{figure}
 \caption{
 \setstretch{1.6}{
-Median run times, in minutes, for the analysis of simulation study data from the six scenarios. 
-Eagle is compared against five other multi-locus programs/packages (A) and two single-locus programs (B). 
-The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multi-locus 
-programs/packages, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. 
-The median run times for the programs/packages across the scenarios are given in the table (C). The entries in a blue font 
-correspond to the lowest run-time for a scenario. 
- FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
+Median run times, in minutes, for the analysis of simulation study data from the six scenarios. Eagle is compared against five other multi-locus programs/packages (A) and two single-locus programs (B). The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multi-locus programs/packages, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. The median run times for the programs/packages across the scenarios are given in the table (C). The entries in a blue font  correspond to the lowest run-time for a scenario. FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
  FaST-LMM$^{few}$ is where calculation  of the similarity matrix is based on a subset of the SNP data. }
  }
 \vspace{1cm}
@@ -594,13 +582,13 @@ under this setting (Eagle$^{default}$).  An alternate  \citep{chen2008extended},
 The genome wide results from the analyses of the mouse data are shown in Figure  \ref{figmouse}, 
 \textcolor{red}{
 with the Manhattan plots of the 
-single-locus analysis shown in Supplementary Figure \ref{supmanhattan}.} 
+single-locus analysis shown in Supplementary Figure 3.} 
 The mouse study recorded
 measurements on 200 traits. Of these, in the original study, 45 were able to have their findings  corroborated by previously published work. We focused 
 our analyses here on these same 45 traits. Overall,  FaST-LMM$^{Bonf}$,  FaST-LMM$^{perm}$, Eagle$^{default}$, Eagle$^{alt}$, and Eagle$^{optimal}$ found 47, 68, 37, 67, 106, SNP-trait findings, respectively, across 39 traits. No associations were found by FaST-LMM and Eagle for the other six traits. 
 Eagle$^{alt}$ and Eagle$^{optimal}$ also found SNP-trait associations not found in the original study. This is despite their analyses being based 
 on the SNP genotype data and the original study being based on SNP dosage data. Eagle$^{alt}$ found two  and 
-Eagle$^{optimal}$ found seven new findings (Supplementary Table \ref{suptabnew}).  These new findings all involved SNPs whose association had been confirmed for other related traits in the original 
+Eagle$^{optimal}$ found seven new findings (Supplementary Table 2).  These new findings all involved SNPs whose association had been confirmed for other related traits in the original 
 study. 
 
 In the simulation study, Eagle outperforms single-locus association mapping. Here, Eagle$^{default}$, where $\gamma=1$, finds less associations 
@@ -618,10 +606,7 @@ than a 50\% increase in findings.
 \setstretch{1.1}{
 Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
 multi-locus method Eagle. Genome-wide significance thresholds for FaST-LMM were calculated, via the Bonferroni correction 
-(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$), at the 5\% significance level. 
-Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on 
-the number of SNPs and sample size (Eagle$^{alt}$), and where the model selection had been optimised for a false positive rate 
-of 5\% (Eagle$^{optimal}$).   The number of SNP-trait associations found are reported in the cells. }
+(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$), at the 5\% significance level.  Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on the number of SNPs and sample size (Eagle$^{alt}$), and where the model selection had been optimised for a false positive rate of 5\% (Eagle$^{optimal}$).   The number of SNP-trait associations found are reported in the cells. }
 }
 \label{figmouse}
 \begin{center}
@@ -732,7 +717,7 @@ competing financial interests.
   
  
 
-
+\bibliographystyle{natbib}
 %%\bibliographystyle{naturemag}
 \bibliography{biblibrary}
 

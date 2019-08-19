@@ -1,0 +1,13 @@
+The way we created the pdf's for our paper submission was by the following steps
+
+# this step is needed because we use figure and table labels from this file
+# in the main paper
+pdflatex supmaterials.tex
+
+
+pdflatex bioinformaticspaper.tex
+bibtex bioinformaticspaper
+pdflatex bioinformaticspaper.tex
+pdflatex bioinformaticspaper.tex
+
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  16 AUG 2019 09:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.31)  16 AUG 2019 13:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -120,23 +120,21 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-Package xr Info: IMPORTING LABELS FROM supmaterials.aux on input line 22.
-
 (./bioinformaticspaper.aux)
 \openout1 = `bioinformaticspaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -200,22 +198,22 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 36.
+(Font)              <12> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 36.
+(Font)              <8> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 36.
+(Font)              <6> on input line 30.
 
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 86.
+(Font)              <7> on input line 80.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 86.
+(Font)              <5> on input line 80.
 
 [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
-Overfull \hbox (6.03087pt too wide) in paragraph at lines 444--445
+Overfull \hbox (6.03087pt too wide) in paragraph at lines 438--439
 []\OT1/cmr/m/n/10 FaST-LMM and GEMMA im-ple-ment single-locus as-so-ci-a-tion m
 ap-ping. FaST-
  []
@@ -229,13 +227,13 @@ Package epstopdf Info: Source file: <power2main.eps>
 (epstopdf)                    size: 16828 bytes
 (epstopdf)             Command: <repstopdf --outfile=power2main-eps-converted-t
 o.pdf power2main.eps>
-(epstopdf)             \includegraphics on input line 491.
+(epstopdf)             \includegraphics on input line 485.
 Package epstopdf Info: Output file is already uptodate.
  <power2main-eps-converted-to.pdf, id=69, 561.09625pt x 809.0225pt>
 File: power2main-eps-converted-to.pdf Graphic file (type pdf)
 
 <use power2main-eps-converted-to.pdf>
-Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 491
+Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 485
 .
 (pdftex.def)             Requested size: 284.52003pt x 426.7924pt.
  [16] [17 <./power2main-eps-converted-to.pdf>] <Figure2_time.jpg, id=84, 1505.6
@@ -243,10 +241,10 @@ Package pdftex.def Info: power2main-eps-converted-to.pdf used on input line 491
 File: Figure2_time.jpg Graphic file (type jpg)
 
 <use Figure2_time.jpg>
-Package pdftex.def Info: Figure2_time.jpg used on input line 558.
+Package pdftex.def Info: Figure2_time.jpg used on input line 546.
 (pdftex.def)             Requested size: 413.99895pt x 310.49304pt.
 
-Overfull \hbox (68.99895pt too wide) in paragraph at lines 558--559
+Overfull \hbox (68.99895pt too wide) in paragraph at lines 546--547
  [][] 
  []
 
@@ -259,7 +257,7 @@ Package epstopdf Info: Source file: <mouseresults.eps>
 (epstopdf)                    size: 14320 bytes
 (epstopdf)             Command: <repstopdf --outfile=mouseresults-eps-converted
 -to.pdf mouseresults.eps>
-(epstopdf)             \includegraphics on input line 629.
+(epstopdf)             \includegraphics on input line 614.
 Package epstopdf Info: Output file is already uptodate.
 
 <mouseresults-eps-converted-to.pdf, id=95, 561.09625pt x 722.7pt>
@@ -267,12 +265,12 @@ File: mouseresults-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mouseresults-eps-converted-to.pdf>
 Package pdftex.def Info: mouseresults-eps-converted-to.pdf used on input line 6
-29.
+14.
 (pdftex.def)             Requested size: 341.42917pt x 341.43344pt.
  [21] [22 <./mouseresults-eps-converted-to.pdf>]
 Missing character: There is no ß in font cmr10!
  [23]
-Overfull \hbox (129.80637pt too wide) in paragraph at lines 709--712
+Overfull \hbox (129.80637pt too wide) in paragraph at lines 694--697
 \OT1/cmr/m/n/10 were ob-tained from the Het-ero-ge-neous Stock Mice web-site ht
 tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
  []
@@ -280,10 +278,10 @@ tp://wp.cs.ucl.ac.uk/outbredmice/heterogeneous-
 [24] (./bioinformaticspaper.bbl [25] [26] [27] [28]) [29]
 (./bioinformaticspaper.aux) ) 
 Here is how much of TeX's memory you used:
- 2888 strings out of 493089
- 40231 string characters out of 6134842
- 107934 words of memory out of 5000000
- 6327 multiletter control sequences out of 15000+600000
+ 2882 strings out of 493089
+ 40147 string characters out of 6134842
+ 107877 words of memory out of 5000000
+ 6322 multiletter control sequences out of 15000+600000
  14059 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,35p,1387b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -306,7 +304,7 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bioinformaticspaper.pdf (29 pages, 570767 bytes).
+Output written on bioinformaticspaper.pdf (29 pages, 570846 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
