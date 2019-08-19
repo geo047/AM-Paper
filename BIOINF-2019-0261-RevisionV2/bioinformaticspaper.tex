@@ -2,16 +2,26 @@
 \copyrightyear{2019} \pubyear{2019}
 
 
-%%\usepackage{xr}
-%%\renewcommand{\baselinestretch}{1.4} 
-%%\usepackage{graphicx}
-%%\usepackage{bm}
-%%\usepackage{lineno}
-%%\usepackage{natbib}
-%%\usepackage{setspace}
-%%\usepackage{authblk}
-%%\usepackage{xcolor}
 
+%% New commands ... 
+\newcommand{\bwidetildea}{\widetilde{\bm{a}}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\be}{\bm{e}}
+\newcommand{\btau}{\bm{\tau}}
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bzero}{\bm{0}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\bX}{\bm{X}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bZ}{\bm{Z}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bmm}{\bm{m}}
+
+
+
+
+\usepackage{bm}
+\usepackage{lineno}
 
 
 
@@ -37,23 +47,7 @@ $^{\text{\sf 3}}$IM\&T, CSIRO, Brisbane, 4067, Australia.
 \editor{Associate Editor: Alfonso Valencia}
 
 
-%%\linenumbers
-
-
-
-%% New commands ... 
-\newcommand{\bwidetildea}{\widetilde{\bm{a}}}
-\newcommand{\bu}{\bm{u}}
-\newcommand{\be}{\bm{e}}
-\newcommand{\btau}{\bm{\tau}}
-\newcommand{\ba}{\bm{a}}
-\newcommand{\bzero}{\bm{0}}
-\newcommand{\bI}{\bm{I}}
-\newcommand{\bX}{\bm{X}}
-\newcommand{\by}{\bm{y}}
-\newcommand{\bZ}{\bm{Z}}
-\newcommand{\bM}{\bm{M}}
-\newcommand{\bmm}{\bm{m}}
+\linenumbers
 
 
 \abstract{\textbf{Motivation:} We present Eagle, a new method for multi-locus association mapping. The motivation for developing Eagle was to make multi-locus association mapping "easy" and the method-of-choice. Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. does not suffer from multiple testing issues c. gives results that are immediately interpretable and d. has a computational footprint comparable to single-locus association mapping. \\
@@ -67,7 +61,6 @@ online.}
 
 \section{Introduction}
 
-\citep{Boffelli03}
 
 Over the past decade,  genome-wide association studies (GWASs) have changed considerably in both their analysis and design. Early studies
  followed a case-control design. Association mapping methods were no more complicated than contingency table tests or simple 
@@ -668,7 +661,7 @@ models,  run time and memory usage can become limiting factors for analysis.
 
 \textcolor{red}{
 Upon submitting our paper for review, a more recent multi-locus association mapping method, FarmCPU \citep{liu2016iterative}, was brought to our attention. 
-It is an unorthoﬂdox approach. Instead of working with a single model, results are passed back and forth between two models, 
+It is a statistically unorthodox approach. Instead of working with a single model, results are passed back and forth between two models, 
 a fixed effects model and a random effects model. Measures of association are obtained from the fixed effect model, which in turn 
 help define pseudo-QTN from the random effects model. Conversely, pseudo-QTN found from the random effects model are passed 
 back to the fixed effect model to better refine the measures of association.  The method involves multiple rounds of genome-wide 
@@ -681,9 +674,6 @@ Also, the two methods differ significantly in their implementation. FarmCPU is n
 no problem in using the scripts but this may not be true for non-R users. In contrast, Eagle has been developed for ease-of-use.
 Its browser-based GUI makes it accessible to all.
 }
-
-
-
 
 Over the coming years, computationally, the demand placed upon association mapping methods is going to increase. 
 High-throughput array-based technologies continue to decrease the cost of genotyping, permitting ever larger GWASs to be performed. 
@@ -722,10 +712,6 @@ competing financial interests.
 
 
 \begin{thebibliography}{}
-
-\bibitem[Bofelli {\it et~al}., 2000]{Boffelli03}
-Bofelli,F., Name2, Name3 (2003) Article title, {\it Journal Name}, {\bf 199}, 133-154.  
-  
   
 \bibitem[Ball, 2001]{ball2001bayesian}
 Ball,R.D. (2001) Bayesian methods for quantitative trait loci mapping based on model
