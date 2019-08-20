@@ -19,7 +19,7 @@
 
 
 
-
+\usepackage{lmodern}% http://ctan.org/pkg/lm
 \usepackage{bm}
 \usepackage{lineno}
 
@@ -53,7 +53,7 @@ $^{\text{\sf 3}}$IM\&T, CSIRO, Brisbane, 4067, Australia.
 \abstract{\textbf{Motivation:} We present Eagle, a new method for multi-locus association mapping. The motivation for developing Eagle was to make multi-locus association mapping "easy" and the method-of-choice. Eagle's strengths are that it a. is considerably more powerful than single-locus association mapping b. does not suffer from multiple testing issues c. gives results that are immediately interpretable and d. has a computational footprint comparable to single-locus association mapping. \\
 \textbf{Results:} By conducting a large simulation study, we will show that Eagle finds true and avoids false SNP-trait associations better than competing single- and multi-locus methods. We also analyse data from a published mouse study. Eagle found over 50\% more validated findings than the state-of-the-art single-locus method.  \\
 \textbf{Availability and Implementation:} Eagle has been implemented as an R package, with a browser-based Graphical User Interface (GUI) for users less familiar with R. It is freely available via the CRAN website  at https://cran.r-project.org. Videos, Quick Start guides, FAQs, and Demos are available via the Eagle website http://eagle.r-forge.r-project.org \\
-\textbf{Contact:} \href{andrew.george@csiro.au}\\
+\textbf{Contact:} andrew.george@csiro.au\\
 \textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
 online.}
 
@@ -214,7 +214,7 @@ If this new model has a larger extBIC than the current model, then the $s+1$th s
 the current model and the above process is repeated. If this new model has a smaller extBIC than the current model, then the 
 model building process is complete. The set of SNP in strongest association with the trait is the $s$ SNPs previously identified. 
 
-\subsubsection {Reducing the dimension of the model:} 
+\subsubsection {Reducing the dimension of the model} 
 
 In practice, estimating the parameters of (\ref{eq2}) can be demanding, computationally. 
 The vector $\ba_{-S}$ has $L-s$ random effects where in modern genome-wide association studies, 
@@ -249,10 +249,12 @@ of (\ref{eq4}).
 
 \subsection{Comparison Methods}
 
- \subsubsection{ Multi-locus methods:} We compare the computational and statistical performance of Eagle against five multi-locus methods. \textcolor{red}{They are bigRR  \citep{shen2013novel}, LMM-Lasso \citep{rakitsch2013lasso}, glmnet \citep{Friedman2010glmnet}, 
+ \subsubsection{ Multi-locus methods} 
+ 
+ We compare the computational and statistical performance of Eagle against five multi-locus methods. \textcolor{red}{They are bigRR  \citep{shen2013novel}, LMM-Lasso \citep{rakitsch2013lasso}, glmnet \citep{Friedman2010glmnet}, 
 MLMM \citep{segura2012efficient}, and r2VIM \citep{szymczak2016r2vim}}.  All but glmnet have been purposely designed for genome-wide association mapping. 
 BigRR, LMM-Lasso, and glmnet are regression-based regularisation 
-methods. BigRR is based on generalised ridge regression, LMM-Lasso is based on lasso, and glmnet is based on elastic net. 
+methods. BigRR is based on generalised ridge regression, \hbox{LMM-Lasso} is based on lasso, and glmnet is based on elastic net. 
 Regularisation methods make parameter estimation possible in models  where the number of predictors is far greater than the number of samples. 
 They allow the strength of association between all the SNPs and trait to be measured within a single model, simultaneously. 
 A limitation of these methods though is that the statistical significance of the SNP effects cannot be easily determined. 
@@ -288,7 +290,8 @@ but the computational cost is high, restricting the size of data that can be ana
 
 
 
-\subsubsection{Single-locus methods:} We also compare the performance of Eagle against two single-locus methods, GEMMA \citep{zhou2012genome} and FaST-LMM \citep{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
+\subsubsection{Single-locus methods} 
+We also compare the performance of Eagle against two single-locus methods, GEMMA \citep{zhou2012genome} and FaST-LMM \citep{lippert2011fast}. Both are based on linear mixed models. The models have a single fixed effect for the SNP,  other fixed effects, 
 a single random effect to account for familial relatedness (or polygenic background), and an error. The significance of the SNP effect in the model 
 is a measure of the strength of association.  They are of the same computational complexity \citep{zhou2012genome}, and produce exact results.  
 Both perform a single spectral decomposition of the relationship (or similarity) matrix $K$, use  an eigenvector matrix to rotate the data, 
@@ -396,6 +399,7 @@ is given in Supplementary Table 1 (see Methods for further details).
  
 
 \subsection{Simulation Study}
+
 A large simulation study was performed where we sought to  answer two questions. 
 First, how well does Eagle find true associations (power) and avoid 
 false associations (type 1 errors)? Second, how does Eagle compare, in terms of run time and memory usage, to 
@@ -546,7 +550,7 @@ Eagle was significantly faster, sometimes by orders of magnitude,  than the othe
   from 12 hours to 3.31 hours. 
  
  
-\begin{figure}[!tpb]
+\begin{figure}
  \centerline{\includegraphics[width=0.45\textwidth,natwidth=610,natheight=642]{Figure2_time.jpg}}
  \caption{
 Median run times, in minutes, for the analysis of simulation study data from the six scenarios. Eagle is compared against five other multi-locus programs/packages (A) and two single-locus programs (B). The x- and y-axes are on a log scale for improved aesthetics. Eagle has the lowest run-times of the multi-locus programs/packages, sometimes by orders of magnitude. Eagle can even produce results faster than single-locus programs. The median run times for the programs/packages across the scenarios are given in the table (C). The entries in a blue font  correspond to the lowest run-time for a scenario. FaST-LMM$^{all}$ is where calculation of the similarity matrix is based on all the SNP data.  
@@ -586,6 +590,23 @@ under this setting (Eagle$^{default}$).  An alternate  \citep{chen2008extended},
  Eagle package. 
   
   
+
+
+\begin{figure}[!tpb]
+%% obtained from bracewell by running ResultsV2.R from /data/geo047/MWAM/Mouse/OutBred/RScripts/
+\centerline{\includegraphics[width=8cm, height=8cm]{mouseresults.eps}}
+\caption{
+Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
+multi-locus method Eagle. Genome-wide significance thresholds for FaST-LMM were calculated, via the Bonferroni correction 
+(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$), at the 5\% significance level.  Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on the number of SNPs and sample size (Eagle$^{alt}$), and where the model selection had been optimised for a false positive rate of 5\% (Eagle$^{optimal}$).   The number of SNP-trait associations found are reported in the cells. }
+\label{figmouse}
+
+\end{figure}
+
+
+
+  
+  
 The genome wide results from the analyses of the mouse data are shown in Figure  \ref{figmouse}, 
 \textcolor{red}{
 with the Manhattan plots of the 
@@ -603,21 +624,6 @@ than FaST-LMM. Why the discrepancy in performance?   The answer lies in the cons
 than a 50\% increase in findings. 
 
 
-
-
-
-
-
-\begin{figure}[!tpb]
-%% obtained from bracewell by running ResultsV2.R from /data/geo047/MWAM/Mouse/OutBred/RScripts/
-\centerline{\includegraphics[width=8cm, height=8cm]{mouseresults.eps}}
-\caption{
-Genome-wide association mapping results from analyses of the mouse data for the single-locus method FaST-LMM and the 
-multi-locus method Eagle. Genome-wide significance thresholds for FaST-LMM were calculated, via the Bonferroni correction 
-(FaST-LMM$^{Bonf}$) and permutation (FaST-LMM$^{perm}$), at the 5\% significance level.  Eagle was run under three settings; its default setting (Eagle$^{default}$),  an alternate less conservative setting based on the number of SNPs and sample size (Eagle$^{alt}$), and where the model selection had been optimised for a false positive rate of 5\% (Eagle$^{optimal}$).   The number of SNP-trait associations found are reported in the cells. }
-\label{figmouse}
-
-\end{figure}
 
 
 
